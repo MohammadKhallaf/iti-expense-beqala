@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -34,5 +31,23 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "description": "A full stack app",
+  "main": "index.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohammadKhallaf/iti-expense-beqala.git"
+  },
+  "keywords": [
+    "full-stack",
+    "e-commerce",
+    "react"
+  ],
+  "author": "Mohammed Khallaf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohammadKhallaf/iti-expense-beqala/issues"
+  },
+  "homepage": "https://github.com/MohammadKhallaf/iti-expense-beqala#readme"
 }
