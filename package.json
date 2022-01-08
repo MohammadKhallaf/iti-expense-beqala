@@ -33,21 +33,6 @@
       "last 1 safari version"
     ]
   },
-  "description": "A full stack app",
-  "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MohammadKhallaf/iti-expense-beqala.git"
-  },
-  "keywords": [
-    "full-stack",
-    "e-commerce",
-    "react"
-  ],
-  "author": "Mohammed Khallaf",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/MohammadKhallaf/iti-expense-beqala/issues"
-  },
-  "homepage": "https://github.com/MohammadKhallaf/iti-expense-beqala#readme"
+  "description": "A full stack app"
+ 
 }
