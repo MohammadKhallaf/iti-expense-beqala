@@ -1,8 +1,9 @@
+import Hero from './pages/header/Hero';
 
 function App() {
   return (
-    <div>
-     Hi
+    <div className="App">
+      <Hero />
     </div>
   );
 }
