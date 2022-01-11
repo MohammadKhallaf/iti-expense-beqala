@@ -1,0 +1,136 @@
+/* Header component */
+.intro
+{
+    color: #222 !important;
+}
+.intro .btn
+{
+    color: #222 !important;
+    border: 2px solid #222;
+}
+.intro .btn:hover
+{
+    color: #fff !important;
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: 0px 5px 5px #222;
+}
+/* Services Component */
+.service img:hover
+{
+    animation-name: flipImg;
+    animation-duration: 1s;
+}
+@keyframes flipImg 
+{
+  
+    50%  {transform: scaleX(-1);}
+    100% {transform: scaleX(1);}
+}
+.service .btn
+{
+    color: #222 !important;
+    border: 2px solid #222;
+}
+.service .btn:hover
+{
+    color: #fff !important;
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: 0px 5px 5px #222;
+}
+/* Location */
+
+
+.location
+{
+    color: #222;
+   
+    background: linear-gradient(to top left, #d9dfd9 0%, #9fc9b9 100%);
+
+}
+.locCard
+{
+    border-radius: 20px;
+    background-color: #d9dfd9;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+.locCard:hover
+{
+    opacity: 1; 
+    box-shadow: 0px  2px 12px #49685e;
+}
+
+.locCardb
+{
+    background-color: #83bba8;
+    color: #49685e !important;
+   
+}
+.locCardb .btn
+{
+    color: #49685e !important;
+    border: 2px solid #49685e;
+}
+.locCardb .btn:hover
+{
+    color: #fff !important;
+    background-color: #49685e;
+    border: 2px solid #49685e;
+    box-shadow: 0px  2px 12px #49685e;
+}
+/* Partners */
+.partner
+{
+    background-color: #fff;
+    background-position: center; /* Center the image */
+    background-repeat: repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
+    background-image: url("./../../files/Partner/opacity.png");
+}
+.partner .btn
+{
+    color: #f27519 !important;
+    border: 2px solid #f27519;
+}
+.partner .btn:hover
+{
+    color: #fff !important;
+    background-color: #f27519;
+    border: 2px solid #f27519;
+    box-shadow: 0px 5px 5px #f27519;
+}
+.icon
+{
+    font-size: 50px;
+    color: #f27519;
+   
+}
+/* Features */
+.Features 
+{
+    background-color:#ebf3f0;
+   
+}
+.FeatureBtns
+{
+    color: #222 !important;
+    border: 2px solid #222;
+}
+.FeatureBtns:hover
+{
+    color: #fff !important;
+    background-color: #222;
+    border: 2px solid #222;
+    box-shadow: 0px 5px 5px #222;
+}
+.feature2
+{
+
+}
+.feature2img
+{
+    border-radius: 10px;
+}

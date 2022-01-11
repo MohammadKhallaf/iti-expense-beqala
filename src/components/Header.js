@@ -1,10 +1,14 @@
 import React from "react";
-import backtest from "./../files/backtest.jpeg";
+
+import left from "./../files/Header/leftp.jpg"
+import right from "./../files/Header/rightp.jpg"
+import middle from "./../files/Header/middlep.jpg"
+
 
 export default function Header() {
   return (
-    <div id="myCarousel" className="carousel slide" data-bs-ride="carousel">
-      <div className="carousel-indicators">
+    <div id="myCarousel" className="carousel slide "  data-bs-ride="carousel">
+      <div className="carousel-indicators ">
         <button
           type="button"
           data-bs-target="#myCarousel"
@@ -26,28 +30,28 @@ export default function Header() {
           aria-label="Slide 3"
         ></button>
       </div>
-      <div className="carousel-inner">
+      <div className="carousel-inner" >
         <div className="carousel-item active">
           <img
             alt=""
             className="bd-placeholder-img"
             width="100%"
             height="50%"
-            src={backtest}
+            src={right}
             aria-hidden="true"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
 
-          <div className="container">
-            <div className="carousel-caption text-start">
-              <h1>Example headline.</h1>
+          <div className="container ">
+            <div className="carousel-caption text-start intro mb-4">
+              <h1 >Example headline</h1>
               <p>
                 Some representative placeholder content for the first slide of
                 the carousel.
               </p>
               <p>
-                <a className="btn btn-lg btn-primary" href="#">
+                <a className="btn btn-lg rounded btn-outline-secondary" href="#">
                   Sign up today
                 </a>
               </p>
@@ -60,21 +64,21 @@ export default function Header() {
             className="bd-placeholder-img"
             width="100%"
             height="50%"
-            src={backtest}
+            src={middle}
             aria-hidden="true"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
 
           <div className="container">
-            <div className="carousel-caption">
+            <div className="carousel-caption mb-4 intro">
               <h1>Another example headline.</h1>
               <p>
                 Some representative placeholder content for the second slide of
                 the carousel.
               </p>
               <p>
-                <a className="btn btn-lg btn-primary" href="#">
+                <a className="btn btn-lg rounded btn-outline-secondary" href="#">
                   Learn more
                 </a>
               </p>
@@ -87,21 +91,21 @@ export default function Header() {
             className="bd-placeholder-img"
             width="100%"
             height="50%"
-            src={backtest}
+            src={left}
             aria-hidden="true"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
 
           <div className="container">
-            <div className="carousel-caption text-end">
+            <div className="carousel-caption text-end mb-4 intro">
               <h1>One more for good measure.</h1>
               <p>
                 Some representative placeholder content for the third slide of
                 this carousel.
               </p>
               <p>
-                <a className="btn btn-lg btn-primary" href="#">
+                <a className="btn btn-lg rounded btn-outline-secondary " href="#">
                   Browse gallery
                 </a>
               </p>
