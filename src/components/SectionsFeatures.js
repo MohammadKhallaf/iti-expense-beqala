@@ -1,6 +1,7 @@
 import React from "react";
 import video from './../files/Features/v3.mp4'
 import f2 from'./../files/Features/f2.jpg'
+
 export default function SectionsCart() {
   return (
     <>
