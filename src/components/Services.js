@@ -1,28 +1,32 @@
 import React from 'react'
 
+import Bakery from "./../files/services/Bakery.jpg"
+import Pharmacy from "./../files/services/Pharmacy.jpg"
+import Supermaket from "./../files/services/Supermarket.jpg"
+
 export default function Services() {
     return ( 
         <>
-        <div className="container marketing">
-        <h2>Our Services</h2>
-        <div className="row text-center">
+        <div className="container marketing  text-center py-5 service">
+        <h2 className="my-3" >Our Services</h2>
+        <div className="row text-center py-5">
           <div className="col-lg-4">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+          <img className="bd-placeholder-img rounded-circle border" width="200" height="200" src ={Supermaket} role="img" />
     
-            <h2>Service1</h2>
-            <p><a className="btn btn-secondary" href="#">View Srores &raquo;</a></p>
+            <h2 className="my-3" >Supermarket</h2>
+            <p><a className="btn btn-outline-secondary" href="#">View Srores </a></p>
           </div>
           <div className="col-lg-4">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+            <img className="bd-placeholder-img rounded-circle border"  width="200" height="200" src ={Bakery} role="img" />
     
-            <h2>Service2</h2>
-            <p><a className="btn btn-secondary" href="#">View Srores &raquo;</a></p>
+            <h2 className="my-3" >Bakery</h2>
+            <p><a className="btn btn-outline-secondary" href="#">View Srores </a></p>
           </div>
           <div className="col-lg-4">
-            <svg className="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+          <img className="bd-placeholder-img rounded-circle border" width="200" height="200" src ={Pharmacy} role="img" />
     
-            <h2>Service3</h2>
-            <p><a className="btn btn-secondary" href="#">View Srores &raquo;</a></p>
+            <h2 className="my-3" >Pharmacy</h2>
+            <p><a className="btn btn-outline-secondary" href="#">View Srores </a></p>
           </div>
         </div>
         </div>

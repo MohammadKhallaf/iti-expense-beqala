@@ -6,6 +6,8 @@ import Partener from '../../components/Partener';
 import SectionsCart from '../../components/SectionsCart';
 import Services from '../../components/Services';
 
+import './Header.css'
+
 export default function Hero() {
     return (
         <>

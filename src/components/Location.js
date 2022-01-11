@@ -4,11 +4,18 @@ import LocationCard from "./LocationCard";
 export default function Location() {
   return (
     <>
-      <div className="row text-center bg-dark">
-        <h2 className="text-light">Select Your Location</h2>
-        <LocationCard name={"alexandria"} />
-        <LocationCard name={"cairo"} />
+    <section className="location " >
+      <div className="container ">
+
+        <div className="row text-start justify-content-center py-5 " >
+            <h2 className="fw-bold " >You can find us in </h2>
+
+            <LocationCard name={"Alexandria"} loc={require("./../files/Location/alex.jpg")} />
+            <LocationCard name={"Cairo"} loc={require("./../files/Location/cairo.jpg")}  />
+       
+        </div>
       </div>
+      </section>
     </>
   );
 }
