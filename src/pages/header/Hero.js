@@ -3,10 +3,10 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import Location from '../../components/Location';
 import Partener from '../../components/Partener';
-import SectionsCart from '../../components/SectionsFeatures';
+import SectionsFeatures from '../../components/SectionsFeatures';
 import Services from '../../components/Services';
 
-import './Header.css'
+import './Hero.css'
 
 export default function Hero() {
     return (
@@ -15,7 +15,7 @@ export default function Hero() {
         <Services />
         <Location/>
         <Partener/>
-        <SectionsCart />
+        <SectionsFeatures/>
         <Footer/>  
         </>
     )
