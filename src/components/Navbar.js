@@ -1,4 +1,5 @@
 import React from 'react'
+import Login from './Login'
 
 export default function Navbar() {
     return (
@@ -13,7 +14,7 @@ export default function Navbar() {
             
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">our services</a>
+                <a class="nav-link" aria-current="page" href="#">our services</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">contact us</a>
@@ -23,9 +24,12 @@ export default function Navbar() {
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
               <button class="btn btn-outline-success" type="submit">Search</button>
             </form>              
-                <button class="btn btn-outline-success nav-item ms-3" aria-current="page" href="#">Login</button>
+                <button class="btn btn-outline-success nav-item ms-3" aria-current="page" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
           </div>
         </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <Login />
+    </div>
       </nav>
         </>
     )
