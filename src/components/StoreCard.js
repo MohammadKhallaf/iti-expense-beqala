@@ -32,7 +32,7 @@ export default function StoreCard() {
   return (
     <>
       {stores.map((store) => (
-        <div class="card m-2" style={{ width: "18rem" }}>
+        <div class="card m-2" style={{ width: "18rem" }} >
           <img src={marketTest} class="card-img-top" alt="..." />
           <div class="card-body">
             <p class="card-text">{store}</p>
