@@ -10,17 +10,17 @@ export default function Stores() {
       <hr></hr>
       <div className="container text-center mt-5">
         <nav aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item">
+          <ol className="breadcrumb">
+            <li className="breadcrumb-item">
               <a href="#">Home</a>
             </li>
-            <li class="breadcrumb-item active" aria-current="page">
+            <li className="breadcrumb-item active" aria-current="page">
               Stores
             </li>
           </ol>
         </nav>
         <h3 className="text-start">Available stores</h3>
-        <div className="row ">
+        <div className="row">
           <StoreCard />
           <hr></hr>
         </div>
