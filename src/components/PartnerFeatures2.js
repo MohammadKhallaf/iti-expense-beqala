@@ -1,16 +1,12 @@
 import React from "react";
 
-export default function Partener() {
+export default function PartnerFeatures2() {
   return (
     <>
-      <section className="partner ">
-        <div className="container  ">
+      <section className="p-5 m-5">
+        <div className="container">
           <div className="row text-center justify-content-center py-4">
-            <h1>Are you a shop owner?</h1>
-            <h3>Interested in joining our exclusive network?</h3>
-            <p>
-              <a className="btn btn-lg btn-outline-secondary my-4">Partner with us</a>
-            </p>
+            <h1>Benefits of being a ExpenseBeqala partner</h1>
 
           </div>
           <div className="row justify-content-center">
