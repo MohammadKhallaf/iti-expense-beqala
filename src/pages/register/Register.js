@@ -99,10 +99,7 @@ export default function Register() {
               ? "This Field is required"
               :validUsernameReg.test(e.target.value) === false ? "Invalid Value" : null,
         });
-      
       }} 
-      
-      
       return (
         <div className="container col-md-3 m-auto p-5">
           <form onSubmit={(e) => handleSubmit(e)}>
@@ -154,8 +151,6 @@ export default function Register() {
                 <div>
                     <small className="text-danger">{userFormErrors2.userNameErr}</small>
                 </div>
-              
-              
                 <label htmlFor="inputPassword7" className="form-label text-light">
                   Password
                 </label>
@@ -196,8 +191,7 @@ export default function Register() {
                   <div>
                       <small className="text-danger">{userFormErrors2.coNpasswordErr}</small>
                   </div>
-              </div>
-              
+                </div>
             <button type="submit" className="btn btn-primary">
               Resiter Now
             </button>

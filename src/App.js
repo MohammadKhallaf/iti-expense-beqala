@@ -8,7 +8,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
       <Router>
         <Routes>
           <Route path="/"exact element={<Hero />} />
@@ -18,7 +17,6 @@ function App() {
           <Route path="/login"exact element={<Login />} />
         </Routes>
       </Router>
-    </div>
   );
 }
 
