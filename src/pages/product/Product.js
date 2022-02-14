@@ -1,12 +1,12 @@
 import React from "react";
+import Category from "../../components/Category";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import ProductCard from "../../components/ProductCard";
 
 export default function Product() {
   return (
     <>
-      <Navbar />
+    
       <hr></hr>
       <div className="container text-center mt-5">
         <nav aria-label="breadcrumb">
@@ -14,18 +14,21 @@ export default function Product() {
             <li className="breadcrumb-item">
               <a href="#">Home</a>
             </li>
+            <li className="breadcrumb-item">
+              <a href="#">Stores</a>
+            </li>
             <li className="breadcrumb-item active" aria-current="page">
-            ProductCard
+            Products
             </li>
           </ol>
         </nav>
-        <h3 className="text-start">Available stores</h3>
+        <h3 className="text-start">Available Products</h3>
         <div className="row">
-          <ProductCard />
+          <Category />
           <hr></hr>
         </div>
       </div>
-      <Footer />
+      
     </>
   );
 }
