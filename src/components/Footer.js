@@ -27,8 +27,8 @@ export default function Footer() {
           style={{ backgroundColor: "#49685e" }}
         >
           © 2020 Copyright:
-          <a className="text-white" href="https://github.com/MohammadKhallaf/iti-expense-beqala">
-            expolre
+          <a className="text-white" style={{ textDecoration:'none'}} href="https://github.com/MohammadKhallaf/iti-expense-beqala">
+            Team 5
           </a>
         </div>
       </footer>

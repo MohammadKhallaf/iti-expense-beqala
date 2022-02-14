@@ -52,33 +52,29 @@
 .locCard
 {
     border-radius: 20px;
-    background-color: #d9dfd9;
-    opacity: 0.7;
+    /* opacity: 0.7; */
     transition: 0.3s;
+   
+
 }
 .locCard:hover
 {
-    opacity: 1; 
-    box-shadow: 0px  2px 12px #49685e;
+    /* opacity: 1;  */
+    box-shadow: 5px  10px 12px #49685e;
 }
 
 .locCardb
 {
-    background-color: #83bba8;
+    /* background-color: #83bba8;
     color: #49685e !important;
+   */
    
 }
-.locCardb .btn
+.locTitle
 {
-    color: #49685e !important;
-    border: 2px solid #49685e;
-}
-.locCardb .btn:hover
-{
-    color: #fff !important;
-    background-color: #49685e;
-    border: 2px solid #49685e;
-    box-shadow: 0px  2px 12px #49685e;
+    /* opacity: 1 !important; */
+    color: #fff;
+    font-size: 25px;
 }
 /* Partners */
 .partner

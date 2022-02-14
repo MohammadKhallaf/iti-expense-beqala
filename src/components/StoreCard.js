@@ -33,7 +33,6 @@ console.log(stores)
     <>
     <div className="container ">
       <div className="row " >
-        
       {stores.map((store,index) => (
         <div className="col-lg-3 col-md-6 col-sm-6  cardsGrid " key={index}  >
           <div className="card my-3 storeCard" style={{ width: "18rem" }} >
