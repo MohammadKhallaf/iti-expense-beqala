@@ -7,6 +7,8 @@
     z-index: 999;
 }
 .navbarWrapper{
+    width: 100%;
+    /* background-color: tomato; */
     height: 100%;
     padding: 0px 20px;
     display: flex;
