@@ -1,0 +1,51 @@
+/* navbar */
+.navItem:visited, .navItem:link
+{
+  text-decoration: none;
+
+}
+.navItem:hover ,.navItem:active
+{
+  text-decoration: none;
+  text-shadow: 0px 0px 15px green;
+ 
+}
+@media (min-width: 1200px) {
+    .search{
+        width: 200px;
+        border: 1px solid green;
+        border-radius: 5px;
+        padding-left: 10px;
+        transition: width 1s !important;
+    }
+    .search:focus{
+        outline: none;
+        width: 600px;
+    }
+    .log{
+        margin-left: 10px;
+    }
+    .navicon
+    {
+      font-size: 30px;
+    }
+  }
+  @media (max-width: 900px) {
+    .search{
+        width: 200px;
+        border: 1px solid green;
+        border-radius: 5px;
+        padding: 2px;
+        transition: width 1s !important;
+        text-align: left;
+    
+    }
+    .search:focus{
+        outline: none;
+        width: 70%;
+     
+    }
+    .log{
+        margin-top: 10px;
+    }
+  }

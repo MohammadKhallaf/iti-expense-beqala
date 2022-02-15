@@ -1,0 +1,11 @@
+.partnerInput:focus{
+    border: 2px solid #f27519 !important;
+    box-shadow: none;
+    outline: none !important;
+    
+}
+.partnerInput:active{
+    border: 2px solid #f27519 !important;
+    box-shadow: none;
+    outline: none !important;
+}

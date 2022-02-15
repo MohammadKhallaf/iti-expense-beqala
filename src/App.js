@@ -13,7 +13,6 @@ import Product from "./pages/product/Product"
 
 function App() {
   return (
-    <div className="App">
       <Router>
         <Routes>
           <Route path="/" element={<Hero />} />
@@ -22,10 +21,8 @@ function App() {
           <Route path="/stores" element={<Stores />} />
           <Route path="/login" element={<Login />} />
           <Route path="/product" element={<Product />} />
-          <Route path="/cart" element={<Cart />} />
         </Routes>
       </Router>
-    </div>
   );
 }
 

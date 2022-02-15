@@ -1,106 +1,103 @@
 import React from "react";
 
 export default function NewPartner() {
+
   return (
     <>
-      <form class="row m-2 p-2 g-3">
-      <h3>Let's grow together with us</h3>
-     <h3>join now!</h3> 
-        <div class="col-md-9">
-          <label for="inputtextname" class="form-label">
-            Store Name
-          </label>
+      <form className="row m-2 p-2 g-3">
+        <h3>Let's grow together with us</h3>
+        <h3>join now!</h3>
+        <div className="col-6">
+          <label for="inputtextname" className="form-label"> Store Name</label>
           <input
             type="text"
-            class="form-control"
+            className="form-control partnerInput"
             id="inputtextname"
             placeholder="Enter your store name"
             required
           />
         </div>
-        <div class="col-md-3">
-          <label for="Branches" class="form-label">
-            <small>No. of Branches</small>
-          </label>
+        <div className="col-6">
+          <label for="Branches" className="form-label">Branches No.</label>
           <input
             type="number"
-            class="form-control"
+            className="form-control partnerInput"
             min="0"
             id="Branches"
-            placeholder="No. of Branches"
+            placeholder="Branches No."
             required
           />
         </div>
-        <div class="col-md-8">
-          <label for="inputAddress" class="form-label">
+        <div className="col-6">
+          <label for="inputAddress" className="form-label">
             Address
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control partnerInput"
             id="inputAddress"
             placeholder="Enter your location"
             required
           />
         </div>
-        <div class="col-md-4">
-          <label for="inputState" class="form-label">
+        <div className="col-6">
+          <label for="inputState" className="form-label">
             Area
           </label>
-          <select id="inputState" class="form-select" required>
+          <select id="inputState" className="form-select partnerInput" required>
             <option selected>Cairo</option>
             <option>Alexandria</option>
           </select>
         </div>
-        <div class="col-md-4">
-          <label for="inputname" class="form-label">
+        <div className="col-12">
+          <label for="inputname" className="form-label">
             Name
           </label>
           <input
             type="text"
-            class="form-control"
+            className="form-control partnerInput"
             id="inputname"
             placeholder="Enter your name"
             required
           />
         </div>
-        <div class="col-md-8">
-          <label for="inputmail" class="form-label">
+        <div className="col-md-6">
+          <label for="inputmail" className="form-label">
             Email
           </label>
           <input
             type="email"
-            class="form-control"
+            className="form-control partnerInput"
             id="inputmail"
             placeholder="Enter your email"
             required
           />
         </div>
-        <div class="col-md-5">
-          <label for="phone" class="form-label">
+        <div className="col-md-6">
+          <label for="phone" className="form-label">
             Phone
           </label>
           <input
             type="tel"
-            class="form-control"
+            className="form-control partnerInput"
             id="phone"
             name="phone"
-            placeholder="0100 123 4567"
+            placeholder="+20-10-xxxx-xxxx"
             pattern="[0-9]{11}"
             required
           />
         </div>
-        <div class="form-floating">
+        <div className="form-floating">
           <textarea
-            class="form-control"
+            className="form-control partnerInput"
             placeholder="Leave a comment here"
             id="floatingTextarea2"
             style={{ height: "100px" }}
           ></textarea>
-          <label for="floatingTextarea2">Leave a comment here</label>
+          <label className="px-4 " for="floatingTextarea2">Leave a comment here</label>
         </div>
-        <div class="col-12">
-          <button type="submit" class="btn btn-lg btn-outline-secondary my-4">
+        <div className="col-12">
+          <button type="submit" className="btn btn-lg btn-outline-secondary my-4">
             Submit
           </button> <span className="m-2"> and we will contact with you</span>
         </div>

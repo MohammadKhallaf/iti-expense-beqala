@@ -1,6 +1,6 @@
 import React from 'react'
 import Login from './Login'
-
+import './Navbar.css'
 export default function Navbar() {
   return (
     <>
