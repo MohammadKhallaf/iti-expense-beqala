@@ -6,7 +6,6 @@ import Navbar from "../../components/Navbar";
 export default function Product() {
   return (
     <>
-    <Navbar />
       <hr></hr>
       <div className="container text-center mt-5">
         <nav aria-label="breadcrumb">
@@ -28,7 +27,6 @@ export default function Product() {
           <hr></hr>
         </div>
       </div>
-      
     </>
   );
 }

@@ -20,7 +20,6 @@ export default function Partner() {
         </div>
       </div>
       <PartnerFeatures2 />
-      <Footer />
     </>
   );
 }
