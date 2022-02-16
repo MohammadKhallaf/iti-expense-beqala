@@ -1,0 +1,59 @@
+.regist
+{
+    background-image: url('./../../files/register/bg.jpg');
+
+    background-color: #fff;
+    background-position: center; /* Center the image */
+    background-repeat: repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
+}
+.togglePasswd 
+{
+    background-color: transparent !important;
+    border: none;
+}
+.regInput
+{
+    border:none !important;
+    box-shadow: none !important;
+    
+}
+.regInput:focus
+{
+    border:none !important;
+    box-shadow:0px 1px 10px #f27519 !important;
+  
+}
+.passwdsInput
+{
+    border:none !important;
+    box-shadow: none !important;
+}
+.passwdsInput:focus
+{
+    border:none !important;
+    box-shadow: none !important;
+}
+
+.passwdBox
+{
+    background-color: #fff;
+    border-radius: 5px;
+}
+/* .passwdBox:focus  ~.passwdBox2
+{
+    box-shadow:0px 1px 10px #f27519 !important;
+} */
+.sub
+{
+    color: #f27519 !important;
+    border: 2px solid #f27519 !important;
+}
+.sub:hover
+{
+    color: #fff !important;
+    background-color: #f27519 !important;
+    border: 2px solid #f27519 !important;
+    box-shadow: 0px 5px 5px #f27519 !important;
+}
