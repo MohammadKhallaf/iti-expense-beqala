@@ -10,13 +10,15 @@ import Login from "./pages/login/Login";
 import Activate from "./pages/activate/Activate";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import ResetPasswordConfirm from "./pages/resetpassword/ResetPasswordConfirm";
-
+import { Provider } from 'react-redux';
+import store from './redux/store'
 import "./App.css";
 import Layout from "./pages/layout/Layout";
 
 
 function App() {
   return (
+    <Provider store={store}>
       <Router>
         <Layout>
           <Routes>
@@ -25,13 +27,14 @@ function App() {
             <Route path="/partner"exact element={<Partner />} />
             <Route path="/stores"exact element={<Stores />} />
             <Route path="/login"exact element={<Login />} />
-            <Route path="/reset_password"exact element={<ResetPassword />} />
+            <Route path="/reset-password"exact element={<ResetPassword />} />
             <Route path="/password/reset/confirm/:uid/:token"exact element={<ResetPasswordConfirm />} />
             <Route path="/activate/:uid/:token"exact element={<Activate />} />
             <Route path="/product"exact element={<Product />} />
           </Routes>
         </Layout>
       </Router>
+    </Provider>
   );
 }
 
