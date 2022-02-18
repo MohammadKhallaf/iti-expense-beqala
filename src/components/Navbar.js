@@ -1,6 +1,6 @@
 import React from 'react'
-import Login from './Login'
 import './Navbar.css'
+
 export default function Navbar() {
   return (
     <>
@@ -28,13 +28,10 @@ export default function Navbar() {
                 <i className="fas fa-search navicon"></i>
               </button>
             </form>
-            <button className="btn btn-outline-success border-0 nav-item log " aria-current="page" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <a className="nav-link navItem" href="/login">
               <i className="fas fa-user navicon"></i>
-            </button>
+            </a>
           </div>
-        </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <Login />
         </div>
       </nav>
     </>
