@@ -43,7 +43,7 @@ const Cart = (props) => {
       backendAPI
         .get("/products")
         .then((response) => setData(response.data))
-        .catch((error) => alert(error));
+        // .catch((error) => alert(error));
 
       setInitial(false);
     }

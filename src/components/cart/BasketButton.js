@@ -22,7 +22,7 @@ const BasketButton = () => {
             className="rounded-pill p-2 bg-success border"
             onClick={showCart}
           >
-            <i class="fas fa-shopping-basket fs-4"></i>
+            <i className="fas fa-shopping-basket fs-4"></i>
           </Button>
         </div>,
 
