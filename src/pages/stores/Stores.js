@@ -6,7 +6,6 @@ import './Stores.css'
 export default function Stores() {
   return (
     <>
-      <Navbar />
       <hr></hr>
       <div className="container text-center  mt-5">
         <nav aria-label="breadcrumb ">
@@ -25,7 +24,6 @@ export default function Stores() {
           <hr></hr>
         </div>
       </div>
-      <Footer />
     </>
   );
 }
