@@ -28,7 +28,7 @@ function App() {
             <Route path="/stores"exact element={<Stores />} />
             <Route path="/login"exact element={<Login />} />
             <Route path="/reset-password"exact element={<ResetPassword />} />
-            <Route path="/password/reset/confirm/:uid/:token"exact element={<ResetPasswordConfirm />} />
+            <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
             <Route path="/activate/:uid/:token"exact element={<Activate />} />
             <Route path="/product"exact element={<Product />} />
           </Routes>
