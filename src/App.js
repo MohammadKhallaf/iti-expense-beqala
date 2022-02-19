@@ -23,8 +23,9 @@ import Activate from "./pages/activate/Activate";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import ResetPasswordConfirm from "./pages/resetpassword/ResetPasswordConfirm";
 
+// user
 import UserDashboard from "./pages/user-dashboard/UserDashboard";
-
+import UserAccount from "./pages/user-dashboard/UserAccount";
 // General UI & Layouts
 import Layout from "./pages/layout/Layout";
 import NotFoundPage from "./pages/NotFoundPage";
@@ -56,18 +57,20 @@ function App() {
               element={<ResetPasswordConfirm />}
             />
             <Route path="/partner" element={<Partner />} />
+            {/* User */}
+            <Route path="/account" element={<UserAccount />} />
             {/* Product */}
             <Route path="/product" element={<Product />} />
             <Route path="/stores" element={<Stores />} />
             <Route path="/dashboard" element={<UserDashboard />} />
 
             {/* General  */}
-            <Route path="/test" element={<Test />} />
+            {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           {/* Shared */}
         </Layout>
-      <BasketButton />
+        <BasketButton />
       </Router>
     </Provider>
   );
