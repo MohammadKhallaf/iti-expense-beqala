@@ -6,19 +6,18 @@ import Navbar from "../../components/Navbar";
 export default function Product() {
   return (
     <>
-    
       <hr></hr>
       <div className="container text-center mt-5">
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
-            <li className="breadcrumb-item">
-              <a href="#">Home</a>
+            <li className="breadcrumb-item mx-1 bcItem">
+              <a className="text-light" href="#"> <i className="fas fa-home"></i> </a>
             </li>
-            <li className="breadcrumb-item">
-              <a href="#">Stores</a>
+            <li className="text-light mx-1 breadcrumb-item active bcItem px-3" style={{filter: "brightness(0.95)"}} >
+              Stores
             </li>
-            <li className="breadcrumb-item active" aria-current="page">
-            Products
+            <li className="text-light mx-1 breadcrumb-item active bcItem px-3" style={{filter: "brightness(0.95)"}} >
+              Products
             </li>
           </ol>
         </nav>
@@ -28,7 +27,6 @@ export default function Product() {
           <hr></hr>
         </div>
       </div>
-      
     </>
   );
 }

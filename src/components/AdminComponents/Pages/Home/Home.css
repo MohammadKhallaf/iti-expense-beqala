@@ -1,8 +1,10 @@
-.home{
-    flex: 4;
-    display: flex;
+.home {
+  flex: 4;
 }
-.homeWidgets{
-    display: flex;
-    margin: 20px;
+.homeWidgets {
+  display: flex;
+  margin: 20px;
+}
+.homeContainer {
+  display: flex;
 }

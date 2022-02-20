@@ -1,42 +1,84 @@
-import React from 'react'
-import Login from './Login'
+import React, { Fragment, useState } from "react";
+import { Link, Navigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { logout } from "../redux/actions/auth";
 
-export default function Navbar() {
-  return (
+const Navbar = ({ logout, isAuthenticated }) => {
+  const logout_user = () => {
+    logout();
+  };
+
+  const guestLinks = () => (
+    <Fragment>
+      <li className="nav-item list-unstyled">
+        <Link className="nav-link navItem" to="/login">
+        <i className="fas fa-user navicon"></i>
+          Login
+        </Link>
+      </li>
+      <li className="nav-item list-unstyled">
+        <Link className="nav-link navItem" to="/register">
+          Sign Up
+        </Link>
+      </li>
+    </Fragment>
+  );
+
+  const authLinks = () => (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light navfixed fixed-top bg-light" >
+    
+      <li className="nav-item list-unstyled">
+        <a className="nav-link navItem" href="#!" onClick={logout_user}>
+          Your account
+        </a>
+      </li>
+      <li className="nav-item list-unstyled">
+        <a className="nav-link navItem" href="#!" onClick={logout_user}>
+          Logout
+        </a>
+      </li>
+      
+    </>
+  );
+
+  return (
+    <Fragment>
+      <nav className="navbar navbar-expand-lg navbar-light navfixed fixed-top bg-light">
         <div className="container">
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarTogglerDemo01"
+            aria-controls="navbarTogglerDemo01"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <a className="navbar-brand " href="#">our brand name</a>
+          <Link className="navbar-brand" to="/">
+            ExpenseBeqala
+          </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
 
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item ">
-                <a className="nav-link navItem" aria-current="page" href="#">our services</a>
-              </li>
-              <li className="nav-item ">
-                <a className="nav-link navItem" href="#">contact us</a>
-              </li>
-            </ul>
-            <form className=" justify-content-start d-flex">
-
-              <input className="  me-2 search" type="search" placeholder="Search" aria-label="Search" />
-
-              <button className="btn btn-outline-success border-0" type="submit">
-                <i className="fas fa-search navicon"></i>
-              </button>
-            </form>
-            <button className="btn btn-outline-success border-0 nav-item log " aria-current="page" data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i className="fas fa-user navicon"></i>
-            </button>
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            <li className="nav-item ">
+              <Link className="nav-link navItem" aria-current="page" to="/">our services</Link>
+            </li>
+            <li className="nav-item ">
+              <Link className="nav-link navItem" to="/">contact us</Link>
+            </li>
+          </ul>
+              {isAuthenticated ? authLinks() : guestLinks()}
           </div>
         </div>
-        <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <Login />
-        </div>
       </nav>
-    </>
-  )
-}
+    </Fragment>
+  );
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);

@@ -1,5 +1,5 @@
 #card:hover{
-    border:rgb(204, 202, 202) 0.2em solid;
+    border:rgb(0, 128, 0) 0.2em solid;
     cursor: pointer;   
 }
 
@@ -10,4 +10,7 @@
 #card:hover #bttn .btn-light {
     opacity: 1;
     margin: 2px;
+}
+.btn-outline-success{
+    color: green;
 }

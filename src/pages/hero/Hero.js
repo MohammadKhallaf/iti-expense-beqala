@@ -15,8 +15,7 @@ export default function Hero() {
         <Services />
         <Location/>
         <Partener/>
-        <SectionsFeatures/>
-        <Footer/>  
+        <SectionsFeatures/>  
         </>
     )
 }

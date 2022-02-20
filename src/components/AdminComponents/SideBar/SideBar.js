@@ -1,5 +1,7 @@
 import React from "react";
 import "./SideBar.css";
+import { Link } from "react-router-dom";
+
 import {
   LineStyle,
   Timeline,
@@ -12,7 +14,7 @@ import {
   DynamicFeed,
   ChatBubbleOutline,
   WorkOutline,
-  Error
+  Error,
 } from "@material-ui/icons";
 export default function SideBar() {
   return (
@@ -22,16 +24,22 @@ export default function SideBar() {
           <h3 className="sidebarTittle">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active ">
-              <LineStyle className="sidebarIcon" className="sidebarIcon" />
-              Home
+              <Link className="link" to={"/admin"}>
+                <LineStyle className="sidebarIcon" />
+                Home
+              </Link>
             </li>
             <li className="sidebarListItem ">
-              <Timeline className="sidebarIcon" />
-              Analytics
+              <Link className="link" to={"/admin"}>
+                <Timeline className="sidebarIcon" />
+                Analytics
+              </Link>
             </li>
             <li className="sidebarListItem ">
-              <TrendingUp className="sidebarIcon" />
-              Sales
+              <Link className="link" to={"/admin"}>
+                <TrendingUp className="sidebarIcon" />
+                Sales
+              </Link>
             </li>
           </ul>
         </div>
@@ -39,12 +47,16 @@ export default function SideBar() {
           <h3 className="sidebarTittle">Quick Menu</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active ">
-              <PersonOutline className="sidebarIcon" className="sidebarIcon" />
-              Users
+              <Link className="link" to={"/admin/users"}>
+                <PersonOutline className="sidebarIcon" />
+                Users
+              </Link>
             </li>
             <li className="sidebarListItem ">
-              <AddShoppingCart className="sidebarIcon" />
-              Products
+              <Link className="link" to={"/admin/ProductList"}>
+                <AddShoppingCart className="sidebarIcon" />
+                products
+              </Link>
             </li>
             <li className="sidebarListItem ">
               <AttachMoney className="sidebarIcon" />
@@ -60,7 +72,7 @@ export default function SideBar() {
           <h3 className="sidebarTittle">Notifications</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active ">
-              <MailOutline className="sidebarIcon" className="sidebarIcon" />
+              <MailOutline className="sidebarIcon" />
               Home
             </li>
             <li className="sidebarListItem ">
@@ -77,7 +89,7 @@ export default function SideBar() {
           <h3 className="sidebarTittle">Staff</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active ">
-              <WorkOutline className="sidebarIcon" className="sidebarIcon" />
+              <WorkOutline className="sidebarIcon" />
               Manage
             </li>
             <li className="sidebarListItem ">

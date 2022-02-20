@@ -10,8 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export default function Charts({tittle , data, dataKey, grid}) {
- 
+export default function Charts({ tittle, data, dataKey, grid }) {
   return (
     <div className="chart">
       <h3 className="chartTittle">{tittle}</h3>
@@ -20,9 +19,7 @@ export default function Charts({tittle , data, dataKey, grid}) {
           <XAxis dataKey="name" stroke="#5550bc" />
           <Line type="monotone" dataKey={dataKey} />
           <Tooltip />
-          {grid && 
-            <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />
-          }
+          {grid && <CartesianGrid stroke="#e0dfdf" strokeDasharray="5 5" />}
           <Legend />
         </LineChart>
       </ResponsiveContainer>

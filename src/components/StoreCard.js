@@ -26,7 +26,7 @@ export default function StoreCard() {
     { product: "Store", id: 21 },
     { product: "Store", id: 22 },
     { product: "Store", id: 23 },
-    { product: "Store", id: 24 },
+    { product: "Store", id: 24 }
   ];
 console.log(stores)
   return (
@@ -35,7 +35,7 @@ console.log(stores)
       <div className="row " >
       {stores.map((store,index) => (
         <div className="col-lg-3 col-md-6 col-sm-6  cardsGrid " key={index}  >
-          <div className="card my-3 storeCard" style={{ width: "18rem" }} >
+          <div className="card my-3 storeCard" style={{ width: "15rem" }} >
             <img src={marketTest} className="card-img-top background" alt="..." />
             <div className="card-body cardTitle">
               <p className="card-title  cardTitle">{store.product} {store.id} </p>
