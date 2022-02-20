@@ -1,6 +1,0 @@
-2022/02/17-21:05:07.971 14ba59 Creating DB /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_app.barmej.com_0.indexeddb.leveldb since it was missing.
-2022/02/17-21:05:08.151 14ba59 Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_app.barmej.com_0.indexeddb.leveldb/MANIFEST-000001
-2022/02/17-21:06:15.989 14b40d Level-0 table #5: started
-2022/02/17-21:06:16.040 14b40d Level-0 table #5: 4518 bytes OK
-2022/02/17-21:06:16.102 14b40d Delete type=0 #3
-2022/02/17-21:06:16.102 14b40d Manual compaction at level-0 from (begin) .. (end); will stop at (end)

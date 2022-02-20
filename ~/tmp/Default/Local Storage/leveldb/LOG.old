@@ -1,6 +1,0 @@
-2022/02/17-20:05:45.019 5 Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/Local Storage/leveldb/MANIFEST-000001
-2022/02/17-20:05:45.020 5 Recovering log #3
-2022/02/17-20:05:45.021 5 Reusing old log /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/Local Storage/leveldb/000003.log 
-2022/02/18-00:30:06.502 f Level-0 table #5: started
-2022/02/18-00:30:06.710 f Level-0 table #5: 28822 bytes OK
-2022/02/18-00:30:06.968 f Delete type=0 #3
