@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../redux/actions/auth';
+import axios from 'axios';
 
 const Login = ({ login, isAuthenticated, error, manager }) => {
     const [formData, setFormData] = useState({
@@ -18,7 +19,28 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
 
         login(email, password);
     };
+    // login using google auth
+    const continueWithGoogle = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/google-oauth2/?redirect_uri=${process.env.REACT_APP_API_URL}/google`)
 
+            window.location.replace(res.data.authorization_url);
+        } catch (err) {
+
+        }
+    };
+    // login using facebook auth
+    const continueWithFacebook = async () => {
+        try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/auth/o/facebook/?redirect_uri=${process.env.REACT_APP_API_URL}/facebook`)
+
+            window.location.replace(res.data.authorization_url);
+            
+
+        } catch (err) {
+
+        }
+    };
     // is the user authenticated
     if (isAuthenticated && manager === false){
         return <Navigate to='/' />
@@ -65,6 +87,13 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
                 </div>
                 <button className='btn btn-primary' type='submit'>Login</button>
             </form>
+            <button className='btn btn-danger mt-3' onClick={continueWithGoogle}>
+                Continue With Google
+            </button>
+            <br />
+            <button className='btn btn-primary mt-3' onClick={continueWithFacebook}>
+                Continue With Facebook
+            </button>
             <p className='mt-3'>
                 Don't have an account? <Link to='/register'>Sign Up</Link>
             </p>

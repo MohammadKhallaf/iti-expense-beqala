@@ -22,6 +22,9 @@ import Login from "./pages/login/Login";
 import Activate from "./pages/activate/Activate";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import ResetPasswordConfirm from "./pages/resetpassword/ResetPasswordConfirm";
+import Google from "./pages/Google";
+import Facebook from "./pages/Facebook";
+import CheckMail from "./pages/checkmail/CheckMail";
 
 // user
 import UserDashboard from "./pages/user-dashboard/UserDashboard";
@@ -57,6 +60,9 @@ function App() {
               element={<ResetPasswordConfirm />}
             />
             <Route path="/partner" element={<Partner />} />
+            <Route path="/google" element={<Google />} />
+            <Route path="/facebook" element={<Facebook />} />
+            <Route path="/checkmail" element={<CheckMail />} />
             {/* User */}
             <Route path="/account" element={<UserAccount />} />
             {/* Product */}

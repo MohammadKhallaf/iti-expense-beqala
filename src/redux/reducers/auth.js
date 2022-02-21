@@ -13,6 +13,10 @@ SIGNUP_SUCCESS,
 SIGNUP_FAIL,
 ACTIVATION_SUCCESS,
 ACTIVATION_FAIL,
+GOOGLE_AUTH_SUCCESS,
+GOOGLE_AUTH_FAIL,
+FACEBOOK_AUTH_SUCCESS,
+FACEBOOK_AUTH_FAIL,
 LOGOUT
 } from '../actions/types';
 
@@ -27,6 +31,8 @@ export default function foo(state = initialState, action) {
     const { type, payload } = action;
 
     switch(type) {
+        case GOOGLE_AUTH_SUCCESS:
+        case FACEBOOK_AUTH_SUCCESS:
         case LOGIN_SUCCESS:
             localStorage.setItem('access', payload.access);
             localStorage.setItem('refresh', payload.refresh);
@@ -74,6 +80,8 @@ export default function foo(state = initialState, action) {
                 manager: null,
                 user: null
             }
+        case FACEBOOK_AUTH_FAIL:
+        case GOOGLE_AUTH_FAIL:
         case SIGNUP_FAIL:
         case LOGOUT:
             localStorage.removeItem('access');
