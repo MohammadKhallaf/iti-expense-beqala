@@ -65,10 +65,10 @@ function App() {
             <Route path="/checkmail" element={<CheckMail />} />
             {/* User */}
             <Route path="/account" element={<UserAccount />} />
+            <Route path="/dashboard" element={<UserDashboard />} />
             {/* Product */}
             <Route path="/product" element={<Product />} />
             <Route path="/stores" element={<Stores />} />
-            <Route path="/dashboard" element={<UserDashboard />} />
 
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}

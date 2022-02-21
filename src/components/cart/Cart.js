@@ -10,11 +10,14 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { CART } from "../../redux/actions/types";
+import store from "../../redux/store";
 import { backendAPI } from "../../store";
 /**
- * Cart Component
- * product :
- * #|<== to front end
+ * ## Cart Component
+ * ### |<== to front end
+ * ```
  *  - id => ?
  *  - price
  *  - quantity (+ / -)
@@ -22,33 +25,35 @@ import { backendAPI } from "../../store";
  *  - image
  *  - market ( filter ) => generate depend on it
  *  - serial key
- * #|==> to backend
+ * ```
+ * ### |==> to backend
  * axios.post('/addtocart',{
  *            })
  *  - BE: # STORE_ID, USER_ID, ORDER_ID, PRODUCT_ID
- *  -
- * @returns
+ *
  */
 const Cart = (props) => {
   /*<== Modal ==> */
-
+  console.log("currentState",store.getState())
   // get the input of each item
   const inputRef = useRef();
+  const dispatch = useDispatch();
   const [initial, setInitial] = useState(true);
   // test case
   const [data, setData] = useState([]);
 
   useEffect(() => {
     if (initial) {
-      backendAPI
-        .get("/products")
-        .then((response) => setData(response.data))
-        // .catch((error) => alert(error));
+      backendAPI.get("/cart").then((response) => {
+        setData(response.data);
+        dispatch({type:CART,payload:response.data});
+      });
+      // .catch((error) => alert(error));
 
       setInitial(false);
     }
     console.log(data);
-  }, [data]);
+  }, [data, initial]);
 
   return (
     <Modal

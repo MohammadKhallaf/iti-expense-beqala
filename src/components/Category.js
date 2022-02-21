@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import Categories from './Categories';
 import Product from './../pages/product/Product.css'
+import { backendAPI } from '../store';
 
 
 
@@ -12,6 +13,26 @@ const Category = () => {
             return curData.category === catItem;
         });
         setData(result)
+    }
+    /**
+     * add to cart 
+     * send to server: card 
+     *  - user id
+     *  - store id
+     *  - product id
+     *  - quantity = 1 (add just one item)
+     * 
+     * check the response from the server
+     * if the response is succeed => add to cart in the frontend
+     */
+     
+    const addToCartHandler = (values)=>{
+        backendAPI.post("/cart",{
+            "user_id": 1,
+            "store_id":5,
+            "product_id":values.id,
+            "quantity":1
+        }).then(response=>console.log(response))
     }
     return (
         <>
@@ -46,7 +67,7 @@ const Category = () => {
                                                     <button className="btn btn-light" >
                                                         <i className="fa-fw far fa-eye"></i>
                                                     </button>
-                                                    <button className="btn btn-light">
+                                                    <button className="btn btn-light" onClick={addToCartHandler.bind(this,values)}>
                                                         <i className="fas fa-cart-arrow-down"></i>
                                                     </button>
                                                     <button className="btn btn-light">

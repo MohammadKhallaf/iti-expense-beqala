@@ -17,3 +17,7 @@ export const GOOGLE_AUTH_FAIL = 'GOOGLE_AUTH_FAIL';
 export const FACEBOOK_AUTH_SUCCESS = 'FACEBOOK_AUTH_SUCCESS';
 export const FACEBOOK_AUTH_FAIL = 'FACEBOOK_AUTH_FAIL';
 export const LOGOUT = 'LOGOUT';
+
+
+// <-- cart -->
+export const CART = 'CHANGE_CART';
