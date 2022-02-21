@@ -1,6 +1,0 @@
-2022/02/19-01:14:36.850 19c8b0 Creating DB /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_googleads.g.doubleclick.net_0.indexeddb.leveldb since it was missing.
-2022/02/19-01:14:37.153 19c8b0 Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_googleads.g.doubleclick.net_0.indexeddb.leveldb/MANIFEST-000001
-2022/02/19-01:14:56.632 19d7a3 Level-0 table #5: started
-2022/02/19-01:14:56.706 19d7a3 Level-0 table #5: 405 bytes OK
-2022/02/19-01:14:56.769 19d7a3 Delete type=0 #3
-2022/02/19-01:14:56.769 19d7a3 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

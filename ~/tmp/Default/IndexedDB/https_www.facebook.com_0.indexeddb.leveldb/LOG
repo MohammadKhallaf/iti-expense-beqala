@@ -1,6 +1,0 @@
-2022/02/21-01:46:23.553 20d25c Creating DB /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_www.facebook.com_0.indexeddb.leveldb since it was missing.
-2022/02/21-01:46:24.205 20d25c Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_www.facebook.com_0.indexeddb.leveldb/MANIFEST-000001
-2022/02/21-01:47:36.825 20dae9 Level-0 table #5: started
-2022/02/21-01:47:36.893 20dae9 Level-0 table #5: 2159 bytes OK
-2022/02/21-01:47:36.978 20dae9 Delete type=0 #3
-2022/02/21-01:47:36.979 20dae9 Manual compaction at level-0 from (begin) .. (end); will stop at (end)

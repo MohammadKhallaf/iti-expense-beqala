@@ -1,6 +1,0 @@
-2022/02/19-19:50:16.128 1b0120 Creating DB /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_www.giveagradago.com_0.indexeddb.leveldb since it was missing.
-2022/02/19-19:50:16.555 1b0120 Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_www.giveagradago.com_0.indexeddb.leveldb/MANIFEST-000001
-2022/02/19-19:50:50.024 1b0579 Level-0 table #5: started
-2022/02/19-19:50:50.222 1b0579 Level-0 table #5: 852 bytes OK
-2022/02/19-19:50:50.580 1b0579 Delete type=0 #3
-2022/02/19-19:50:50.580 1b0579 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
