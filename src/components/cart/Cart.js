@@ -35,6 +35,7 @@ import { backendAPI } from "../../store";
 const Cart = (props) => {
   /*<== Modal ==> */
   console.log("currentState",store.getState())
+  store.subscribe()
   // get the input of each item
   const inputRef = useRef();
   const dispatch = useDispatch();
