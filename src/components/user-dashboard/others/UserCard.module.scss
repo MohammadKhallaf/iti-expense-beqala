@@ -1,0 +1,10 @@
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+.container{
+    @extend .py-3 ;
+    @extend .my-3 ;
+    @extend .shadow-sm;
+    @extend .rounded;
+    border: 1px solid var(--bs-light);
+    border-left: 0.5rem solid var(--bs-primary);
+}

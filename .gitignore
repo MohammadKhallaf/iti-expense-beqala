@@ -4,9 +4,11 @@
 /node_modules
 /.pnp
 .pnp.js
+/~
 
 # testing
 /coverage
+/src/test
 
 # production
 /build
@@ -22,4 +24,18 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+<<<<<<< HEAD
 ~/tmp
+=======
+<<<<<<< HEAD
+
+# Json server database
+db.json
+
+# others
+~/tmp
+.idea
+=======
+tmp/
+>>>>>>> d48830cffbba3f9332301027194103d465e74928
+>>>>>>> 12dad0ec6d0e2fcf1580d4169fca8c6cfe0caf5b
