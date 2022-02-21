@@ -1,0 +1,6 @@
+2022/02/21-00:38:32.003 20753d Creating DB /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb since it was missing.
+2022/02/21-00:38:33.425 20753d Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/02/21-18:36:14.657 22536a Level-0 table #5: started
+2022/02/21-18:36:14.814 22536a Level-0 table #5: 368147 bytes OK
+2022/02/21-18:36:14.876 22536a Delete type=0 #3
+2022/02/21-18:36:14.891 225d1b Manual compaction at level-0 from (begin) .. (end); will stop at (end)

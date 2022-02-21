@@ -14,7 +14,9 @@ import { Provider } from 'react-redux';
 import store from './redux/store'
 import "./App.css";
 import Layout from "./pages/layout/Layout";
-
+import Google from "./pages/Google";
+import Facebook from "./pages/Facebook";
+import CheckMail from "./pages/checkmail/CheckMail"
 
 function App() {
   return (
@@ -31,6 +33,9 @@ function App() {
             <Route exact path='/password/reset/confirm/:uid/:token' element={<ResetPasswordConfirm />} />
             <Route path="/activate/:uid/:token"exact element={<Activate />} />
             <Route path="/product"exact element={<Product />} />
+            <Route path="/google"exact element={<Google />} />
+            <Route path="/facebook"exact element={<Facebook />} />
+            <Route path="/checkmail"exact element={<CheckMail />} />
           </Routes>
         </Layout>
       </Router>

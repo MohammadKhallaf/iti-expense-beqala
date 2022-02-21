@@ -3,7 +3,7 @@ import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../redux/actions/auth";
 
-const Navbar = ({ logout, isAuthenticated }) => {
+const Navbar = ({ logout, isAuthenticated , user, manager}) => {
   const logout_user = () => {
     logout();
   };
@@ -23,8 +23,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
       </li>
     </Fragment>
   );
-
-  const authLinks = () => (
+ 
+  const authLinksUser = () => (
     <>
     
       <li className="nav-item list-unstyled">
@@ -37,6 +37,25 @@ const Navbar = ({ logout, isAuthenticated }) => {
           Logout
         </a>
       </li>
+      
+    </>
+  );
+
+  const authLinksManager = () => (
+    <>
+      <li className="nav-item list-unstyled">
+        <a className="nav-link navItem" href="#!" onClick={logout_user}>
+          Logout
+        </a>
+      </li>
+    </>
+  );
+
+  const authLinks = () => (
+    <>
+    
+    {manager ? authLinksManager() : authLinksUser()}
+     
       
     </>
   );
@@ -69,7 +88,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
               <Link className="nav-link navItem" to="/">contact us</Link>
             </li>
           </ul>
-              {isAuthenticated ? authLinks() : guestLinks()}
+              {isAuthenticated && user ? authLinks() : guestLinks()}
           </div>
         </div>
       </nav>
@@ -79,6 +98,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
 const mapStateToProps = (state) => ({
   isAuthenticated: state.auth.isAuthenticated,
+  manager: state.auth.manager,
+  user: state.auth.user
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

@@ -5,10 +5,17 @@ import Location from '../../components/Location';
 import Partener from '../../components/PartnerFeatures';
 import SectionsFeatures from '../../components/SectionsFeatures';
 import Services from '../../components/Services';
-
+import { Link, Navigate } from 'react-router-dom';
+import { login } from '../../redux/actions/auth';
+import { connect } from 'react-redux';
 import './Hero.css'
 
-export default function Hero() {
+const Hero = ({ manager }) => {
+
+    if ( manager === false ){
+        return <Navigate to='/stores' />
+    }
+
     return (
         <>
         <Header />
@@ -19,3 +26,9 @@ export default function Hero() {
         </>
     )
 }
+
+const mapStateToProps = (state) => ({
+    manager: state.auth.manager
+})
+
+export default connect(mapStateToProps, { login } )(Hero);

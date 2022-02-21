@@ -1,0 +1,5 @@
+2022/02/20-16:16:48.561 1e6092 Creating DB /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb since it was missing.
+2022/02/20-16:16:48.863 1e6092 Reusing MANIFEST /home/muhammad/Desktop/FinalPrj/iti-expense-beqala/~/tmp/Default/IndexedDB/https_mail.google.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/02/20-20:40:47.569 1f5517 Level-0 table #5: started
+2022/02/20-20:40:48.128 1f5517 Level-0 table #5: 1912630 bytes OK
+2022/02/20-20:40:48.560 1f5517 Delete type=0 #3
