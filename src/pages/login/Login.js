@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../redux/actions/auth';
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated, error, manager }) => {
     const [formData, setFormData] = useState({
         email: '',
         password: ''
@@ -20,11 +20,25 @@ const Login = ({ login }) => {
     };
 
     // is the user authenticated
+    if (isAuthenticated && manager === false){
+        return <Navigate to='/' />
+    }
+    else if(isAuthenticated && manager === true) {
+        return <Navigate to='/register' />
+    }
+   
 
+    const error_m = () => (
+        <p className='text-danger'>Please Enter valid Data</p>
+    );
+    const empty = () => (
+            <p></p>
+        );
     return (
-        <div className='container mt-5'>
+        <div className='container mt-5 pt-5'>
             <h1>Sign In</h1>
             <p>Sign into your Account</p>
+            {error ? error_m() : empty()}
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input
@@ -61,6 +75,10 @@ const Login = ({ login }) => {
     );
 };
 
-//const mapStateToProps = (state) => ({})
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    error: state.auth.error,
+    manager: state.auth.manager
+})
 
-export default connect(null, { login })(Login);
+export default connect(mapStateToProps , { login })(Login);
