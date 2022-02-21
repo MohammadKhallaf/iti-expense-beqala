@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, Navigate } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { googleAuthenticate } from '../redux/actions/auth';
 import queryString from 'query-string';
 
-const Google = ({ googleAuthenticate }) => {
+const Google = ({ googleAuthenticate, isAuthenticated, error, manager}) => {
     let location = useLocation();
 
     useEffect(() => {
@@ -20,17 +20,26 @@ const Google = ({ googleAuthenticate }) => {
         }
     }, [location]);
 
+    if (isAuthenticated && manager === false){
+        return <Navigate to='/' />
+    }
+    else if(isAuthenticated && manager === true) {
+        return <Navigate to='/register' />
+    }
+
     return (
         <div className='container'>
             <div class='jumbotron mt-5'>
-                <h1 class='display-4'>Welcome to Auth System!</h1>
-                <p class='lead'>This is an incredible authentication system with production level features!</p>
-                <hr class='my-4' />
-                <p>Click the Log In button</p>
-                <Link class='btn btn-primary btn-lg' to='/login' role='button'>Login</Link>
+                <h1 class='display-4'>Welcome to ExpenseBeqala!</h1>
             </div>
         </div>
     );
 };
 
-export default connect(null, { googleAuthenticate })(Google);
+const mapStateToProps = (state) => ({
+    isAuthenticated: state.auth.isAuthenticated,
+    error: state.auth.error,
+    manager: state.auth.manager
+})
+
+export default connect(mapStateToProps, { googleAuthenticate })(Google);
