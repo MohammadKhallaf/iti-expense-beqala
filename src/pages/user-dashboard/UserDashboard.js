@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { React,useState } from "react";
 import { Container } from "react-bootstrap";
 import Categories from "../../components/user-dashboard/categories/categories/Categories";
 import UserCard from "../../components/user-dashboard/others/UserCard";
@@ -29,31 +29,30 @@ const UserDashboard = () => {
       },
     ],
   });
-  return (<>
-  <Sidebar/>
-  <Routes>
-    
-  </Routes>
+  return (
+    <>
+      <Sidebar />
+      <Routes></Routes>
 
-    <Container className="w-75 py-5">
-      <h2 className="pt-3">Overview</h2>
-      <UserCard />
-      <h2 className="pt-3">Categories</h2>
-      <Container fluid className="mt-4 shadow-sm mx-auto">
-        <Categories />
+      <Container className="w-75 py-5">
+        <h2 className="pt-3">Overview</h2>
+        <UserCard />
+        <h2 className="pt-3">Categories</h2>
+        <Container fluid className="mt-4 shadow-sm mx-auto">
+          <Categories />
+        </Container>
+        <h2 className="pt-3">Expenses History</h2>
+        <Container fluid className="mt-4">
+          <TransFilters />
+        </Container>
+        <Container fluid className="mt-4 shadow-sm p-5">
+          <Transactions />
+        </Container>
+        <Container fluid className="mt-4 shadow-sm p-5">
+          <Doughnut data={chartData} options={{}} />
+        </Container>
       </Container>
-      <h2 className="pt-3">Expenses History</h2>
-      <Container fluid className="mt-4">
-        <TransFilters />
-      </Container>
-      <Container fluid className="mt-4 shadow-sm p-5">
-        <Transactions />
-      </Container>
-      <Container fluid className="mt-4 shadow-sm p-5">
-        <Doughnut data={chartData} options={{}} />
-      </Container>
-    </Container>
-  </>
+    </>
   );
 };
 
