@@ -1,3 +1,4 @@
+import React from "react";
 import { Stack } from "react-bootstrap";
 import  SingleCatgory  from "./SingleCategory";
 import styles from "./Categories.module.scss";

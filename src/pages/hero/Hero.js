@@ -12,8 +12,8 @@ import './Hero.css'
 
 const Hero = ({ manager }) => {
 
-    if ( manager === false ){
-        return <Navigate to='/stores' />
+    if ( manager === true ){
+        return <Navigate to='/UserDashboard' />
     }
 
     return (

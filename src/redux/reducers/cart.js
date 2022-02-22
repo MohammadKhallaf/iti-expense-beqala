@@ -7,7 +7,7 @@
 
 import { CART } from "../actions/types";
 
-const initialCart = [];
+const initialCart = { data: [] };
 
 const cartReducer = (state = initialCart, action) => {
   switch (action.type) {
@@ -16,7 +16,7 @@ const cartReducer = (state = initialCart, action) => {
         ...state,
         data: action.payload,
       };
-      
+
     default:
       return state;
   }

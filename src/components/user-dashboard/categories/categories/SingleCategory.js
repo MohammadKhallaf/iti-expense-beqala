@@ -1,3 +1,4 @@
+import React from "react";
 import { Button, Col, Row, Stack } from "react-bootstrap";
 import styles from "./SingleCategory.module.scss";
 const SingleCatgory = (props) => {
