@@ -34,20 +34,29 @@ import { backendAPI } from "../../store";
  */
 const Cart = (props) => {
   /*<== Modal ==> */
-  console.log("currentState",store.getState())
-  store.subscribe()
+
   // get the input of each item
   const inputRef = useRef();
   const dispatch = useDispatch();
   const [initial, setInitial] = useState(true);
   // test case
   const [data, setData] = useState([]);
+  // const data = store.getState().cart;
+  let currentValue;
+  const storeSub = store.subscribe(() => {
+    let previousValue = currentValue;
+    currentValue = store.getState().cart.data;
+    setData(currentValue);
 
+    if (previousValue !== currentValue) {
+      console.log("changed from", previousValue, "to", currentValue);
+    }
+  });
   useEffect(() => {
     if (initial) {
       backendAPI.get("/cart").then((response) => {
-        setData(response.data);
-        dispatch({type:CART,payload:response.data});
+        console.log("put into data", response.data);
+        dispatch({ type: CART, payload: response.data });
       });
       // .catch((error) => alert(error));
 
@@ -76,67 +85,73 @@ const Cart = (props) => {
                 <h1>Shopping Card</h1>
               </Col>
               <Col xs={12} md={3}>
-                <h6 className="text-muted">{data.length} Items</h6>
+                hh
+                <h6 className="text-muted">{console.log(data)}</h6>
               </Col>
             </Row>
 
             {/* <==={ Rendering the list }===> */}
-            {data.map((item, index) => {
-              return (
-                <Row key={index} className="gap-3 py-3">
-                  <hr />
-                  <Col
-                    xs="12"
-                    md={2}
-                    style={{ overflow: "hidden", height: "100px" }}
-                  >
-                    <Image
-                      src={item.img}
-                      rounded
-                      width={"100%"}
-                      height={"auto"}
-                      style={{ objectFit: "cover" }}
-                    />
-                  </Col>
-                  <Col md="2">
-                    <h6 className="text-muted fs-6">{item.category}</h6>
-                    <h5>{item.title}</h5>
-                  </Col>
-                  <Col xs={12} md={3} className="d-flex align-items-center">
-                    <InputGroup>
-                      <button className="btn btn-link">
-                        <i
-                          className="fas fa-minus"
-                          style={{ fontSize: "0.1rem" }}
-                        ></i>
-                      </button>
-                      <FormControl
-                        width="100%"
-                        type="number"
-                        min="0"
-                        ref={inputRef}
+            {data &&
+              data.map((item, index) => {
+                return (
+                  <Row key={index} className="gap-3 py-3">
+                    <hr />
+                    <Col
+                      xs="12"
+                      md={2}
+                      style={{ overflow: "hidden", height: "100px" }}
+                    >
+                      <Image
+                        src={item.img}
+                        rounded
+                        width={"100%"}
+                        height={"auto"}
+                        style={{ objectFit: "cover" }}
                       />
-                      <button className="btn btn-link">
-                        <i
-                          className="fas fa-plus"
-                          style={{ fontSize: "0.1rem" }}
-                        ></i>
-                      </button>
-                    </InputGroup>
-                  </Col>
-                  <Col className="d-flex justify-content-center align-items-center">
-                    1000$
-                  </Col>
+                    </Col>
+                    <Col md="2">
+                      <h6 className="text-muted fs-6">{item.category}</h6>
+                      <h5>{item.title}</h5>
+                    </Col>
+                    <Col xs={12} md={3} className="d-flex align-items-center">
+                      <InputGroup>
+                        <button className="btn btn-link">
+                          <i
+                            className="fas fa-minus"
+                            style={{ fontSize: "0.1rem" }}
+                          ></i>
+                        </button>
+                        <FormControl
+                          width="100%"
+                          type="number"
+                          min="0"
+                          ref={inputRef}
+                        />
+                        <button className="btn btn-link">
+                          <i
+                            className="fas fa-plus"
+                            style={{ fontSize: "0.1rem" }}
+                          ></i>
+                        </button>
+                      </InputGroup>
+                    </Col>
+                    <Col className="d-flex justify-content-center align-items-center">
+                      1000$
+                    </Col>
 
-                  {/* DELETE Button */}
-                  <Col xs="12" md="1" className="d-flex justify-content-center">
-                    <button className="btn btn-link">
-                      <i class="fas fa-trash-alt text-muted"></i>
-                    </button>
-                  </Col>
-                </Row>
-              );
-            })}
+                    {/* DELETE Button */}
+                    <Col
+                      xs="12"
+                      md="1"
+                      className="d-flex justify-content-center"
+                    >
+                      <button className="btn btn-link">
+                        <i class="fas fa-trash-alt text-muted"></i>
+                      </button>
+                    </Col>
+                  </Row>
+                );
+              })}
             <hr />
           </Col>
           {/* Summary */}

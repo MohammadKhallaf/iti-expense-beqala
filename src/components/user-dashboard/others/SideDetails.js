@@ -1,3 +1,5 @@
+import React from "react";
+
 import { Col, Container, Row, Stack } from "react-bootstrap";
 import styles from "./SideDetail.module.scss";
 const SideDetails = () => {
@@ -19,4 +21,4 @@ const SideDetails = () => {
     </div>
   );
 };
-export default SideDetails
+export default SideDetails;

@@ -1,3 +1,4 @@
+import React from "react";
 import { Container } from "react-bootstrap";
 import styles from "./UserCard.module.scss"
 const UserCard = () => {

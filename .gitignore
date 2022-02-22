@@ -24,7 +24,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-<<<<<<< HEAD
 
 # Json server database
 db.json
@@ -32,6 +31,4 @@ db.json
 # others
 ~/tmp
 .idea
-=======
 tmp/
->>>>>>> d48830cffbba3f9332301027194103d465e74928

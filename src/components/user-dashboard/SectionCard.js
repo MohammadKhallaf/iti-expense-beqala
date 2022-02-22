@@ -1,3 +1,4 @@
+import React from "react";
 import { Container, Stack, Col } from "react-bootstrap";
 
 const SectionCard = (props) => {

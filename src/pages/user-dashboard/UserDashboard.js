@@ -1,4 +1,4 @@
-import { React,useState } from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import Categories from "../../components/user-dashboard/categories/categories/Categories";
 import UserCard from "../../components/user-dashboard/others/UserCard";
