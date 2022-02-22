@@ -37,7 +37,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import BasketButton from "./components/cart/BasketButton";
 
 // Test
-import Test from "./test/pages/Test";
+//import Test from "./test/pages/Test";
 
 // styling
 import "./App.css";
