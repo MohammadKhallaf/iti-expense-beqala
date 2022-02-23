@@ -88,7 +88,7 @@ const Category = () => {
               {data.map((values, index) => {
                 const { id, title, price, img, discreption } = values;
                 return (
-                  <>
+                  
                     <div className="col-md-6 col-lg-4 me-3" key={index}>
                       <div
                         className="card m-2"
@@ -117,7 +117,7 @@ const Category = () => {
                         </div>
                       </div>
                     </div>
-                  </>
+                  
                 );
               })}
             </div>

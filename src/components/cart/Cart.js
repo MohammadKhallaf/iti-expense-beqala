@@ -43,9 +43,10 @@ const Cart = (props) => {
   const inputRef = useRef();
   const dispatch = useDispatch();
   const [initial, setInitial] = useState(true);
+  const [isLoading, setLoading] = useState(false);
 
   /*<== Store states ==>*/
-  const data = useSelector((state) => state.cart.data);
+  const itemData = useSelector((state) => state.cart.data); //holds "item in cart "updates
   const show = useSelector((state) => state.cart.show);
   const item = useSelector((state) => state.cart.item);
   const order = useSelector((state) => state.cart.checkout);
@@ -64,7 +65,7 @@ const Cart = (props) => {
    */
   const quantityHandler = (operation) => {
     // read the existing data state into another variable
-    let all_data = data;
+    let all_data = order.carts;
     console.log("First", all_data);
 
     // get the required fields
@@ -78,30 +79,44 @@ const Cart = (props) => {
     switch (op) {
       // <|--add one--|>
       case "ADD":
-        console.log("ADD");
-        all_data[index].quantity++;
+        console.log("ADD", index);
+        all_data[index].cart_details.quantity++;
         console.log("After", all_data);
         break;
       // <|--delete one--|>
       case "DEL":
         console.log("DEL");
-        all_data[index].quantity--;
+        all_data[index].cart_details.quantity--;
         console.log("After", all_data);
         break;
       // <|--remove all--|>
       case "ZERO":
-        all_data[index].quantity = 0;
+        all_data[index].cart_details.quantity = 0;
+        
         console.log("ZERO", productID);
         break;
       case "CHANGE":
         console.log("CHANGE");
-        all_data[index].quantity = operation.value;
+        all_data[index].cart_details.quantity = parseInt(operation.value);
         break;
       default:
         console.log(operation);
     }
     // [... data ] => don't mutate
     dispatch({ type: CART, payload: [...all_data] });
+    console.log("item data index", itemData[index]);
+    const cartItemData = {
+      product_id: itemData[index].product_details.id,
+      user_id: 1, //!hard-coded
+      store_id: 5, //! hard-coded
+      quantity: itemData[index].cart_details.quantity,
+    };
+    setLoading(true)
+    backendAPI
+      .put("cart/", cartItemData)
+      .then((response) => console.log("put request, response =>", response))
+      .then(res=>{dispatch(getCartItems)
+      setLoading(false)});
   };
 
   const ckeckoutHandler = () => {
@@ -118,14 +133,14 @@ const Cart = (props) => {
       setInitial(false);
     }
 
-    console.log("data in use effect", data);
+    console.log("data in use effect", itemData);
   }, [order, dispatch]);
 
   // re-render the cart whenever an update is done on the cart => add item
   useEffect(() => {
     dispatch(getCartItems);
 
-    console.log("data in use effect", data);
+    console.log("data in use effect", itemData);
   }, [item]);
 
   return (
@@ -144,8 +159,8 @@ const Cart = (props) => {
         style={{ borderRadius: "1rem", overflow: "hidden", padding: "0" }}
       >
         <div className="p-3 d-md-none">
-          <Button 
-            className="rounded-circle"
+          <Button
+            className="d-md-none rounded-circle"
             onClick={() => {
               dispatch({ type: SHOW_CART });
             }}
@@ -210,6 +225,7 @@ const Cart = (props) => {
                         {/* <| decrease the quantity |> */}
                         <button
                           className="btn btn-link"
+                          disabled={isLoading}
                           onClick={quantityHandler.bind(this, {
                             index,
                             op: "DEL",
@@ -231,6 +247,7 @@ const Cart = (props) => {
                           width="100%"
                           type="number"
                           min="0"
+                          disabled={isLoading}
                           ref={inputRef}
                           value={item.cart_details.quantity}
                           onChange={(event) =>
@@ -246,9 +263,10 @@ const Cart = (props) => {
                             })
                           }
                         />
-                        {/* <| decrease the quantity |> */}
+                        {/* <| increase the quantity |> */}
                         <button
                           className="btn btn-link"
+                          disabled={isLoading}
                           onClick={quantityHandler.bind(this, {
                             index,
                             op: "ADD",
@@ -282,6 +300,7 @@ const Cart = (props) => {
 
                       <button
                         className="btn btn-link"
+                        disabled={isLoading}
                         onClick={quantityHandler.bind(this, {
                           index,
                           op: "ZERO",
@@ -318,7 +337,9 @@ const Cart = (props) => {
               </Row>
             </Container>
             <Row className="d-flex justify-content-center p-4">
-              <Button onClick={ckeckoutHandler}>Checkout</Button>
+              <Button onClick={ckeckoutHandler} disabled={isLoading}>
+                Checkout
+              </Button>
             </Row>
           </Col>
         </Row>
