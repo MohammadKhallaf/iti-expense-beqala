@@ -6,7 +6,6 @@ import SectionCard from "../../components/user-dashboard/SectionCard";
 import { PAYPAL_ACCOUNT } from "../../credits.js";
 import { getCartItems } from "../../redux/actions/cart";
 
-
 const OrderCheckout = () => {
   const order = useSelector((state) => state.cart.checkout);
   const dispatch = useDispatch();
@@ -45,7 +44,11 @@ const OrderCheckout = () => {
                       <p>{item.price_after_offer.toFixed(2)}</p>
                     </td>
                     <td>{item.cart_details.quantity}</td>
-                    <td>{(item.price_after_offer * item.cart_details.quantity).toFixed(2)}</td>
+                    <td>
+                      {(
+                        item.price_after_offer * item.cart_details.quantity
+                      ).toFixed(2)}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -55,7 +58,7 @@ const OrderCheckout = () => {
         </SectionCard>
         <SectionCard header="payment">
           <PayPalScriptProvider
-            options={{ "client-id": PAYPAL_ACCOUNT, currency: "EGP" }}
+          // options={{ "client-id": PAYPAL_ACCOUNT, currency: "EGP" }}
           >
             <PayPalButtons
               style={{ layout: "vertical" }}
