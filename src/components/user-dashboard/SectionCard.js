@@ -1,7 +1,5 @@
 import React from "react";
 import { Container, Stack, Col } from "react-bootstrap";
-<<<<<<< HEAD
-=======
 /**
  * 
  * props:
@@ -9,9 +7,8 @@ import { Container, Stack, Col } from "react-bootstrap";
  * icon 
  * xs
  * lg
- * @returns 
+ * returns 
  */
->>>>>>> c46d8eaf666f4aa15898e898f119f181c0c344ec
 const SectionCard = (props) => {
   return (
     <Col xs={props.xs | "12"} lg={props.lg | "6"} as="section">

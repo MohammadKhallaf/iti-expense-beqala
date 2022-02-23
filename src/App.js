@@ -70,8 +70,9 @@ function App() {
             <Route path="/dashboard" element={<UserDashboard />} />
             {/* Product */}
             <Route path="/product" element={<Product />} />
-            <Route path="/stores" element={<Stores />} />
-
+            <Route path="/:name/stores/" element={<Stores />} />
+            
+          
             <Route path="/order" element={<OrderCheckout/>} />
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
