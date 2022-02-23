@@ -11,7 +11,7 @@ const SideDetails = () => {
             <Row className="fs-4">
               <Col xs={9}>Wallets</Col>
               <Col className={styles.icon__plus}>
-                <i class="fas fa-plus"></i>
+                <i className="fas fa-plus"></i>
               </Col>
             </Row>
             <Row>Home Wallet Investments</Row>

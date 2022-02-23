@@ -10,21 +10,21 @@ const Categories=[
         discreption:"lorem",
     },
     {
-        id:1,
+        id:2,
         title: "Fruits",
         price: 24.95,
         category:"Fruits",
         img:Mango,
         discreption:"lorem",
     }, {
-        id:1,
+        id:3,
         title: "Fruits",
         price: 24.95,
         category:"Fruits",
         img:Mango,
         discreption:"lorem",
       }, {
-        id:1,
+        id:4,
         title: "Fruits",
         price: 24.95,
         category:"Fruits",
@@ -32,7 +32,7 @@ const Categories=[
         discreption:"lorem",
       },
     {
-        id:2,
+        id:5,
         title:"vegtables",
         price: 30,
         category:"vegtables",
@@ -40,7 +40,7 @@ const Categories=[
         discreption:"lorem",
       },
     {
-        id:3,
+        id:6,
         title:"milk",
         price: 30,
         category:"milk",
@@ -48,7 +48,7 @@ const Categories=[
         discreption:"lorem",
       },
     {
-        id:4,
+        id:7,
         title:"productName",
         price: 15,
         category:"productName",
