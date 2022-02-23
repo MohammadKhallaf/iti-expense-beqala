@@ -42,6 +42,7 @@ import BasketButton from "./components/cart/BasketButton";
 // styling
 import "./App.css";
 import Cart from "./components/cart/Cart";
+import OrderCheckout from "./pages/cart/OrderCheckout";
 
 function App() {
   return (
@@ -71,7 +72,7 @@ function App() {
             <Route path="/product" element={<Product />} />
             <Route path="/stores" element={<Stores />} />
 
-            <Route path="/order" element={<Stores />} />
+            <Route path="/order" element={<OrderCheckout/>} />
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />

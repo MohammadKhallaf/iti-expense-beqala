@@ -121,7 +121,7 @@ const Cart = (props) => {
 
   const ckeckoutHandler = () => {
     dispatch({ type: SHOW_CART });
-    navigate("/");
+    navigate("/order");
   };
 
   useEffect(() => {
