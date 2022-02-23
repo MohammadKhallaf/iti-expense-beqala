@@ -10,12 +10,17 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { CART } from "../../redux/actions/types";
-import store from "../../redux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { CART, CHECKOUT, SHOW_CART } from "../../redux/actions/types";
 import { backendAPI } from "../../store";
+
+import FallbackImage from "../../files/market.png";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getCartItems } from "../../redux/actions/cart";
 /**
  * ## Cart Component
+ * <== Modal ==>
  * ### |<== to front end
  * ```
  *  - id => ?
@@ -34,42 +39,103 @@ import { backendAPI } from "../../store";
  */
 const Cart = (props) => {
   /*<== Modal ==> */
-
   // get the input of each item
   const inputRef = useRef();
   const dispatch = useDispatch();
   const [initial, setInitial] = useState(true);
-  // test case
-  const [data, setData] = useState([]);
-  // const data = store.getState().cart;
-  let currentValue;
-  const storeSub = store.subscribe(() => {
-    let previousValue = currentValue;
-    currentValue = store.getState().cart.data;
-    setData(currentValue);
 
-    if (previousValue !== currentValue) {
-      console.log("changed from", previousValue, "to", currentValue);
+  /*<== Store states ==>*/
+  const data = useSelector((state) => state.cart.data);
+  const show = useSelector((state) => state.cart.show);
+  const item = useSelector((state) => state.cart.item);
+  const order = useSelector((state) => state.cart.checkout);
+
+  const navigate = useNavigate();
+
+  /**
+   * Control the quantity of the product in the cart
+   * @param operation the operator (ADD,DEL,ZERO,EVENT)\
+   * ADD => increase the quantity of the product\
+   * DEL => decrease the quantity of the product\
+   * ZERO => delete the product\
+   * EVENT => read the quantity of the product
+   *
+   *
+   */
+  const quantityHandler = (operation) => {
+    // read the existing data state into another variable
+    let all_data = data;
+    console.log("First", all_data);
+
+    // get the required fields
+    const {
+      index, // input index
+      op, // option
+      id: { user: userID, product: productID, store: storeID },
+    } = operation;
+
+    //TODO: link them with the backend
+    switch (op) {
+      // <|--add one--|>
+      case "ADD":
+        console.log("ADD");
+        all_data[index].quantity++;
+        console.log("After", all_data);
+        break;
+      // <|--delete one--|>
+      case "DEL":
+        console.log("DEL");
+        all_data[index].quantity--;
+        console.log("After", all_data);
+        break;
+      // <|--remove all--|>
+      case "ZERO":
+        all_data[index].quantity = 0;
+        console.log("ZERO", productID);
+        break;
+      case "CHANGE":
+        console.log("CHANGE");
+        all_data[index].quantity = operation.value;
+        break;
+      default:
+        console.log(operation);
     }
-  });
+    // [... data ] => don't mutate
+    dispatch({ type: CART, payload: [...all_data] });
+  };
+
+  const ckeckoutHandler = () => {
+    dispatch({ type: SHOW_CART });
+    navigate("/");
+  };
+
   useEffect(() => {
+    // < get the cart items in the initial page load>
     if (initial) {
-      backendAPI.get("/cart").then((response) => {
-        console.log("put into data", response.data);
-        dispatch({ type: CART, payload: response.data });
-      });
-      // .catch((error) => alert(error));
+      // get the chcekout data
+      dispatch(getCartItems);
 
       setInitial(false);
     }
-    console.log(data);
-  }, [data, initial]);
+
+    console.log("data in use effect", data);
+  }, [order, dispatch]);
+
+  // re-render the cart whenever an update is done on the cart => add item
+  useEffect(() => {
+    dispatch(getCartItems);
+
+    console.log("data in use effect", data);
+  }, [item]);
 
   return (
     <Modal
       size="xl"
-      show={props.show}
-      onHide={props.showFn}
+      // show
+      show={show}
+      onHide={() => {
+        dispatch({ type: SHOW_CART });
+      }}
       fullscreen="md-down"
       contentClassName="bg-transparent border-0 shadow-lg"
     >
@@ -77,6 +143,16 @@ const Cart = (props) => {
         className="bg-light "
         style={{ borderRadius: "1rem", overflow: "hidden", padding: "0" }}
       >
+        <div className="p-3 d-md-none">
+          <Button 
+            className="rounded-circle"
+            onClick={() => {
+              dispatch({ type: SHOW_CART });
+            }}
+          >
+            X
+          </Button>
+        </div>
         <Row>
           {/* Shopping Cart */}
           <Col xs={12} lg={9} className="py-5 px-3 px-md-5">
@@ -85,14 +161,24 @@ const Cart = (props) => {
                 <h1>Shopping Card</h1>
               </Col>
               <Col xs={12} md={3}>
-                hh
-                <h6 className="text-muted">{console.log(data)}</h6>
+                {console.log(Object.keys(order).length)}
+                {Object.keys(order).length && (
+                  <h6 className="text-muted">{order.carts.length} Items</h6>
+                )}
               </Col>
             </Row>
 
             {/* <==={ Rendering the list }===> */}
-            {data &&
-              data.map((item, index) => {
+            {Object.keys(order).length &&
+              order.carts.map((item, index) => {
+                /*
+                item:{
+                  cart_details:{id,quantitiy,order(order_id),product},
+                  product_details:{id,name,description,brand,category}
+                }
+                */
+                // remove the item from the list
+                // if (item.cart_details.quantity < 1) return false;
                 return (
                   <Row key={index} className="gap-3 py-3">
                     <hr />
@@ -101,8 +187,9 @@ const Cart = (props) => {
                       md={2}
                       style={{ overflow: "hidden", height: "100px" }}
                     >
+                      {/* <| PRODUCT IMAGE |> */}
                       <Image
-                        src={item.img}
+                        src={item.product_img || FallbackImage}
                         rounded
                         width={"100%"}
                         height={"auto"}
@@ -110,24 +197,68 @@ const Cart = (props) => {
                       />
                     </Col>
                     <Col md="2">
-                      <h6 className="text-muted fs-6">{item.category}</h6>
-                      <h5>{item.title}</h5>
+                      {/* <| PRODUCT CATEGORY |> */}
+                      <h6 className="text-muted fs-6">
+                        {item.product_details.category_name}
+                      </h6>
+                      {/* <| PRODUCT TITLE |> */}
+                      <h6>{item.product_details.name}</h6>
                     </Col>
                     <Col xs={12} md={3} className="d-flex align-items-center">
+                      {/* <| QUANTITY CONTROL |> */}
                       <InputGroup>
-                        <button className="btn btn-link">
+                        {/* <| decrease the quantity |> */}
+                        <button
+                          className="btn btn-link"
+                          onClick={quantityHandler.bind(this, {
+                            index,
+                            op: "DEL",
+                            id: {
+                              // user: item.user_id,
+                              // store: item.order_details.store,
+                              product: item.product_details.id,
+                            },
+                          })}
+                        >
                           <i
                             className="fas fa-minus"
                             style={{ fontSize: "0.1rem" }}
                           ></i>
+                          {/* <| decrease the quantity |> */}
                         </button>
+                        {/* <| input quantity |> */}
                         <FormControl
                           width="100%"
                           type="number"
                           min="0"
                           ref={inputRef}
+                          value={item.cart_details.quantity}
+                          onChange={(event) =>
+                            quantityHandler({
+                              index,
+                              op: "CHANGE",
+                              value: event.target.value,
+                              id: {
+                                // user: item.user_id,
+                                // store: item.store_id,
+                                product: item.product_details.id,
+                              },
+                            })
+                          }
                         />
-                        <button className="btn btn-link">
+                        {/* <| decrease the quantity |> */}
+                        <button
+                          className="btn btn-link"
+                          onClick={quantityHandler.bind(this, {
+                            index,
+                            op: "ADD",
+                            id: {
+                              // user: item.user_id,
+                              // store: item.store_id,
+                              product: item.product_details.id,
+                            },
+                          })}
+                        >
                           <i
                             className="fas fa-plus"
                             style={{ fontSize: "0.1rem" }}
@@ -136,7 +267,9 @@ const Cart = (props) => {
                       </InputGroup>
                     </Col>
                     <Col className="d-flex justify-content-center align-items-center">
-                      1000$
+                      {(
+                        item.cart_details.quantity * item.price_after_offer
+                      ).toFixed(2)}
                     </Col>
 
                     {/* DELETE Button */}
@@ -145,8 +278,21 @@ const Cart = (props) => {
                       md="1"
                       className="d-flex justify-content-center"
                     >
-                      <button className="btn btn-link">
-                        <i class="fas fa-trash-alt text-muted"></i>
+                      {/* <| remove the product from the list |> */}
+
+                      <button
+                        className="btn btn-link"
+                        onClick={quantityHandler.bind(this, {
+                          index,
+                          op: "ZERO",
+                          id: {
+                            // user: item.user_id,
+                            // store: item.store_id,
+                            product: item.product_details.id,
+                          },
+                        })}
+                      >
+                        <i className="fas fa-trash-alt text-muted"></i>
                       </button>
                     </Col>
                   </Row>
@@ -162,11 +308,17 @@ const Cart = (props) => {
                 <Col>
                   <h3>Total</h3>
                 </Col>
-                <Col className="text-white">1500$</Col>
+                <Col className="text-white">
+                  <span>
+                    {" "}
+                    {Object.keys(order).length && order.total.toFixed(2)}{" "}
+                  </span>
+                  <span>LE</span>
+                </Col>
               </Row>
             </Container>
             <Row className="d-flex justify-content-center p-4">
-              <Button>Checkout</Button>
+              <Button onClick={ckeckoutHandler}>Checkout</Button>
             </Row>
           </Col>
         </Row>
