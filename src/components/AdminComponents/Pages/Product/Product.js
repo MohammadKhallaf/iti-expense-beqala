@@ -9,7 +9,7 @@ import SideBar from "../../SideBar/SideBar";
 export default function Product() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="productContainer">
         <SideBar />
         <div className="product">

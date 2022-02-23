@@ -9,7 +9,7 @@ import Navbar from "../../Navbar/Navbar";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="homeContainer">
         <SideBar />
         <div className="home">

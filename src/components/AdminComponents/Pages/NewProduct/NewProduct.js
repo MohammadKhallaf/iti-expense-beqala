@@ -4,7 +4,7 @@ import SideBar from "../../SideBar/SideBar";
 export default function NewProduct() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="newProductContainer">
         <SideBar />
         <div className="newProduct">

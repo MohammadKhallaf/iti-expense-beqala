@@ -64,20 +64,20 @@ export default function UserList() {
 
   return (
     <>
-    <Navbar/>
-    <div className="UserListContainer"> 
-      <SideBar/>
-    <div className="UserList">
-      <DataGrid
-        disableSelectionOnClick
-        rows={data}
-        columns={columns}
-        pageSize={10}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
-    </div>
-    </div>
+      {/* <Navbar/> */}
+      <div className="UserListContainer">
+        <SideBar />
+        <div className="UserList">
+          <DataGrid
+            disableSelectionOnClick
+            rows={data}
+            columns={columns}
+            pageSize={10}
+            rowsPerPageOptions={[5]}
+            checkboxSelection
+          />
+        </div>
+      </div>
     </>
   );
 }

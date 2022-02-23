@@ -61,7 +61,7 @@ export default function ProductList() {
   ];
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="ProductListContainer">
         <SideBar />
         <div className="ProductList">
