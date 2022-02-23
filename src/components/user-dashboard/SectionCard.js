@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Stack, Col } from "react-bootstrap";
-import React from "react";
+
 const SectionCard = (props) => {
   return (
     <Col xs="12" lg="6" as="section">
