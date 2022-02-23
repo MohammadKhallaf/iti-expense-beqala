@@ -35,7 +35,7 @@ const Category = () => {
       .post("cart/", {
         user_id: 1,
         store_id: 5,
-        product_id: 6,
+        product_id: values.id, //!hard coded
         quantity: 1,
       })
       .then((response) => {
