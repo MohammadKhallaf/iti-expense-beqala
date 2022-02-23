@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Stack } from "react-bootstrap";
-import SingleTransaction from "./SingleTransaction";
+// import SingleTransaction from "./SingleTransaction";
 
 const TransFilters = () => {
   return (
@@ -21,4 +21,4 @@ const TransFilters = () => {
     </Stack>
   );
 };
-export default TransFilters
+export default TransFilters;
