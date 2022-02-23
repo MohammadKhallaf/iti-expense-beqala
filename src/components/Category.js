@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import Categories from "./Categories";
 import Product from "./../pages/product/Product.css";
 import { backendAPI } from "../store";
 import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../redux/actions/types";
-
-const Category = () => {
+import FallbackImage from "./../files/market.png"
+const Category = (props) => {
   const dispatch = useDispatch();
 
-  const [data, setData] = useState(Categories);
+  const [data, setData] = useState(props.storeData);
   const filterResult = (catItem) => {
-    const result = Categories.filter((curData) => {
+    const result = props.storeData.filter((curData) => {
       return curData.category === catItem;
     });
     setData(result);
@@ -44,6 +44,12 @@ const Category = () => {
       })
       .catch((error) => console.log(error));
   };
+// app -> render pages -> request |-> re render
+useEffect(()=>{
+  setData(props.storeData)
+},[props.storeData])
+
+
   return (
     <>
       <h1></h1>
@@ -77,7 +83,7 @@ const Category = () => {
               </button>
               <button
                 className="btn btn-outline-success mb-4"
-                onClick={() => setData(Categories)}
+                onClick={() => setData(props.storeData)}
               >
                 All
               </button>
@@ -86,7 +92,7 @@ const Category = () => {
           <div className="col-md-9">
             <div className="row ">
               {data.map((values, index) => {
-                const { id, title, price, img, discreption } = values;
+                const { id:product_price_id,product:{id:product_id,name:title,description:discreption,img} , price,  store:store_id } = values;
                 return (
                   
                     <div className="col-md-6 col-lg-4 me-3" key={index}>
@@ -95,7 +101,7 @@ const Category = () => {
                         style={{ width: "15rem", height: "28rem" }}
                         id="card"
                       >
-                        <img src={img} className="card-img-top" alt="..." />
+                        <img src={img || FallbackImage } className="card-img-top" alt="..." />
                         <div className="card-body">
                           <h5 className="card-title">{title}</h5>
                           <p>Price: {price}</p>
