@@ -41,7 +41,7 @@ const Showstore = () => {
     const [store, setstore] = useState([])
 
     const fetchstore = async () => {
-        const result = await axios.get('http://localhost:8000/store/category/');
+        const result = await axios.get('http://localhost:8000/store/category/bakery/');
 
         console.log(result.data)
         setstore(result.data)
