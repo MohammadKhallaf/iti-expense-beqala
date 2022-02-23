@@ -1,8 +1,20 @@
 import React from "react";
 import { Container, Stack, Col } from "react-bootstrap";
+<<<<<<< HEAD
+=======
+/**
+ * 
+ * props:
+ * header
+ * icon 
+ * xs
+ * lg
+ * @returns 
+ */
+>>>>>>> c46d8eaf666f4aa15898e898f119f181c0c344ec
 const SectionCard = (props) => {
   return (
-    <Col xs="12" lg="6" as="section">
+    <Col xs={props.xs | "12"} lg={props.lg | "6"} as="section">
       <Container fluid="true" className="shadow-sm p-4">
         <Stack direction="horizontal" className="pb-3">
           <div
