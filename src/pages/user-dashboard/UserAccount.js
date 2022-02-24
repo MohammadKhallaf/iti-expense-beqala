@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Row,
   Col,
@@ -26,11 +27,14 @@ import profilePhoto from "../../files/user/MK.JPG";
 const CardRowInfo = (props) => {
   const [showInput, setShowInput] = useState(false);
   // const []
-  const clickHandler = () => {
+
+  const clickHandler = (showInput) => {
     setShowInput((prevState) => !prevState);
     console.log(props);
     //! if input edit is enabled
     if (showInput) {
+      console.log("submitted");
+      props.onSubmit();
     }
   };
 
@@ -40,24 +44,26 @@ const CardRowInfo = (props) => {
         {props.title.charAt(0).toUpperCase() + props.title.slice(1)}
       </h4>
 
-      <Stack
-        direction="horizontal"
-        className="justify-content-between pb-3 text-muted ps-3 flex-xl-nowrap flex-wrap"
-      >
-        <Container fluid className="ps-0">
-          {showInput ? props.input : props.children}
-        </Container>
-        {/* Here we get the action to change something */}
-        {props.notChangable ? null : (
-          <Button
-            variant="outline-success"
-            className="py-0"
-            onClick={clickHandler}
-          >
-            {showInput ? "OK" : "Change"}
-          </Button>
-        )}
-      </Stack>
+      <form>
+        <Stack
+          direction="horizontal"
+          className="justify-content-between pb-3 text-muted ps-3 flex-xl-nowrap flex-wrap"
+        >
+          <Container fluid className="ps-0">
+            {showInput ? props.input : props.children}
+          </Container>
+          {/* Here we get the action to change something */}
+          {props.notChangable ? null : (
+            <Button
+              variant="outline-success"
+              className="py-0"
+              onClick={clickHandler.bind(this, showInput)}
+            >
+              {showInput ? "OK" : "Change"}
+            </Button>
+          )}
+        </Stack>
+      </form>
       <hr
         style={{
           background:
@@ -69,12 +75,22 @@ const CardRowInfo = (props) => {
 };
 
 const UserAccount = () => {
+
+
+  const { t, i18n } = useTranslation();
+
+  // i18n.changeLanguage("ar");
+
+
   return (
     <Container as="section" className="p-5 m-auto">
       <h1 className="pb-3">My Account</h1>
       <Row className="gy-4">
         {/* Profile Details */}
-        <SectionCard icon="user" header="profile">
+        <SectionCard icon="user" header=
+        {t("profile.profile","profile")}
+        >
+          
           <CardRowInfo
             title="Photo"
             type="image"
@@ -131,11 +147,15 @@ const UserAccount = () => {
           {/* photo */}
         </SectionCard>
 
-        <SectionCard header="Preferences" icon="sliders-h">
+        <SectionCard header={t("profile.preferences","preferences")} icon="sliders-h">
           <CardRowInfo
+            onSubmit={async() => {
+              const test = await i18n.changeLanguage("ar");
+              console.log("LANG",test)
+            }}
             title="Language"
             input={
-              <FormSelect>
+              <FormSelect >
                 <option>English</option>
                 <option>عربي</option>
               </FormSelect>
