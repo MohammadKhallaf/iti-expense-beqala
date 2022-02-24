@@ -16,6 +16,17 @@ const Category = (props) => {
     });
     setData(result);
   };
+  // const Category = (props) => {
+  //   const dispatch = useDispatch();
+  
+    // const [data, setData] = useState(props.productcategory);
+    // const filterResult = (catItem) => {
+    //   const result = props.productcategory.filter((curData) => {
+    //     return curData.category === catItem;
+    //   });
+    //   setData(result);
+    // };
+    
   /**
    * add to cart
    * send to server: card
@@ -57,7 +68,7 @@ useEffect(()=>{
         <div className="row mt-5 mx-2">
           <div className="col-md-3">
             <div className="row">
-              <button
+              {/* <button
                 className="btn btn-outline-success mb-4"
                 onClick={() => filterResult("Fruits")}
               >
@@ -86,7 +97,7 @@ useEffect(()=>{
                 onClick={() => setData(props.storeData)}
               >
                 All
-              </button>
+              </button> */}
             </div>
           </div>
           <div className="col-md-9">
@@ -107,9 +118,9 @@ useEffect(()=>{
                           <p>Price: {price}</p>
                           <p className="card-text">{discreption}</p>
                           <div id="bttn">
-                            <button className="btn btn-light">
+                            {/* <button className="btn btn-light">
                               <i className="fa-fw far fa-eye"></i>
-                            </button>
+                            </button> */}
                             <button
                               className="btn btn-light"
                               onClick={addToCartHandler.bind(this, values)}

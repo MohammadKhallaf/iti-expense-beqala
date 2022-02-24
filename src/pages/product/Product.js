@@ -37,7 +37,16 @@ import { useParams } from 'react-router';
 import Category from "../../components/Category";
 import { backendAPI } from '../../store';
 
+// const fetchstore = async () => {
+//   const productcategory = await backendAPI.get(`product/category/`);
 
+//   console.log(productcategory.data)
+//   setstore(productcategory.data)
+// }
+
+// useEffect(() => {
+//   fetchstore();
+// }, [])
 const Showstore = () => {
   let params = useParams();
   console.log("params=",params)
