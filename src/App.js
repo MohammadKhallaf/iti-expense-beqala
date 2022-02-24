@@ -84,7 +84,7 @@ function App() {
             <Route path="/dashboard" element={<UserDashboard />} />
             {/* Product */}
             <Route path="/product/:storeId" element={<Product />} />
-            <Route path="/stores" element={<Stores />} />
+            <Route path="/stores+" element={<Stores />} />
 
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}

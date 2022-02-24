@@ -48,11 +48,11 @@ const Category = (props) => {
 useEffect(()=>{
   setData(props.storeData)
 },[props.storeData])
-
-
-  return (
+      
+    return (
     <>
-      <h1></h1>
+     
+     <h1></h1>
       <div className="container-fluid mx-2">
         <div className="row mt-5 mx-2">
           <div className="col-md-3">
@@ -88,7 +88,7 @@ useEffect(()=>{
                 All
               </button>
             </div>
-          </div>
+          </div> 
           <div className="col-md-9">
             <div className="row ">
               {data.map((values, index) => {
@@ -128,8 +128,8 @@ useEffect(()=>{
               })}
             </div>
           </div>
-        </div>
-      </div>
+         </div>
+      </div> 
     </>
   );
 };

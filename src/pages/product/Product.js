@@ -43,14 +43,13 @@ const Showstore = () => {
   console.log("params=",params)
   const store_id = params.storeId
   const [store, setstore] = useState([])
-
   const fetchstore = async () => {
     const result = await backendAPI.get(`store/store/${store_id}/`);
 
     console.log(result.data)
     setstore(result.data)
   }
-
+  
   useEffect(() => {
     fetchstore();
   }, [])
