@@ -55,14 +55,11 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 // styling
 import "./App.css";
-<<<<<<< HEAD
 import { ContactUs } from "./pages/ContactUs";
-=======
 import Cart from "./components/cart/Cart";
 import OrderCheckout from "./pages/cart/OrderCheckout";
 
 // =======
->>>>>>> 711c70bd34a5dcb0a628926e8527874144e39451
 
 function App() {
   return (
@@ -91,14 +88,11 @@ function App() {
             {/* Stores */}
             <Route path="/:name/stores/" element={<Stores />} />
             {/* Product */}
-<<<<<<< HEAD
-            <Route path="/product" element={<Product />} />
+            
             <Route path="/stores" element={<Stores />} />
             <Route path="/contactus" element={<ContactUs />} />
-=======
             <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
->>>>>>> 711c70bd34a5dcb0a628926e8527874144e39451
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />
@@ -110,10 +104,7 @@ function App() {
           </Routes>
           {/* Shared */}
         </Layout>
-<<<<<<< HEAD
-=======
         <Cart />
->>>>>>> 711c70bd34a5dcb0a628926e8527874144e39451
       </Router>
     </Provider>
     

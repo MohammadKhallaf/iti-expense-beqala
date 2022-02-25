@@ -75,7 +75,7 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               
               <li className="nav-item ">
-                <Link className="nav-link navItem" to="/">
+                <Link className="nav-link navItem" to="/contact">
                   contact us
                 </Link>
               </li>
