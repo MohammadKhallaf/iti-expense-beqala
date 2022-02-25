@@ -23,6 +23,17 @@ const Category = (props) => {
     });
     setFilter(result);
   };
+  // const Category = (props) => {
+  //   const dispatch = useDispatch();
+  
+    // const [data, setData] = useState(props.productcategory);
+    // const filterResult = (catItem) => {
+    //   const result = props.productcategory.filter((curData) => {
+    //     return curData.category === catItem;
+    //   });
+    //   setData(result);
+    // };
+    
   /**
    * add to cart
    * send to server: card

@@ -19,6 +19,8 @@ import Stores from "./pages/stores/Stores";
 
 import Partner from "./pages/partner/Partner";
 
+import "./App.css"
+
 // authentications
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
@@ -53,6 +55,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 
 // styling
 import "./App.css";
+import { ContactUs } from "./pages/ContactUs";
 import Cart from "./components/cart/Cart";
 import OrderCheckout from "./pages/cart/OrderCheckout";
 
@@ -85,6 +88,9 @@ function App() {
             {/* Stores */}
             <Route path="/:name/stores/" element={<Stores />} />
             {/* Product */}
+            
+            <Route path="/stores" element={<Stores />} />
+            <Route path="/contactus" element={<ContactUs />} />
             <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}
