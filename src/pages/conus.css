@@ -21,14 +21,18 @@ body {
 }
 
 .wrapper .bg-yellow {
-    background-color: #fdc91f;
+    background-color: #e7c0bb;
     height: 100%;
-    width: 40%;
+    width: 50%;
     padding-top: 40px;
-    padding-left: 50px;
+    padding-left: 28px;
     padding-right: 20px
 }
-
+.nomarge
+{
+    margin: 1px !important;
+    padding: 1px !important;
+}
 .wrapper .bg-yellow .text-white {
     font-size: 3rem
 }

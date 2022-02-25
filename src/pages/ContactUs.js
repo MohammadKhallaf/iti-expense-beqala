@@ -34,6 +34,7 @@ export const ContactUs = () => {
             <div className="text-white">
               {" "}
               <span className="far fa-envelope"></span>{" "}
+              
             </div>
             <div className="pt-5 cursive">
               {" "}
@@ -42,6 +43,9 @@ export const ContactUs = () => {
             <div className="pt-sm-5 pt-5 cursive mt-sm-5">
               {" "}
               We need your email to reach you back{" "}
+            </div><div className="pt-sm-5 nomarge pt-5 mt-sm-5">
+              {" "}
+              ExpenseBeqala<br/> <i class="fas fa-phone-alt"></i> 190906<br/><small><i class="fas fa-envelope"></i> expensebeqala@gmail.com</small>{" "}
             </div>
           </div>
           <div className="contact-form">

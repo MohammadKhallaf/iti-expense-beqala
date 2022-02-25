@@ -31,7 +31,7 @@ const config = {
           {
             text: "Partner Form",
             url:
-              "http://localhost:3000/partner",
+              "http://localhost:8000/partner",
             id: 1,
           },
         ],
@@ -44,7 +44,7 @@ const config = {
           {
             text: "Contact Us",
             url:
-              "http://localhost:3000/contactus",
+              "http://localhost:8000/contactus",
             id: 1,
           },
         ],
