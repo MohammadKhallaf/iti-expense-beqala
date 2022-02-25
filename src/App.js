@@ -16,6 +16,8 @@ import Stores from "./pages/stores/Stores";
 
 import Partner from "./pages/partner/Partner";
 
+import "./App.css"
+
 // authentications
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
@@ -41,6 +43,7 @@ import BasketButton from "./components/cart/BasketButton";
 
 // styling
 import "./App.css";
+import { ContactUs } from "./pages/ContactUs";
 
 function App() {
   return (
@@ -69,14 +72,13 @@ function App() {
             {/* Product */}
             <Route path="/product" element={<Product />} />
             <Route path="/stores" element={<Stores />} />
-
+            <Route path="/contactus" element={<ContactUs />} />
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
           {/* Shared */}
         </Layout>
-        <BasketButton />
       </Router>
     </Provider>
   );

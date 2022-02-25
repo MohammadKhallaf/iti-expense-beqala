@@ -24,7 +24,7 @@ const Facebook = ({ isAuthenticated,manager, facebookAuthenticate }) => {
         return <Navigate to='/' />
     }
     else if(isAuthenticated && manager === true) {
-        return <Navigate to='/register' />
+        return <Navigate to='/UserDashboard' />
     }
 
     return (

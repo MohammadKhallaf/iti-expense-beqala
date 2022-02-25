@@ -28,9 +28,9 @@ const Navbar = ({ logout, isAuthenticated , user, manager}) => {
     <>
     
       <li className="nav-item list-unstyled">
-        <a className="nav-link navItem" href="#!" onClick={logout_user}>
+        <Link className="nav-link navItem" to="/UserDashboard">
           Your account
-        </a>
+        </Link>
       </li>
       <li className="nav-item list-unstyled">
         <a className="nav-link navItem" href="#!" onClick={logout_user}>
@@ -82,10 +82,7 @@ const Navbar = ({ logout, isAuthenticated , user, manager}) => {
 
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item ">
-              <Link className="nav-link navItem" aria-current="page" to="/">our services</Link>
-            </li>
-            <li className="nav-item ">
-              <Link className="nav-link navItem" to="/">contact us</Link>
+              <Link className="nav-link navItem" to="/contactus">contact us</Link>
             </li>
           </ul>
               {isAuthenticated && user ? authLinks() : guestLinks()}
