@@ -7,7 +7,7 @@ import { Container, Stack, Col } from "react-bootstrap";
  * icon 
  * xs
  * lg
- * @returns 
+ * returns 
  */
 const SectionCard = (props) => {
   return (

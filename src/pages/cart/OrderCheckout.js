@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import { Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import SectionCard from "../../components/user-dashboard/SectionCard";
-// import { PAYPAL_ACCOUNT } from "../../credits";
+// import { PAYPAL_ACCOUNT } from "../../credits.js";
 import { getCartItems } from "../../redux/actions/cart";
 
 const OrderCheckout = () => {

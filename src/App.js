@@ -82,10 +82,10 @@ function App() {
             {/* User */}
             <Route path="/account" element={<UserAccount />} />
             <Route path="/dashboard" element={<UserDashboard />} />
+            {/* Stores */}
+            <Route path="/:name/stores/" element={<Stores />} />
             {/* Product */}
-            <Route path="/product/:storeId" element={<Product />} />
-            <Route path="/stores+" element={<Stores />} />
-
+            <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
@@ -101,7 +101,7 @@ function App() {
         <Cart />
       </Router>
     </Provider>
-    // >>>>>>> 9ad5e1b9be1e3098e85e5397394236b6f9e9e770
+    
   );
 }
 
