@@ -7,11 +7,14 @@ import SectionCard from "../../components/user-dashboard/SectionCard";
 import { getCartItems } from "../../redux/actions/cart";
 
 const OrderCheckout = () => {
+
   const order = useSelector((state) => state.cart.checkout);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getCartItems);
   }, []);
+  
+
   return (
     <Container className="pt-5">
       <Row className="gy-4">
@@ -77,6 +80,7 @@ const OrderCheckout = () => {
                 return actions.order.capture().then((details) => {
                   const name = details.payer.name.given_name;
                   alert(`Transaction completed by ${name}`);
+
                 });
               }}
             />

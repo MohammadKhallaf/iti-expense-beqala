@@ -15,8 +15,6 @@ export default function StoreCard() {
     backendAPI
       .get(`location/stores/${param.name}/`)
       .then((res) => {
-        console.log("API=====||=");
-        console.dir(res.data)
         setStoreResult(res.data)
       })
       .catch((err) => console.log(err));
