@@ -69,7 +69,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
     return <Navigate to="/" />;
   } // manager user authenticated
   else if (isAuthenticated && manager === true) {
-    return <Navigate to="/UserDashboard" />;
+    return <Navigate to="/admin" />;
   }
 
   // errors

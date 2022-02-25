@@ -104,7 +104,7 @@ function App() {
           </Routes>
           {/* Shared */}
         </Layout>
-        <Cart />
+       
       </Router>
     </Provider>
     
