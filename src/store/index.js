@@ -1,5 +1,5 @@
 import axios from "axios";
-const SERVER_URL = "http://localhost:3001";
+const SERVER_URL = "http://127.0.0.1:8000/";
 
 // this should be set for default authorization :::
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
@@ -9,9 +9,11 @@ const SERVER_URL = "http://localhost:3001";
 // create an instance to use the api calls
 export const backendAPI = axios.create({
   baseURL: SERVER_URL,
-  timeout: 10000,
+  headers: {
+    "Content-Type": "application/json",
+    Accept: "*/*",
+  },
 });
-
 
 /*<=={ Handling errors }==>*/
 
@@ -34,4 +36,3 @@ export const backendAPI = axios.create({
 //     }
 //     console.log(error.config);
 //   });
-

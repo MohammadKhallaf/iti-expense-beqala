@@ -21,6 +21,9 @@ The website aims to link the ecommerce website with the fin-tech.
 - Chart.js
 - Redux
 - Axios
+- i18next
+  - react-i18next
+  - i18next-htpp-backend
 
 ---
 
@@ -32,6 +35,5 @@ The website aims to link the ecommerce website with the fin-tech.
 - [Mohammed Magdi](https://github.com/MohamedMagdi0)
 - [Menna Emad](https://github.com/MennaEmadZ)
 - [Ghada](https://github.com/ghadamo)
-
 
 [^1]: You should have Node.js and npm installed

@@ -29,8 +29,8 @@ const Google = ({ googleAuthenticate, isAuthenticated, error, manager}) => {
 
     return (
         <div className='container'>
-            <div class='jumbotron mt-5'>
-                <h1 class='display-4'>Welcome to ExpenseBeqala!</h1>
+            <div className='jumbotron mt-5'>
+                <h1 className='display-4'>Welcome to ExpenseBeqala!</h1>
             </div>
         </div>
     );
