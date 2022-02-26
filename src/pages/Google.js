@@ -24,7 +24,7 @@ const Google = ({ googleAuthenticate, isAuthenticated, error, manager}) => {
         return <Navigate to='/' />
     }
     else if(isAuthenticated && manager === true) {
-        return <Navigate to='/register' />
+        return <Navigate to='/UserDashboard' />
     }
 
     return (

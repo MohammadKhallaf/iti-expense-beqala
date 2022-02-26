@@ -36,6 +36,9 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import Category from "../../components/Category";
 import { backendAPI } from '../../store';
+import {Navigate } from 'react-router-dom';
+import { login } from '../../redux/actions/auth';
+import { connect } from 'react-redux';
 
 // const fetchstore = async () => {
 //   const productcategory = await backendAPI.get(`product/category/`);
@@ -47,7 +50,7 @@ import { backendAPI } from '../../store';
 // useEffect(() => {
 //   fetchstore();
 // }, [])
-const Showstore = () => {
+const Showstore = ({ manager }) => {
   let params = useParams();
   console.log("params=",params)
   const store_id = params.storeId
@@ -62,6 +65,10 @@ const Showstore = () => {
   useEffect(() => {
     fetchstore();
   }, [])
+
+  if ( manager === true ){
+    return <Navigate to='/admin' />
+}
 
   return (
 
@@ -90,4 +97,13 @@ const Showstore = () => {
     </>
   )
 }
+<<<<<<< HEAD
 export default Showstore;
+=======
+const mapStateToProps = (state) => ({
+  manager: state.auth.manager
+})
+
+export default connect(mapStateToProps, { login } )(Showstore);
+
+>>>>>>> 6998cc754f92e3b82ebcc55c96a9112f90439936

@@ -118,7 +118,7 @@ const Category = (props) => {
                 } = values;
                 return (
                   <div style={{ marginTop:'2em'}}>
-                  <div key={index} class="col-md-6 col-sm-12 col-lg-3">
+                  <div key={index} class="btn-group col-md-9 col-sm-12 col-lg-4">
                     <Card className=" shadow-lg " style={{ width: '20em' , height:'20em' , margin:'1em'}} >
                     <Card.Img variant="top" src={img || FallbackImage} style={{ width: '12em' , height:'10em' , marginLeft:'3.5em'}} />
                     <Card.Body>

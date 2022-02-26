@@ -1,20 +1,36 @@
-import React, { useEffect } from 'react';
-import Navbar from '../../components/Navbar';
-import { connect } from 'react-redux';
-import { checkAuthenticated, load_user } from '../../redux/actions/auth';
-
+import React, { useEffect } from "react";
+import Navbar from "../../components/Navbar";
+import { connect } from "react-redux";
+import { checkAuthenticated, load_user } from "../../redux/actions/auth";
+import Footer from "../../components/Footer";
+import './style.css'
+import ChatBox from './../ChatBox';
 const Layout = ({ checkAuthenticated, load_user, children }) => {
-    useEffect(() => {
-        checkAuthenticated();
-        load_user();
-    }, []);
+  useEffect(() => {
+    checkAuthenticated();
+    load_user();
+  }, []);
 
-    return (
-        <div>
-            <Navbar />
-            {children}
+  return (
+    <div>
+      <Navbar />
+      {children}
+      <input type="checkbox" id="check" />{" "}
+      <label class="chat-btn" for="check">
+        {" "}
+        <i class="fab fa-rocketchat"></i>{" "}
+        <i class="fa fa-close close"></i>{" "}
+      </label>
+      <div class="wrapper chatbox">
+        <div class="header">
+          <h6 className='text-center'>ExpenseBeqala <i class="text-danger fas fa-heart"></i> </h6>
         </div>
-    );
+        
+       <ChatBox />
+      </div>
+      <Footer />
+    </div>
+  );
 };
 
 export default connect(null, { checkAuthenticated, load_user })(Layout);
