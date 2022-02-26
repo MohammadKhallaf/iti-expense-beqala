@@ -58,6 +58,7 @@ export default function Stores() {
                 city,
                 description: discreption,
                 name: title,
+                image:img,
               } = values;
               return (
                 <div className="col-md-6 col-lg-4 me-3" key={index}>
@@ -67,7 +68,7 @@ export default function Stores() {
                     id="card"
                   >
                     <img
-                      src={FallbackImage}
+                    src={img || FallbackImage}
                       className="card-img-top"
                       alt="..."
                     />

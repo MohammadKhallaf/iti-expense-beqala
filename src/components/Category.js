@@ -6,6 +6,9 @@ import { backendAPI } from "../store";
 import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../redux/actions/types";
 import FallbackImage from "./../files/market.png";
+import { Card } from 'react-bootstrap';
+import './Category.css'
+
 const Category = (props) => {
   const dispatch = useDispatch();
 
@@ -70,68 +73,37 @@ const Category = (props) => {
 
   return (
     <>
-     
-     <h1></h1>
-      <div className="container-fluid mx-2">
-        <div className="row mt-5 mx-2">
-          <div className="col-md-3">
+      <div className = "container">
+        
             <div className="row">
+              <div class="btn-group col-md-9 col-sm-12 col-lg-4" role="group">
               {
                 (data.map(item=>item.product.category.name))
                 .filter((name,index,array)=>{
                   console.log(array,index,name)
                   return array.indexOf(name) === index;
                 })
+                
                 .map(name=>
-                  <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult(name)}
-              >
+                  
+                  <button type="button" class="btn btn-secondary btn-lg" style={{padding:'1em' , margin:'0.7em' }}
+                className=" btn btn-outline-success mb-4 "
+                onClick={() => filterResult(name)}>
                 {name}
               </button>
-                  
                   )
               }
-              <button
+              <button type="button" class="btn btn-secondary btn-lg" style={{padding:'1em' , margin:'0.7em' }}
                 className="btn btn-outline-success mb-4"
                 onClick={() => setFilter(props.storeData)}
               >
                 All
               </button>
-              {/* <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("Fruits")}
-              >
-                Fruits
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("vegtables")}
-              >
-                vegtables
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("milk")}
-              >
-                milk
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("productName")}
-              >
-                productName
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => setData(props.storeData)}
-              >
-                All
-              </button> */}
-            </div>
+             
           </div> 
-          <div className="col-md-9">
-            <div className="row ">
+          <div className="row">
+            <div className="card-group" >
+              
               {filtered.map((values, index) => {
                 const {
                   id: product_price_id,
@@ -145,40 +117,27 @@ const Category = (props) => {
                   store: store_id,
                 } = values;
                 return (
-                  <div className="col-md-6 col-lg-4 me-3" key={index}>
-                    <div
-                      className="card m-2"
-                      style={{ width: "15rem", height: "28rem" }}
-                      id="card"
-                    >
-                      <img
-                        src={img || FallbackImage}
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
-                        <p>Price: {price}</p>
-                        <p className="card-text">{discreption}</p>
-                        <div id="bttn">
-                          <button className="btn btn-light">
-                            <i className="fa-fw far fa-eye"></i>
-                          </button>
-                          <button
-                            className="btn btn-light"
-                            onClick={addToCartHandler.bind(this, values)}
-                          >
+                  <div style={{ marginTop:'2em'}}>
+                  <div key={index} class="col-md-6 col-sm-12 col-lg-3">
+                    <Card className=" shadow-lg " style={{ width: '20em' , height:'20em' , margin:'1em'}} >
+                    <Card.Img variant="top" src={img || FallbackImage} style={{ width: '12em' , height:'10em' , marginLeft:'3.5em'}} />
+                    <Card.Body>
+                        <Card.Title style={{padiingTop:'2em'}}>{title}</Card.Title>
+                        <Card.Text> Price: {price} </Card.Text>
+                        {/* <Card.Text> {discreption} </Card.Text> */}
+                        <Card.Text>  
+                          <button className="btn btn-light"
+                            onClick={addToCartHandler.bind(this, values)}>
                             <i className="fas fa-cart-arrow-down"></i>
                           </button>
-                          <button className="btn btn-light">
-                            <i className="far fa-heart"></i>
-                          </button>
-                        </div>
+                         </Card.Text>
+                    </Card.Body>
+                    </Card>
                       </div>
-                    </div>
                   </div>
                 );
               })}
+              
             </div>
           </div>
          </div>
