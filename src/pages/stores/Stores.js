@@ -7,14 +7,14 @@ import FallbackImage from "./../../files/market.png";
 import { backendAPI } from "../../store";
 import "./Stores.css";
 export default function Stores() {
-  const [data, setData] = useState({});
-  const [filtered, setFilter] = useState();
-  useEffect(() => {
-    backendAPI.get("store/store/").then((response) => {
-      console.log(response.data);
-      setData(response.data);
-    });
-  }, []);
+  // const [data, setData] = useState({});
+  // const [filtered, setFilter] = useState();
+  // useEffect(() => {
+  //   backendAPI.get("store/store/").then((response) => {
+  //     console.log(response.data);
+  //     setData(response.data);
+  //   });
+  // }, []);
 
   return (
     <>
@@ -37,8 +37,8 @@ export default function Stores() {
         </nav>
         <h3 className="text-start">Available stores</h3>
         <div className="row">
-          {/* <StoreCard /> */}
-          {Object.keys(data).length &&
+          <StoreCard />
+          {/* {Object.keys(data).length &&
             data.map((values, index) => {
               // address: "20 Salama Moussa St., AL LABAN"
               // category_name:
@@ -77,7 +77,7 @@ export default function Stores() {
                   </div>
                 </div>
               );
-            })}
+            })} */}
           <hr></hr>
         </div>
       </div>
