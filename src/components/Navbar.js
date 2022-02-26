@@ -29,9 +29,9 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
   const authLinksUser = () => (
     <>
       <li className="nav-item list-unstyled">
-        <a className="nav-link navItem" href="#!" onClick={logout_user}>
+        <Link className="nav-link navItem" to="/UserDashboard">
           Your account
-        </a>
+        </Link>
       </li>
       <li className="nav-item list-unstyled">
         <a className="nav-link navItem" href="#!" onClick={logout_user}>
@@ -73,19 +73,9 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
           </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+              
               <li className="nav-item ">
-                <Link className="nav-link navItem" aria-current="page" to="/">
-                  our services
-                </Link>
-              </li>
-
-              <li className="nav-item ">
-                <Link className="nav-link navItem" aria-current="page" to="/">
-                  our services
-                </Link>
-              </li>
-              <li className="nav-item ">
-                <Link className="nav-link navItem" to="/">
+                <Link className="nav-link navItem" to="/contactus">
                   contact us
                 </Link>
               </li>

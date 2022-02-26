@@ -66,8 +66,12 @@ export default function foo(state = initialState, action) {
         case SIGNUP_SUCCESS:
             return {
                 ...state,
-                isAuthenticated: false
+                isAuthenticated: false,
+                error: false,
             }
+        case FACEBOOK_AUTH_FAIL:
+        case GOOGLE_AUTH_FAIL:
+        case SIGNUP_FAIL:
         case LOGIN_FAIL:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
@@ -80,9 +84,6 @@ export default function foo(state = initialState, action) {
                 manager: null,
                 user: null
             }
-        case FACEBOOK_AUTH_FAIL:
-        case GOOGLE_AUTH_FAIL:
-        case SIGNUP_FAIL:
         case LOGOUT:
             localStorage.removeItem('access');
             localStorage.removeItem('refresh');
