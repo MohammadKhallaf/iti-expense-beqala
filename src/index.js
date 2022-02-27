@@ -1,10 +1,15 @@
-import React from "react";
+import React, { Suspense } from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle";
-import "./index.scss"
+import "./index.scss";
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./locales/i18n";
+ReactDOM.render(
+<Suspense fallback="loading">
 
-ReactDOM.render(<App />,document.getElementById("root")
-);
+<App />
+</Suspense>
+
+, document.getElementById("root"));

@@ -1,0 +1,14 @@
+{
+    "profile":{
+        "profile": "الملف الشخصي",
+        "preferences":"التفضيلات"
+
+    },
+    "category":{
+        "category":" تصنيف"
+    },
+    "cart":{
+        "shopping-cart":"سلة التسوق"
+    }
+
+}

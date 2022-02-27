@@ -1,4 +1,3 @@
-// <<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // =======
 import React from "react";
@@ -10,7 +9,6 @@ import Google from "./pages/Google";
 
 /* <== Pages import ==> */
 // Home
-// >>>>>>> 9ad5e1b9be1e3098e85e5397394236b6f9e9e770
 import Hero from "./pages/hero/Hero";
 
 // Product
@@ -19,43 +17,48 @@ import Stores from "./pages/stores/Stores";
 
 import Partner from "./pages/partner/Partner";
 
+import "./App.css"
+
 // authentications
 import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Activate from "./pages/activate/Activate";
 import ResetPassword from "./pages/resetpassword/ResetPassword";
 import ResetPasswordConfirm from "./pages/resetpassword/ResetPasswordConfirm";
-// <<<<<<< HEAD
 import "./App.css";
-// <<<<<<< HEAD
 import Home from "../src/components/AdminComponents/Pages/Home/Home";
 import UserList from "../src/components/AdminComponents/Pages/UserList/UserList";
-// =======
 import Layout from "./pages/layout/Layout";
-// >>>>>>> ebd0cb925ec34061491f9afd136b9f614d4ac3a1
+
 import ProductList from "../src/components/AdminComponents/Pages/ProductList/ProductList";
 // import Product from "../src/components/AdminComponents/Pages/Product/Product";
 import NewProduct from "../src/components/AdminComponents/Pages/NewProduct/NewProduct";
 import AdminProduct from "../src/components/AdminComponents/Pages/Product/AdminProduct";
+
+// import Test from "./test/pages/Test";
 
 import Facebook from "./pages/Facebook";
 import CheckMail from "./pages/checkmail/CheckMail";
 
 // user
 import UserDashboard from "./pages/user-dashboard/UserDashboard";
+import UserOverview from "./pages/user-dashboard/UserOverview";
 import UserAccount from "./pages/user-dashboard/UserAccount";
+import UserOrders from "./pages/user-dashboard/UserOrders";
 // General UI & Layouts
-import NotFoundPage from "./pages/NotFoundPage";
+import NotFoundPage from "./pages/general/NotFoundPage";
+import Thanks from "./pages/general/Thanks";
 
 // Components
 
+import Cart from "./components/cart/Cart";
+import OrderCheckout from "./pages/cart/OrderCheckout";
 // Test
 //import Test from "./test/pages/Test";
 
 // styling
 import "./App.css";
-import Cart from "./components/cart/Cart";
-import OrderCheckout from "./pages/cart/OrderCheckout";
+import { ContactUs } from "./pages/ContactUs";
 
 // =======
 
@@ -81,16 +84,26 @@ function App() {
             <Route path="/facebook" element={<Facebook />} />
             <Route path="/checkmail" element={<CheckMail />} />
             {/* User */}
-            <Route path="/account" element={<UserAccount />} />
-            <Route path="/dashboard" element={<UserDashboard />} />
+            <Route path="/dashboard" element={<UserDashboard />}>
+              <Route path="overview" element={<UserOverview />} />
+              <Route path="account" element={<UserAccount />} />
+              <Route path="orders" element={<UserOrders />} />
+            </Route>
+            {/* Stores */}
+            <Route path="/:name/stores/" element={<Stores />} />
+            <Route path="/stores/" element={<Stores />} />
             {/* Product */}
-            <Route path="/product" element={<Product />} />
+            
             <Route path="/stores" element={<Stores />} />
-
+            <Route path="/contactus" element={<ContactUs />} />
+            <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />
+            <Route path="/thanks" element={<Thanks />} />
+
+
             <Route path="/admin/" exact element={<Home />} />
             <Route path="/admin/users" element={<UserList />} />
             <Route path="/admin/ProductList" element={<ProductList />} />
@@ -103,7 +116,6 @@ function App() {
         <Cart />
       </Router>
     </Provider>
-    // >>>>>>> 9ad5e1b9be1e3098e85e5397394236b6f9e9e770
   );
 }
 
