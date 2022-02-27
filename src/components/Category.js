@@ -3,9 +3,11 @@ import { useState } from "react";
 import Categories from "./Categories";
 import Product from "./../pages/product/Product.css";
 import { backendAPI } from "../store";
+import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../redux/actions/types";
 import FallbackImage from "./../files/market.png";
+import { addToCard } from "../redux/actions/cart";
 const Category = (props) => {
   const dispatch = useDispatch();
 
@@ -13,16 +15,16 @@ const Category = (props) => {
   const [filtered, setFilter] = useState(props.storeData);
 
   /**
-   * 
+   *
    * @param  catItem category name
    */
   const filterResult = (catItem) => {
-    const result = props.storeData.filter(
-      (currentData) => {
+    const result = props.storeData.filter((currentData) => {
       return currentData.product.category.name == catItem;
     });
     setFilter(result);
   };
+  
   // const Category = (props) => {
   //   const dispatch = useDispatch();
   
@@ -47,25 +49,18 @@ const Category = (props) => {
    */
 
   const addToCartHandler = (values) => {
-    console.log(values);
+    console.log("Your cvalues are", values);
     //TODO:
-    backendAPI
-      .post("cart/", {
-        user_id: 1, //!hard coded
-        store_id: values.store_id, 
-        product_id: values.id, 
-        quantity: 1, //!hard coded
-      })
-      .then((response) => {
-        console.log(response);
-        dispatch({ type: ADD_ITEM, payload: response.data });
-      })
-      .catch((error) => console.log(error));
+    const {
+      store: store_id,
+      product: { id: product_id },
+    } = values;
+    dispatch(addToCard(1, store_id, product_id, 1)); //! hard-coded
   };
   // app -> render pages -> request |-> re render
   useEffect(() => {
     setData(props.storeData);
-    setFilter(props.storeData)
+    setFilter(props.storeData);
   }, [props.storeData]);
 
   return (
@@ -75,22 +70,20 @@ const Category = (props) => {
         <div className="row mt-5 mx-2">
           <div className="col-md-3">
             <div className="row">
-              {
-                (data.map(item=>item.product.category.name))
-                .filter((name,index,array)=>{
-                  console.log(array,index,name)
+              {data
+                .map((item) => item.product.category.name)
+                .filter((name, index, array) => {
                   return array.indexOf(name) === index;
                 })
-                .map(name=>
+                .map((name, index) => (
                   <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult(name)}
-              >
-                {name}
-              </button>
-                  
-                  )
-              }
+                    key={index}
+                    className="btn btn-outline-success mb-4"
+                    onClick={() => filterResult(name)}
+                  >
+                    {name}
+                  </button>
+                ))}
               <button
                 className="btn btn-outline-success mb-4"
                 onClick={() => setFilter(props.storeData)}
@@ -132,38 +125,30 @@ const Category = (props) => {
           <div className="col-md-9">
             <div className="row ">
               {filtered.map((values, index) => {
+                
                 const {
                   id: product_price_id,
                   product: {
                     id: product_id,
                     name: title,
                     description: discreption,
-                    img,
+                    image:img,
                   },
                   price,
                   store: store_id,
                 } = values;
                 return (
-                  <div className="col-md-6 col-lg-4 me-3" key={index}>
-                    <div
-                      className="card m-2"
-                      style={{ width: "15rem", height: "28rem" }}
-                      id="card"
-                    >
-                      <img
-                        src={img || FallbackImage}
-                        className="card-img-top"
-                        alt="..."
-                      />
-                      <div className="card-body">
-                        <h5 className="card-title">{title}</h5>
+                  <Link className="col-lg-4 col-md-8 col-sm-8  cardsGrid " to="#" style={{ textDecoration: 'none' }} key={index}>
+                  <div >
+                    <div className="card my-3 storeCard" style={{ width: "15rem" }} >
+                      <img src={ img || FallbackImage } className="card-img-top background" alt="..." style={{ height:"20rem" }}/>
+                      <div className="card-body cardTitle">
+                        <p className="card-title  cardTitle">{title}</p>
+                      </div>
+                      <div>
                         <p>Price: {price}</p>
                         <p className="card-text">{discreption}</p>
-                        <div id="bttn">
-                          <button className="btn btn-light">
-                            <i className="fa-fw far fa-eye"></i>
-                          </button>
-                          <button
+                        <button
                             className="btn btn-light"
                             onClick={addToCartHandler.bind(this, values)}
                           >
@@ -172,10 +157,42 @@ const Category = (props) => {
                           <button className="btn btn-light">
                             <i className="far fa-heart"></i>
                           </button>
-                        </div>
                       </div>
                     </div>
                   </div>
+                </Link>
+                  // <div className="col-md-6 col-lg-4 me-3" key={index}>
+                  //   <div
+                  //     className="card m-2"
+                  //     style={{ width: "15rem", height: "28rem" }}
+                  //     id="card"
+                  //   >
+                  //     <img
+                  //       src= {img || FallbackImage }
+                  //       className="card-img-top"
+                  //       alt="..."
+                  //     />
+                  //     <div className="card-body">
+                  //       <h5 className="card-title">{title}</h5>
+                  //       <p>Price: {price}</p>
+                  //       <p className="card-text">{discreption}</p>
+                  //       <div id="bttn">
+                  //         {/* <button className="btn btn-light">
+                  //           <i className="fa-fw far fa-eye"></i>
+                  //         </button> */}
+                  //         <button
+                  //           className="btn btn-light"
+                  //           onClick={addToCartHandler.bind(this, values)}
+                  //         >
+                  //           <i className="fas fa-cart-arrow-down"></i>
+                  //         </button>
+                  //         <button className="btn btn-light">
+                  //           <i className="far fa-heart"></i>
+                  //         </button>
+                  //       </div>
+                  //     </div>
+                  //   </div>
+                  // </div>
                 );
               })}
             </div>

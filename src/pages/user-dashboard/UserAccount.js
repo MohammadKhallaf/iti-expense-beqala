@@ -12,6 +12,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SectionCard from "../../components/user-dashboard/SectionCard";
+import Test from "../../test/pages/Test";
 /**
  * User Account Page
  * |- Section Card
@@ -75,22 +76,16 @@ const CardRowInfo = (props) => {
 };
 
 const UserAccount = () => {
-
-
   const { t, i18n } = useTranslation();
 
   // i18n.changeLanguage("ar");
 
-
   return (
-    <Container as="section" className="p-5 m-auto">
+    <>
       <h1 className="pb-3">My Account</h1>
       <Row className="gy-4">
         {/* Profile Details */}
-        <SectionCard icon="user" header=
-        {t("profile.profile","profile")}
-        >
-          
+        <SectionCard icon="user" header={t("profile.profile", "profile")}>
           <CardRowInfo
             title="Photo"
             type="image"
@@ -147,15 +142,18 @@ const UserAccount = () => {
           {/* photo */}
         </SectionCard>
 
-        <SectionCard header={t("profile.preferences","preferences")} icon="sliders-h">
+        <SectionCard
+          header={t("profile.preferences", "preferences")}
+          icon="sliders-h"
+        >
           <CardRowInfo
-            onSubmit={async() => {
+            onSubmit={async () => {
               const test = await i18n.changeLanguage("ar");
-              console.log("LANG",test)
+              console.log("LANG", test);
             }}
             title="Language"
             input={
-              <FormSelect >
+              <FormSelect>
                 <option>English</option>
                 <option>عربي</option>
               </FormSelect>
@@ -171,7 +169,7 @@ const UserAccount = () => {
           </CardRowInfo>
         </SectionCard>
       </Row>
-    </Container>
+    </>
   );
 };
 
