@@ -1,0 +1,15 @@
+.nav__item:hover {
+  border-left: 5px solid green;
+  color: green !important;
+  /* background-color: rgba(202, 197, 197, 0.274); */
+  cursor: pointer;
+
+  box-shadow: 0px 20px 20px -20px #bebebe, 0px 20px 20px 15px #ffffff;
+}
+.active {
+  border-left: 5px solid green;
+  color: green;
+  box-shadow: 0px 20px 20px -20px #bebebe, 0px 20px 20px 15px #ffffff;
+  /* background-color: rgba(202, 197, 197, 0.274); */
+  cursor: pointer;
+}
