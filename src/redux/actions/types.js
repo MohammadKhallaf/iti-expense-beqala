@@ -24,4 +24,5 @@ export const CART = 'CHANGE_CART';
 export const SHOW_CART = 'SHOW_CART';
 export const ADD_ITEM = 'ADD_ITEM_TO_CART';
 export const CHECKOUT = 'VIEW_CHCKOUT';
+export const USER_STORES = 'UPDATE_USER_STORES';
 
