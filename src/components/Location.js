@@ -10,7 +10,7 @@ export default function Location() {
         <div className="row text-start justify-content-center py-5 " >
             <h2 className="fw-bold text-center " >Select your location </h2>
 
-            <LocationCard name={"alex"} loc={require("./../files/Location/alex.jpg")} />
+            <LocationCard name={"alexandria"} loc={require("./../files/Location/alex.jpg")} />
             <LocationCard name={"cairo"} loc={require("./../files/Location/cairo.jpg")}  />
        
         </div>
