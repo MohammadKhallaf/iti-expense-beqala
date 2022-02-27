@@ -30,23 +30,12 @@ export default function SideBar() {
               </Link>
             </li>
             <li className="sidebarListItem ">
-              <Link className="link" to={"/admin"}>
+              <Link className="link" to={"/admin/newproduct"}>
                 <Timeline className="sidebarIcon" />
-                Analytics
+                Add product
               </Link>
             </li>
             <li className="sidebarListItem ">
-              <Link className="link" to={"/admin"}>
-                <TrendingUp className="sidebarIcon" />
-                Sales
-              </Link>
-            </li>
-          </ul>
-        </div>
-        <div className="sidebarMenu">
-          <h3 className="sidebarTittle">Quick Menu</h3>
-          <ul className="sidebarList">
-            <li className="sidebarListItem active ">
               <Link className="link" to={"/admin/users"}>
                 <PersonOutline className="sidebarIcon" />
                 Users
@@ -58,19 +47,30 @@ export default function SideBar() {
                 products
               </Link>
             </li>
-            <li className="sidebarListItem ">
+            {/* <li className="sidebarListItem ">
+              <Link className="link" to={"/admin"}>
+                <TrendingUp className="sidebarIcon" />
+                Sales
+              </Link>
+            </li> */}
+          </ul>
+        </div>
+        <div className="sidebarMenu">
+          {/* <h3 className="sidebarTittle">Quick Menu</h3> */}
+          <ul className="sidebarList">
+            {/* <li className="sidebarListItem ">
               <AttachMoney className="sidebarIcon" />
               Transcations
             </li>
             <li className="sidebarListItem ">
               <BarChart className="sidebarIcon" />
               Reports
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTittle">Notifications</h3>
-          <ul className="sidebarList">
+          {/* <h3 className="sidebarTittle">Notifications</h3> */}
+          {/* <ul className="sidebarList">
             <li className="sidebarListItem active ">
               <MailOutline className="sidebarIcon" />
               Home
@@ -83,11 +83,11 @@ export default function SideBar() {
               <ChatBubbleOutline className="sidebarIcon" />
               Sales
             </li>
-          </ul>
+          </ul> */}
         </div>
         <div className="sidebarMenu">
-          <h3 className="sidebarTittle">Staff</h3>
-          <ul className="sidebarList">
+          {/* <h3 className="sidebarTittle">Staff</h3> */}
+          {/* <ul className="sidebarList">
             <li className="sidebarListItem active ">
               <WorkOutline className="sidebarIcon" />
               Manage
@@ -100,7 +100,7 @@ export default function SideBar() {
               <Error className="sidebarIcon" />
               Reports
             </li>
-          </ul>
+          </ul> */}
         </div>
       </div>
     </div>

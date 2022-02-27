@@ -92,7 +92,7 @@ const Cart = (props) => {
       // <|--remove all--|>
       case "ZERO":
         all_data[index].cart_details.quantity = 0;
-        
+
         console.log("ZERO", productID);
         break;
       case "CHANGE":
@@ -111,12 +111,14 @@ const Cart = (props) => {
       store_id: 5, //! hard-coded
       quantity: itemData[index].cart_details.quantity,
     };
-    setLoading(true)
+    setLoading(true);
     backendAPI
       .put("cart/", cartItemData)
       .then((response) => console.log("put request, response =>", response))
-      .then(res=>{dispatch(getCartItems)
-      setLoading(false)});
+      .then((res) => {
+        dispatch(getCartItems);
+        setLoading(false);
+      });
   };
 
   const ckeckoutHandler = () => {

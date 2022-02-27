@@ -1,10 +1,9 @@
 import { backendAPI } from "../../store";
 import { CHECKOUT } from "./types";
 
-
 /**
- * 
- * Load the data in the shopping cart 
+ *
+ * Load the data in the shopping cart
  */
 export const getCartItems = (dispatch) => {
   backendAPI
