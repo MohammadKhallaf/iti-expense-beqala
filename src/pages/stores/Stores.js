@@ -15,7 +15,7 @@ const Showstore = () => {
   const [store, setstore] = useState([])
 
   const fetchstore = async () => {
-    const result = await backendAPI.get(`location/stores/${city.charAt(0).toUpperCase() + city.slice(1)}/`)
+    const result = await backendAPI.get(`location/stores/Cairo/`)
 
     console.log(result.data)
     setstore(result.data)
