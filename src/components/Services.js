@@ -14,19 +14,16 @@ export default function Services() {
           <img className="bd-placeholder-img rounded-circle border" width="200" height="200" src ={Supermaket} role="img" />
     
             <h2 className="my-3" >Supermarket</h2>
-            <p><a className="btn btn-outline-secondary" href="#">View Srores </a></p>
           </div>
           <div className="col-lg-4">
             <img className="bd-placeholder-img rounded-circle border"  width="200" height="200" src ={Bakery} role="img" />
     
             <h2 className="my-3" >Bakery</h2>
-            <p><a className="btn btn-outline-secondary" href="#">View Srores </a></p>
           </div>
           <div className="col-lg-4">
           <img className="bd-placeholder-img rounded-circle border" width="200" height="200" src ={Pharmacy} role="img" />
     
             <h2 className="my-3" >Pharmacy</h2>
-            <p><a className="btn btn-outline-secondary" href="#">View Srores </a></p>
           </div>
         </div>
         </div>

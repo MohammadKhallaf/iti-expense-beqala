@@ -25,22 +25,24 @@ const ResetPassword = ({ reset_password }) => {
     }
 
     return (
-        <div className='container mt-5 pt-5'>
-            <h1>Request Password Reset:</h1>
+        <div className='container m-5 p-5'>
+        <div className='border border-secondary m-5 p-5'><h1>Request Password Reset:</h1>
             <form onSubmit={e => onSubmit(e)}>
                 <div className='form-group'>
                     <input
-                        className='form-control'
+                        className='form-control '
                         type='email'
-                        placeholder='Email'
+                        placeholder='Enter Your Email'
                         name='email'
                         value={email}
                         onChange={e => onChange(e)}
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Reset Password</button>
+                <button className='btn btn-primary text-center m-4' type='submit'>Reset Password</button>
             </form>
+        </div>
+            
         </div>
     );
 };

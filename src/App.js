@@ -1,4 +1,3 @@
-// <<<<<<< HEAD
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // =======
 import React from "react";
@@ -10,7 +9,6 @@ import Google from "./pages/Google";
 
 /* <== Pages import ==> */
 // Home
-// >>>>>>> 9ad5e1b9be1e3098e85e5397394236b6f9e9e770
 import Hero from "./pages/hero/Hero";
 
 // Product
@@ -18,6 +16,8 @@ import Product from "./pages/product/Product";
 import Stores from "./pages/stores/Stores";
 
 import Partner from "./pages/partner/Partner";
+
+import "./App.css"
 
 // authentications
 import Register from "./pages/register/Register";
@@ -43,8 +43,10 @@ import CheckMail from "./pages/checkmail/CheckMail";
 import UserDashboard from "./pages/user-dashboard/UserDashboard";
 import UserOverview from "./pages/user-dashboard/UserOverview";
 import UserAccount from "./pages/user-dashboard/UserAccount";
+import UserOrders from "./pages/user-dashboard/UserOrders";
 // General UI & Layouts
 import NotFoundPage from "./pages/general/NotFoundPage";
+import Thanks from "./pages/general/Thanks";
 
 // Components
 
@@ -55,8 +57,7 @@ import OrderCheckout from "./pages/cart/OrderCheckout";
 
 // styling
 import "./App.css";
-import UserOrders from "./pages/user-dashboard/UserOrders";
-import Thanks from "./pages/general/Thanks";
+import { ContactUs } from "./pages/ContactUs";
 
 // =======
 
@@ -91,6 +92,9 @@ function App() {
             <Route path="/:name/stores/" element={<Stores />} />
             <Route path="/stores/" element={<Stores />} />
             {/* Product */}
+            
+            <Route path="/stores" element={<Stores />} />
+            <Route path="/contactus" element={<ContactUs />} />
             <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}
