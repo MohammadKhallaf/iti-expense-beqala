@@ -97,13 +97,9 @@ const Showstore = ({ manager }) => {
     </>
   )
 }
-<<<<<<< HEAD
-export default Showstore;
-=======
 const mapStateToProps = (state) => ({
   manager: state.auth.manager
 })
 
 export default connect(mapStateToProps, { login } )(Showstore);
 
->>>>>>> 6998cc754f92e3b82ebcc55c96a9112f90439936

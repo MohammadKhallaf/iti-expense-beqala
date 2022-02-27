@@ -1,4 +1,4 @@
- /* #card:hover{
+  #card:hover{
     border:rgb(0, 128, 0) 0.2em solid;
     cursor: pointer;   
 }
@@ -14,12 +14,7 @@
 .btn-outline-success{
     color: green;
 }
-<<<<<<< HEAD
- */
-
-=======
 .card-img-top{
     width:100%;
     height:auto;
   }
->>>>>>> 6998cc754f92e3b82ebcc55c96a9112f90439936

@@ -191,65 +191,12 @@ const Showstore = () => {
         </nav>
         <h3 className="text-start">Available </h3>
         <div className="row">
-<<<<<<< HEAD
-          {/* <StoreCard /> */}
-          {Object.keys(data).length &&
-            data.map((values, index) => {
-              // address: "20 Salama Moussa St., AL LABAN"
-              // category_name:
-              //    id: 3
-              //    name: "SuperMarket"
-              // city: "Alexandria"
-              // description: "Best Store. Best Quality"
-              // email: "zahran@gmail.com"
-              // id: 7
-              // name: "Zahran"
-              // phone: "(+20)0112-704-4823"
-              // user_account: 1
-              
-
-              const {
-                id,
-                city,
-                description: discreption,
-                name: title,
-                image:img,
-              } = values;
-              return (
-                <div className="col-md-6 col-lg-4 me-3" key={index}>
-                  <div
-                    className="card m-2"
-                    style={{ width: "15rem", height: "28rem" }}
-                    id="card"
-                  >
-                    <img
-                    src={img || FallbackImage}
-                      className="card-img-top"
-                      alt="..."
-                    />
-                    <div className="card-body">
-                      <h5 className="card-title">{title}</h5>
-                      <p>City: {city}</p>
-                      <p className="card-text">{discreption}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-=======
           <Category storeData={store}/>
->>>>>>> 6998cc754f92e3b82ebcc55c96a9112f90439936
           <hr></hr>
         </div>
       </div> */}
     </>
   )
 }
-<<<<<<< HEAD
-
-
-
-=======
 export default Showstore;
->>>>>>> 6998cc754f92e3b82ebcc55c96a9112f90439936
 
