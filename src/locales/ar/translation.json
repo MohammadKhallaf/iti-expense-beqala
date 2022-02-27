@@ -5,6 +5,12 @@
 
     },
     "category":{
-        "category":" تصنيف"
+        "category":" تصنيف",
+        "Bakery":"مخبز",
+        "Pharmacy":"صيدلية"
+    },
+    "product":{
+        
     }
+
 }

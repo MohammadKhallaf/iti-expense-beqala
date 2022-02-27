@@ -46,9 +46,11 @@
 // }
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
 const StoreCard = (props) => {
+  const { t, i18n } = useTranslation();
   const [data, setData] = useState(props.storeData);
   const [filtered, setFilter] = useState(props.storeData);
 
@@ -65,6 +67,7 @@ const StoreCard = (props) => {
   };
 
   useEffect(() => {
+    i18n.changeLanguage("ar");
     setData(props.storeData);
     setFilter(props.storeData)
   }, [props.storeData]);
@@ -87,7 +90,7 @@ const StoreCard = (props) => {
                       className="btn btn-outline-success mb-4"
                       onClick={() => filterResult(name)}
                     >
-                      {name}
+                      {t(`category.${name}`,name)}
                     </button>
 
                   )
