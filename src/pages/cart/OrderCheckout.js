@@ -1,17 +1,34 @@
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router";
 import SectionCard from "../../components/user-dashboard/SectionCard";
 import { PAYPAL_ACCOUNT } from "../../credits.js";
-import { getCartItems } from "../../redux/actions/cart";
+import { getCartItems, updateCheckoutState } from "../../redux/actions/cart";
+import { backendAPI } from "../../store";
 
 const OrderCheckout = () => {
   const order = useSelector((state) => state.cart.checkout);
+  const [done, setDone] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   useEffect(() => {
-    dispatch(getCartItems);
-  }, []);
+    if (done) {
+      backendAPI
+        .put("cart/update/checkout/", {
+          user_id: order.order_details.user,
+          store_id: order.order_details.store,
+          state: "pending",
+        })
+        .then((response) => {
+          console.log("update==>", response.data);
+          navigate("/thanks")
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [done]);
+
   return (
     <Container className="pt-5">
       <Row className="gy-4">
@@ -77,6 +94,7 @@ const OrderCheckout = () => {
                 return actions.order.capture().then((details) => {
                   const name = details.payer.name.given_name;
                   alert(`Transaction completed by ${name}`);
+                  setDone(true);
                 });
               }}
             />
