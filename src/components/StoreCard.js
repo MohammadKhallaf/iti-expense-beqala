@@ -49,8 +49,10 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
 const StoreCard = (props) => {
-  const [data, setData] = useState(props.storeData);
-  const [filtered, setFilter] = useState(props.storeData);
+const [data, setData] = useState(props.storeData);
+const [filtered, setFilter] = useState(props.storeData);
+const [input, setInput] = useState('');
+
 
   /**
    * 
@@ -69,9 +71,29 @@ const StoreCard = (props) => {
     setFilter(props.storeData)
   }, [props.storeData]);
 
+  const handelonchange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+  useEffect(()=>{
+  if (input.length > 0) {
+    setFilter(data.filter((item, index, array) => {
+      console.log(array, index)
+      return (item.name.toLowerCase().indexOf(input.toLowerCase()) > -1);
+    }));
+    console.log(data)
+    console.log(input)
+  }
+  else{
+    setFilter(data)
+  }
+},[input])
+
   return (
     <>
       <h1></h1>
+   <input type="text" placeholder="search" style={{ width: '12em', height: '2em' }} onChange={handelonchange} value={input} />
+
       <div className="container-fluid mx-2">
         <div className="row mt-5 mx-2">
           <div className="col-md-3">

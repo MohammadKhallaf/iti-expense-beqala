@@ -8,11 +8,13 @@ import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../redux/actions/types";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
+import { Card } from 'react-bootstrap';
 const Category = (props) => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState(props.storeData);
   const [filtered, setFilter] = useState(props.storeData);
+  const [input, setInput] = useState('');
 
   /**
    *
@@ -63,20 +65,40 @@ const Category = (props) => {
     setFilter(props.storeData);
   }, [props.storeData]);
 
+  const handelonchange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+  useEffect(()=>{
+  if (input.length > 0) {
+    setFilter(data.filter((item, index, array) => {
+      console.log(array, index)
+      return (item.product.name.toLowerCase().indexOf(input.toLowerCase()) > -1);
+    }));
+    console.log(data)
+    console.log(input)
+  }
+  else{
+    setFilter(data)
+  }
+
+},[input])
+
+
   return (
     <>
-      <h1></h1>
+    <input type="text" placeholder="search" style={{ width: '12em', height: '2em' }} onChange={handelonchange} value={input} />
       <div className="container-fluid mx-2">
         <div className="row mt-5 mx-2">
           <div className="col-md-3">
-            <div className="row">
+            <div className="btn-group col-md-9 col-sm-12 col-lg-4" role="group">
               {data
                 .map((item) => item.product.category.name)
                 .filter((name, index, array) => {
                   return array.indexOf(name) === index;
                 })
                 .map((name, index) => (
-                  <button
+                  <button type="button" class="btn btn-secondary btn-lg" style={{ padding: '1em', margin: '0.7em' }}
                     key={index}
                     className="btn btn-outline-success mb-4"
                     onClick={() => filterResult(name)}
@@ -84,46 +106,17 @@ const Category = (props) => {
                     {name}
                   </button>
                 ))}
-              <button
+              <button type="button" class="btn btn-secondary btn-lg" style={{ padding: '1em', margin: '0.7em' }}
                 className="btn btn-outline-success mb-4"
                 onClick={() => setFilter(props.storeData)}
               >
                 All
               </button>
-              {/* <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("Fruits")}
-              >
-                Fruits
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("vegtables")}
-              >
-                vegtables
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("milk")}
-              >
-                milk
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("productName")}
-              >
-                productName
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => setData(props.storeData)}
-              >
-                All
-              </button> */}
+              
             </div>
           </div>
-          <div className="col-md-9">
-            <div className="row ">
+          <div className="row">
+            <div className="card-group">
               {filtered.map((values, index) => {
                 
                 const {
@@ -140,59 +133,27 @@ const Category = (props) => {
                 return (
                   <Link className="col-lg-4 col-md-8 col-sm-8  cardsGrid " to="#" style={{ textDecoration: 'none' }} key={index}>
                   <div >
-                    <div className="card my-3 storeCard" style={{ width: "15rem" }} >
-                      <img src={ img || FallbackImage } className="card-img-top background" alt="..." style={{ height:"20rem" }}/>
-                      <div className="card-body cardTitle">
-                        <p className="card-title  cardTitle">{title}</p>
-                      </div>
-                      <div>
-                        <p>Price: {price}</p>
-                        <p className="card-text">{discreption}</p>
-                        <button
-                            className="btn btn-light"
-                            onClick={addToCartHandler.bind(this, values)}
-                          >
-                            <i className="fas fa-cart-arrow-down"></i>
-                          </button>
-                          <button className="btn btn-light">
-                            <i className="far fa-heart"></i>
-                          </button>
-                      </div>
+                    <div style={{ marginTop: '2em'}}>
+                    <div key={index}>
+                      <Card className=" shadow-lg " style={{ width: '20em', height: '20em', margin: '1em'}} >
+                        <Card.Img variant="top" src={img || FallbackImage} style={{ width: '12em', height: '10em', marginLeft: '3.5em' }} />
+                        <Card.Body>
+                          <Card.Title style={{ padiingTop: '2em' }}>{title}</Card.Title>
+                          <Card.Text> Price: {price} </Card.Text>
+                          {/* <Card.Text> {discreption} </Card.Text> */}
+                          <Card.Text>
+                            <button className="btn btn-light"
+                              onClick={addToCartHandler.bind(this, values)}>
+                              <i className="fas fa-cart-arrow-down"></i>
+                            </button>
+                          </Card.Text>
+                        </Card.Body>
+                      </Card>
                     </div>
                   </div>
+                  </div>
                 </Link>
-                  // <div className="col-md-6 col-lg-4 me-3" key={index}>
-                  //   <div
-                  //     className="card m-2"
-                  //     style={{ width: "15rem", height: "28rem" }}
-                  //     id="card"
-                  //   >
-                  //     <img
-                  //       src= {img || FallbackImage }
-                  //       className="card-img-top"
-                  //       alt="..."
-                  //     />
-                  //     <div className="card-body">
-                  //       <h5 className="card-title">{title}</h5>
-                  //       <p>Price: {price}</p>
-                  //       <p className="card-text">{discreption}</p>
-                  //       <div id="bttn">
-                  //         {/* <button className="btn btn-light">
-                  //           <i className="fa-fw far fa-eye"></i>
-                  //         </button> */}
-                  //         <button
-                  //           className="btn btn-light"
-                  //           onClick={addToCartHandler.bind(this, values)}
-                  //         >
-                  //           <i className="fas fa-cart-arrow-down"></i>
-                  //         </button>
-                  //         <button className="btn btn-light">
-                  //           <i className="far fa-heart"></i>
-                  //         </button>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </div>
+                  
                 );
               })}
             </div>

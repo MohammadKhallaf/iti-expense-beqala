@@ -12,7 +12,7 @@ export default function Location() {
 
             <LocationCard name={"alexandria"} loc={require("./../files/Location/alex.jpg")} />
             <LocationCard name={"cairo"} loc={require("./../files/Location/cairo.jpg")}  />
-       
+            
         </div>
       </div>
       </section>
