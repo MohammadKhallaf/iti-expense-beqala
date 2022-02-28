@@ -49,9 +49,9 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
 const StoreCard = (props) => {
-  const [data, setData] = useState(props.storeData);
-  const [filtered, setFilter] = useState(props.storeData);
-  const [input, setInput] = useState('');
+const [data, setData] = useState(props.storeData);
+const [filtered, setFilter] = useState(props.storeData);
+const [input, setInput] = useState('');
 
 
   /**
@@ -77,19 +77,17 @@ const StoreCard = (props) => {
   };
   useEffect(()=>{
   if (input.length > 0) {
-    setFilter(filtered.filter((values, index, array) => {
+    setFilter(data.filter((item, index, array) => {
       console.log(array, index)
-      return (values.toLowerCase().indexOf(input.toLowerCase()) > -1);
+      return (item.name.toLowerCase().indexOf(input.toLowerCase()) > -1);
     }));
-    console.log(filtered)
+    console.log(data)
     console.log(input)
   }
   else{
-    setFilter(filtered)
+    setFilter(data)
   }
-
 },[input])
-
 
   return (
     <>
