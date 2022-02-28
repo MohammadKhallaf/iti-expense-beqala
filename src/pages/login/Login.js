@@ -5,8 +5,7 @@ import { login } from "../../redux/actions/auth";
 import axios from "axios";
 
 const Login = ({ login, isAuthenticated, error, manager }) => {
-
-    const [passwordShown, setPasswordShown] = useState(false);
+  const [passwordShown, setPasswordShown] = useState(false);
 
   const [Regdisplayi, setRegdisplayi] = useState({
     show: { display: "inline" },
@@ -83,8 +82,12 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
     <div className="container-fluid text-center regist mt-5 pt-5">
       <div className="row justify-content-center">
         <div className="border border-secondary col-lg-4 col-md-6 col-sm-12 m-5 p-5 ">
-        <h2> Welcome to ExpenseBeqala <i class="text-danger fas fa-heart"></i></h2>
-          
+          <h2>
+            {" "}
+            Welcome to ExpenseBeqala{" "}
+            <i className="text-danger fas fa-heart"></i>
+          </h2>
+
           <h3>Login now and enjoy!</h3>
           {error ? error_m() : empty()}
           <form onSubmit={(e) => onSubmit(e)}>
@@ -111,26 +114,31 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
                 required
               />
               <div className="field-icon col-lg-2 col-md-2 col-sm-2  text-end ">
-                  <button
-                    className="togglePasswd"
-                    style={Regdisplayi.show}
-                    onClick={showRegPassword}
-                  >
-                    <i className="far fa-eye"></i>
-                  </button>
-                  <button
-                    className="togglePasswd"
-                    style={Regdisplayi.hide}
-                    onClick={hideRegPassword}
-                  >
-                    <i className="far fa-eye-slash navicon"></i>
-                  </button>
-                </div><p className="mt-2">
-            
-            <Link className="text-dark" to="/reset-password">Forgot your Password?</Link>
-          </p>
+                <button
+                  className="togglePasswd"
+                  style={Regdisplayi.show}
+                  onClick={showRegPassword}
+                >
+                  <i className="far fa-eye"></i>
+                </button>
+                <button
+                  className="togglePasswd"
+                  style={Regdisplayi.hide}
+                  onClick={hideRegPassword}
+                >
+                  <i className="far fa-eye-slash navicon"></i>
+                </button>
+              </div>
+              <p className="mt-2">
+                <Link className="text-dark" to="/reset-password">
+                  Forgot your Password?
+                </Link>
+              </p>
             </div>
-            <button className="btn btn-lg btn-dark my-2 btn-r col-lg-7 col-md-7 col-sm-12" type="submit">
+            <button
+              className="btn btn-lg btn-dark my-2 btn-r col-lg-7 col-md-7 col-sm-12"
+              type="submit"
+            >
               Login
             </button>
           </form>
@@ -139,19 +147,18 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
             className="btn m-2 btn-light border border-secondary  btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithGoogle}
           >
-          <i class="fab fa-google m-2 "></i> continue with Google
+            <i className="fab fa-google m-2 "></i> continue with Google
           </button>
           <br className="p-4 m-4" />
           <button
             className="btn p-2 m-2 btn-primary btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithFacebook}
           >
-          <i class="fab fa-facebook-f m-2"> </i>continue with Facebook
+            <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
           </button>
           <p className="mt-3">
             Don't have an account? <Link to="/register">Sign Up</Link>
           </p>
-          
         </div>
       </div>
     </div>

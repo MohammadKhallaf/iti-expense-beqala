@@ -53,7 +53,7 @@ import Thanks from "./pages/general/Thanks";
 import Cart from "./components/cart/Cart";
 import OrderCheckout from "./pages/cart/OrderCheckout";
 // Test
-//import Test from "./test/pages/Test";
+import Test from "./test/pages/Test";
 
 // styling
 import "./App.css";
@@ -98,7 +98,7 @@ function App() {
             <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}
-            {/* <Route path="/test" element={<Test />} /> */}
+            <Route path="/test" element={<Test />} />
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/thanks" element={<Thanks />} />
 
