@@ -119,10 +119,8 @@ const StoreCard = (props) => {
                     <div >
                       <div className="card my-3 storeCard" style={{ width: "15rem" }} >
                         <img src={img || FallbackImage} className="card-img-top background" alt="..." style={{ height: "20rem" }} />
-                        <div className="card-body cardTitle">
-                          <p className="card-title  cardTitle">{title}</p>
+                        <div className="card-body cardTitle">{t(`category.${title}`,title)}
                         </div>
-
                       </div>
                     </div>
                   </Link>
