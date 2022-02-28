@@ -30,7 +30,7 @@
 }
 .storeCard:hover{
     transform: scale(1.05) translateZ(0);
-    transition: 
+    transition:  all3
     transform 200ms linear;
   }
 
@@ -47,11 +47,11 @@
    
   }
   .storeCard:hover .background{
-    transform: scale(1.2) translateZ(0);
+    transform: scale(1.015) translateZ(0);
   }
 
   .storeCard:not(:hover) .background{
-    filter: brightness(0.75)   blur(1px);
+    filter: brightness(0.8)   blur(0.5px);
   }
 
 .cardTitle
