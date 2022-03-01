@@ -12,7 +12,6 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SectionCard from "../../components/user-dashboard/SectionCard";
-import Test from "../../test/pages/Test";
 /**
  * User Account Page
  * |- Section Card

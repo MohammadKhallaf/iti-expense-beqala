@@ -43,26 +43,32 @@ export default function ProductList() {
 
   useEffect(() => {
     backendAPI
-      .get(`product/product/`)
+      .get(`product/product/`, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      })
       .then((res) => {
         setProductData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
+        // console.log(res.data);
+      });
+    // .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = (e) => {
+  const handleDelete = () => {
     // setData(data.filter((item) => item.id !== id));
-    console.log("deletedItem", e);
-    backendAPI
-      .delete(`product/product/${e}`)
-      .then((res) => {
-        backendAPI.get(`product/product/`).then((res) => {
-          setProductData(res.data);
-          console.log(res.data);
-        });
-      })
-      .catch((err) => console.log(err));
+    // console.log("deletedItem", e);
+    console.log("delete function");
+
+    // backendAPI
+    //   .delete(`product/product/${e}`)
+    //   .then((res) => {
+    //     backendAPI.get(`product/product/`).then((res) => {
+    //       setProductData(res.data);
+    //       console.log(res.data);
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
     // setProductData(res.data);
   };
 
@@ -70,15 +76,16 @@ export default function ProductList() {
     console.log("rerender");
   }, [productData]);
 
-  const handleEdit = (e) => {
+  const handleEdit = () => {
     // console.log(e.target.value);
-    backendAPI
-      .get(`product/product/${e}`)
-      .then((res) => {
-        setProductData(res.data);
-        console.log(res.data);
-      })
-      .catch((err) => console.log(err));
+    console.log("handle functon");
+    // backendAPI
+    //   .get(`product/product/${e}`)
+    //   .then((res) => {
+    //     setProductData(res.data);
+    //     // console.log("+++++++++++++" + res.data);
+    //   })
+    //   .catch((err) => console.log(err));
   };
 
   const columns = [
@@ -90,7 +97,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            {/* <img src={params.row.avatar} alt="" /> */}
+            <img src={params.row.image} alt="" />
             {params.row.name}
           </div>
         );
@@ -137,20 +144,17 @@ export default function ProductList() {
       headerName: "action",
       width: 150,
       renderCell: (params) => {
-        console.log(params.row.id);
+        // console.log(params.row.id);
         return (
           <>
             <Link to={"/admin/Product/"}>
-              <button
-                onClick={(e) => handleEdit(e.target)}
-                className="productListEdit"
-              >
+              <button onClick={() => handleEdit()} className="productListEdit">
                 Edit
               </button>
             </Link>
             <DeleteOutlineIcon
               className="productListDelete"
-              onClick={(e) => handleDelete(params.row.id)}
+              onClick={() => handleDelete()}
             />
           </>
         );
@@ -167,7 +171,7 @@ export default function ProductList() {
             disableSelectionOnClick
             rows={productData}
             columns={columns}
-            pageSize={16}
+            pageSize={10}
             rowsPerPageOptions={[5]}
             checkboxSelection
           />

@@ -11,6 +11,7 @@ export default function NewProduct() {
   const [description, setDescription] = useState("");
   const [brand, setBrand] = useState("");
   const [category, setCategory] = useState("");
+  const [image, setImage] = useState("");
 
   const postData = (event) => {
     event.preventDefault();
@@ -22,6 +23,7 @@ export default function NewProduct() {
         description,
         brand,
         category,
+        image,
       })
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
@@ -30,6 +32,7 @@ export default function NewProduct() {
     console.log(description);
     console.log(brand);
     console.log(category);
+    console.log(image);
   };
 
   return (
@@ -37,51 +40,68 @@ export default function NewProduct() {
       {/* <Navbar /> */}
       <div className="newProductContainer">
         <SideBar />
-        <div className="newProduct">
+        <div className="newProduct ">
           <h1 className="addProductTitle">Create New Product</h1>
-          <form className="addProductForm" onSubmit={postData}>
+          <form className="addProductForm container " onSubmit={postData}>
             {/* <div className="addProductItem product-id">
               <label>id</label>
-              <input
+              <input className="form-control"
                 onChange={(e) => setId(e.target.value)}
                 type="text"
                 placeholder="product ID"
               />
             </div> */}
-            <div className="addProductItem product-name">
+            <div className="addProductItem product-name w-100">
               <label>name</label>
               <input
+                value={"crystal"}
+                className="form-control"
                 onChange={(e) => setName(e.target.value)}
                 type="text"
-                placeholder="Add new product"
+                // placeholder="Add new product"
               />
             </div>
-            <div className="addProductItem product-description">
+            <div className="addProductItem product-description w-100">
               <label>Description</label>
               <input
+                className="form-control"
                 onChange={(e) => setDescription(e.target.value)}
                 type="text"
                 placeholder="123"
               />
             </div>
-            <div className="addProductItem product-brand">
+            <div className="addProductItem product-brand w-100">
               <label>Brand</label>
               <input
+                className="form-control"
                 onChange={(e) => setBrand(e.target.value)}
                 type="text"
                 placeholder="123"
               />
             </div>
-            <div className="addProductItem product-category">
+            <div className="addProductItem product-category w-100">
               <label>Category</label>
               <input
+                className="form-control"
                 onChange={(e) => setCategory(e.target.value)}
                 type="text"
                 placeholder="123"
               />
             </div>
+            <div className="addProductItem product-image w-100">
+              <label>image</label>
+              <input
+                className="form-control"
+                onChange={(e) => setImage(e.target.value)}
+                type="text"
+                placeholder="image link"
+              />
+            </div>
 
-            <button className="addProductButton" type="submit">
+            <button
+              className="addProductButton form-control btn btn-outline-info"
+              type="submit"
+            >
               Create
             </button>
           </form>

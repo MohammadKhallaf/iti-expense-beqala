@@ -35,12 +35,12 @@ export default function SideBar() {
                 Add product
               </Link>
             </li>
-            <li className="sidebarListItem ">
+            {/* <li className="sidebarListItem ">
               <Link className="link" to={"/admin/users"}>
                 <PersonOutline className="sidebarIcon" />
                 Users
               </Link>
-            </li>
+            </li> */}
             <li className="sidebarListItem ">
               <Link className="link" to={"/admin/ProductList"}>
                 <AddShoppingCart className="sidebarIcon" />
