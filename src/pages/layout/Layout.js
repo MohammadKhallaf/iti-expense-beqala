@@ -3,8 +3,8 @@ import Navbar from "../../components/Navbar";
 import { connect } from "react-redux";
 import { checkAuthenticated, load_user } from "../../redux/actions/auth";
 import Footer from "../../components/Footer";
-import './style.css'
-import ChatBox from './../ChatBox';
+import "./style.css";
+import ChatBox from "./../ChatBox";
 const Layout = ({ checkAuthenticated, load_user, children }) => {
   useEffect(() => {
     checkAuthenticated();
@@ -25,10 +25,10 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
         <div className="header">
           <h6 className='text-center'>ExpenseBeqala <i className="text-danger fas fa-heart"></i> </h6>
         </div>
-        
-       <ChatBox />
+
+        <ChatBox />
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
