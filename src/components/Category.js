@@ -10,11 +10,10 @@ import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
 import { Card } from 'react-bootstrap';
 const Category = (props) => {
-  const dispatch = useDispatch();
-
-  const [data, setData] = useState(props.storeData);
-  const [filtered, setFilter] = useState(props.storeData);
-  const [input, setInput] = useState('');
+const dispatch = useDispatch();
+const [data, setData] = useState(props.storeData);
+const [filtered, setFilter] = useState(props.storeData);
+const [input, setInput] = useState('');
 
   /**
    *
@@ -48,7 +47,11 @@ const Category = (props) => {
    *
    * check the response from the server
    * if the response is succeed => add to cart in the frontend
+   * 
    */
+
+
+  
 
   const addToCartHandler = (values) => {
     console.log("Your cvalues are", values);

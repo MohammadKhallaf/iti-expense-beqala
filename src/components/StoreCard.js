@@ -48,7 +48,9 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
+import { useTranslation } from "react-i18next";
 const StoreCard = (props) => {
+const { t, i18n } = useTranslation();
 const [data, setData] = useState(props.storeData);
 const [filtered, setFilter] = useState(props.storeData);
 const [input, setInput] = useState('');
@@ -67,6 +69,7 @@ const [input, setInput] = useState('');
   };
 
   useEffect(() => {
+    i18n.changeLanguage("ar");
     setData(props.storeData);
     setFilter(props.storeData)
   }, [props.storeData]);
@@ -109,7 +112,7 @@ const [input, setInput] = useState('');
                       className="btn btn-outline-success mb-4"
                       onClick={() => filterResult(name)}
                     >
-                      {name}
+                    {t(`category.${name}`,name)}
                     </button>
 
                   )
@@ -139,7 +142,7 @@ const [input, setInput] = useState('');
                       <div className="card my-3 storeCard" style={{ width: "15rem" }} >
                         <img src={img || FallbackImage} className="card-img-top background" alt="..." style={{ height: "20rem" }} />
                         <div className="card-body cardTitle">
-                          <p className="card-title  cardTitle">{title}</p>
+                          <p className="card-title  cardTitle">{t(`category.${title}`,title)}</p>
                         </div>
 
                       </div>
