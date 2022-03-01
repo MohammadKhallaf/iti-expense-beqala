@@ -82,10 +82,11 @@ const StoreCard = (props) => {
                     console.log(array, index, name)
                     return array.indexOf(name) === index;
                   })
-                  .map(name =>
+                  .map((name, index) =>
                     <button
                       className="btn btn-outline-success mb-4"
                       onClick={() => filterResult(name)}
+                      key={index}
                     >
                       {name}
                     </button>

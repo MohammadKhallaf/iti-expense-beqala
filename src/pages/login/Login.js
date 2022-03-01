@@ -146,7 +146,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
             className="btn p-2 m-2 btn-primary btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithFacebook}
           >
-          <i class="fab fa-facebook-f m-2"> </i>continue with Facebook
+          <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
           </button>
           <p className="mt-3">
             Don't have an account? <Link to="/register">Sign Up</Link>
