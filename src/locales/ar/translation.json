@@ -6,5 +6,9 @@
     },
     "category":{
         "category":" تصنيف"
+    },
+    "cart":{
+        "shopping-cart":"سلة التسوق"
     }
+
 }
