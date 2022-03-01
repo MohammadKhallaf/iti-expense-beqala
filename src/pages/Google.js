@@ -12,8 +12,6 @@ const Google = ({ googleAuthenticate, isAuthenticated, error, manager}) => {
         const state = values.state ? values.state : null;
         const code = values.code ? values.code : null;
 
-        console.log('State: ' + state);
-        console.log('Code: ' + code);
 
         if (state && code) {
             googleAuthenticate(state, code);

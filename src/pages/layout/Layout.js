@@ -23,9 +23,7 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
       </label>
       <div className="wrapper chatbox">
         <div className="header">
-          <h6 className="text-center">
-            ExpenseBeqala <i className="text-danger fas fa-heart"></i>{" "}
-          </h6>
+          <h6 className='text-center'>ExpenseBeqala <i className="text-danger fas fa-heart"></i> </h6>
         </div>
 
         <ChatBox />

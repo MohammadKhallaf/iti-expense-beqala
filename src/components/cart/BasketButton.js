@@ -60,7 +60,7 @@ const BasketButton = () => {
           }
           alignLeft>
           {/* <--| selector to choose between stores |--> */}
-          {openCheckouts.map((item, index) => (
+          {Object.keys(openCheckouts).length && openCheckouts.map((item, index) => (
             <Dropdown.Item
               onClick={() =>
                 dispatch({ type: SHOW_CART, payload: item.store.id })
@@ -70,7 +70,7 @@ const BasketButton = () => {
             >
               {item.store.name}
               <Badge pill bg="transparent" className="border text-black ms-1">
-                {Object.keys(item).length && item.carts.length | 0}
+                {Object.keys(item).length && item.carts.length}
               </Badge>
             </Dropdown.Item>
           ))}
