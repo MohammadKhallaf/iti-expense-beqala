@@ -1,38 +1,137 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./ProductList.css";
 import { DataGrid } from "@mui/x-data-grid";
-import { productRows } from "../../DummyData";
+// import { productRows } from "../../DummyData";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import SideBar from "../../SideBar/SideBar";
-import Navbar from "../../Navbar/Navbar";
+import { backendAPI } from "../../../../store/index";
+// import Navbar from "../../Navbar/Navbar";
+// import axios from "axios";
 
 export default function ProductList() {
-  const [data, setData] = useState(productRows);
-  const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+  // const [data, setData] = useState([]);
+
+  // const [id, setId] = useState("");
+  // const [description, setDescription] = useState("");
+  // const [brand, setBrand] = useState("");
+  // const [category, setCategory] = useState("");
+  // const getData = async () => {
+  //   console.log("enter getData function");
+  //   let { productResponse } = await axios.get(
+  //     `http://127.0.0.1:8000/product/product/`
+  //   );
+  //   console.log((await productResponse.data) + "00000000000000000");
+  //   // .then((response) => console.log(response.data))
+  //   // .catch((err) => console.log(err + "****************"));
+  //   // setData(response.data);
+  // };
+  // const [name, setName] = useState(response.data.name);
+  // getData();
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  const [productData, setProductData] = useState([]);
+  // const rowData = productData.map((item) => (
+  //   <div key={item.id} className="productListItem">
+  //     {/* <img className="productListImg" src={item} alt="" /> */}
+  //     {item.brand}
+  //   </div>
+  // ));
+
+  useEffect(() => {
+    backendAPI
+      .get(`product/product/`, {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      })
+      .then((res) => {
+        setProductData(res.data);
+        // console.log(res.data);
+      });
+    // .catch((err) => console.log(err));
+  }, []);
+
+  const handleDelete = () => {
+    // setData(data.filter((item) => item.id !== id));
+    // console.log("deletedItem", e);
+    console.log("delete function");
+
+    // backendAPI
+    //   .delete(`product/product/${e}`)
+    //   .then((res) => {
+    //     backendAPI.get(`product/product/`).then((res) => {
+    //       setProductData(res.data);
+    //       console.log(res.data);
+    //     });
+    //   })
+    //   .catch((err) => console.log(err));
+    // setProductData(res.data);
   };
+
+  useEffect(() => {
+    console.log("rerender");
+  }, [productData]);
+
+  const handleEdit = () => {
+    // console.log(e.target.value);
+    console.log("handle functon");
+    // backendAPI
+    //   .get(`product/product/${e}`)
+    //   .then((res) => {
+    //     setProductData(res.data);
+    //     // console.log("+++++++++++++" + res.data);
+    //   })
+    //   .catch((err) => console.log(err));
+  };
+
   const columns = [
     { field: "id", headerName: "ID", width: 100 },
     {
-      field: "product",
-      headerName: "Product",
+      field: "name",
+      headerName: "name",
       width: 200,
       renderCell: (params) => {
         return (
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
+          <div className="userListUser">
+            <img src={params.row.image} alt="" />
             {params.row.name}
           </div>
         );
       },
     },
-    { field: "stock", headerName: "Stock", width: 130 },
     {
-      field: "status",
-      headerName: "status",
+      field: "brand",
+      headerName: "Brand",
+      width: 130,
+      renderCell: (params) => {
+        return (
+          <>
+            <div className="productListItem">
+              {/* <img className="productListImg" src={params.row.img} alt="" /> */}
+              {params.row.brand}
+            </div>
+          </>
+        );
+      },
+    },
+    {
+      field: "description",
+      headerName: "description",
       width: 120,
+      renderCell: (params) => {
+        return (
+          <>
+            <div className="productListItem">
+              {/* <img className="productListImg" src={params.row.img} alt="" /> */}
+              {params.row.description}
+            </div>
+          </>
+        );
+      },
     },
     {
       field: "price",
@@ -45,14 +144,17 @@ export default function ProductList() {
       headerName: "action",
       width: 150,
       renderCell: (params) => {
+        // console.log(params.row.id);
         return (
           <>
-            <Link to={"/admin/Product/" + params.row.id}>
-              <button className="productListEdit">Edit</button>
+            <Link to={"/admin/Product/"}>
+              <button onClick={() => handleEdit()} className="productListEdit">
+                Edit
+              </button>
             </Link>
             <DeleteOutlineIcon
               className="productListDelete"
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete()}
             />
           </>
         );
@@ -67,7 +169,7 @@ export default function ProductList() {
         <div className="ProductList">
           <DataGrid
             disableSelectionOnClick
-            rows={data}
+            rows={productData}
             columns={columns}
             pageSize={10}
             rowsPerPageOptions={[5]}

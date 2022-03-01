@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import "./Product.css";
+import "./AdminProduct.css";
 import Charts from "../../Charts/Charts";
 import { productData } from "../../DummyData";
 import { Publish } from "@material-ui/icons";
 import Navbar from "../../Navbar/Navbar";
 import SideBar from "../../SideBar/SideBar";
+import { useState } from "react";
 
 export default function Product() {
   return (
@@ -14,12 +15,12 @@ export default function Product() {
         <SideBar />
         <div className="product">
           <div className="productTitleContainer">
-            <h1 className="productTitle">Product</h1>
-            <Link to="/admin/newproduct">
+            <h1 className="productTitle">Product Edit </h1>
+            {/* <Link to="/admin/newproduct">
               <button className="productAddButton">Create</button>
-            </Link>
+            </Link> */}
           </div>
-          <div className="productTop">
+          {/* <div className="productTop">
             <div className="productTopLeft">
               <Charts
                 data={productData}
@@ -38,11 +39,7 @@ export default function Product() {
               </div>
               <div className="productInfoBottom">
                 <div className="productInfoItem">
-                  <span className="productInfoKey">id:</span>
-                  <span className="productInfoValue">123</span>
-                </div>
-                <div className="productInfoItem">
-                  <span className="productInfoKey">sales:</span>
+                  <span className="productInfoKey">price:</span>
                   <span className="productInfoValue">5123</span>
                 </div>
                 <div className="productInfoItem">
@@ -50,18 +47,18 @@ export default function Product() {
                   <span className="productInfoValue">yes</span>
                 </div>
                 <div className="productInfoItem">
-                  <span className="productInfoKey">in stock:</span>
-                  <span className="productInfoValue">no</span>
+                  <span className="productInfoKey">Quantity:</span>
+                  <span className="productInfoValue">15</span>
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="productBottom">
             <form className="productForm">
               <div className="productFormLeft">
                 <label>Product Name</label>
-                <input type="text" placeholder="Apple " />
-                <label>In Stock</label>
+                <input type="text" placeholder="Apple " value={""} />
+                <label>Quantity</label>
                 <select name="inStock" id="idStock">
                   <option value="yes">Yes</option>
                   <option value="no">No</option>

@@ -33,6 +33,7 @@ import Layout from "./pages/layout/Layout";
 import ProductList from "../src/components/AdminComponents/Pages/ProductList/ProductList";
 // import Product from "../src/components/AdminComponents/Pages/Product/Product";
 import NewProduct from "../src/components/AdminComponents/Pages/NewProduct/NewProduct";
+import AdminProduct from "../src/components/AdminComponents/Pages/Product/AdminProduct";
 
 // import Test from "./test/pages/Test";
 
@@ -106,8 +107,9 @@ function App() {
             <Route path="/admin/" exact element={<Home />} />
             <Route path="/admin/users" element={<UserList />} />
             <Route path="/admin/ProductList" element={<ProductList />} />
-            <Route path="/admin/Product/:ProductId" element={<Product />} />
+            {/* <Route path="/admin/Product/:ProductId" element={<Product />} /> */}
             <Route path="/admin/newproduct" element={<NewProduct />} />
+            <Route path="/admin/product" element={<AdminProduct />} />
           </Routes>
           {/* Shared */}
         </Layout>
