@@ -9,10 +9,6 @@ import { getCartItems, updateCheckoutState } from "../../redux/actions/cart";
 import { backendAPI } from "../../store";
 import axios from "axios";
 
-
-
-
-
 const OrderCheckout = () => {
 
   const order = useSelector((state) => state.cart.checkout);
@@ -55,7 +51,7 @@ const OrderCheckout = () => {
       const orderTotal = order.total
       const ratio = parseFloat(response.data)
       console.log(orderTotal, ratio, orderTotal * ratio)
-      localStorage.setItem("total",(orderTotal * ratio).toFixed(2))
+      localStorage.setItem("total", (orderTotal * ratio).toFixed(2))
       setTotal(orderTotal * ratio)
       console.log(order.total, response.data, (order.total) * (response.data))
     }).catch(function (error) {
@@ -64,14 +60,7 @@ const OrderCheckout = () => {
     console.log("order total = ", order.total)
 
   }, [order])
-  // const total_payment = (order.total)*currency_today
-  
-  useEffect(() => {
-    
-  }, [total_EGP])
-
-
-
+ 
 
   return (
     <Container className="pt-5">
@@ -134,8 +123,6 @@ const OrderCheckout = () => {
               style={{ layout: "vertical" }}
               fundingSource={"paypal"}
               createOrder={(data, actions) => {
-                console.log(total_EGP)
-                // console.log(actions)
                 return actions.order.create({
                   purchase_units: [
                     {
@@ -147,15 +134,9 @@ const OrderCheckout = () => {
                   ],
                 });
               }}
-              onClick={(e) => {
-                console.log(e)
-
-              }}
               onApprove={(data, actions) => {
-                console.log(actions)
-                console.log(data)
+
                 return actions.order.capture().then((details) => {
-                  console.log("details" + details)
                   const name = details.payer.name.given_name;
                   setPayment("paypal");
                   setDone(true);
@@ -164,42 +145,32 @@ const OrderCheckout = () => {
                 });
               }}
             />
-            <PayPalButtons
+             <PayPalButtons
               style={{ layout: "vertical" }}
               fundingSource={"card"}
               createOrder={(data, actions) => {
-                // console.log(data)
-                // console.log(actions)
                 return actions.order.create({
                   purchase_units: [
                     {
 
                       amount: {
-                        value: total_EGP,
+                        value: localStorage.getItem("total"),
                       },
-                    },
+                    }
                   ],
                 });
               }}
-              onClick={(e) => {
-                console.log(e)
-
-              }}
               onApprove={(data, actions) => {
-                console.log(actions)
-                console.log(data)
                 return actions.order.capture().then((details) => {
-                  console.log("details" + details)
                   const name = details.payer.name.given_name;
                   setPayment("credit");
                   setDone(true);
                   console.log(`Transaction completed by ${name}`);
-
+                  localStorage.removeItem("total")
                 });
               }}
             />
           </PayPalScriptProvider>
-
 
         </SectionCard>
       </Row>

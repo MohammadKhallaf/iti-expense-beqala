@@ -45,7 +45,7 @@ export const ContactUs = () => {
               We need your email to reach you back{" "}
             </div><div className="pt-sm-5 nomarge pt-5 mt-sm-5">
               {" "}
-              ExpenseBeqala<br/> <i class="fas fa-phone-alt"></i> 190906<br/><small><i class="fas fa-envelope"></i> expensebeqala@gmail.com</small>{" "}
+              ExpenseBeqala<br/> <i className="fas fa-phone-alt"></i> 190906<br/><small><i className="fas fa-envelope"></i> expensebeqala@gmail.com</small>{" "}
             </div>
           </div>
           <div className="contact-form">
@@ -53,7 +53,7 @@ export const ContactUs = () => {
             <form ref={form} onSubmit={sendEmail}>
               <div className="form-group pt-3">
                 {" "}
-                <label for="message">Message</label>{" "}
+                <label htmlFor="message">Message</label>{" "}
                 <textarea
                   name="message"
                   className="form-control"
@@ -63,7 +63,7 @@ export const ContactUs = () => {
               <div className="d-flex align-items-center flex-wrap justify-content-between pt-4">
                 <div className="form-group pt-lg-2 pt-3">
                   {" "}
-                  <label for="name">Your Name</label>{" "}
+                  <label htmlFor="name">Your Name</label>{" "}
                   <input
                     type="text"
                     name="name"
@@ -73,7 +73,7 @@ export const ContactUs = () => {
                 </div>
                 <div className="form-group pt-lg-2 pt-3">
                   {" "}
-                  <label for="name">Your Email</label>{" "}
+                  <label htmlFor="name">Your Email</label>{" "}
                   <input
                     type="email"
                     name="email"
@@ -99,24 +99,24 @@ export const ContactUs = () => {
         <div
           className="modal fade"
           id="myModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="myModalLabel"
           aria-hidden="true"
         >
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="myModalLabel">
-                  Thank You <span class="fas fa-heart"></span>{" "}
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="myModalLabel">
+                  Thank You <span className="fas fa-heart"></span>{" "}
                 </h5>{" "}
                 <button
                   type="button"
-                  class="btn-close"
+                  className="btn-close"
                   data-bs-dismiss="modal"
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <div className="ps-2">
                   Thank You for sharing your views with us. We will get back to
                   you as soon as possible.

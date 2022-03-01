@@ -1,16 +1,13 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import Categories from "./Categories";
-import Product from "./../pages/product/Product.css";
-import { backendAPI } from "../store";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { ADD_ITEM } from "../redux/actions/types";
 import { useTranslation } from "react-i18next";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
-import { Card } from 'react-bootstrap';
+
 const Category = (props) => {
+
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const [data, setData] = useState(props.storeData);
@@ -27,17 +24,6 @@ const Category = (props) => {
     });
     setFilter(result);
   };
-
-  // const Category = (props) => {
-  //   const dispatch = useDispatch();
-
-  // const [data, setData] = useState(props.productcategory);
-  // const filterResult = (catItem) => {
-  //   const result = props.productcategory.filter((curData) => {
-  //     return curData.category === catItem;
-  //   });
-  //   setData(result);
-  // };
 
   /**
    * add to cart
@@ -60,7 +46,7 @@ const Category = (props) => {
     } = values;
     dispatch(addToCard(1, store_id, product_id, 1)); //! hard-coded
   };
-  // app -> render pages -> request |-> re render
+
   useEffect(() => {
     i18n.changeLanguage("ar");
     setData(props.storeData);
@@ -71,6 +57,7 @@ const Category = (props) => {
     e.preventDefault();
     setInput(e.target.value);
   };
+  
   useEffect(() => {
     if (input.length > 0) {
       setFilter(data.filter((item, index, array) => {
