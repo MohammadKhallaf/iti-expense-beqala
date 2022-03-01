@@ -9,6 +9,7 @@ import {
   InputGroup,
   Modal,
   Row,
+  Spinner,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { CART, SHOW_CART } from "../../redux/actions/types";
@@ -57,6 +58,7 @@ const Cart = (props) => {
   const store = useSelector((state) => state.cart.store);
   const item = useSelector((state) => state.cart.item);
   const order = useSelector((state) => state.cart.checkout);
+  const user = useSelector((state) => state.auth.user);
 
   /**
    * Control the quantity of the product in the cart
@@ -119,7 +121,7 @@ const Cart = (props) => {
     dispatch({ type: CART, payload: [...all_data] });
     const cartItemData = {
       product_id: itemData[index].product_details.id,
-      user_id: 1, //!hard-coded
+      user_id: user.id,
       store_id: order_data.store,
       quantity: itemData[index].cart_details.quantity,
     };
@@ -159,7 +161,7 @@ const Cart = (props) => {
   // // re-render the cart whenever an update is done on the cart => add item
   useEffect(() => {
     console.log("error here", store_id);
-    dispatch(getCartItems(1, store_id));
+    if (user) dispatch(getCartItems(user.id, store_id));
   }, [item, store_id]);
 
   return (
@@ -198,14 +200,14 @@ const Cart = (props) => {
                 </h1>
               </Col>
               <Col xs={12} md={3}>
-                {Object.keys(order).length && (
+                {(Object.keys(order).length && (
                   <h6 className="text-muted">{order.carts.length} Items</h6>
-                )}
+                )) || <Spinner animation="border" variant="secondary" />}
               </Col>
             </Row>
 
             {/* <==={ Rendering the list }===> */}
-            {Object.keys(order).length &&
+            {(Object.keys(order).length &&
               order.carts
                 .sort((a, b) => {
                   return a.cart_details.product - b.cart_details.product;
@@ -340,7 +342,11 @@ const Cart = (props) => {
                       </Col>
                     </Row>
                   );
-                })}
+                })) || (
+              <Spinner animation="border" role="status">
+                <span className="visually-hidden">Loading...</span>
+              </Spinner>
+            )}
             <hr />
           </Col>
           {/* Summary */}

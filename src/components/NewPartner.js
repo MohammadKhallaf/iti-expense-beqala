@@ -1,5 +1,5 @@
-import React, { useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 export default function NewPartner() {
   const form = useRef();
@@ -7,21 +7,33 @@ export default function NewPartner() {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('ExpenseBeqala', 'template_nr742jq', form.current, 'user_SK0t1O7lMmnJ9j14wUyTS')
-      .then((result) => {
+    emailjs
+      .sendForm(
+        "ExpenseBeqala",
+        "template_nr742jq",
+        form.current,
+        "user_SK0t1O7lMmnJ9j14wUyTS"
+      )
+      .then(
+        (result) => {
           console.log(result.text);
-      }, (error) => {
+        },
+        (error) => {
           console.log(error.text);
       });
+      e.target.reset();
   };
   return (
     <>
       <form className="row m-2 p-2 g-3" ref={form} onSubmit={sendEmail}>
         <h3>Let's grow together with us</h3>
-        <small className='text-danger '>*all fields are required!</small>
+        <small className="text-danger ">*all fields are required!</small>
         <h3>join now!</h3>
         <div className="col-6">
-          <label for="inputtextname" className="form-label"> Store Name</label>
+          <label htmlFor="inputtextname" className="form-label">
+            {" "}
+            Store Name
+          </label>
           <input
             type="text"
             name="storename"
@@ -32,7 +44,9 @@ export default function NewPartner() {
           />
         </div>
         <div className="col-6">
-          <label for="Branches" className="form-label">Branches No.</label>
+          <label htmlFor="Branches" className="form-label">
+            Branches No.
+          </label>
           <input
             type="number"
             name="branches"
@@ -44,7 +58,7 @@ export default function NewPartner() {
           />
         </div>
         <div className="col-6">
-          <label for="inputAddress" className="form-label">
+          <label htmlFor="inputAddress" className="form-label">
             Address
           </label>
           <input
@@ -57,16 +71,21 @@ export default function NewPartner() {
           />
         </div>
         <div className="col-6">
-          <label for="inputState" className="form-label">
+          <label htmlFor="inputState" className="form-label">
             Area
           </label>
-          <select id="inputState" className="form-select partnerInput" name="location" required>
+          <select
+            id="inputState"
+            className="form-select partnerInput"
+            name="location"
+            required
+          >
             <option selected>Cairo</option>
             <option>Alexandria</option>
           </select>
         </div>
         <div className="col-12">
-          <label for="inputname" className="form-label">
+          <label htmlFor="inputname" className="form-label">
             Name
           </label>
           <input
@@ -79,7 +98,7 @@ export default function NewPartner() {
           />
         </div>
         <div className="col-md-6">
-          <label for="inputmail" className="form-label">
+          <label htmlFor="inputmail" className="form-label">
             Email
           </label>
           <input
@@ -92,7 +111,7 @@ export default function NewPartner() {
           />
         </div>
         <div className="col-md-6">
-          <label for="phone" className="form-label">
+          <label htmlFor="phone" className="form-label">
             Phone
           </label>
           <input
@@ -113,27 +132,52 @@ export default function NewPartner() {
             name="message"
             style={{ height: "100px" }}
           ></textarea>
-          <label className="px-4 " for="floatingTextarea2">Leave a comment here</label>
+          <label className="px-4 " htmlFor="floatingTextarea2">
+            Leave a comment here
+          </label>
         </div>
         <div className="col-12">
-          <button type="submit" className="btn btn-lg btn-outline-secondary my-4" data-bs-toggle="modal" data-bs-target="#myModal">
+          <button
+            type="submit"
+            className="btn btn-lg btn-outline-secondary my-4"
+            data-bs-toggle="modal"
+            data-bs-target="#myModal"
+          >
             Submit
-          </button> <span className="m-2"> and we will contact with you</span>
+          </button>{" "}
+          <span className="m-2"> and we will contact with you</span>
         </div>
       </form>
 
-      <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Thank You <span class="fas fa-heart"></span> </h5> <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="ps-2">Thanks for your interest in joining ExpenseBeqala! Our team will come back to you within 3 working days.</div>
-                </div>
+      <div
+        className="modal fade"
+        id="myModal"
+        tabindex="-1"
+        aria-labelledby="myModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title" id="myModalLabel">
+                Thank You <span className="fas fa-heart"></span>{" "}
+              </h5>{" "}
+              <button
+                type="button"
+                className="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
+            <div className="modal-body">
+              <div className="ps-2">
+                Thanks for your interest in joining ExpenseBeqala! Our team will
+                come back to you within 3 working days.
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
+      </div>
     </>
   );
 }

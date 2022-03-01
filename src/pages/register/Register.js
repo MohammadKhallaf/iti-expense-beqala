@@ -123,7 +123,11 @@ const Register = ({ signup, isAuthenticated, error }) => {
     <div className="container-fluid text-center regist mt-5 pt-5">
       <div className="row justify-content-center">
         <div className="border box border-secondary col-xl-4 col-lg-6 col-md-9 col-sm-12 p-5 m-5">
-        <h2> Welcome to ExpenseBeqala <i class="text-danger fas fa-heart"></i></h2>
+          <h2>
+            {" "}
+            Welcome to ExpenseBeqala{" "}
+            <i className="text-danger fas fa-heart"></i>
+          </h2>
           <h4 classNow="text-secondary p-5 m-2">SignUp now and Enjoy!</h4>
           {error ? error_m() : empty()}
           <small className="text-danger  "> {errorcon.conPasswordErr}</small>
@@ -173,7 +177,7 @@ const Register = ({ signup, isAuthenticated, error }) => {
                   minLength="8"
                   required
                 />
-                
+
                 <div className="field-icon col-lg-2 col-md-2 col-sm-2  text-end ">
                   <button
                     className="togglePasswd"
@@ -190,7 +194,10 @@ const Register = ({ signup, isAuthenticated, error }) => {
                     <i className="far fa-eye-slash navicon"></i>
                   </button>
                 </div>
-                <small className='text-danger'>Passwords must be 8 characters and not similar to name or email.</small>
+                <small className="text-danger">
+                  Passwords must be 8 characters and not similar to name or
+                  email.
+                </small>
               </div>
             </div>
 
@@ -225,7 +232,10 @@ const Register = ({ signup, isAuthenticated, error }) => {
               </div>
             </div>
             <div>
-              <button className="btn btn-lg btn-dark my-4 btn-r col-lg-7 col-md-7 col-sm-12" type="submit">
+              <button
+                className="btn btn-lg btn-dark my-4 btn-r col-lg-7 col-md-7 col-sm-12"
+                type="submit"
+              >
                 Register
               </button>
               <p className="mt-3">
@@ -238,14 +248,14 @@ const Register = ({ signup, isAuthenticated, error }) => {
             className="btn m-2 btn-light border border-secondary  btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithGoogle}
           >
-          <i class="fab fa-google m-2 "></i> continue with Google
+            <i className="fab fa-google m-2 "></i> continue with Google
           </button>
           <br className="p-4 m-4" />
           <button
             className="btn p-2 m-2 btn-primary btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithFacebook}
           >
-          <i class="fab fa-facebook-f m-2"> </i>continue with Facebook
+            <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
           </button>
         </div>
       </div>

@@ -33,6 +33,7 @@ export const getCartItems = (user_id, store_id) => {
  * @param {Integer} quantity
  * @returns
  */
+
 export const addToCard = (user_id, store_id, product_id, quantity) => {
   return function (dispatch) {
     backendAPI
@@ -44,7 +45,9 @@ export const addToCard = (user_id, store_id, product_id, quantity) => {
       })
       .then((response) => {
         dispatch({ type: ADD_ITEM, payload: response.data });
-        alert("added");
+      })
+      .then(()=>{ // get the updated checkouts
+        dispatch(getOpenCheckouts(user_id))
       })
       .catch((error) => console.log(error));
   };
@@ -67,8 +70,13 @@ export const updateCheckoutState = (user_id, store_id, state) => {
       })
       .then((response) => {
         console.log("update==>", response.data);
+<<<<<<< HEAD
         alert("added");
+=======
+        dispatch(getOpenCheckouts(user_id))
+>>>>>>> 606769b816cec89f766d7daa163d42bd1b0b284f
       })
+      
       .catch((error) => console.log(error));
   };
 };
@@ -79,10 +87,15 @@ export const updateCheckoutState = (user_id, store_id, state) => {
  * @returns {Array} array of open checkout carts
  */
 export const getOpenCheckouts = (user_id) => {
-  console.log("getting the open checkouts");
+  console.log("getting the open checkouts =>", localStorage.getItem("access"));
   return function (dispatch) {
     backendAPI
-      .get("/user/open-stores/", { params: { user_id } })
+      .get("/user/open-stores/", {
+        params: { user_id },
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+        },
+      })
       .then((response) => {
         dispatch({ type: USER_STORES, payload: response.data });
       })
