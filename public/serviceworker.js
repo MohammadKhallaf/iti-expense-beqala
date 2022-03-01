@@ -10,7 +10,6 @@ const self = this; // to refer to this service worker
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log("opened cache");
       return cache.addAll(urlsToCache); // add all those files to the cache
     })
   );
@@ -35,6 +34,8 @@ self.addEventListener("activate", (event) => {
           if (!cacheWhiteList.includes(cacheName)) {
             return caches.delete(cacheName); // delete all caches that are not in the cache name
             
+          }else{
+            return false;
           }
         })
       )

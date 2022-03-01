@@ -26,3 +26,19 @@ export const ADD_ITEM = 'ADD_ITEM_TO_CART';
 export const CHECKOUT = 'VIEW_CHCKOUT';
 export const USER_STORES = 'UPDATE_USER_STORES';
 
+
+
+// <--local storage-->
+export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
+export const LOC_DEL_ITEM = "DEL_ITEM_FROM_CART"
+// export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
+// export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
+// export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
+// export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
+
+
+
+
+//<--user dashboard-->
+export const ALL_ORDERS = "GET_ALL_ORDERS";
+export const OPEN_ORDERS = "GET_OPEN_ORDERS";

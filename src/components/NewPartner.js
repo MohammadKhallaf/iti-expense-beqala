@@ -20,8 +20,8 @@ export default function NewPartner() {
         },
         (error) => {
           console.log(error.text);
-        }
-      );
+      });
+      e.target.reset();
   };
   return (
     <>
