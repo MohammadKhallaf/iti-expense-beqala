@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function PartnerFeatures() {
   return (
@@ -9,7 +10,7 @@ export default function PartnerFeatures() {
             <h1>Are you a shop owner?</h1>
             <h3>Interested in joining our exclusive network?</h3>
             <p>
-              <a className="btn btn-lg btn-outline-secondary my-4">Partner with us</a>
+              <Link className="btn btn-lg btn-outline-secondary my-4" to='/partner'>Partner with us</Link>
             </p>
 
           </div>

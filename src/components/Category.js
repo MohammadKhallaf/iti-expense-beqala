@@ -6,13 +6,16 @@ import { backendAPI } from "../store";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ADD_ITEM } from "../redux/actions/types";
+import { useTranslation } from "react-i18next";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
+import { Card } from 'react-bootstrap';
 const Category = (props) => {
+  const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
-
   const [data, setData] = useState(props.storeData);
   const [filtered, setFilter] = useState(props.storeData);
+  const [input, setInput] = useState('');
 
   /**
    *
@@ -24,18 +27,18 @@ const Category = (props) => {
     });
     setFilter(result);
   };
-  
+
   // const Category = (props) => {
   //   const dispatch = useDispatch();
-  
-    // const [data, setData] = useState(props.productcategory);
-    // const filterResult = (catItem) => {
-    //   const result = props.productcategory.filter((curData) => {
-    //     return curData.category === catItem;
-    //   });
-    //   setData(result);
-    // };
-    
+
+  // const [data, setData] = useState(props.productcategory);
+  // const filterResult = (catItem) => {
+  //   const result = props.productcategory.filter((curData) => {
+  //     return curData.category === catItem;
+  //   });
+  //   setData(result);
+  // };
+
   /**
    * add to cart
    * send to server: card
@@ -59,144 +62,103 @@ const Category = (props) => {
   };
   // app -> render pages -> request |-> re render
   useEffect(() => {
+    i18n.changeLanguage("ar");
     setData(props.storeData);
     setFilter(props.storeData);
   }, [props.storeData]);
 
+  const handelonchange = (e) => {
+    e.preventDefault();
+    setInput(e.target.value);
+  };
+  useEffect(() => {
+    if (input.length > 0) {
+      setFilter(data.filter((item, index, array) => {
+        console.log(array, index)
+        return (item.product.name.toLowerCase().indexOf(input.toLowerCase()) > -1);
+      }));
+      console.log(data)
+      console.log(input)
+    }
+    else {
+      setFilter(data)
+    }
+
+  }, [input])
+
+
   return (
     <>
-      <h1></h1>
-      <div className="container-fluid mx-2">
-        <div className="row mt-5 mx-2">
-          <div className="col-md-3">
-            <div className="row">
-              {data
-                .map((item) => item.product.category.name)
+      <div className="container mb-3 ">
+
+        <input type="text" placeholder="search" className="form-control py-2" onChange={handelonchange} value={input} />
+      </div>
+
+      <div className="container">
+        <div className="row ">
+          <div>
+            {
+              (data.map(item => item.product.category.name))
                 .filter((name, index, array) => {
                   return array.indexOf(name) === index;
                 })
-                .map((name, index) => (
+                .map((name, index) =>
                   <button
-                    key={index}
-                    className="btn btn-outline-success mb-4"
+
+                    className="btn btn-outline-success mb-4 col-lg-3 py-2"
                     onClick={() => filterResult(name)}
                   >
-                    {name}
+
+                    {t(`category.${name}`, name)}
                   </button>
-                ))}
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => setFilter(props.storeData)}
-              >
-                All
-              </button>
-              {/* <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("Fruits")}
-              >
-                Fruits
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("vegtables")}
-              >
-                vegtables
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("milk")}
-              >
-                milk
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => filterResult("productName")}
-              >
-                productName
-              </button>
-              <button
-                className="btn btn-outline-success mb-4"
-                onClick={() => setData(props.storeData)}
-              >
-                All
-              </button> */}
-            </div>
+
+                )
+            }
+            <button
+              className="btn btn-outline-success mb-4 col-lg-3 py-2"
+              onClick={() => setFilter(props.storeData)}
+            >
+              All
+            </button>
           </div>
-          <div className="col-md-9">
-            <div className="row ">
-              {filtered.map((values, index) => {
-                
-                const {
-                  id: product_price_id,
-                  product: {
-                    id: product_id,
-                    name: title,
-                    description: discreption,
-                    image:img,
-                  },
-                  price,
-                  store: store_id,
-                } = values;
-                return (
-                  <Link className="col-lg-4 col-md-8 col-sm-8  cardsGrid " to="#" style={{ textDecoration: 'none' }} key={index}>
-                  <div >
-                    <div className="card my-3 storeCard" style={{ width: "15rem" }} >
-                      <img src={ img || FallbackImage } className="card-img-top background" alt="..." style={{ height:"20rem" }}/>
-                      <div className="card-body cardTitle">
-                        <p className="card-title  cardTitle">{title}</p>
-                      </div>
-                      <div>
-                        <p>Price: {price}</p>
-                        <p className="card-text">{discreption}</p>
-                        <button
-                            className="btn btn-light"
-                            onClick={addToCartHandler.bind(this, values)}
-                          >
-                            <i className="fas fa-cart-arrow-down"></i>
-                          </button>
-                          <button className="btn btn-light">
-                            <i className="far fa-heart"></i>
-                          </button>
-                      </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="row ">
+          {filtered.map((values, index) => {
+
+            const {
+              id: product_price_id,
+              product: {
+                id: product_id,
+                name: title,
+                description: discreption,
+                image: img,
+              },
+              price,
+              store: store_id,
+            } = values;
+            return (
+              <Link className="col-lg-3 col-md-6 col-sm-8  cardsGrid " to="#" style={{ textDecoration: 'none' }} key={index}>
+                <div >
+                  <div className="card my-3 storeCard" style={{}} >
+                    <img src={img || FallbackImage} className="card-img-top background" alt="..." style={{ height: "15rem" }} />
+                    <div className="card-body cardTitle">{t(`category.${title}`, title)}
                     </div>
+                    <div className="card-body cardText">
+                    <p> Price: {price} </p>                    
+                      <button className="btn btn-light"
+                        onClick={addToCartHandler.bind(this, values)}>
+                        <i className="fas fa-cart-arrow-down"></i>
+                      </button>
+                      </div>
                   </div>
-                </Link>
-                  // <div className="col-md-6 col-lg-4 me-3" key={index}>
-                  //   <div
-                  //     className="card m-2"
-                  //     style={{ width: "15rem", height: "28rem" }}
-                  //     id="card"
-                  //   >
-                  //     <img
-                  //       src= {img || FallbackImage }
-                  //       className="card-img-top"
-                  //       alt="..."
-                  //     />
-                  //     <div className="card-body">
-                  //       <h5 className="card-title">{title}</h5>
-                  //       <p>Price: {price}</p>
-                  //       <p className="card-text">{discreption}</p>
-                  //       <div id="bttn">
-                  //         {/* <button className="btn btn-light">
-                  //           <i className="fa-fw far fa-eye"></i>
-                  //         </button> */}
-                  //         <button
-                  //           className="btn btn-light"
-                  //           onClick={addToCartHandler.bind(this, values)}
-                  //         >
-                  //           <i className="fas fa-cart-arrow-down"></i>
-                  //         </button>
-                  //         <button className="btn btn-light">
-                  //           <i className="far fa-heart"></i>
-                  //         </button>
-                  //       </div>
-                  //     </div>
-                  //   </div>
-                  // </div>
-                );
-              })}
-            </div>
-          </div>
+                </div>
+              </Link>
+
+            );
+          })}
         </div>
       </div>
     </>
