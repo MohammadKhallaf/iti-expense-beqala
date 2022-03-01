@@ -1,21 +1,28 @@
 import React, { useEffect } from "react";
+
+/*
+to store in local storage :
+1. { json object } 
+2. add or remove to that object
+*/
 import { useState } from "react";
 import Categories from "./Categories";
 import Product from "./../pages/product/Product.css";
 import { backendAPI } from "../store";
 import { Link } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD_ITEM } from "../redux/actions/types";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
-import { Card } from 'react-bootstrap';
+import { Card } from "react-bootstrap";
+
 const Category = (props) => {
   const dispatch = useDispatch();
 
   const [data, setData] = useState(props.storeData);
   const [filtered, setFilter] = useState(props.storeData);
-  const [input, setInput] = useState('');
-
+  const [input, setInput] = useState("");
+  const user = useSelector((state) => state.auth.user);
   /**
    *
    * @param  catItem category name
@@ -26,18 +33,18 @@ const Category = (props) => {
     });
     setFilter(result);
   };
-  
+
   // const Category = (props) => {
   //   const dispatch = useDispatch();
-  
-    // const [data, setData] = useState(props.productcategory);
-    // const filterResult = (catItem) => {
-    //   const result = props.productcategory.filter((curData) => {
-    //     return curData.category === catItem;
-    //   });
-    //   setData(result);
-    // };
-    
+
+  // const [data, setData] = useState(props.productcategory);
+  // const filterResult = (catItem) => {
+  //   const result = props.productcategory.filter((curData) => {
+  //     return curData.category === catItem;
+  //   });
+  //   setData(result);
+  // };
+
   /**
    * add to cart
    * send to server: card
@@ -57,7 +64,7 @@ const Category = (props) => {
       store: store_id,
       product: { id: product_id },
     } = values;
-    dispatch(addToCard(1, store_id, product_id, 1)); //! hard-coded
+    dispatch(addToCard(user.id, store_id, product_id, 1)); 
   };
   // app -> render pages -> request |-> re render
   useEffect(() => {
@@ -69,25 +76,32 @@ const Category = (props) => {
     e.preventDefault();
     setInput(e.target.value);
   };
-  useEffect(()=>{
-  if (input.length > 0) {
-    setFilter(data.filter((item, index, array) => {
-      console.log(array, index)
-      return (item.product.name.toLowerCase().indexOf(input.toLowerCase()) > -1);
-    }));
-    console.log(data)
-    console.log(input)
-  }
-  else{
-    setFilter(data)
-  }
-
-},[input])
-
+  useEffect(() => {
+    if (input.length > 0) {
+      setFilter(
+        data.filter((item, index, array) => {
+          console.log(array, index);
+          return (
+            item.product.name.toLowerCase().indexOf(input.toLowerCase()) > -1
+          );
+        })
+      );
+      console.log(data);
+      console.log(input);
+    } else {
+      setFilter(data);
+    }
+  }, [input]);
 
   return (
     <>
-    <input type="text" placeholder="search" style={{ width: '12em', height: '2em' }} onChange={handelonchange} value={input} />
+      <input
+        type="text"
+        placeholder="search"
+        style={{ width: "12em", height: "2em" }}
+        onChange={handelonchange}
+        value={input}
+      />
       <div className="container-fluid mx-2">
         <div className="row mt-5 mx-2">
           <div className="col-md-3">
@@ -98,7 +112,10 @@ const Category = (props) => {
                   return array.indexOf(name) === index;
                 })
                 .map((name, index) => (
-                  <button type="button" class="btn btn-secondary btn-lg" style={{ padding: '1em', margin: '0.7em' }}
+                  <button
+                    type="button"
+                    className="btn btn-secondary btn-lg"
+                    style={{ padding: "1em", margin: "0.7em" }}
                     key={index}
                     className="btn btn-outline-success mb-4"
                     onClick={() => filterResult(name)}
@@ -106,54 +123,78 @@ const Category = (props) => {
                     {name}
                   </button>
                 ))}
-              <button type="button" class="btn btn-secondary btn-lg" style={{ padding: '1em', margin: '0.7em' }}
+              <button
+                type="button"
+                className="btn btn-secondary btn-lg"
+                style={{ padding: "1em", margin: "0.7em" }}
                 className="btn btn-outline-success mb-4"
                 onClick={() => setFilter(props.storeData)}
               >
                 All
               </button>
-              
             </div>
           </div>
           <div className="row">
             <div className="card-group">
               {filtered.map((values, index) => {
-                
                 const {
                   id: product_price_id,
                   product: {
                     id: product_id,
                     name: title,
                     description: discreption,
-                    image:img,
+                    image: img,
                   },
                   price,
                   store: store_id,
                 } = values;
                 return (
-                  <Link className="col-lg-4 col-md-8 col-sm-8  cardsGrid " to="#" style={{ textDecoration: 'none' }} key={index}>
-                  <div >
-                    <div style={{ marginTop: '2em'}}>
-                    <div key={index}>
-                      <Card className=" shadow-lg " style={{ width: '20em', height: '20em', margin: '1em'}} >
-                        <Card.Img variant="top" src={img || FallbackImage} style={{ width: '12em', height: '10em', marginLeft: '3.5em' }} />
-                        <Card.Body>
-                          <Card.Title style={{ padiingTop: '2em' }}>{title}</Card.Title>
-                          <Card.Text> Price: {price} </Card.Text>
-                          {/* <Card.Text> {discreption} </Card.Text> */}
-                          <Card.Text>
-                            <button className="btn btn-light"
-                              onClick={addToCartHandler.bind(this, values)}>
-                              <i className="fas fa-cart-arrow-down"></i>
-                            </button>
-                          </Card.Text>
-                        </Card.Body>
-                      </Card>
+                  <Link
+                    className="col-lg-4 col-md-8 col-sm-8  cardsGrid "
+                    to="#"
+                    style={{ textDecoration: "none" }}
+                    key={index}
+                  >
+                    <div>
+                      <div style={{ marginTop: "2em" }}>
+                        <div key={index}>
+                          <Card
+                            className=" shadow-lg "
+                            style={{
+                              width: "20em",
+                              height: "20em",
+                              margin: "1em",
+                            }}
+                          >
+                            <Card.Img
+                              variant="top"
+                              src={img || FallbackImage}
+                              style={{
+                                width: "12em",
+                                height: "10em",
+                                marginLeft: "3.5em",
+                              }}
+                            />
+                            <Card.Body>
+                              <Card.Title style={{ padiingTop: "2em" }}>
+                                {title}
+                              </Card.Title>
+                              <Card.Text> Price: {price} </Card.Text>
+                              {/* <Card.Text> {discreption} </Card.Text> */}
+                              <Card.Text>
+                                <button
+                                  className="btn btn-light"
+                                  onClick={addToCartHandler.bind(this, values)}
+                                >
+                                  <i className="fas fa-cart-arrow-down"></i>
+                                </button>
+                              </Card.Text>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  </div>
-                </Link>
-                  
+                  </Link>
                 );
               })}
             </div>

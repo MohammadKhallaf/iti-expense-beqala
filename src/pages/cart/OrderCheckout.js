@@ -23,7 +23,7 @@ const OrderCheckout = () => {
         })
         .then((response) => {
           console.log("update==>", response.data);
-          navigate("/thanks")
+          navigate("/thanks");
         })
         .catch((error) => console.log(error));
     }
@@ -31,10 +31,11 @@ const OrderCheckout = () => {
 
   return (
     <Container className="pt-5">
+      
       <Row className="gy-4">
-        <SectionCard header="order details">
+        <SectionCard header="order details" icon="list-alt">
           {(Object.keys(order).length && (
-            <Table>
+            <Table responsive>
               <thead>
                 <tr>
                   <th>#</th>
@@ -48,16 +49,19 @@ const OrderCheckout = () => {
               <tbody>
                 {order.carts.map((item, index) => (
                   <tr key={index}>
-                    <td>{index}</td>
+                    <td>{index + 1}</td>
                     <td>{item.product_details.name}</td>
-                    <td>{item.product_details.category_name}</td>
+                    <td>{item.product_details.category.name}</td>
                     <td>
-                      <span
-                        style={{ textDecorationLine: "line-through" }}
-                        className="text-muted fs-6"
-                      >
-                        {item.price}
-                      </span>
+                      {item.product_details.offer && (
+                        <span
+                          style={{ textDecorationLine: "line-through" }}
+                          className="text-muted fs-6"
+                        >
+                          {item.price}
+                        </span>
+                      )}
+
                       <p>{item.price_after_offer.toFixed(2)}</p>
                     </td>
                     <td>{item.cart_details.quantity}</td>
@@ -73,9 +77,10 @@ const OrderCheckout = () => {
           )) ||
             "You have no items yet"}
         </SectionCard>
-        <SectionCard header="payment">
+        <SectionCard header="total" icon="wallet"></SectionCard>
+        <SectionCard header="payment" icon="lock">
           <PayPalScriptProvider
-          // options={{ "client-id": PAYPAL_ACCOUNT, currency: "EGP" }}
+            options={{ "client-id": PAYPAL_ACCOUNT, currency: "USD" }}
           >
             <PayPalButtons
               style={{ layout: "vertical" }}
@@ -84,14 +89,16 @@ const OrderCheckout = () => {
                   purchase_units: [
                     {
                       amount: {
-                        value: order.total.toFixed(2),
+                        value: order.total,
                       },
                     },
                   ],
                 });
               }}
               onApprove={(data, actions) => {
+                console.log("order actionaTR", actions);
                 return actions.order.capture().then((details) => {
+                  console.log("details", details);
                   const name = details.payer.name.given_name;
                   alert(`Transaction completed by ${name}`);
                   setDone(true);
