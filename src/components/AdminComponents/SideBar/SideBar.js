@@ -47,12 +47,12 @@ export default function SideBar() {
                 products
               </Link>
             </li>
-            {/* <li className="sidebarListItem ">
-              <Link className="link" to={"/admin"}>
+            <li className="sidebarListItem ">
+              <Link className="link" to={"/owner/product/1"}>
                 <TrendingUp className="sidebarIcon" />
-                Sales
+                My Products
               </Link>
-            </li> */}
+            </li>
           </ul>
         </div>
         <div className="sidebarMenu">
