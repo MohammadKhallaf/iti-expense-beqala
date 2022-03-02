@@ -65,7 +65,7 @@ const Showstore = ({ manager }) => {
   }, [])
 
   if ( manager === true ){
-    return <Navigate to='/admin' />
+    return <Navigate to='/owner' />
 }
 
   return (

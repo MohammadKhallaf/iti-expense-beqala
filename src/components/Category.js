@@ -41,7 +41,12 @@ const Category = (props) => {
    *
    * check the response from the server
    * if the response is succeed => add to cart in the frontend
+   * 
    */
+
+
+  
+
   const addToCartHandler = (values) => {
     // [/]
     // <---{ SERVER DB }--->
@@ -198,6 +203,7 @@ const Category = (props) => {
                       {t(`category.${title}`, title)}
                     </div>
                     <div className="card-body cardText">
+                    <p>{t(`category.${discreption}`, discreption)}</p>
                       <p> Price: {price} </p>
                       <button
                         className="btn btn-light"
@@ -205,6 +211,7 @@ const Category = (props) => {
                       >
                         <i className="fas fa-cart-arrow-down"></i>
                       </button>
+                      
                     </div>
                   </div>
                 </div>
