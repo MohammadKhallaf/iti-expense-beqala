@@ -2,58 +2,33 @@ import React, { useEffect } from "react";
 import "./ProductList.css";
 import { DataGrid } from "@mui/x-data-grid";
 // import { productRows } from "../../DummyData";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import SideBar from "../../SideBar/SideBar";
 import { backendAPI } from "../../../../store/index";
 // import Navbar from "../../Navbar/Navbar";
 // import axios from "axios";
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 export default function ProductList() {
-  // const [data, setData] = useState([]);
+  const user = useSelector((state) => state.auth.user);
 
-  // const [id, setId] = useState("");
-  // const [description, setDescription] = useState("");
-  // const [brand, setBrand] = useState("");
-  // const [category, setCategory] = useState("");
-  // const getData = async () => {
-  //   console.log("enter getData function");
-  //   let { productResponse } = await axios.get(
-  //     `http://127.0.0.1:8000/product/product/`
-  //   );
-  //   console.log((await productResponse.data) + "00000000000000000");
-  //   // .then((response) => console.log(response.data))
-  //   // .catch((err) => console.log(err + "****************"));
-  //   // setData(response.data);
-  // };
-  // const [name, setName] = useState(response.data.name);
-  // getData();
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  const navigate = useNavigate();
 
   const [productData, setProductData] = useState([]);
-  // const rowData = productData.map((item) => (
-  //   <div key={item.id} className="productListItem">
-  //     {/* <img className="productListImg" src={item} alt="" /> */}
-  //     {item.brand}
-  //   </div>
-  // ));
 
   useEffect(() => {
+    if (!user) return;
     backendAPI
-      .get(`product/product/`, {
-        headers: {
-          Authorization: `JWT ${localStorage.getItem("access")}`,
-        },
-      })
+      .get(`product/product/`)
       .then((res) => {
         setProductData(res.data);
         // console.log(res.data);
-      });
+      })
+      .catch((error) => console.log(error));
     // .catch((err) => console.log(err));
-  }, []);
+  }, [user]);
 
   const handleDelete = () => {
     // setData(data.filter((item) => item.id !== id));
@@ -76,7 +51,15 @@ export default function ProductList() {
     console.log("rerender");
   }, [productData]);
 
-  const handleEdit = () => {
+  const handleEdit = (product_id) => {
+    console.log(product_id);
+    backendAPI
+      .post("/store/store-data/", {
+        owner_id: user.id,
+        product_id,
+      })
+      .then((res) => console.log("OUR DATA\t", res.data));
+    // .then((_) => navigate("/owner/product/1"));
     // console.log(e.target.value);
     console.log("handle functon");
     // backendAPI
@@ -97,7 +80,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            <img src={params.row.image} alt="" />
+            <img src={params.row.image} alt="" height={50} width={50} />
             {params.row.name}
           </div>
         );
@@ -108,12 +91,10 @@ export default function ProductList() {
       headerName: "Brand",
       width: 130,
       renderCell: (params) => {
+        console.log(params);
         return (
           <>
-            <div className="productListItem">
-              {/* <img className="productListImg" src={params.row.img} alt="" /> */}
-              {params.row.brand}
-            </div>
+            <div className="productListItem">{params.row.brand}</div>
           </>
         );
       },
@@ -134,10 +115,17 @@ export default function ProductList() {
       },
     },
     {
-      field: "price",
-      headerName: "Price",
-      sortable: "number",
+      field: "category",
+      headerName: "category",
+      sortable: "text",
       width: 160,
+      renderCell: (params) => {
+        return (
+          <>
+            <div className="productListItem">{params.row.category.name}</div>
+          </>
+        );
+      },
     },
     {
       field: "action",
@@ -147,15 +135,14 @@ export default function ProductList() {
         // console.log(params.row.id);
         return (
           <>
-            <Link to={"/admin/Product/"}>
-              <button onClick={() => handleEdit()} className="productListEdit">
-                Edit
-              </button>
-            </Link>
-            <DeleteOutlineIcon
-              className="productListDelete"
-              onClick={() => handleDelete()}
-            />
+            {/* <Link to={"/owner/Product/"}> */}
+            <button
+              onClick={handleEdit.bind(this, params.row.id)}
+              className="productListEdit"
+            >
+              Add item
+            </button>
+            {/* </Link> */}
           </>
         );
       },

@@ -12,10 +12,7 @@ import {
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SectionCard from "../../components/user-dashboard/SectionCard";
-<<<<<<< HEAD
-=======
 // import Test from "../../test/pages/Test";
->>>>>>> 606769b816cec89f766d7daa163d42bd1b0b284f
 /**
  * User Account Page
  * |- Section Card
