@@ -99,8 +99,33 @@
         "Persil Powder":"مسحوق برسيل",
         "Clorox 5X1 Disinfecting Household Cleaner":"كلوركس 5*1 منظم ومعقم للمنزل ",
         "Nescafe Gold Instant Coffee":"نسكافيه جولد سريع التحضير",
-        "For Kids":"منتجات الأطفال"     
-        
+        "For Kids":"منتجات الأطفال", 
+        "1.6 Liter": "١.٦ لتر",
+        "3.5 Liters":"٣.٥ لتر",
+        "1 KG":"١ كيلو جرام",
+        "400g":"٤٠٠ جرام",
+        "235 ml":"٢٣٥ مل " ,
+        "cheese":"جبنة" ,
+        " 1.5 L":"١.٥ لتر" ,
+        "25 gm":"٢٥جم",
+        "fruit":"فاكهة",
+        "vegetables":"خضروات",
+        "fresh meat":"لحم طازج",
+        "fresh fish":"سمك طازج",
+        "30 ml":"٣٠ مل ",
+        "170 gm":"١٧٠ جم",
+        "drug":"دواء ",
+        "HEADACHE drug":"دواء صداع",
+        "Size 5, Junior, 11-25 Kg - 94 Diapers":"مقاس ٥ ، جونيور ، ١١-٢٥ كجم - ٩٤ حفاض",
+        "750 ml":" ٧٥٠ مل",
+        "75ml":"٧٥ مل",
+        "250g":"٢٥٠ جم",
+        "24 Sachets":"٢٤ كيس",
+        "200g":"٢٠٠ جم",
+        "115 grams" :"١١٥ جم" ,
+        "Persil Powder Lavender Scent Detergent, 6 kg" :"مسحوق غسيل برسيل برائحة اللافندر ، ٦ كجم",
+        "Mint - 700 ml" :"نعناع - ٧٠٠ مل"
+    
     },
     "product":{
         
@@ -109,5 +134,7 @@
     "cart":{
         "shopping-cart":"سلة التسوق"
     }
+
+   
 
 }

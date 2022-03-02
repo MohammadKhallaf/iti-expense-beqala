@@ -1,59 +1,13 @@
-
-// import marketTest from "./../files/market.svg"
-// import React, { useEffect, useState } from "react";
-// import { Link, useParams } from "react-router-dom";
-// import { backendAPI } from "../store";
-
-// export default function StoreCard() {
-
-//   const param = useParams();
-//   const [StoreResult, setStoreResult] = useState([]);
-
-//   console.log(param.name);
-
-//   useEffect(() => {
-//     backendAPI
-//       .get(`location/stores/${param.name}/`)
-//       .then((res) => {
-//         console.log("API=====||=");
-//         console.dir(res.data)
-//         setStoreResult(res.data)
-//       })
-//       .catch((err) => console.log(err));
-//   }, []);
-
-//   return (
-//     <>
-//       <div className="container ">
-//         <div className="row " >
-//           {StoreResult.map((store, index) => (
-//             <Link className="col-lg-3 col-md-6 col-sm-6  cardsGrid " to={`/products/${store.id}`} style={{ textDecoration: 'none' }} key={store.id}>
-//               <div >
-//                 <div className="card my-3 storeCard" style={{ width: "15rem" }} >
-//                   <img src={marketTest} className="card-img-top background" alt="..." />
-//                   <div className="card-body cardTitle">
-//                     <p className="card-title  cardTitle">{store.name}</p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </Link>
-//           ))}
-
-//         </div>
-//       </div>
-//     </>
-//   );
-// }
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
 const StoreCard = (props) => {
-  const { t, i18n } = useTranslation();
-  const [data, setData] = useState(props.storeData);
-  const [filtered, setFilter] = useState(props.storeData);
-  const [input, setInput] = useState('');
+const { t, i18n } = useTranslation();
+const [data, setData] = useState(props.storeData);
+const [filtered, setFilter] = useState(props.storeData);
+const [input, setInput] = useState('');
 
 
   /**
@@ -109,11 +63,12 @@ const StoreCard = (props) => {
                   console.log(array, index, name)
                   return array.indexOf(name) === index;
                 })
-                .map(name =>
+                .map((name, index) =>
                   <button
 
                     className="btn btn-outline-success mb-4 col-lg-3 py-2"
                     onClick={() => filterResult(name)}
+                    key={index}
                   >
 
                     {t(`category.${name}`, name)}
