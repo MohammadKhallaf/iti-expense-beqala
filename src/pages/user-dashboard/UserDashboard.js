@@ -15,8 +15,8 @@ const UserDashboard = () => {
     <>
       <Sidebar />
       
-      <Container className={styles.page__container}>
-      <Container as="section" className="p-5 m-auto">
+      <Container  fluid="true" className={styles.page__container}>
+      <Container  as="section" className="p-5 m-auto">
       <Outlet />
       </Container>
       </Container>

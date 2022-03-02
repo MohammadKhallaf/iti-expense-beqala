@@ -8,7 +8,6 @@ import './Partner.css'
 export default function Partner() {
   return (
     <>
-     <Navbar />
       <div className=" pt-5 partner row">
         <div className="col-6 pt-5 float-end">
           <h3 className="text-center p-5 m-5 ">

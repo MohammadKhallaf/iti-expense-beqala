@@ -25,7 +25,7 @@ export default function LocationCard(props) {
     }
   }
   // console.log(props.name)
-    const city=props.name
+  const city=props.name
   return (
     <>
 

@@ -53,7 +53,7 @@ import Thanks from "./pages/general/Thanks";
 import Cart from "./components/cart/Cart";
 import OrderCheckout from "./pages/cart/OrderCheckout";
 // Test
-//import Test from "./test/pages/Test";
+// import Test from "./test/pages/Test";
 
 // styling
 import "./App.css";
