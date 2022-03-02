@@ -45,12 +45,7 @@ export const ContactUs = () => {
             </div>
             <div className="pt-sm-5 nomarge pt-5 mt-sm-5">
               {" "}
-              ExpenseBeqala
-              <br /> <i className="fas fa-phone-alt"></i> 190906
-              <br />
-              <small>
-                <i className="fas fa-envelope"></i> expensebeqala@gmail.com
-              </small>{" "}
+              ExpenseBeqala<br/> <i className="fas fa-phone-alt"></i> 190906<br/><small><i className="fas fa-envelope"></i> expensebeqala@gmail.com</small>{" "}
             </div>
           </div>
           <div className="contact-form">
@@ -104,7 +99,7 @@ export const ContactUs = () => {
         <div
           className="modal fade"
           id="myModal"
-          tabindex="-1"
+          tabIndex="-1"
           aria-labelledby="myModalLabel"
           aria-hidden="true"
         >

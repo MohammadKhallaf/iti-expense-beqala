@@ -6,18 +6,14 @@ to store in local storage :
 2. add or remove to that object
 */
 import { useState } from "react";
-import Categories from "./Categories";
-import Product from "./../pages/product/Product.css";
-import { backendAPI } from "../store";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_ITEM } from "../redux/actions/types";
 import { useTranslation } from "react-i18next";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
-import { Card } from "react-bootstrap";
 
 const Category = (props) => {
+
   const { t, i18n } = useTranslation();
   const dispatch = useDispatch();
   const [data, setData] = useState(props.storeData);
@@ -35,17 +31,6 @@ const Category = (props) => {
     setFilter(result);
   };
 
-  // const Category = (props) => {
-  //   const dispatch = useDispatch();
-
-  // const [data, setData] = useState(props.productcategory);
-  // const filterResult = (catItem) => {
-  //   const result = props.productcategory.filter((curData) => {
-  //     return curData.category === catItem;
-  //   });
-  //   setData(result);
-  // };
-
   /**
    * add to cart
    * send to server: card
@@ -56,7 +41,12 @@ const Category = (props) => {
    *
    * check the response from the server
    * if the response is succeed => add to cart in the frontend
+   * 
    */
+
+
+  
+
   const addToCartHandler = (values) => {
     // [/]
     // <---{ SERVER DB }--->
@@ -112,7 +102,7 @@ const Category = (props) => {
       localStorage.setItem(`cart-${store_id}`, JSON.stringify([cartObject]));
     }
   };
-  // app -> render pages -> request |-> re render
+
   useEffect(() => {
     i18n.changeLanguage("ar");
     setData(props.storeData);
@@ -124,6 +114,7 @@ const Category = (props) => {
     e.preventDefault();
     setInput(e.target.value);
   };
+  
   useEffect(() => {
     if (input.length > 0) {
       setFilter(
@@ -212,6 +203,7 @@ const Category = (props) => {
                       {t(`category.${title}`, title)}
                     </div>
                     <div className="card-body cardText">
+                    <p>{t(`category.${discreption}`, discreption)}</p>
                       <p> Price: {price} </p>
                       <button
                         className="btn btn-light"
@@ -219,6 +211,7 @@ const Category = (props) => {
                       >
                         <i className="fas fa-cart-arrow-down"></i>
                       </button>
+                      
                     </div>
                   </div>
                 </div>

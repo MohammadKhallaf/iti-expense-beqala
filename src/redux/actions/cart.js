@@ -46,8 +46,9 @@ export const addToCard = (user_id, store_id, product_id, quantity) => {
       .then((response) => {
         dispatch({ type: ADD_ITEM, payload: response.data });
       })
-      .then(()=>{ // get the updated checkouts
-        dispatch(getOpenCheckouts(user_id))
+      .then(() => {
+        // get the updated checkouts
+        dispatch(getOpenCheckouts(user_id));
       })
       .catch((error) => console.log(error));
   };
@@ -70,13 +71,12 @@ export const updateCheckoutState = (user_id, store_id, state) => {
       })
       .then((response) => {
         console.log("update==>", response.data);
-        dispatch(getOpenCheckouts(user_id))
+        dispatch(getOpenCheckouts(user_id));
       })
-      
+
       .catch((error) => console.log(error));
   };
 };
-// <===================================================>
 /**
  *
  * @param {Integer} user_id

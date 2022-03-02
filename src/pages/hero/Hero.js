@@ -12,7 +12,7 @@ import './Hero.css'
 const Hero = ({ manager }) => {
 
     if ( manager === true ){
-        return <Navigate to='/admin' />
+        return <Navigate to='/owner' />
     }
 
     return (

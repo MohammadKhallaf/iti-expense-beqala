@@ -17,7 +17,7 @@ import Stores from "./pages/stores/Stores";
 
 import Partner from "./pages/partner/Partner";
 
-import "./App.css"
+import "./App.css";
 
 // authentications
 import Register from "./pages/register/Register";
@@ -27,14 +27,13 @@ import ResetPassword from "./pages/resetpassword/ResetPassword";
 import ResetPasswordConfirm from "./pages/resetpassword/ResetPasswordConfirm";
 import "./App.css";
 import Home from "../src/components/AdminComponents/Pages/Home/Home";
-import UserList from "../src/components/AdminComponents/Pages/UserList/UserList";
+
 import Layout from "./pages/layout/Layout";
 
 import ProductList from "../src/components/AdminComponents/Pages/ProductList/ProductList";
 // import Product from "../src/components/AdminComponents/Pages/Product/Product";
 import NewProduct from "../src/components/AdminComponents/Pages/NewProduct/NewProduct";
-
-// import Test from "./test/pages/Test";
+import AdminProduct from "../src/components/AdminComponents/Pages/Product/AdminProduct";
 
 import Facebook from "./pages/Facebook";
 import CheckMail from "./pages/checkmail/CheckMail";
@@ -52,8 +51,6 @@ import Thanks from "./pages/general/Thanks";
 
 import Cart from "./components/cart/Cart";
 import OrderCheckout from "./pages/cart/OrderCheckout";
-// Test
-import Test from "./test/pages/Test";
 
 // styling
 import "./App.css";
@@ -92,22 +89,22 @@ function App() {
             <Route path="/:name/stores/" element={<Stores />} />
             <Route path="/stores/" element={<Stores />} />
             {/* Product */}
-            
+
             <Route path="/stores" element={<Stores />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
             {/* General  */}
-            <Route path="/test" element={<Test />} />
+            {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/thanks" element={<Thanks />} />
 
-
-            <Route path="/admin/" exact element={<Home />} />
-            <Route path="/admin/users" element={<UserList />} />
-            <Route path="/admin/ProductList" element={<ProductList />} />
-            <Route path="/admin/Product/:ProductId" element={<Product />} />
-            <Route path="/admin/newproduct" element={<NewProduct />} />
+            <Route path="/owner/" exact element={<Home />} />
+      
+            <Route path="/owner/ProductList" element={<ProductList />} />
+            {/* <Route path="/admin/Product/:ProductId" element={<Product />} /> */}
+            <Route path="/owner/newproduct" element={<NewProduct />} />
+            <Route path="/owner/product/:storeId" element={<AdminProduct />} />
           </Routes>
           {/* Shared */}
         </Layout>

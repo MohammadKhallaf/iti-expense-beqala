@@ -23,7 +23,7 @@ const NotFoundPage = () => {
       setSec((prevState) => prevState - 1);
     }, 1000);
     setTimeout(() => {
-      navigate("/");
+      // navigate("/");
       clearInterval(interval);
     }, seconds * 1000);
   }, []);
