@@ -6,29 +6,17 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import Sidebar from "../../components/user-dashboard/UI/Sidebar";
 import { Outlet } from "react-router-dom";
-<<<<<<< HEAD
-=======
-// import Test from "../../test/pages/Test";
->>>>>>> 606769b816cec89f766d7daa163d42bd1b0b284f
 import UserAccount from "./UserAccount";
 import styles from "./UserDashboard.module.css";
 const UserDashboard = () => {
   return (
     <>
       <Sidebar />
-<<<<<<< HEAD
-
-      <Container className={styles.page__container}>
-        <Container as="section" className="p-5 m-auto">
-          <Outlet />
-        </Container>
-=======
       
       <Container  fluid="true" className={styles.page__container}>
       <Container  as="section" className="p-5 m-auto">
       <Outlet />
       </Container>
->>>>>>> 606769b816cec89f766d7daa163d42bd1b0b284f
       </Container>
 
       {/* <Container className="w-75 py-5">

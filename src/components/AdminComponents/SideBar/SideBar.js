@@ -24,13 +24,13 @@ export default function SideBar() {
           <h3 className="sidebarTittle">Dashboard</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active ">
-              <Link className="link" to={"/admin"}>
+              <Link className="link" to={"/owner"}>
                 <LineStyle className="sidebarIcon" />
                 Home
               </Link>
             </li>
             <li className="sidebarListItem ">
-              <Link className="link" to={"/admin/newproduct"}>
+              <Link className="link" to={"/owner/newproduct"}>
                 <Timeline className="sidebarIcon" />
                 Add product
               </Link>
@@ -42,7 +42,7 @@ export default function SideBar() {
               </Link>
             </li> */}
             <li className="sidebarListItem ">
-              <Link className="link" to={"/admin/ProductList"}>
+              <Link className="link" to={"/owner/ProductList"}>
                 <AddShoppingCart className="sidebarIcon" />
                 products
               </Link>

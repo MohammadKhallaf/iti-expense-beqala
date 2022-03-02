@@ -70,11 +70,8 @@ export const updateCheckoutState = (user_id, store_id, state) => {
       })
       .then((response) => {
         console.log("update==>", response.data);
-<<<<<<< HEAD
         alert("added");
-=======
         dispatch(getOpenCheckouts(user_id))
->>>>>>> 606769b816cec89f766d7daa163d42bd1b0b284f
       })
       
       .catch((error) => console.log(error));

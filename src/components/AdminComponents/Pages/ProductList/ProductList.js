@@ -97,7 +97,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <div className="userListUser">
-            <img src={params.row.image} alt="" />
+            <img src={params.row.image} alt="" height={50} width={50} />
             {params.row.name}
           </div>
         );
@@ -147,7 +147,7 @@ export default function ProductList() {
         // console.log(params.row.id);
         return (
           <>
-            <Link to={"/admin/Product/"}>
+            <Link to={"/owner/Product/"}>
               <button onClick={() => handleEdit()} className="productListEdit">
                 Edit
               </button>

@@ -27,7 +27,7 @@ import ResetPassword from "./pages/resetpassword/ResetPassword";
 import ResetPasswordConfirm from "./pages/resetpassword/ResetPasswordConfirm";
 import "./App.css";
 import Home from "../src/components/AdminComponents/Pages/Home/Home";
-import UserList from "../src/components/AdminComponents/Pages/UserList/UserList";
+
 import Layout from "./pages/layout/Layout";
 
 import ProductList from "../src/components/AdminComponents/Pages/ProductList/ProductList";
@@ -104,10 +104,8 @@ function App() {
             <Route path="/thanks" element={<Thanks />} />
 
 
-            <Route path="/admin/" exact element={<Home />} />
-            <Route path="/admin/users" element={<UserList />} />
-            <Route path="/admin/ProductList" element={<ProductList />} />
-            {/* <Route path="/admin/Product/:ProductId" element={<Product />} /> */}
+            <Route path="/owner/" exact element={<Home />} />
+            <Route path="/owner/ProductList" element={<ProductList />} />
             <Route path="/admin/newproduct" element={<NewProduct />} />
             <Route path="/admin/product" element={<AdminProduct />} />
           </Routes>

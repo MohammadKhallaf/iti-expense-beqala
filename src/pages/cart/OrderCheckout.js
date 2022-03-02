@@ -46,6 +46,7 @@ const OrderCheckout = () => {
       'x-rapidapi-key': 'b7d209d89fmsh80da77fbe5be72dp1994e8jsnf7213e64ba5b'
     }
   };
+  
   useEffect(() => {
     axios.request(options).then(function (response) {
       const orderTotal = order.total

@@ -1,5 +1,5 @@
 import "./NewProduct.css";
-import Navbar from "../../Navbar/Navbar";
+
 import SideBar from "../../SideBar/SideBar";
 import React, { useState } from "react";
 import axios from "axios";
@@ -37,7 +37,7 @@ export default function NewProduct() {
 
   return (
     <>
-      {/* <Navbar /> */}
+  
       <div className="newProductContainer">
         <SideBar />
         <div className="newProduct ">
