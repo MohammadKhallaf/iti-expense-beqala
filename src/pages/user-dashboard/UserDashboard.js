@@ -8,9 +8,8 @@ import Sidebar from "../../components/user-dashboard/UI/Sidebar";
 import { Outlet } from "react-router-dom";
 // import Test from "../../test/pages/Test";
 import UserAccount from "./UserAccount";
-import styles from "./UserDashboard.module.css"
+import styles from "./UserDashboard.module.css";
 const UserDashboard = () => {
- 
   return (
     <>
       <Sidebar />
