@@ -103,11 +103,11 @@ function App() {
             <Route path="/thanks" element={<Thanks />} />
 
 
-            <Route path="/admin/" exact element={<Home />} />
-            <Route path="/admin/users" element={<UserList />} />
-            <Route path="/admin/ProductList" element={<ProductList />} />
-            <Route path="/admin/Product/:ProductId" element={<Product />} />
-            <Route path="/admin/newproduct" element={<NewProduct />} />
+            <Route path="/owner/" exact element={<Home />} />
+            <Route path="/owner/users" element={<UserList />} />
+            <Route path="/owner/ProductList" element={<ProductList />} />
+            <Route path="/owner/Product/:ProductId" element={<Product />} />
+            <Route path="/owner/newproduct" element={<NewProduct />} />
           </Routes>
           {/* Shared */}
         </Layout>
