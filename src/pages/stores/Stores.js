@@ -10,13 +10,11 @@ import "./Stores.css";
 
 const Showstore = () => {
   let param = useParams();
-  console.log("param=",param)
   const city = param.name
   const [store, setstore] = useState([])
 
   const fetchstore = async () => {
     const result = await backendAPI.get(`location/stores/${city}/`)
-    console.log(result.data)
     setstore(result.data)
   }
  

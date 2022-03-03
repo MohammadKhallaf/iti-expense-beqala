@@ -60,7 +60,7 @@ export const addToLocalCart = (cartObject) => (dispatch) => {
       store: item.store.id,
     };
   });
-
+  // <-- adding the price to the cart -->
   backendAPI
     .get("cart/price-list/", {
       params: {
@@ -133,23 +133,16 @@ export const getLocCartItems = (store_id) => {
           image: item.product.image,
           brand: item.product.brand,
         },
+        price: item.product.price,
         // price:,
         offer: 0,
-        // price_after_offer:
+        price_after_offer: item.product.price,
       };
       return newItem;
     });
-
-    // backendAPI
-    //   .get("cart/", {
-    //     params: {
-    //       user_id,
-    //       store_id,
-    //     },
-    //   })
-    //   .then((response) => {
-    dispatch({ type: CHECKOUT, payload: { carts: mappedCart, total: 50 } });
-    // })
-    // .catch((error) => console.log("Error Status : ", error.response.status));
+    const total = mappedCart
+      .map((item) => item.price*item.cart_details.quantity)
+      .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+    dispatch({ type: CHECKOUT, payload: { carts: mappedCart, total } });
   };
 };

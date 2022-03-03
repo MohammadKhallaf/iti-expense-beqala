@@ -15,7 +15,6 @@ export default function Register() {
   });
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(regData);
   };
   const [regDataErr, setregDataErr] = useState({
     regUserEmailInvalid: "",

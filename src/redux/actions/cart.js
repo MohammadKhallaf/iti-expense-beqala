@@ -4,7 +4,7 @@ import { ADD_ITEM, CHECKOUT, USER_STORES } from "./types";
 /**
  *
  * Load the data in the shopping cart
- * @returns checkout state
+ * @returns checkout state => CHECKOUT: VIEW_CHECKOUT
  */
 export const getCartItems = (user_id, store_id) => {
   return function (dispatch) {
@@ -70,7 +70,6 @@ export const updateCheckoutState = (user_id, store_id, state) => {
         state,
       })
       .then((response) => {
-        console.log("update==>", response.data);
         dispatch(getOpenCheckouts(user_id));
       })
 
@@ -83,7 +82,6 @@ export const updateCheckoutState = (user_id, store_id, state) => {
  * @returns {Array} array of open checkout carts
  */
 export const getOpenCheckouts = (user_id) => {
-  console.log("getting the open checkouts =>", localStorage.getItem("access"));
   return function (dispatch) {
     backendAPI
       .get("/user/open-stores/", {

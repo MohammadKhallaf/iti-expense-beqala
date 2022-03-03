@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
+
 const StoreCard = (props) => {
 const { t, i18n } = useTranslation();
 const [data, setData] = useState(props.storeData);
@@ -35,11 +36,9 @@ const [input, setInput] = useState('');
   useEffect(() => {
     if (input.length > 0) {
       setFilter(data.filter((item, index, array) => {
-        console.log(array, index)
         return (item.name.toLowerCase().indexOf(input.toLowerCase()) > -1);
       }));
-      console.log(data)
-      console.log(input)
+
     }
     else {
       setFilter(data)
@@ -60,7 +59,6 @@ const [input, setInput] = useState('');
             {
               (data.map(item => item.category_name.name))
                 .filter((name, index, array) => {
-                  console.log(array, index, name)
                   return array.indexOf(name) === index;
                 })
                 .map((name, index) =>

@@ -31,7 +31,6 @@ export default function ProductList() {
   const handleDelete = () => {
     // setData(data.filter((item) => item.id !== id));
     // console.log("deletedItem", e);
-    console.log("delete function");
 
     // backendAPI
     //   .delete(`product/product/${e}`)
@@ -46,11 +45,9 @@ export default function ProductList() {
   };
 
   useEffect(() => {
-    console.log("rerender");
   }, [productData]);
 
   const handleEdit = (product_id) => {
-    console.log(product_id);
     backendAPI
       .post("/store/store-data/", {
         owner_id: user.id,
@@ -59,7 +56,6 @@ export default function ProductList() {
       .then((res) => console.log("OUR DATA\t", res.data));
     // .then((_) => navigate("/owner/product/1"));
     // console.log(e.target.value);
-    console.log("handle functon");
     // backendAPI
     //   .get(`product/product/${e}`)
     //   .then((res) => {
@@ -89,7 +85,6 @@ export default function ProductList() {
       headerName: "Brand",
       width: 130,
       renderCell: (params) => {
-        console.log(params);
         return (
           <>
             <div className="productListItem">{params.row.brand}</div>
@@ -130,7 +125,6 @@ export default function ProductList() {
       headerName: "action",
       width: 150,
       renderCell: (params) => {
-        // console.log(params.row.id);
         return (
           <>
             {/* <Link to={"/owner/Product/"}> */}

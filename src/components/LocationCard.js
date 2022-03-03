@@ -24,7 +24,6 @@ export default function LocationCard(props) {
       backgroundRepeat: 'no-repeat',
     }
   }
-  // console.log(props.name)
   const city=props.name
   return (
     <>

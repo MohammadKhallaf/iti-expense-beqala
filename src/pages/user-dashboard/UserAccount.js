@@ -31,10 +31,8 @@ const CardRowInfo = (props) => {
 
   const clickHandler = (showInput) => {
     setShowInput((prevState) => !prevState);
-    console.log(props);
     //! if input edit is enabled
     if (showInput) {
-      console.log("submitted");
       props.onSubmit();
     }
   };
@@ -149,7 +147,6 @@ const UserAccount = () => {
           <CardRowInfo
             onSubmit={async () => {
               const test = await i18n.changeLanguage("ar");
-              console.log("LANG", test);
             }}
             title="Language"
             input={

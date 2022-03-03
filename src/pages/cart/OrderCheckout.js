@@ -30,7 +30,6 @@ const OrderCheckout = () => {
           payment: payment_method,
         })
         .then((response) => {
-          console.log("update==>", response.data);
           navigate("/thanks");
         })
         .catch((error) => console.log(error));
@@ -51,14 +50,11 @@ const OrderCheckout = () => {
     axios.request(options).then(function (response) {
       const orderTotal = order.total
       const ratio = parseFloat(response.data)
-      console.log(orderTotal, ratio, orderTotal * ratio)
       localStorage.setItem("total", (orderTotal * ratio).toFixed(2))
       setTotal(orderTotal * ratio)
-      console.log(order.total, response.data, (order.total) * (response.data))
     }).catch(function (error) {
       console.error(error);
     });
-    console.log("order total = ", order.total)
 
   }, [order])
  

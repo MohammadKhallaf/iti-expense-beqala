@@ -20,7 +20,6 @@ export const getAllOrders = (user_id) => {
         },
       })
       .then((response) => {
-        console.log(response.data)
         dispatch({ type: ALL_ORDERS, payload: response.data });
       })
       .catch((error) => console.log("Error Status : ", error.response.status));
