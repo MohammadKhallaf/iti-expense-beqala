@@ -31,7 +31,7 @@ export const USER_STORES = 'UPDATE_USER_STORES';
 // <--local storage-->
 export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
 export const LOC_DEL_ITEM = "DEL_ITEM_FROM_CART"
-// export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
+export const LOC_CART_LIST = "UPDATE_CART_LIST"
 // export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
 // export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"
 // export const LOC_ADD_ITEM = "ADD_ITEM_TO_CART"

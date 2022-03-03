@@ -11,6 +11,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
+import { Card } from "react-bootstrap";
+import { addToLocalCart } from "../redux/actions/local";
 
 const Category = (props) => {
 
@@ -51,7 +53,7 @@ const Category = (props) => {
     // [/]
     // <---{ SERVER DB }--->
     const {
-      store: store_id,
+      store: { id: store_id },
       product: { id: product_id },
     } = values;
 
@@ -63,44 +65,12 @@ const Category = (props) => {
 
     // <---{ LOCAL STORAGE }--->
     const cartObject = {
-      store_id,
-      product_id,
+      store: values.store,
+      product: values.product,
       quantity: 1,
     };
-    // case 1 : there is no previous cart
-    // case 2 : there is a previous cart - with different product
-    // case 3 : there is a previous cart - with same product
 
-    const reqObj = JSON.parse(localStorage.getItem(`cart-${store_id}`)); // []
-
-    // there is a cart for that store
-    if (reqObj != null) {
-      const productList = reqObj; // []
-      const ourProduct = reqObj.filter(
-        (product) => product.product_id === product_id
-      )[0];
-
-      if (ourProduct) {
-        // if the product is in the list
-        const index = reqObj.findIndex(
-          (product) => product.product_id === product_id
-        );
-        const newQuantity = ourProduct.quantity + 1;
-        const newProductObj = {
-          ...ourProduct,
-          quantity: newQuantity,
-        };
-        productList.splice(index, 1, newProductObj);
-      } else {
-        // case 2.1: array => product is not existed in the array
-        productList.push(cartObject);
-      }
-
-      localStorage.setItem(`cart-${store_id}`, JSON.stringify(productList));
-    } else {
-      // if there is no any carts for that store
-      localStorage.setItem(`cart-${store_id}`, JSON.stringify([cartObject]));
-    }
+    dispatch(addToLocalCart(cartObject));
   };
 
   useEffect(() => {
@@ -108,7 +78,6 @@ const Category = (props) => {
     setData(props.storeData);
     setFilter(props.storeData);
   }, [props.storeData]);
-  
 
   const handelonchange = (e) => {
     e.preventDefault();
@@ -119,14 +88,11 @@ const Category = (props) => {
     if (input.length > 0) {
       setFilter(
         data.filter((item, index, array) => {
-          console.log(array, index);
           return (
             item.product.name.toLowerCase().indexOf(input.toLowerCase()) > -1
           );
         })
       );
-      console.log(data);
-      console.log(input);
     } else {
       setFilter(data);
     }
@@ -182,7 +148,7 @@ const Category = (props) => {
                 image: img,
               },
               price,
-              store: store_id,
+              store: { id: store_id },
             } = values;
             return (
               <Link

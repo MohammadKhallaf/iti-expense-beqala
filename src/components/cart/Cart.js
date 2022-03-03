@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 import { getCartItems } from "../../redux/actions/cart";
+import { getLocCartItems } from "../../redux/actions/local";
 
 /**
  * ## Cart Component
@@ -49,11 +50,11 @@ const Cart = (props) => {
   const { t } = useTranslation();
 
   /*<---required states--->*/
-  const [initial, setInitial] = useState(true);
   const [isLoading, setLoading] = useState(false);
 
   /*<== Store states ==>*/
-  const itemData = useSelector((state) => state.cart.data); //holds "item in cart "updates"
+  //holds "item in cart "updates"
+  const itemData = useSelector((state) => state.cart.data);
   const { visible: show, store_id } = useSelector((state) => state.cart.show);
   const store = useSelector((state) => state.cart.store);
   const item = useSelector((state) => state.cart.item);
@@ -81,88 +82,80 @@ const Cart = (props) => {
       price_after_offer
     } ]
     */
-    console.log("First", all_data);
     // get the required fields
     const {
       index, // input index
       op, // option
-      id: { user: userID, product: productID, store: storeID },
+      id: {product: productID },
     } = operation;
 
-    //{==update the }
-    switch (op) {
-      // <|--add one--|>
-      case "ADD":
-        console.log(
-          "Order Value Now is:",
-          all_data[index].cart_details.quantity
-        );
-        all_data[index].cart_details.quantity++;
-        console.log(
-          "Order Value Then is:",
-          all_data[index].cart_details.quantity
-        );
-        break;
-      // <|--delete one--|>
-      case "DEL":
-        all_data[index].cart_details.quantity--;
-        break;
-      // <|--remove all--|>
-      case "ZERO":
-        all_data[index].cart_details.quantity = 0;
-        break;
-      case "CHANGE":
-        all_data[index].cart_details.quantity = parseInt(operation.value);
-        break;
-      default:
-        console.log(operation);
-    }
+    //{==update the==}
+    all_data = updateObjQuantity(op,all_data,index,operation.value)
     // Load data to new cart state
     dispatch({ type: CART, payload: [...all_data] });
-    const cartItemData = {
-      product_id: itemData[index].product_details.id,
-      user_id: user.id,
-      store_id: order_data.store,
-      quantity: itemData[index].cart_details.quantity,
-    };
-    setLoading(true);
+    if (user) {
+      const cartItemData = {
+        product_id: itemData[index].product_details.id,
+        user_id: user.id,
+        store_id: order_data.store,
+        quantity: itemData[index].cart_details.quantity,
+      };
+      setLoading(true);
+      backendAPI
+        .put("cart/", cartItemData)
+        .then((res) => {
+          dispatch(getCartItems(cartItemData.user_id, cartItemData.store_id));
+        });
+    } else {
+      const oldStored = JSON.parse(localStorage.getItem(`cart-${store_id}`));
+      const productIndex = oldStored.findIndex(
+        (item) => item.product.id === productID
+      );
 
-    backendAPI
-      .put("cart/", cartItemData)
-      .then((response) =>
-        console.log("put request, response =>", response.data)
-      )
-      .then((res) => {
-        console.log("Start fetching");
-        dispatch(getCartItems(cartItemData.user_id, cartItemData.store_id));
-      });
+      if (all_data[index].cart_details.quantity > 0) {
+        oldStored[productIndex] = {
+          ...oldStored[productIndex],
+          quantity: all_data[index].cart_details.quantity,
+        };
+      } else {
+        oldStored.splice(productIndex, 1);
+
+
+        if (oldStored.length < 1) {
+          localStorage.removeItem(`cart-${store_id}`);
+          window.location.reload();
+        }
+      }
+      if (oldStored.length > 0) {
+        localStorage.setItem(`cart-${store_id}`, JSON.stringify(oldStored));
+      }
+      dispatch(getLocCartItems(store_id));
+    }
   };
+
   useEffect(() => {
     if (isLoading) {
       setLoading(false);
     }
-  }, [order]);
-
+  }, [ isLoading]);
+  useEffect(() => {}, [order]);
   const ckeckoutHandler = () => {
     dispatch({ type: SHOW_CART });
-    navigate("/order");
+    if (user) {
+      navigate("/order");
+    } else {
+      navigate("/signreq");
+    }
   };
 
-  // useEffect(() => {
-  //   // < get the cart items in the initial page load>
-  //   if (initial) {
-  //     // get the chcekout data
-  //     // dispatch(getCartItems(1,));
-
-  //     setInitial(false);
-  //   }
-  // }, [order, dispatch]);
-
-  // // re-render the cart whenever an update is done on the cart => add item
+  // re-render the cart whenever an update is done on the cart => add item
   useEffect(() => {
-    console.log("error here", store_id);
-    if (user) dispatch(getCartItems(user.id, store_id));
-  }, [item, store_id]);
+    if (user) {
+      dispatch(getCartItems(user.id, store_id));
+    } else {
+      dispatch(getLocCartItems(store_id));
+    }
+  }, [item, store_id, dispatch, user]);
 
   return (
     <Modal
@@ -330,10 +323,7 @@ const Cart = (props) => {
                           onClick={quantityHandler.bind(this, {
                             index,
                             op: "ZERO",
-                            id: {
-                              // user: item.user_id,
-                              // store: item.store_id,
-                              product: item.product_details.id,
+                            id: {product: item.product_details.id,
                             },
                           })}
                         >
@@ -378,3 +368,29 @@ const Cart = (props) => {
 };
 
 export default Cart;
+
+
+const updateObjQuantity=(operator,object,index,value)=>{
+
+  switch (operator) {
+    // <|--add one--|>
+    case "ADD":
+      object[index].cart_details.quantity++;
+      break;
+    // <|--delete one--|>
+    case "DEL":
+      object[index].cart_details.quantity--;
+      break;
+    // <|--remove all--|>
+    case "ZERO":
+      object[index].cart_details.quantity = 0;
+      break;
+    case "CHANGE":
+      object[index].cart_details.quantity = parseInt(value);
+      break;
+    default:
+      return object
+  }
+  return object
+
+}
