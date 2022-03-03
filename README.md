@@ -1,4 +1,4 @@
-# <img src="public/BeqalaLogo.png" height="25"/> Expenses Beqala App
+# <img src="public/BeqalaLogo.png" height="25" alt="logo"/> Expenses Beqala App
 
 ## Description
 
