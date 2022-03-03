@@ -46,6 +46,7 @@ import UserOrders from "./pages/user-dashboard/UserOrders";
 // General UI & Layouts
 import NotFoundPage from "./pages/general/NotFoundPage";
 import Thanks from "./pages/general/Thanks";
+import SignInReq from "./pages/general/SignInReq";
 
 // Components
 
@@ -53,10 +54,9 @@ import Cart from "./components/cart/Cart";
 import OrderCheckout from "./pages/cart/OrderCheckout";
 
 // styling
-import "./App.css";
 import { ContactUs } from "./pages/ContactUs";
+import "./App.css";
 
-// =======
 
 function App() {
   return (
@@ -66,6 +66,7 @@ function App() {
           <Routes>
             {/* Home */}
             <Route path="/" element={<Hero />} />
+
             {/* Authentication */}
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
@@ -79,32 +80,37 @@ function App() {
             <Route path="/google" element={<Google />} />
             <Route path="/facebook" element={<Facebook />} />
             <Route path="/checkmail" element={<CheckMail />} />
+
             {/* User */}
             <Route path="/dashboard" element={<UserDashboard />}>
               <Route path="overview" element={<UserOverview />} />
               <Route path="account" element={<UserAccount />} />
               <Route path="orders" element={<UserOrders />} />
             </Route>
+
+            {/* Admin */}
+            <Route path="/owner/" exact element={<Home />} />
+            <Route path="/owner/ProductList" element={<ProductList />} />
+            {/* <Route path="/admin/Product/:ProductId" element={<Product />} /> */}
+            <Route path="/owner/newproduct" element={<NewProduct />} />
+            <Route path="/owner/product/:storeId" element={<AdminProduct />} />
+
             {/* Stores */}
             <Route path="/:name/stores/" element={<Stores />} />
             <Route path="/stores/" element={<Stores />} />
+
             {/* Product */}
 
-            <Route path="/stores" element={<Stores />} />
             <Route path="/contactus" element={<ContactUs />} />
             <Route path="/products/:storeId" element={<Product />} />
             <Route path="/order" element={<OrderCheckout />} />
+
             {/* General  */}
             {/* <Route path="/test" element={<Test />} /> */}
             <Route path="*" element={<NotFoundPage />} />
             <Route path="/thanks" element={<Thanks />} />
 
-            <Route path="/owner/" exact element={<Home />} />
-      
-            <Route path="/owner/ProductList" element={<ProductList />} />
-            {/* <Route path="/admin/Product/:ProductId" element={<Product />} /> */}
-            <Route path="/owner/newproduct" element={<NewProduct />} />
-            <Route path="/owner/product/:storeId" element={<AdminProduct />} />
+            <Route path="/signreq" element={<SignInReq />} />
           </Routes>
           {/* Shared */}
         </Layout>
