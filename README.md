@@ -1,9 +1,32 @@
-# Expenses Beqala App
+# <img src="public/BeqalaLogo.png" height="25"/> Expenses Beqala App
 
 ## Description
 
 The front end section of the "Expenses Beqala" website.\
 The website aims to link the ecommerce website with the fin-tech.
+
+## Features
+
+- Login and register:
+  - form
+  - facebook
+  - google
+- Category and filter:
+  - location
+  - store
+  - product type / category
+- Cart and checkout:
+  - save cart (without loggedin / loggedin)
+  - multible carts (depending on store)
+- Payment:
+  - cash on delivery
+  - paypal
+  - credit card
+- Progressive Web App (PWA)
+- Arabic English site
+- Chatbot
+
+---
 
 ## Instalaltion
 
@@ -21,9 +44,7 @@ The website aims to link the ecommerce website with the fin-tech.
 - Chart.js
 - Redux
 - Axios
-- i18next
-  - react-i18next
-  - i18next-htpp-backend
+- i18next (& react-i18next)
 
 ---
 
@@ -36,4 +57,10 @@ The website aims to link the ecommerce website with the fin-tech.
 - [Menna Emad](https://github.com/MennaEmadZ)
 - [Ghada](https://github.com/ghadamo)
 
-[^1]: You should have Node.js and npm installed
+## Credits
+
+Logo and Icon design: [Reham Eskander](https://www.behance.net/rehameskander)
+
+---
+
+[^1]: You should have Node.js and npm installed to run the front end part
