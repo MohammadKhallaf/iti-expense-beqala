@@ -4,8 +4,13 @@ import { connect } from "react-redux";
 import { logout } from "../redux/actions/auth";
 import BasketButton from "./cart/BasketButton";
 import { Button } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 
 const Navbar = ({ logout, isAuthenticated, user, manager }) => {
+  const { i18n } = useTranslation();
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar");
+  };
   const logout_user = () => {
     logout();
   };
@@ -73,18 +78,22 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
           </Link>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              
               <li className="nav-item ">
                 <Link className="nav-link navItem" to="/contactus">
                   contact us
                 </Link>
               </li>
             </ul>
-            <li className="nav-item ">
-              
-            </li>
+            <li className="nav-item "></li>
             {isAuthenticated && user ? authLinks() : guestLinks()}
           </div>
+          <Button
+            onClick={toggleLanguage}
+            variant="outline-success"
+            className="p-1 py-0"
+          >
+            {i18n.language === "ar" ? "عربي" : "en"}
+          </Button>
           <BasketButton />
         </div>
       </nav>

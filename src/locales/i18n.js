@@ -3,6 +3,7 @@ import { initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 // import Backend from "i18next-http-backend";
 import arabicTranslation from "./ar/translation.json";
+import englishTranslation from "./en/translation.json";
 i18n
   //   .use(Backend)
   .use(LanguageDetector)
@@ -17,6 +18,9 @@ i18n
     resources: {
       ar: {
         translation: arabicTranslation,
+      },
+      en: {
+        translation: englishTranslation,
       },
     },
   });
