@@ -1,4 +1,8 @@
-import { PayPalButtons, PayPalHostedField, PayPalScriptProvider } from "@paypal/react-paypal-js";
+import {
+  PayPalButtons,
+  PayPalHostedField,
+  PayPalScriptProvider,
+} from "@paypal/react-paypal-js";
 import React, { useEffect, useState } from "react";
 import { Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,13 +14,11 @@ import { backendAPI } from "../../store";
 import axios from "axios";
 
 const OrderCheckout = () => {
-
   const order = useSelector((state) => state.cart.checkout);
   const [done, setDone] = useState(false);
   const [payment_method, setPayment] = useState("none");
   const [currency_today, setCurrency] = useState(1);
   const [total_EGP, setTotal] = useState(0.0);
-
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,34 +39,36 @@ const OrderCheckout = () => {
   }, [done]);
 
   const options = {
-    method: 'GET',
-    url: 'https://currency-exchange.p.rapidapi.com/exchange',
-    params: { from: 'EGP', to: 'USD', q: '1.0' },
+    method: "GET",
+    url: "https://currency-exchange.p.rapidapi.com/exchange",
+    params: { from: "EGP", to: "USD", q: "1.0" },
     headers: {
-      'x-rapidapi-host': 'currency-exchange.p.rapidapi.com',
-      'x-rapidapi-key': 'b7d209d89fmsh80da77fbe5be72dp1994e8jsnf7213e64ba5b'
-    }
+      "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
+      "x-rapidapi-key": "b7d209d89fmsh80da77fbe5be72dp1994e8jsnf7213e64ba5b",
+    },
   };
-  
+
   useEffect(() => {
-    axios.request(options).then(function (response) {
-      const orderTotal = order.total
-      const ratio = parseFloat(response.data)
-      localStorage.setItem("total", (orderTotal * ratio).toFixed(2))
-      setTotal(orderTotal * ratio)
-    }).catch(function (error) {
-      console.error(error);
-    });
+    axios
+      .request(options)
+      .then(function (response) {
+        const orderTotal = order.total + 30.0;
+        const ratio = parseFloat(response.data);
+        localStorage.setItem("total", (orderTotal * ratio).toFixed(2));
+        setTotal(orderTotal * ratio);
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+  }, [order]);
 
-  }, [order])
- 
-
+  if (Object.keys(order).length < 1) return <>"You have no items yet"</>;
   return (
     <Container className="pt-5">
-      
       <Row className="gy-4">
+        <h3>Store Order</h3>
         <SectionCard header="order details" icon="list-alt">
-          {(Object.keys(order).length && (
+          {
             <Table responsive>
               <thead>
                 <tr>
@@ -72,7 +76,7 @@ const OrderCheckout = () => {
                   <th>Name</th>
                   <th>Category</th>
                   <th>Price</th>
-                  <th>Quantity</th>
+                  <th>Qty.</th>
                   <th>Total</th>
                 </tr>
               </thead>
@@ -98,25 +102,66 @@ const OrderCheckout = () => {
                     <td>
                       {(
                         item.price_after_offer * item.cart_details.quantity
-                      ).toFixed(2)}
+                      ).toFixed(2)}{" "}
+                      LE
                     </td>
                   </tr>
                 ))}
               </tbody>
             </Table>
-          )) ||
-            "You have no items yet"}
+          }
         </SectionCard>
-        <SectionCard header="total" icon="wallet"></SectionCard>
+        <SectionCard header="total" icon="wallet">
+          <Table responsive>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Your Items</td>
+                <td>
+                  {order.carts
+                    .map(
+                      (item) =>
+                        item.price_after_offer * item.cart_details.quantity
+                    )
+                    .reduce((prev, curr) => prev + curr, 0)}{" "}
+                  LE
+                </td>
+              </tr>
+              <tr>
+                <td>Shipping</td>
+                <td>30 LE</td>
+              </tr>
+              <tr>
+                <td>Total</td>
+                <td>
+                  {order.carts
+                    .map(
+                      (item) =>
+                        item.price_after_offer * item.cart_details.quantity
+                    )
+                    .reduce((prev, curr) => prev + curr, 0) + 30.0}{" "}
+                  LE
+                </td>
+              </tr>
+            </tbody>
+          </Table>
+        </SectionCard>
         <SectionCard header="payment" icon="lock">
-
-          <button className="py-2 my-2 border-0 col-12 rounded bg-info fst-italic fw-bolder h5" style={{ height: "3.51rem", letterSpacing: " 2px" }}
+          <button
+            className="py-2 my-2 border-0 col-12 rounded bg-info fst-italic fw-bolder h5"
+            style={{ height: "3.51rem", letterSpacing: " 2px" }}
             onClick={() => {
               setPayment("cash");
               setDone(true);
-
             }}
-          >Cash</button>
+          >
+            Cash
+          </button>
           <PayPalScriptProvider
             options={{ "client-id": PAYPAL_ACCOUNT, currency: "USD" }}
           >
@@ -127,37 +172,34 @@ const OrderCheckout = () => {
                 return actions.order.create({
                   purchase_units: [
                     {
-
                       amount: {
                         value: localStorage.getItem("total"),
                       },
-                    }
+                    },
                   ],
                 });
               }}
               onApprove={(data, actions) => {
-
                 return actions.order.capture().then((details) => {
                   const name = details.payer.name.given_name;
                   setPayment("paypal");
                   setDone(true);
                   console.log(`Transaction completed by ${name}`);
-                  localStorage.removeItem("total")
+                  localStorage.removeItem("total");
                 });
               }}
             />
-             <PayPalButtons
+            <PayPalButtons
               style={{ layout: "vertical" }}
               fundingSource={"card"}
               createOrder={(data, actions) => {
                 return actions.order.create({
                   purchase_units: [
                     {
-
                       amount: {
                         value: localStorage.getItem("total"),
                       },
-                    }
+                    },
                   ],
                 });
               }}
@@ -167,12 +209,11 @@ const OrderCheckout = () => {
                   setPayment("credit");
                   setDone(true);
                   console.log(`Transaction completed by ${name}`);
-                  localStorage.removeItem("total")
+                  localStorage.removeItem("total");
                 });
               }}
             />
           </PayPalScriptProvider>
-
         </SectionCard>
       </Row>
     </Container>

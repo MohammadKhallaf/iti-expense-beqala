@@ -1,3 +1,7 @@
-.page__container{
+.page__container[lang="en"]{
        padding-left: 15rem !important;
+}
+.page__container[lang="ar"]{
+       padding-right: 15rem !important;
+
 }

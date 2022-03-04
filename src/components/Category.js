@@ -74,7 +74,7 @@ const Category = (props) => {
   };
 
   useEffect(() => {
-    i18n.changeLanguage("ar");
+    
     setData(props.storeData);
     setFilter(props.storeData);
   }, [props.storeData]);

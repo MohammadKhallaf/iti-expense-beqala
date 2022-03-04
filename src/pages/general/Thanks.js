@@ -25,6 +25,7 @@ const Thanks = () => {
     setTimeout(() => {
       navigate("/");
       clearInterval(interval);
+      window.location.reload()
     }, seconds * 1000);
   }, []);
 

@@ -21,70 +21,26 @@ import SectionCard from "../../components/user-dashboard/SectionCard";
  */
 //! this should be replaced with the user account photo -> if it will be an option
 import profilePhoto from "../../files/user/MK.JPG";
+import CardRowInfo from "../../components/user-dashboard/CardRowInfo";
+import { useSelector } from "react-redux";
 
 // Stack and Row may interchange
 
 // Row Component
-const CardRowInfo = (props) => {
-  const [showInput, setShowInput] = useState(false);
-  // const []
-
-  const clickHandler = (showInput) => {
-    setShowInput((prevState) => !prevState);
-    //! if input edit is enabled
-    if (showInput) {
-      props.onSubmit();
-    }
-  };
-
-  return (
-    <Row>
-      <h4 style={{ color: "var(--bs-gray-dark)" }}>
-        {props.title.charAt(0).toUpperCase() + props.title.slice(1)}
-      </h4>
-
-      <form>
-        <Stack
-          direction="horizontal"
-          className="justify-content-between pb-3 text-muted ps-3 flex-xl-nowrap flex-wrap"
-        >
-          <Container fluid className="ps-0">
-            {showInput ? props.input : props.children}
-          </Container>
-          {/* Here we get the action to change something */}
-          {props.notChangable ? null : (
-            <Button
-              variant="outline-success"
-              className="py-0"
-              onClick={clickHandler.bind(this, showInput)}
-            >
-              {showInput ? "OK" : "Change"}
-            </Button>
-          )}
-        </Stack>
-      </form>
-      <hr
-        style={{
-          background:
-            "linear-gradient(90deg, rgba(2,0,36,0) 0%, rgba(2,0,36,1) 30%, rgba(2,0,36,1) 65%, rgba(0,212,255,0) 100%)",
-        }}
-      />
-    </Row>
-  );
-};
 
 const UserAccount = () => {
+  const user = useSelector((state) => state.auth.user);
   const { t, i18n } = useTranslation();
 
-  // i18n.changeLanguage("ar");
+  if (!user) return <>No Account</>;
 
   return (
     <>
-      <h1 className="pb-3">My Account</h1>
+      <h1 className="pb-3">{t("profile.my-account", "My Account")}</h1>
       <Row className="gy-4">
         {/* Profile Details */}
-        <SectionCard icon="user" header={t("profile.profile", "profile")}>
-          <CardRowInfo
+        <SectionCard icon="user" header={t("profile.profile")}>
+          {/* <CardRowInfo
             title="Photo"
             type="image"
             input={
@@ -105,21 +61,25 @@ const UserAccount = () => {
               }}
               className="rounded-circle"
             />
-          </CardRowInfo>
+          </CardRowInfo> */}
           {/* name */}
-          <CardRowInfo title="name" input={<FormControl></FormControl>}>
-            Mohammed Khallaf
+          <CardRowInfo
+            notChangable
+            title={t("profile.name")}
+            input={<FormControl></FormControl>}
+          >
+            {user.first_name} {user.last_name}
           </CardRowInfo>
           {/* email */}
           <CardRowInfo
-            title="email"
+            title={t("profile.email")}
             input={<FormControl type="email"></FormControl>}
             notChangable
           >
             mohammed.khallaf@gmail.com
           </CardRowInfo>
           {/* website */}
-          <CardRowInfo
+          {/* <CardRowInfo
             title="location"
             input={
               <FormSelect>
@@ -129,25 +89,22 @@ const UserAccount = () => {
             }
           >
             Alexandria
-          </CardRowInfo>
+          </CardRowInfo> */}
           {/* location */}
-          <CardRowInfo
+          {/* <CardRowInfo
             title="Phone"
             input={<FormControl type="number"></FormControl>}
           >
             01029149153
-          </CardRowInfo>
+          </CardRowInfo> */}
           {/* photo */}
         </SectionCard>
 
-        <SectionCard
+        {/* <SectionCard
           header={t("profile.preferences", "preferences")}
           icon="sliders-h"
         >
           <CardRowInfo
-            onSubmit={async () => {
-              const test = await i18n.changeLanguage("ar");
-            }}
             title="Language"
             input={
               <FormSelect>
@@ -164,7 +121,7 @@ const UserAccount = () => {
           >
             **********
           </CardRowInfo>
-        </SectionCard>
+        </SectionCard> */}
       </Row>
     </>
   );

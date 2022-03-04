@@ -8,36 +8,19 @@ import Sidebar from "../../components/user-dashboard/UI/Sidebar";
 import { Outlet } from "react-router-dom";
 import UserAccount from "./UserAccount";
 import styles from "./UserDashboard.module.css";
+import { useTranslation } from "react-i18next";
 const UserDashboard = () => {
+  const { t, i18n } = useTranslation();
   return (
-    <>
+    <div lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
       <Sidebar />
-      
-      <Container  fluid="true" className={styles.page__container}>
-      <Container  as="section" className="p-5 m-auto">
-      <Outlet />
-      </Container>
-      </Container>
 
-      {/* <Container className="w-75 py-5">
-        <h2 className="pt-3">Overview</h2>
-        <UserCard />
-        <h2 className="pt-3">Categories</h2>
-        <Container fluid className="mt-4 shadow-sm mx-auto">
-          <Categories />
+      <Container fluid="true" lang={i18n.language} className={styles.page__container}>
+        <Container as="section" className="p-5 m-auto">
+          <Outlet />
         </Container>
-        <h2 className="pt-3">Expenses History</h2>
-        <Container fluid className="mt-4">
-          <TransFilters />
-        </Container>
-        <Container fluid className="mt-4 shadow-sm p-5">
-          <Transactions />
-        </Container>
-        <Container fluid className="mt-4 shadow-sm p-5">
-          <Doughnut data={chartData} options={{}} />
-        </Container>
-      </Container> */}
-    </>
+      </Container>
+    </div>
   );
 };
 
