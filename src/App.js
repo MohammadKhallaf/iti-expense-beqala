@@ -56,12 +56,14 @@ import OrderCheckout from "./pages/cart/OrderCheckout";
 // styling
 import { ContactUs } from "./pages/ContactUs";
 import "./App.css";
+import GeoMap from "./components/map/GeoMap";
 
 
 function App() {
   return (
     <Provider store={store}>
       <Router>
+        <GeoMap />
         <Layout>
           <Routes>
             {/* Home */}

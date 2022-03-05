@@ -15,6 +15,7 @@ The website aims to link the ecommerce website with the fin-tech.
   - location
   - store
   - product type / category
+- Nearby stores
 - Cart and checkout:
   - save cart (without loggedin / loggedin)
   - multible carts (depending on store)

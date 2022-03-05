@@ -1,17 +1,29 @@
-import React from "react";
+import React, {  useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function LocationCard(props) {
-  const imgURL = props.loc
+
+
+
+  // fetch(`${props.loc}`, { method: 'HEAD' })
+  // .then(res => {
+  //     if (res.ok) {
+  //       setimg(`url(${props.loc})`)
+  //     } else {
+  //       setimg(`none`)
+  //     }
+  // }).catch(err => console.log('Error:', err));
+  const img =props.name.toLowerCase();
+  console.log(img)
   const styles = {
     header: {
       width: '100%',
       height:193,
-      backgroundImage: `url(${props.loc})`,
+      backgroundImage: `url(${require(`../files/Location/${img}.jpg`)})`,
+      backgroundColor: 'rgba(0, 111, 104)',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
-      
     },
     content: {
       width: '100%',
@@ -24,25 +36,26 @@ export default function LocationCard(props) {
       backgroundRepeat: 'no-repeat',
     }
   }
+  console.log(img)
   const city=props.name
   return (
     <>
 
 
-      <div className="col-lg-4 col-md-6 col-sm-6 mx-5 my-5  ">
+      
         <div className="card text-center rounded border-0 locCard" style={{ width: "18rem" }}>
         
           <Link to={`/${city}/stores`} style={{ textDecoration:'none'}}>
             <div className="locCardb"
               style={styles.header}
             >
-              <div className="locTitle" style={styles.content}>{city==='cairo'?'Cairo':'Alexandria'}</div>
+              <div className="locTitle" style={styles.content}>{city}</div>
 
             </div>
           </Link>
     
         </div>
-      </div>
+      
     </>
   );
 }

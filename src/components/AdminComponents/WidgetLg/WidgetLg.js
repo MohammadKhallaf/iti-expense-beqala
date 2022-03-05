@@ -71,8 +71,8 @@ export default function WidgetLg() {
                         return (
 
                             <tr className="WidgetLgTr" key={index} >
-                                <td className="WidgetLgUser">
-                                    <span className="WidgetLgNamre">{order.order_detail[0].id}</span>
+                                <td className="">
+                                   {order.order_detail[0].id}
                                 </td>
                                 <td className="">
                                     {order.customer[0].first_name} {order.customer[0].last_name}
