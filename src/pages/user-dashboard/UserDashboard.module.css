@@ -1,7 +1,15 @@
-.page__container[lang="en"]{
-       padding-left: 15rem !important;
+.page__container[lang="en"] {
+  padding-left: 4rem;
 }
-.page__container[lang="ar"]{
-       padding-right: 15rem !important;
+.page__container[lang="ar"] {
+  padding-right: 4rem;
+}
 
+@media only screen and (min-width: 760px) {
+  .page__container[lang="en"] {
+    padding-left: 15rem !important;
+  }
+  .page__container[lang="ar"] {
+    padding-right: 15rem !important;
+  }
 }
