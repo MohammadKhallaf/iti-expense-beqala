@@ -58,8 +58,7 @@ const StoreCard = (props) => {
       <div className="container">
         <div className="row ">
           <div>
-            {data
-              .map((item) => item.category_name.name)
+            {data.map((item) => item.category_name.name)
               .filter((name, index, array) => {
                 return array.indexOf(name) === index;
               })
