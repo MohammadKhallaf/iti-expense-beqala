@@ -1,5 +1,4 @@
 .nav__item:hover {
-  border-left: 5px solid green;
   color: green !important;
   /* background-color: rgba(202, 197, 197, 0.274); */
   cursor: pointer;
@@ -7,9 +6,44 @@
   box-shadow: 0px 20px 20px -20px #bebebe, 0px 20px 20px 15px #ffffff;
 }
 .active {
-  border-left: 5px solid green;
   color: green;
   box-shadow: 0px 20px 20px -20px #bebebe, 0px 20px 20px 15px #ffffff;
   /* background-color: rgba(202, 197, 197, 0.274); */
   cursor: pointer;
+}
+
+.nav__item:hover[lang="en"] {
+  border-left: 5px solid green;
+}
+.active[lang="en"] {
+  border-left: 5px solid green;
+}
+
+.nav__item:hover[lang="ar"] {
+  border-right: 5px solid green;
+}
+.active[lang="ar"] {
+  border-right: 5px solid green;
+}
+
+
+@media screen and (max-width: 760px) {
+  .sidebar {
+    width: 4rem !important;
+    transition: all ease 0.5s;
+  }
+
+  .sidebar:hover {
+    width: 15rem !important;
+  }
+  .nav__text{
+    display: none;
+    transition-delay: 500ms;
+    transition: all ease 0.5s;
+  }
+   .sidebar:hover .nav__text{
+     padding-left: 1rem;
+     padding-right: 1rem;
+    display: inline;
+  }
 }
