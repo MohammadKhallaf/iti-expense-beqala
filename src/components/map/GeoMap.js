@@ -4,9 +4,11 @@ import { Button, Form, FormCheck, Modal } from "react-bootstrap";
 import axios from "axios";
 import { GOAPI_API_KEY } from "../../credits";
 import { backendAPI } from "../../store";
+import { useTranslation } from "react-i18next";
 const GeoMap = () => {
   const checkRef = useRef();
   const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
   const [show, setShow] = useState(false);
   const [current, setCurrent] = useState("");
   const [cities, setCities] = useState([]);
@@ -31,7 +33,6 @@ const GeoMap = () => {
           return { cities: res.data, current: city };
         })
       )
-      .then((res) => console.log("YOUR DATA IS", res))
       .catch((error) => console.log("error", error));
   };
 
@@ -39,10 +40,6 @@ const GeoMap = () => {
     console.warn(`ERROR(${err.code}): ${err.message}`);
   }
   useEffect(() => {
-    console.log(localStorage.getItem("location__geo"));
-    console.log(JSON.parse(localStorage.getItem("location__show")));
-    console.log(localStorage.getItem("location__show"));
-
     // -- there is a location -- required not to show
     if (
       localStorage.getItem("location__geo") &&
@@ -69,9 +66,7 @@ const GeoMap = () => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log(cities.includes(current));
-  }, [current, show]);
+  useEffect(() => {}, [current, cities, show]);
 
   const handleClose = () => {
     if (checkRef.current.checked) {
@@ -89,29 +84,36 @@ const GeoMap = () => {
   };
   return (
     <>
-      <Modal show={show} onHide={handleClose}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        lang={i18n.language}
+        dir={i18n.language === "ar" ? "rtl" : null}
+      >
         <Modal.Header closeButton>
-          <Modal.Title>Location detected</Modal.Title>
+          <Modal.Title>{t("location.location-detected")}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
+        <Modal.Body >
           {cities.includes(current)
-            ? `Your location appears in ${current}`
-            : `There is no nearby stores in your location , available stores in ${cities}`}
+            ? `${t("location.location-appears-in")} ${t(`location.${current}`)}`
+            : `${t("location.no-nearby-sentence")} ${cities}`}
 
           <Form.Check
+          
             className="pt-5 text-muted"
             type="checkbox"
-            label={`Don't show it again`}
+            label={t('ui.dont-show')}
             ref={checkRef}
+            
           />
         </Modal.Body>
         <Modal.Footer>
           <Button variant="outline-secondary" onClick={handleClose}>
-            Dismiss
+            {t("ui.dismiss")}
           </Button>
           {cities.includes(current) ? (
             <Button variant="primary" onClick={handleStore}>
-              Go to the store
+              {t("ui.go-to-store")}
             </Button>
           ) : null}
         </Modal.Footer>

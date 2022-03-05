@@ -11,19 +11,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import FallbackImage from "./../files/market.png";
 import { addToCard } from "../redux/actions/cart";
-import { Card } from "react-bootstrap";
+import { Card, Tab, Tabs } from "react-bootstrap";
 import { addToLocalCart } from "../redux/actions/local";
 
 const Category = (props) => {
+  //<--store-->
+  const user = useSelector((state) => state.auth.user);
 
-  const { t, i18n } = useTranslation();
-  const dispatch = useDispatch();
+  //<--states-->
+  const [key, setKey] = useState("all");
   const [data, setData] = useState(props.storeData);
   const [filtered, setFilter] = useState(props.storeData);
   const [input, setInput] = useState("");
-  const user = useSelector((state) => state.auth.user);
+
+  //<--hooks-->
+  const { t, i18n } = useTranslation();
+  const dispatch = useDispatch();
+
+  //<==Functions==>
   /**
-   *
    * @param  catItem category name
    */
   const filterResult = (catItem) => {
@@ -43,11 +49,8 @@ const Category = (props) => {
    *
    * check the response from the server
    * if the response is succeed => add to cart in the frontend
-   * 
+   *
    */
-
-
-  
 
   const addToCartHandler = (values) => {
     // [/]
@@ -74,7 +77,6 @@ const Category = (props) => {
   };
 
   useEffect(() => {
-    
     setData(props.storeData);
     setFilter(props.storeData);
   }, [props.storeData]);
@@ -83,7 +85,7 @@ const Category = (props) => {
     e.preventDefault();
     setInput(e.target.value);
   };
-  
+
   useEffect(() => {
     if (input.length > 0) {
       setFilter(
@@ -112,27 +114,41 @@ const Category = (props) => {
 
       <div className="container">
         <div className="row ">
-          <div>
+          <Tabs
+            fill
+            lang={i18n.language}
+            dir={i18n.language === "ar" ? "rtl" : null}
+            activeKey={key}
+            onSelect={(k) => {
+              setKey(k);
+              if (k !== "all") {
+                filterResult(k);
+              } else {
+                setFilter(props.storeData);
+              }
+            }}
+            className="mb-0 justify-content-center flex-column flex-sm-row"
+          >
+            <Tab
+              eventKey="all"
+              title={t("category.All")}
+              className="w-100"
+              onClick={() => setFilter(props.storeData)}
+            ></Tab>
             {data
               .map((item) => item.product.category.name)
               .filter((name, index, array) => {
                 return array.indexOf(name) === index;
               })
               .map((name, index) => (
-                <button
-                  className="btn btn-outline-success mb-4 col-lg-3 py-2"
-                  onClick={() => filterResult(name)}
-                >
-                  {t(`category.${name}`, name)}
-                </button>
+                <Tab
+                  eventKey={name}
+                  title={t(`category.${name}`, name)}
+                  // onClick={() => filterResult(name)}
+                  key={index}
+                ></Tab>
               ))}
-            <button
-              className="btn btn-outline-success mb-4 col-lg-3 py-2"
-              onClick={() => setFilter(props.storeData)}
-            >
-              All
-            </button>
-          </div>
+          </Tabs>
         </div>
       </div>
 
@@ -169,7 +185,7 @@ const Category = (props) => {
                       {t(`category.${title}`, title)}
                     </div>
                     <div className="card-body cardText">
-                    <p>{t(`category.${discreption}`, discreption)}</p>
+                      <p>{t(`category.${discreption}`, discreption)}</p>
                       <p> Price: {price} </p>
                       <button
                         className="btn btn-light"
@@ -177,7 +193,6 @@ const Category = (props) => {
                       >
                         <i className="fas fa-cart-arrow-down"></i>
                       </button>
-                      
                     </div>
                   </div>
                 </div>

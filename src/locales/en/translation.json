@@ -113,7 +113,11 @@
   "location": {
     "location": "location",
     "Alexandria": "Alexandria",
-    "Cairo": "Cairo"
+    "Cairo": "Cairo",
+    "location-detected": "Location detected",
+    "location-appears-in":"Your location appears in",
+    "no-nearby-sentence":"No nearby stores available for your current location, available stores in "
+
   },
   "cart": {
     "shopping-cart": "Shopping Cart",
@@ -125,13 +129,17 @@
     "view": "view",
     "quantity": "quantity",
     "payment": "payment"
-
   },
   "order": {
-    "details":"Order Details",
+    "details": "Order Details",
     "all": "All",
     "open": "open",
     "pending": "pending",
     "done": "done"
+  },
+  "ui": {
+    "dismiss": "Dismiss",
+    "dont-show": "Don't show again",
+    "go-to-store": "Go to the store"
   }
 }

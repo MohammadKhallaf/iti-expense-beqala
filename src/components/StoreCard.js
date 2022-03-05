@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
+import { Button, Nav, Tab, Tabs } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import FallbackImage from "./../files/market.png";
 
 const StoreCard = (props) => {
+  const [key, setKey] = useState("all");
   const { t, i18n } = useTranslation();
   const [data, setData] = useState(props.storeData);
   const [filtered, setFilter] = useState(props.storeData);
@@ -56,33 +58,47 @@ const StoreCard = (props) => {
       </div>
 
       <div className="container">
-        <div className="row ">
-          <div>
-            {data.map((item) => item.category_name.name)
+        <div className="row px-3">
+          <Tabs
+            fill
+            lang={i18n.language}
+            dir={i18n.language === "ar" ? "rtl" : null}
+            activeKey={key}
+            onSelect={(k) => {
+              setKey(k);
+              if (k !== "all") {
+                filterResult(k);
+              } else {
+                setFilter(props.storeData);
+              }
+            }}
+            className="mb-0 justify-content-center flex-column flex-sm-row"
+          >
+            <Tab
+              eventKey="all"
+              title={t("category.All")}
+              className="w-100"
+              onClick={() => setFilter(props.storeData)}
+            ></Tab>
+            {data
+              .map((item) => item.category_name.name)
               .filter((name, index, array) => {
                 return array.indexOf(name) === index;
               })
               .map((name, index) => (
-                <button
-                  className="btn btn-outline-success mb-4 col-lg-3 py-2"
-                  onClick={() => filterResult(name)}
+                <Tab
+                  eventKey={name}
+                  title={t(`category.${name}`, name)}
+                  // onClick={() => filterResult(name)}
                   key={index}
-                >
-                  {t(`category.${name}`, name)}
-                </button>
+                ></Tab>
               ))}
-            <button
-              className="btn btn-outline-success mb-4 col-lg-3 py-2"
-              onClick={() => setFilter(props.storeData)}
-            >
-              {t("category.All")}
-            </button>
-          </div>
+          </Tabs>
         </div>
       </div>
 
       <div className="container">
-        <div className="row ">
+        <div className="row justify-content-center">
           {filtered.map((values, index) => {
             const {
               id: id,
@@ -92,22 +108,24 @@ const StoreCard = (props) => {
             } = values;
             return (
               <Link
-                className="col-lg-3 col-md-6 col-sm-8  cardsGrid "
+                className="col-lg-3 col-md-6 col-sm-8  cardsGrid p-0 m-3"
                 to={`/products/${id}`}
-                style={{ textDecoration: "none" }}
+                style={{
+                  textDecoration: "none",
+                 
+                }}
                 key={index}
               >
-                <div>
-                  <div className="card my-3 storeCard" style={{}}>
-                    <img
-                      src={img || FallbackImage}
-                      className="card-img-top background"
-                      alt="..."
-                      style={{ height: "15rem" }}
-                    />
-                    <div className="card-body cardTitle">
-                      {t(`category.${title}`, title)}
-                    </div>
+                <div className="card my-3 storeCard ">
+                  <img
+                    src={img || FallbackImage}
+                    loading="auto"
+                    className="card-img-top background"
+                    alt={t(`category.${title}`, title)}
+                    style={{ height: "15rem" }}
+                  />
+                  <div className="card-body cardTitle">
+                    {t(`category.${title}`, title)}
                   </div>
                 </div>
               </Link>

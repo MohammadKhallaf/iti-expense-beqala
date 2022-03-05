@@ -3,9 +3,16 @@ import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../redux/actions/auth";
 import BasketButton from "./cart/BasketButton";
-import { Button } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Nav,
+  Navbar as BootstrapNavbar,
+  NavDropdown,
+  Row,
+} from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-
 const Navbar = ({ logout, isAuthenticated, user, manager }) => {
   const { i18n } = useTranslation();
   const toggleLanguage = () => {
@@ -13,91 +20,90 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
   };
   const logout_user = () => {
     logout();
+    window.location.reload();
   };
 
-  const guestLinks = () => (
-    <Fragment>
-      <li className="nav-item list-unstyled">
-        <Link className="nav-link navItem" to="/login">
-          <i className="fas fa-user navicon"></i>
-          Login
-        </Link>
-      </li>
-      <li className="nav-item list-unstyled">
-        <Link className="nav-link navItem" to="/register">
-          Sign Up
-        </Link>
-      </li>
-    </Fragment>
-  );
-
-  const authLinksUser = () => (
-    <>
-      <li className="nav-item list-unstyled">
-        <Link className="nav-link navItem" to="/UserDashboard">
-          Your account
-        </Link>
-      </li>
-      <li className="nav-item list-unstyled">
-        <a className="nav-link navItem" href="#!" onClick={logout_user}>
-          Logout
-        </a>
-      </li>
-    </>
-  );
-
-  const authLinksManager = () => (
-    <>
-      <li className="nav-item list-unstyled">
-        <a className="nav-link navItem" href="#!" onClick={logout_user}>
-          Logout
-        </a>
-      </li>
-    </>
-  );
-
-  const authLinks = () => <>{manager ? authLinksManager() : authLinksUser()}</>;
-
   return (
-    <Fragment>
-      <nav className="navbar navbar-expand-lg navbar-light navfixed sticky-top bg-light">
-        <div className="container">
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarTogglerDemo01"
-            aria-controls="navbarTogglerDemo01"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
+    <BootstrapNavbar
+      expand="md"
+      bg="dark"
+      sticky="top"
+      lang={i18n.language}
+      // dir={i18n.language === "ar" ? "rtl" : null}
+    >
+      <Container fluid className="px-2 px-md-3 px-lg-4 px-xl-5 text-light ">
+        <BootstrapNavbar.Brand
+          className="text-light me-auto flex-grow-1"
+          as={Link}
+          to="/"
+        >
+          <span
+            className="p-1 rounded-circle"
+            // style={{ background: "var(--bs-gray-100)" }}
           >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <Link className="navbar-brand" to="/">
-            ExpenseBeqala
-          </Link>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item ">
-                <Link className="nav-link navItem" to="/contactus">
-                  contact us
-                </Link>
-              </li>
-            </ul>
-            <li className="nav-item "></li>
-            {isAuthenticated && user ? authLinks() : guestLinks()}
-          </div>
-          <Button
-            onClick={toggleLanguage}
-            variant="outline-success"
-            className="p-1 py-0"
-          >
-            {i18n.language === "ar" ? "عربي" : "en"}
-          </Button>
-          <BasketButton />
-        </div>
-      </nav>
-    </Fragment>
+            <img
+              src={require("../files/BeqalaLogo.png")}
+              alt="logo"
+              height="30px"
+              width="30px"
+            />
+          </span>
+          <span className="fw-bold ps-3">ExpenseBeqala</span>
+        </BootstrapNavbar.Brand>
+
+        <BasketButton />
+        <BootstrapNavbar.Toggle
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+          aria-controls="navbarHeader"
+          aria-expanded="false"
+          label="Toggle navigation"
+        />
+
+        <BootstrapNavbar.Collapse id="navbarCollapse" className="flex-grow-0">
+          <Nav>
+            <Button
+              onClick={toggleLanguage}
+              variant="outline-success"
+              className="p-1 py-0"
+            >
+              {i18n.language === "ar" ? "عربي" : "en"}
+            </Button>
+
+            <NavDropdown
+              title={<span className="text-light m-1">Account</span>}
+              id="nav-dropdown"
+            >
+              {/* guest */}
+              {!isAuthenticated ? (
+                <>
+                  <NavDropdown.Item as={Link} to="/login">
+                    Login
+                  </NavDropdown.Item>
+
+                  <NavDropdown.Item as={Link} to="/register">
+                    Register
+                  </NavDropdown.Item>
+                </>
+              ) : (
+                <>
+                  <NavDropdown.Item
+                    as={Link}
+                    to={manager ? "/owner/" : "/dashboard/overview"}
+                  >
+                    Your Account
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item as={Button} onClick={logout_user}>
+                    Logout
+                  </NavDropdown.Item>
+                </>
+              )}
+            </NavDropdown>
+          </Nav>
+        </BootstrapNavbar.Collapse>
+      </Container>
+    </BootstrapNavbar>
   );
 };
 
