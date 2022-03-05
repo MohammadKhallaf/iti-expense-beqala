@@ -141,7 +141,10 @@
   "location": {
     "location": "الموقع",
     "Alexandria": "الإسكندرية",
-    "Cairo": "القاهرة"
+    "Cairo": "القاهرة",
+    "location-detected": "الموقع الحالي",
+    "location-appears-in":"موقعك الحالي يظهر في ",
+    "no-nearby-sentence":"لا توجد منافذ بالقرب من موقعك الحالي، المنافذ المتوفرة في "
   },
   "cart": {
     "shopping-cart": "سلة التسوق",
@@ -160,5 +163,10 @@
     "open": "مفتوح",
     "pending": "قيد الانتظار",
     "done": "اكتمل"
+  },
+  "ui": {
+    "dismiss": "إخفاء",
+    "dont-show": "لا تظهر مجددا",
+    "go-to-store": "افتح صفحة المحلات"
   }
 }
