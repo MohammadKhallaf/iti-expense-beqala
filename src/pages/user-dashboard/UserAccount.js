@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   Row,
@@ -23,45 +23,91 @@ import SectionCard from "../../components/user-dashboard/SectionCard";
 import profilePhoto from "../../files/user/MK.JPG";
 import CardRowInfo from "../../components/user-dashboard/CardRowInfo";
 import { useSelector } from "react-redux";
+import { backendAPI } from "../../store";
+import Cookies from "js-cookie";
+import axios from "axios";
+import { GOAPI_API_KEY } from "../../credits";
 
 // Stack and Row may interchange
 
 // Row Component
 
 const UserAccount = () => {
+  //<--states-->
+  const [phoneValidated, setPhoneValidated] = useState(false);
+  const [addressValidated, setAddressValidated] = useState(false);
+  //<--refs-->
+  const addressRef = useRef();
+  const phoneRef = useRef();
+  const csrftoken = Cookies.get("csrftoken");
+  //<--hooks-->
   const user = useSelector((state) => state.auth.user);
   const { t, i18n } = useTranslation();
 
-  if (!user) return <>No Account</>;
+  //<==helper functions==>
+  const phoneSubmitHandler = (event) => {
+    const phoneReg = new RegExp("^01[0125][0-9]{8}$");
 
+    event.preventDefault();
+    event.stopPropagation();
+    if (phoneReg.test(phoneRef.current.value)) {
+      const phoneNumber = phoneRef.current.value;
+      backendAPI.put(
+        "/user/update/",
+        { user_id: user.id, user_phone: phoneNumber },
+        {
+          headers: {
+            Authorization: `JWT ${localStorage.getItem("access")}`,
+            "X-CSRFToken": csrftoken,
+          },
+        }
+      );
+    }
+
+    setPhoneValidated(true);
+  };
+  const addressSubmitHandler = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    const address = addressRef.current.value;
+    backendAPI.put(
+      "/user/update/",
+      { user_id: user.id, user_address: address },
+      {
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("access")}`,
+          "X-CSRFToken": csrftoken,
+        },
+      }
+    );
+
+    setAddressValidated(true);
+  };
+
+  const getLocationHandler = () => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const cords = position.coords;
+        axios
+          .get(
+            `https://api.geoapify.com/v1/geocode/reverse?lat=${cords.latitude}&lon=${cords.longitude}&lang=en&format=json&limit=1&apiKey=${GOAPI_API_KEY}`
+          )
+          .then((response) => response.data.results[0])
+          .then((res) => (addressRef.current.value = res.formatted));
+      },
+      () => {}
+    );
+  };
+
+  useEffect(() => {}, [phoneRef, addressRef]);
+
+  if (!user) return <>No Account</>;
   return (
     <>
       <h1 className="pb-3">{t("profile.my-account", "My Account")}</h1>
       <Row className="gy-4">
         {/* Profile Details */}
         <SectionCard icon="user" header={t("profile.profile")}>
-          {/* <CardRowInfo
-            title="Photo"
-            type="image"
-            input={
-              <FormControl
-                type="file"
-                accept="image/png, image/jpeg"
-              ></FormControl>
-            }
-          >
-            <img
-              src={profilePhoto}
-              alt=""
-              style={{
-                width: "60px",
-                height: "60px",
-                objectFit: "fill",
-                border: "3px solid var(--bs-success)",
-              }}
-              className="rounded-circle"
-            />
-          </CardRowInfo> */}
           {/* name */}
           <CardRowInfo
             notChangable
@@ -76,7 +122,7 @@ const UserAccount = () => {
             input={<FormControl type="email"></FormControl>}
             notChangable
           >
-            mohammed.khallaf@gmail.com
+            {user.email}
           </CardRowInfo>
           {/* website */}
           {/* <CardRowInfo
@@ -91,20 +137,94 @@ const UserAccount = () => {
             Alexandria
           </CardRowInfo> */}
           {/* location */}
-          {/* <CardRowInfo
-            title="Phone"
-            input={<FormControl type="number"></FormControl>}
-          >
-            01029149153
-          </CardRowInfo> */}
+          <CardRowInfo title="Phone" notChangable>
+            <Form
+              noValidate
+              validated={phoneValidated}
+              className="w-100"
+              onSubmit={phoneSubmitHandler}
+            >
+              <Row>
+                <Form.Group as={Col} xs="12" md="9" controlId="phone">
+                  <Form.Control
+                    type="tel"
+                    required
+                    name="phone"
+                    autoComplete="true"
+                    pattern="^01[0125][0-9]{8}$"
+                    aria-describedby="phoneHelpBlock"
+                    ref={phoneRef}
+                    defaultValue={user.phone}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid phone number.
+                  </Form.Control.Feedback>
+                  <Form.Text id="phoneHelpBlock" muted>
+                    Important to reach you out for your orders
+                  </Form.Text>
+                </Form.Group>
+
+                <Col xs="12" md="auto">
+                  <Button variant="outline-success" type="submit">
+                    OK
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </CardRowInfo>
+          <CardRowInfo title="Address" notChangable>
+            <Form
+              noValidate
+              validated={addressValidated}
+              className="w-100"
+              onSubmit={addressSubmitHandler}
+            >
+              <Row>
+                <Form.Group as={Col} xs="12" md="8" controlId="address">
+                  <Form.Control
+                    type="text"
+                    required
+                    name="address"
+                    autoComplete="true"
+                    aria-describedby="addressHelpBlock"
+                    ref={addressRef}
+                    defaultValue={user.address}
+                  />
+                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback type="invalid">
+                    Please provide a valid address.
+                  </Form.Control.Feedback>
+                  <Form.Text id="addressHelpBlock" muted>
+                    Important to reach you out for your orders
+                  </Form.Text>
+                </Form.Group>
+
+                <Col xs="12" md="auto">
+                  <Button variant="outline-success" type="submit">
+                    OK
+                  </Button>
+                </Col>
+                <Col xs="12" md="auto">
+                  <Button
+                    variant="outline-success"
+                    type="button"
+                    onClick={getLocationHandler}
+                  >
+                    <i className="fas fa-map-marker-alt"></i>
+                  </Button>
+                </Col>
+              </Row>
+            </Form>
+          </CardRowInfo>
           {/* photo */}
         </SectionCard>
 
-        {/* <SectionCard
+        <SectionCard
           header={t("profile.preferences", "preferences")}
           icon="sliders-h"
         >
-          <CardRowInfo
+          {/* <CardRowInfo
             title="Language"
             input={
               <FormSelect>
@@ -114,14 +234,14 @@ const UserAccount = () => {
             }
           >
             English
-          </CardRowInfo>
+          </CardRowInfo> */}
           <CardRowInfo
             title="Password"
             input={<Link to="/reset-password">Reset Password Page</Link>}
           >
             **********
           </CardRowInfo>
-        </SectionCard> */}
+        </SectionCard>
       </Row>
     </>
   );

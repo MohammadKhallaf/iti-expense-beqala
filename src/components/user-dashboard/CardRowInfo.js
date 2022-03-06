@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button, Container, Row, Stack } from "react-bootstrap";
 const CardRowInfo = (props) => {
+  const ref = useRef()
   const [showInput, setShowInput] = useState(false);
   // const []
 
@@ -8,7 +9,8 @@ const CardRowInfo = (props) => {
     setShowInput((prevState) => !prevState);
     //! if input edit is enabled
     if (showInput) {
-      props.onSubmit();
+      console.log("Your input is", props);
+      // props.onSubmit();
     }
   };
 
@@ -18,7 +20,7 @@ const CardRowInfo = (props) => {
         {props.title.charAt(0).toUpperCase() + props.title.slice(1)}
       </h4>
 
-      <form>
+      {/* <form> */}
         <Stack
           direction="horizontal"
           className="justify-content-between pb-3 text-muted ps-3 flex-xl-nowrap flex-wrap"
@@ -37,7 +39,7 @@ const CardRowInfo = (props) => {
             </Button>
           )}
         </Stack>
-      </form>
+      {/* </form> */}
       <hr
         style={{
           background:

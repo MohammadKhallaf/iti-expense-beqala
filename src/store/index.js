@@ -5,6 +5,8 @@ const SERVER_URL = "http://127.0.0.1:8000/";
 // axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 // see cancel token at: https://github.com/axios/axios#cancellation
+axios.defaults.xsrfCookieName = "csrftoken";
+axios.defaults.xsrfHeaderName = 'X-CSRFToken'
 
 // create an instance to use the api calls
 export const backendAPI = axios.create({
