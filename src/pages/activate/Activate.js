@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { verify } from '../../redux/actions/auth';
+import { useTranslation } from "react-i18next";
+
 
 const Activate = ({ verify, match }) => {
+    const { t, i18n } = useTranslation();
     const [verified, setVerified] = useState(false);
     const params = useParams();
     const verify_account = e => {
@@ -19,19 +22,19 @@ const Activate = ({ verify, match }) => {
     }
 
     return (
-        <div className='container'>
+        <div className='container' lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
             <div 
                 className='d-flex flex-column justify-content-center align-items-center'
                 style={{ marginTop: '200px' }}
             >
-                <h1>Verify your Account:</h1>
+                <h1>{t("Activate.Verify your Account:")}</h1>
                 <button
                     onClick={verify_account}
                     style={{ marginTop: '50px' }}
                     type='button'
                     className='btn btn-primary'
                 >
-                    Verify
+                    {t("Activate.Verify")}
                 </button>
             </div>
         </div>

@@ -3,8 +3,11 @@ import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from "../../redux/actions/auth";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+
 
 const Login = ({ login, isAuthenticated, error, manager }) => {
+  const { t, i18n } = useTranslation();
   const [passwordShown, setPasswordShown] = useState(false);
 
   const [Regdisplayi, setRegdisplayi] = useState({
@@ -74,21 +77,21 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
   // errors
   const error_m = () => (
     <p className="text-danger">
-      Your email or password not valid, please try again.
+      {t("Login.Your email or password not valid, please try again.")}
     </p>
   );
   const empty = () => <p></p>;
   return (
-    <div className="container-fluid text-center regist mt-5 pt-5">
+    <div className="container-fluid text-center regist mt-5 pt-5" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
       <div className="row justify-content-center">
         <div className="border border-secondary col-lg-4 col-md-6 col-sm-12 m-5 p-5 ">
           <h2>
             {" "}
-            Welcome to ExpenseBeqala{" "}
+            {t("Login.Welcome to ExpenseBeqala")}{" "}
             <i className="text-danger fas fa-heart"></i>
           </h2>
 
-          <h3>Login now and enjoy!</h3>
+          <h3>{t("Login.Login now and enjoy!")}</h3>
           {error ? error_m() : empty()}
           <form onSubmit={(e) => onSubmit(e)}>
             <div className="form-group p-2 m-4">
@@ -131,7 +134,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
               </div>
               <p className="mt-2">
                 <Link className="text-dark" to="/reset-password">
-                  Forgot your Password?
+                  {t("Login.Forgot your Password?")}
                 </Link>
               </p>
             </div>
@@ -139,25 +142,25 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
               className="btn btn-lg btn-dark my-2 btn-r col-lg-7 col-md-7 col-sm-12"
               type="submit"
             >
-              Login
+              {t("Login.Login")}
             </button>
           </form>
-          <p> OR</p>
+          <p> {t("Login.OR")}</p>
           <button
             className="btn m-2 btn-light border border-secondary  btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithGoogle}
           >
-            <i className="fab fa-google m-2 "></i> continue with Google
+            <i className="fab fa-google m-2 "></i> {t("Login.continue with Google")}
           </button>
           <br className="p-4 m-4" />
           <button
             className="btn p-2 m-2 btn-primary btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithFacebook}
           >
-          <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
+          <i className="fab fa-facebook-f m-2"> </i>{t("Login.continue with Facebook")}
           </button>
           <p className="mt-3">
-            Don't have an account? <Link to="/register">Sign Up</Link>
+            {t("Login.Don't have an account?")} <Link to="/register">{t("Login.Sign Up")}</Link>
           </p>
         </div>
       </div>
