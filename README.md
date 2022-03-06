@@ -42,7 +42,6 @@ The website aims to link the ecommerce website with the fin-tech.
 
 - React.js Framework
 - Bootstrap (& React Bootstrap)
-- Chart.js
 - Redux
 - Axios
 - i18next (& react-i18next)
