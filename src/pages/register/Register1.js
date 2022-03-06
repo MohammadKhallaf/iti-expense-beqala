@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import "./Register.css";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import { useTranslation } from "react-i18next";
 
 export default function Register() {
+  const { t, i18n } = useTranslation();
   const RemoveRedEyeIcon = "far fa-eye";
   const VisibilityOffIcon = "far fa-eye-slash";
   const [regData, setregData] = useState({
@@ -55,13 +57,13 @@ export default function Register() {
   return (
     <>
       <Navbar />
-      <div className="container-fluid regist py-5 mt-5 px-4">
+      <div className="container-fluid regist py-5 mt-5 px-4" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
         <div className="row justify-content-center">
           <div className="col-lg-4 col-md-6 col-sm-12">
-            <h1 className="text-center">Registration</h1>
+            <h1 className="text-center">{t("Register1.Registration")}</h1>
             <form onSubmit={(e) => handleSubmit(e)}>
               <div className="form-group py-4">
-                <label htmlhtmlFor="exampleName">Name</label>
+                <label htmlhtmlFor="exampleName">{t("Register1.Name")}</label>
 
                 <input
                   type="text"
@@ -84,7 +86,7 @@ export default function Register() {
                 <small className="text-danger">{regDataErr.nameErr}</small>
               </div>
               <div className="form-group py-4">
-                <label htmlhtmlFor="regEmail1">Email address</label>
+                <label htmlhtmlFor="regEmail1">{t("Register1.Email address")}</label>
 
                 <input
                   type="email"
@@ -114,7 +116,7 @@ export default function Register() {
                 </small>
               </div>
               <div className="form-group py-4">
-                <label htmlhtmlFor="exampleUsername">Username</label>
+                <label htmlhtmlFor="exampleUsername">{t("Register1.Username")}</label>
 
                 <input
                   type="text"
@@ -141,7 +143,7 @@ export default function Register() {
                 <small className="text-danger">{regDataErr.usernameErr}</small>
               </div>
               <div className="form-group py-4">
-                <label htmlhtmlFor="regregPassword1">Password</label>
+                <label htmlhtmlFor="regregPassword1">{t("Register1.Password")}</label>
                 <div className="container-fluid  justify-content-start input my-4 mx-0 px-0">
                   <div className="row passwdBox justify-content-start py-0 mx-1">
                     <div className="col-lg-10 col-md-10 col-sm-10 ">
@@ -195,7 +197,7 @@ export default function Register() {
                 </small>
               </div>
               <div className="form-group py-4 ">
-                <label htmlhtmlFor="regPassword1">Confirm Password</label>
+                <label htmlhtmlFor="regPassword1">{t("Register1.Confirm Password")}</label>
                 <div className="container-fluid  justify-content-start input my-4 mx-0 px-0">
                   <div className="row passwdBox  justify-content-start py-0 mx-1">
                     <div className="col-lg-8  col-md-8 col-sm-8 ">
@@ -249,7 +251,7 @@ export default function Register() {
               </div>
 
               <button type="submit" className="btn  my-4 sub">
-                Submit
+                {t("Register1.Submit")}
               </button>
             </form>
           </div>

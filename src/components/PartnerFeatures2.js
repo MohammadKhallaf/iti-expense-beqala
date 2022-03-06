@@ -1,12 +1,14 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 export default function PartnerFeatures2() {
+  const { t, i18n } = useTranslation();
   return (
     <>
       <section className="p-5 m-5">
         <div className="container">
           <div className="row text-center justify-content-center py-4">
-            <h1>Benefits of being a ExpenseBeqala partner</h1>
+            <h1>{t("Partner.Benefits of being a ExpenseBeqala partner")}</h1>
 
           </div>
           <div className="row justify-content-center">
@@ -16,7 +18,7 @@ export default function PartnerFeatures2() {
                   <i className="fas fa-users icon"></i>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 text-start">
-                  <p>Join tech era and keep up with the flow</p>
+                  <p>{t("Partner.Join tech era and keep up with the flow")}</p>
                 </div>
               </div>
 
@@ -27,7 +29,7 @@ export default function PartnerFeatures2() {
                   <i className="fas fa-chart-line icon"></i>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 mt-2 text-start">
-                  <p>Raise your sales</p>
+                  <p>{t("Partner.Raise your sales")}</p>
                 </div>
               </div>
             </div>
@@ -37,7 +39,7 @@ export default function PartnerFeatures2() {
                   <i className="fas fa-sitemap icon"></i>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 text-start">
-                  <p>Organize your products and keep it simple to the customer</p>
+                  <p>{t("Partner.Organize your products and keep it simple to the customer")}</p>
                 </div>
               </div>
             </div>

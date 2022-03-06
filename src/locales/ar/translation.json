@@ -136,7 +136,11 @@
     "Mint - 700 ml": "نعناع - ٧٠٠ مل"
   },
   "product": {
-    "category": " تصنيف"
+    "category": " تصنيف",
+    "Stores":"المتاجر",
+    "Products":"المنتجات",
+    "Available Products":"المنتجات المتاحة",
+    "Available Stores":"المتاجر المتاحة"
   },
   "location": {
     "location": "الموقع",
@@ -163,6 +167,205 @@
     "open": "مفتوح",
     "pending": "قيد الانتظار",
     "done": "اكتمل"
+  },
+  "Header":{
+    "contact us":"تواصل معنا",
+    "Learn more":"اقرأ أكثر",
+    "Example headline":"مثال على العنوان",
+    "Some representative placeholder content for the first slide of the carousel.":"",
+    "Sign up today":"",
+    "Another example headline.":"",
+    "Some representative placeholder content for the second slide of the carousel.":"",
+    "One more for good measure.":"",
+    "Some representative placeholder content for the third slide of this carousel.":"",
+    "Browse gallery":""
+  },
+  "Services":{
+    "Our Services":"الخدمات التى نقدمها",
+    "Supermarket":"سوبرماركت",
+    "Bakery":"مخبز",
+    "Pharmacy":"صيدلية"
+  },
+  "PartnerFeatures":{
+    "Are you a shop owner?":"هل أنت صاحب متجر",
+    "Interested in joining our exclusive network?":"هل أنت مهتم بالانضمام إلى شبكتنا الحصرية؟",
+    "Partner with us":"اشترك معنا",
+    "Join tech era and keep up with the flow":"انضم إلى عصر التكنولوجيا وواكب التقدم",
+    "Raise your sales":"ارفع مبيعاتك",
+    "Organize your products and keep it simple to the customer":"نظّم منتجاتك واجعلها بسيطة للعملاء"
+  },
+  "SectionsFeatures":{
+    "With Us":"معنا",
+    "You will find all you needs in one place with a less complications":"ستجد كل ما تحتاجه في مكان واحد مع تعقيدات أقل",
+    "Explore":"استكشف",
+    "save time and effort with just a mouse click":"وفر الوقت والجهد بنقرة واحدة",
+    "Read More":"اقرأ أكثر",
+    "And lastly, this one.":"وأخيرًا ، هذا.",
+    "And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.":
+    "ونعم ، هذه هي الكتلة الأخيرة من محتوى العنصر النائب التمثيلي. مرة أخرى ، ليس المقصود حقًا أن تتم قراءته بالفعل ، فقط هنا لمنحك رؤية أفضل لما سيبدو عليه بعض المحتوى الفعلي. المحتوى الخاص بك"
+  },
+  "Login":{
+    "Your email or password not valid, please try again":"بريدك الإلكتروني أو كلمة المرور غير صالحة ، يرجى المحاولة مرة أخرى",
+    "Welcome to ExpenseBeqala":"مرحبا بكم في اكسبينس بقالة",
+    "Login now and enjoy!":"سجل الدخول الآن واستمتع!",
+    "Forgot your Password?":"هل نسيت الرقم السري؟",
+    "Login":"تسجيل الدخول",
+    "OR":"أو",
+    "continue with Google":"تسجيل الدخول باستخدام جوجل",
+    "continue with Facebook":"تسجيل الدخول باستخدام فيسبوك",
+    "Don't have an account?":"ليس لديك حساب؟",
+    "Sign Up":"اشتراك"
+  },
+  "Partner":{
+    "Reach new customers, get more sales":"الوصول إلى عملاء جدد والحصول على المزيد من المبيعات",
+    "Let's grow together with us":"دعونا ننمو معنا",
+    "*all fields are required!":"* جميع الحقول مطلوبة!",
+    "join now!":"انضم الآن",
+    "Store Name":"اسم المتجر",
+    "Branches No.":"رقم الفرع",
+    "Address":"العنوان",
+    "Area":"المنطقة",
+    "Cairo":"القاهرة",
+    "Alexandria":"الاسكندرية",
+    "Name":"الاسم",
+    "Email":"الإيميل",
+    "Phone":"رقم التليفون",
+    "Leave a comment here":"اكتب تعليق هنا",
+    "Submit":"تأكيد",
+    "Thank You":"شكرا لك",
+    "Thanks for your interest in joining ExpenseBeqala! Our team will come back to you within 3 working days.":"شكرا لاهتمامك بالانضمام إلى اكسبنس بقالة ! سيقوم فريقنا بالرد عليك في غضون 3 أيام عمل.",
+    "Benefits of being a ExpenseBeqala partner":"فوائد كونك شريك في اكسبنس بقالة",
+    "Join tech era and keep up with the flow":"انضم إلى عصر التكنولوجيا وواكب التقدم",
+    "Raise your sales":"ارفع مبيعاتك",
+    "Organize your products and keep it simple to the customer":"نظّم منتجاتك واجعلها بسيطة للعملاء"
+  },
+  "OrderCheckout":{
+    "You have no items yet":"لا يوجد لديك عناصر حتى الآن",
+    "Store Order":"طلب المتجر",
+    "Name":"الاسم",
+    "Category":"التصنيف",
+    "Price":"السعر",
+    "Qty.":"الكمية",
+    "Total":"الاجمالى",
+    "LE":"جنيه مصرى",
+    "Item":"العنصر",
+    "Cost":"التكلفة",
+    "Your Items":"العناصر الخاصة بك",
+    "Shipping":"الشحن",
+    "30 LE":"30 جنيه مصرى",
+    "Cash":"نقدى"
+  },
+  "CheckMail":{
+    "Please Check Your Email to verify your Account:":"يرجى التحقق من بريدك الإلكتروني للتحقق من حسابك:"
+  },
+  "NotFoundPage":{
+    "404 Not Found":"404 غير موجود",
+    "Sorry, there is no matching page":"عذرا ، لا توجد صفحة مطابقة",
+    "redirect to Home page in":" إعادة التوجيه إلى الصفحة الرئيسية بعد",
+    "seconds":"ثانية"
+  },
+  "SignInReq":{
+    "Account Needed":"مطلوب تسجيل الدخول",
+    "To Proceed to the checkout process, You need to be logged in":"للمضي قدما في عملية الدفع ، يجب أن تقوم بتسجيل الدخول",
+    "Register":"التسجيل",
+    "Continue shopping":"مواصلة التسوق"
+  },
+  "Thanks":{
+    "Payment Done":"تم الدفع",
+    "Thank you!":"شكرا لك",
+    "redirect to Home page in":" إعادة التوجيه إلى الصفحة الرئيسية بعد ",
+    "seconds":"ثانية"
+  },
+  "WidgetLg":{
+    "Latest Checkouts":"أحدث عمليات الدفع",
+    "Order ID":"رقم التعريف الخاص بالطلب",
+    "Customer":"عميل",
+    "Address":"العنوان",
+    "Phone":"رقم التليفون",
+    "Date":"التاريخ",
+    "Amount":"الكمية",
+    "Payment Method":"طريقة الدفع",
+    "Status":"حالة",
+    "Action":"العملية",
+    "View":"العرض",
+    "EGP":"جنيه مصرى",
+    "Done":"تم",
+    "Cart Items":"عناصر عربة التسوق",
+    "Product":"المنتج",
+    "Price":"السعر",
+    "Quantity":"الكمية",
+    "Offer":"العرض"
+  },
+  "Activate":{
+    "Verify your Account:":"تحقق من حسابك:",
+    "Verify":"التحقق"
+  },
+  "Register":{
+    "Your email or password not valid, please try again.":"بريدك الإلكتروني أو كلمة المرور غير صالحة ، يرجى المحاولة مرة أخرى.",
+    "Welcome to ExpenseBeqala":"مرحبا بكم في اكسبنس بقالة",
+    "SignUp now and Enjoy!":"سجل الآن واستمتع",
+    "Passwords must be 8 characters and not similar to name or email.":"يجب أن تتكون كلمات المرور من 8 أحرف وألا تكون مشابهة للاسم أو البريد الإلكتروني.",
+    "Register":"التسجيل",
+    "Already have an account?":"هل لديك حساب؟",
+    "continue with Google":"تسجيل الدخول باستخدام جوجل",
+    "OR":"أو",
+    "continue with Facebook":"تسجيل الدخول باستخدام فيسبوك"
+  },
+  "Register1":{
+    "Registration":"التسجيل",
+    "Name":"الاسم",
+    "Username":"اسم المستخدم",
+    "Password":"كلمة المرور",
+    "Confirm Password":"تأكيد كلمة المرور",
+    "Submit":"تأكيد"
+  },
+  "ResetPassword":{
+    "Request Password Reset:":"طلب إعادة تعيين كلمة المرور:",
+    "Reset Password":"إعادة تعيين كلمة المرور"
+  },
+  "ContactUs":{
+    "Please describe your problem in the message box":"يرجى وصف مشكلتك في مربع الرسائل",
+    "We need your email to reach you back":"نحتاج إلى بريدك الإلكتروني للتواصل معك",
+    "We'd love to hear from you!":"نحب أن نسمع منك!",
+    "Message":"الرسالة",
+    "Your Name":"اسمك",
+    "Your Email":"الايميل الخاص بك",
+    "Submit":"تأكيد",
+    "Thank You":"شكرا لك",
+    "Thank You for sharing your views with us. We will get back to you as soon as possible.":"شكرا لمشاركة وجهات نظركم معنا. سنقوم بالرد عليك في أقرب وقت ممكن."
+  },
+  "":{
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":"",
+    "":""
   },
   "ui": {
     "dismiss": "إخفاء",

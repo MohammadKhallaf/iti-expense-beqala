@@ -27,6 +27,7 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
         </div> */}
 
         {/* <ChatBox /> */}
+       
       {/* </div> */}
       {/* <Footer /> */}
     </div>

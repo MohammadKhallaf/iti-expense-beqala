@@ -4,6 +4,7 @@ import {
   PayPalScriptProvider,
 } from "@paypal/react-paypal-js";
 import React, { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { Container, Row, Table } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
@@ -14,6 +15,7 @@ import { backendAPI } from "../../store";
 import axios from "axios";
 
 const OrderCheckout = () => {
+  const { t, i18n } = useTranslation();
   const order = useSelector((state) => state.cart.checkout);
   const [done, setDone] = useState(false);
   const [payment_method, setPayment] = useState("none");
@@ -64,22 +66,22 @@ const OrderCheckout = () => {
       });
   }, [order]);
 
-  if (Object.keys(order).length < 1) return <>"You have no items yet"</>;
+  if (Object.keys(order).length < 1) return <>"{t("OrderCheckout.You have no items yet")}"</>;
   return (
-    <Container className="pt-5">
+    <Container className="pt-5" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
       <Row className="gy-4">
-        <h3>Store Order</h3>
+        <h3>{t("OrderCheckout.Store Order")}</h3>
         <SectionCard header="order details" icon="list-alt">
           {
             <Table responsive>
               <thead>
                 <tr>
                   <th>#</th>
-                  <th>Name</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Qty.</th>
-                  <th>Total</th>
+                  <th>{t("OrderCheckout.Name")}</th>
+                  <th>{t("OrderCheckout.Category")}</th>
+                  <th>{t("OrderCheckout.Price")}</th>
+                  <th>{t("OrderCheckout.Qty.")}</th>
+                  <th>{t("OrderCheckout.Total")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -105,7 +107,7 @@ const OrderCheckout = () => {
                       {(
                         item.price_after_offer * item.cart_details.quantity
                       ).toFixed(2)}{" "}
-                      LE
+                      {t("OrderCheckout.LE")}
                     </td>
                   </tr>
                 ))}
@@ -117,13 +119,13 @@ const OrderCheckout = () => {
           <Table responsive>
             <thead>
               <tr>
-                <th>Item</th>
-                <th>Cost</th>
+                <th>{t("OrderCheckout.Item")}</th>
+                <th>{t("OrderCheckout.Cost")}</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Your Items</td>
+                <td>{t("OrderCheckout.Your Items")}</td>
                 <td>
                   {order.carts
                     .map(
@@ -131,15 +133,15 @@ const OrderCheckout = () => {
                         item.price_after_offer * item.cart_details.quantity
                     )
                     .reduce((prev, curr) => prev + curr, 0)}{" "}
-                  LE
+                  {t("OrderCheckout.LE")}
                 </td>
               </tr>
               <tr>
-                <td>Shipping</td>
-                <td>30 LE</td>
+                <td>{t("OrderCheckout.Shipping")}</td>
+                <td>{t("OrderCheckout.30 LE")}</td>
               </tr>
               <tr>
-                <td>Total</td>
+                <td>{t("OrderCheckout.Total")}</td>
                 <td>
                   {order.carts
                     .map(
@@ -147,7 +149,7 @@ const OrderCheckout = () => {
                         item.price_after_offer * item.cart_details.quantity
                     )
                     .reduce((prev, curr) => prev + curr, 0) + 30.0}{" "}
-                  LE
+                  {t("OrderCheckout.LE")}
                 </td>
               </tr>
             </tbody>
@@ -162,7 +164,7 @@ const OrderCheckout = () => {
               setDone(true);
             }}
           >
-            Cash
+            {t("OrderCheckout.Cash")}
           </button>
           <PayPalScriptProvider
             options={{ "client-id": PAYPAL_ACCOUNT, currency: "USD" }}

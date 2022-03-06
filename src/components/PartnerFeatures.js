@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 export default function PartnerFeatures() {
+  const { t, i18n } = useTranslation();
+
   return (
     <>
       <section className="partner ">
-        <div className="container  ">
+        <div className="container  " lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
           <div className="row text-center justify-content-center py-4">
-            <h1>Are you a shop owner?</h1>
-            <h3>Interested in joining our exclusive network?</h3>
+            <h1>{t("PartnerFeatures.Are you a shop owner?")}</h1>
+            <h3>{t("PartnerFeatures.Interested in joining our exclusive network?")}</h3>
             <p>
-              <Link className="btn btn-lg btn-outline-secondary my-4" to='/partner'>Partner with us</Link>
+              <Link className="btn btn-lg btn-outline-secondary my-4" to='/partner'>{t("PartnerFeatures.Partner with us")}</Link>
             </p>
 
           </div>
@@ -21,7 +25,7 @@ export default function PartnerFeatures() {
                   <i className="fas fa-users icon"></i>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 text-start">
-                  <p>Join tech era and keep up with the flow</p>
+                  <p>{t("PartnerFeatures.Join tech era and keep up with the flow")}</p>
                 </div>
               </div>
 
@@ -32,7 +36,7 @@ export default function PartnerFeatures() {
                   <i className="fas fa-chart-line icon"></i>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 mt-2 text-start">
-                  <p>Raise your sales</p>
+                  <p>{t("PartnerFeatures.Raise your sales")}</p>
                 </div>
               </div>
             </div>
@@ -42,7 +46,7 @@ export default function PartnerFeatures() {
                   <i className="fas fa-sitemap icon"></i>
                 </div>
                 <div className="col-lg-4 col-md-4 col-sm-4 text-start">
-                  <p>Organize your products and keep it simple to the customer</p>
+                  <p>{t("PartnerFeatures.Organize your products and keep it simple to the customer")}</p>
                 </div>
               </div>
             </div>
