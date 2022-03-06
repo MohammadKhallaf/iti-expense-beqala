@@ -50,7 +50,7 @@ const Sidebar = () => {
           <CustomNavItem to="orders" icon="th-list">
             {t("sidebar.orders", "orders")}
           </CustomNavItem>
-          <CustomNavItem>{t("sidebar.help")}</CustomNavItem>
+          {/* <CustomNavItem>{t("sidebar.help")}</CustomNavItem> */}
         </Nav>
         {/* <---Footer---> */}
         <Nav className="d-flex flex-column flex-shrink-1">

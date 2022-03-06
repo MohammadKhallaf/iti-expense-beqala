@@ -13,8 +13,9 @@ import {
   Row,
 } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import GeoMap from "./map/GeoMap";
 const Navbar = ({ logout, isAuthenticated, user, manager }) => {
-  const {t, i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar");
   };
@@ -69,20 +70,32 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
             >
               {i18n.language === "ar" ? "عربي" : "en"}
             </Button>
+            {/* <Button
+              onClick={() => {
+                localStorage.setItem("location__show", true);
+                return <GeoMap />;
+              }}
+              variant="outline-success"
+              className="p-1 py-0"
+            >
+              Loc
+            </Button> */}
 
             <NavDropdown
-              title={<span className="text-light m-1">{t("sidebar.account")}</span>}
+              title={
+                <span className="text-light m-1">{t("sidebar.account")}</span>
+              }
               id="nav-dropdown"
             >
               {/* guest */}
               {!isAuthenticated ? (
                 <>
                   <NavDropdown.Item as={Link} to="/login">
-                  {t("sidebar.login")}
+                    {t("sidebar.login")}
                   </NavDropdown.Item>
 
                   <NavDropdown.Item as={Link} to="/register">
-                  {t("sidebar.register")}
+                    {t("sidebar.register")}
                   </NavDropdown.Item>
                 </>
               ) : (
@@ -94,13 +107,13 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
                     {t("sidebar.my-account")}
                   </NavDropdown.Item>
                   <NavDropdown.Item as={Button} onClick={logout_user}>
-                  {t("sidebar.logout")}
+                    {t("sidebar.logout")}
                   </NavDropdown.Item>
                 </>
               )}
               <NavDropdown.Divider />
               <NavDropdown.Item as={Link} to="/contactus">
-              {t("sidebar.contactus")}
+                {t("sidebar.contactus")}
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
