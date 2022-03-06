@@ -37,26 +37,31 @@ export default function Header() {
             alt=""
             className="bd-placeholder-img"
             width="100%"
-            height="50%"
+            height="70%"
             src={right}
             aria-hidden="true"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
 
-          <div className="container ">
-            <div className="carousel-caption text-start intro mb-4">
-              <h1 >Example headline</h1>
-              <p>
-                Some representative placeholder content for the first slide of
-                the carousel.
-              </p>
-              <p>
-                <a className="btn btn-lg rounded btn-outline-secondary" href="#">
-                  Sign up today
-                </a>
-              </p>
+          <div className="container mt-5 ">
+            <div className="row">
+              <div className="col-12 ">
+                <div className="carousel-caption text-start mb-5 intro ">
+                  <h2 >Want your Groceries Rightaway</h2>
+                  <p >
+                    we will make sure you find the nearest store to your location.
+                  </p>
+                  <p>
+                    <a className="btn btn-lg rounded btn-outline-secondary" href="#home-location">
+                      Explore
+                    </a>
+                  </p>
+                </div>
+              </div>
+
             </div>
+
           </div>
         </div>
         <div className="carousel-item">
@@ -64,25 +69,28 @@ export default function Header() {
             alt=""
             className="bd-placeholder-img"
             width="100%"
-            height="50%"
+            height="70%"
             src={middle}
             aria-hidden="true"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
 
-          <div className="container">
-            <div className="carousel-caption mb-4 intro">
-              <h1>Another example headline.</h1>
-              <p>
-                Some representative placeholder content for the second slide of
-                the carousel.
-              </p>
-              <p>
-                <a className="btn btn-lg rounded btn-outline-secondary" href="#">
-                  Learn more
-                </a>
-              </p>
+          <div className="container mt-5">
+            <div className="row">
+              <div className="col-12 ">
+                <div className="carousel-caption mb-5 intro">
+                  <h2 >Tired of using Several Applications <br></br> to get your Daily Supplies.</h2>
+                  <p >
+                    our services are in continuously expanding.
+                  </p>
+                  <p>
+                    <a className="btn btn-lg rounded btn-outline-secondary" href="#home-services">
+                      Explore
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -91,25 +99,28 @@ export default function Header() {
             alt=""
             className="bd-placeholder-img"
             width="100%"
-            height="50%"
+            height="70%"
             src={left}
             aria-hidden="true"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           />
 
-          <div className="container">
-            <div className="carousel-caption text-end mb-4 intro">
-              <h1>One more for good measure.</h1>
-              <p>
-                Some representative placeholder content for the third slide of
-                this carousel.
-              </p>
-              <p>
-                <a className="btn btn-lg rounded btn-outline-secondary " href="#">
-                  Browse gallery
-                </a>
-              </p>
+          <div className="container mt-5">
+            <div className="row">
+              <div className="col-12 ">
+                <div className="carousel-caption text-end mb-5 intro">
+                  <h2 >Want to raise your Business<br></br> a Milestone up.</h2>
+                  <p >
+                    we will provide you with an easy and manageable system.
+                  </p>
+                  <p>
+                    <a className="btn btn-lg rounded btn-outline-secondary" href="#home-partner">
+                      Explore
+                    </a>
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

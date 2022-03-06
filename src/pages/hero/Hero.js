@@ -17,13 +17,15 @@ const Hero = ({ manager }) => {
     }
 
     return (
-        <>
+     
+        <div >
         <Header />
         <Services />
         <Location/>
         <Partener/>
-        <SectionsFeatures/>  
-        </>
+        {/* <Section sFeatures/>   */}
+        </div>
+    
     )
 }
 

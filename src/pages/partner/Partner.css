@@ -1,11 +1,57 @@
 .partnerInput:focus{
-    border: 2px solid #f27519 !important;
+    border: 2px solid #003d3b !important;
     box-shadow: none;
     outline: none !important;
     
 }
 .partnerInput:active{
-    border: 2px solid #f27519 !important;
+    border: 2px solid #003d3b !important;
     box-shadow: none;
     outline: none !important;
+}
+.partner-page
+{
+    background-color: #fff;
+    background-position: center; /* Center the image */
+    background-repeat: repeat-x; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
+    background-image: url("./../../files/Partner/opacity.png");
+
+}
+.partner-page h1
+{
+    color: #00303d !important;
+    letter-spacing:0.2em;
+    font-size: 35px;
+
+    -webkit-text-stroke: #00303d;
+    -webkit-text-stroke-width: 1px;
+    
+}
+.partner-page h2
+{
+    color: #00303d !important;
+   
+    font-size: 15px;
+    text-shadow: 1px 1px #00303d, 1px 1px #00303d;
+    -webkit-text-stroke: #00303d;
+    -webkit-text-stroke-width: 1px;
+}
+.partner-page .subs
+{
+    color: #00303d;
+    border: 2px solid #00303d;
+}
+.partner-page .subs:hover
+{
+    color: #e7e7e7;
+    background-color: #00303d;
+    box-shadow: 1px 1px 4px #00303d ;
+}
+.partner-form
+{
+
+    color: #00303d;
+    background-color: #fff;
 }

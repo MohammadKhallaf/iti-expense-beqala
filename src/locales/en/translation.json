@@ -4,14 +4,30 @@
     "preferences": "preferences",
     "my_account": "My Account",
     "my-orders": "My Orders",
-    "name": "name",
-    "email": "Email"
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "password": "Password",
+    "address": "Address",
+    "phone-help-field": "Please provide a valid phone",
+    "address-help-field": "Please provide a valid address",
+    "location-tip": "Auto-detect your location",
+    "reachout-tip": "Important to reach you out for your orders",
+    "look-good": "Looks good!",
+    "ok": "OK",
+    "change": "Change"
   },
   "sidebar": {
     "overview": "Overview",
     "orders": "Orders",
     "settings": "Settings",
-    "help": "help"
+    "help": "help",
+    "account": "Account",
+    "login": "Log in",
+    "logout": "Log out",
+    "register": "Register",
+    "contactus": "Contact us",
+    "my-account": "My Account"
   },
   "category": {
     "category": " category",
@@ -123,9 +139,8 @@
     "Select your location":"Select your location",
     "Cairo": "Cairo",
     "location-detected": "Location detected",
-    "location-appears-in":"Your location appears in",
-    "no-nearby-sentence":"No nearby stores available for your current location, available stores in "
-
+    "location-appears-in": "Your location appears in",
+    "no-nearby-sentence": "No nearby stores available for your current location, available stores in "
   },
   "cart": {
     "shopping-cart": "Shopping Cart",
@@ -145,171 +160,171 @@
     "pending": "pending",
     "done": "done"
   },
-  "Header":{
-    "contact us":"contact us",
-    "Learn more":"Learn more",
-    "Example headline":"Example headline",
-    "Some representative placeholder content for the first slide of the carousel.":"Some representative placeholder content for the first slide of the carousel.",
-    "Sign up today":"Sign up today",
-    "Another example headline.":"Another example headline.",
-    "Some representative placeholder content for the second slide of the carousel.":"Some representative placeholder content for the second slide of the carousel.",
-    "One more for good measure.":"One more for good measure.",
-    "Some representative placeholder content for the third slide of this carousel.":"Some representative placeholder content for the third slide of this carousel.",
-    "Browse gallery":"Browse gallery"
+  "Header": {
+    "contact us": "contact us",
+    "Learn more": "Learn more",
+    "Example headline": "Example headline",
+    "Some representative placeholder content for the first slide of the carousel.": "Some representative placeholder content for the first slide of the carousel.",
+    "Sign up today": "Sign up today",
+    "Another example headline.": "Another example headline.",
+    "Some representative placeholder content for the second slide of the carousel.": "Some representative placeholder content for the second slide of the carousel.",
+    "One more for good measure.": "One more for good measure.",
+    "Some representative placeholder content for the third slide of this carousel.": "Some representative placeholder content for the third slide of this carousel.",
+    "Browse gallery": "Browse gallery"
   },
-  "Services":{
-    "Our Services":"Our Services",
-    "Supermarket":"Supermarket",
-    "Bakery":"Bakery",
-    "Pharmacy":"Pharmacy"
+  "Services": {
+    "Our Services": "Our Services",
+    "Supermarket": "Supermarket",
+    "Bakery": "Bakery",
+    "Pharmacy": "Pharmacy"
   },
-  "PartnerFeatures":{
-    "Are you a shop owner?":"Are you a shop owner?",
-    "Interested in joining our exclusive network?":"Interested in joining our exclusive network?",
-    "Partner with us":"Partner with us",
-    "Join tech era and keep up with the flow":"Join tech era and keep up with the flow",
-    "Raise your sales":"Raise your sales",
-    "Organize your products and keep it simple to the customer":"Organize your products and keep it simple to the customer"
+  "PartnerFeatures": {
+    "Are you a shop owner?": "Are you a shop owner?",
+    "Interested in joining our exclusive network?": "Interested in joining our exclusive network?",
+    "Partner with us": "Partner with us",
+    "Join tech era and keep up with the flow": "Join tech era and keep up with the flow",
+    "Raise your sales": "Raise your sales",
+    "Organize your products and keep it simple to the customer": "Organize your products and keep it simple to the customer"
   },
-  "SectionsFeatures":{
-    "With Us":"With Us",
-    "You will find all you needs in one place with a less complications":"You will find all you needs in one place with a less complications",
-    "Explore":"Explore",
-    "save time and effort with just a mouse click":"save time and effort with just a mouse click",
-    "Read More":"Read More",
-    "And lastly, this one.":"And lastly, this one.",
-    "And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.":"And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content."
+  "SectionsFeatures": {
+    "With Us": "With Us",
+    "You will find all you needs in one place with a less complications": "You will find all you needs in one place with a less complications",
+    "Explore": "Explore",
+    "save time and effort with just a mouse click": "save time and effort with just a mouse click",
+    "Read More": "Read More",
+    "And lastly, this one.": "And lastly, this one.",
+    "And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.": "And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content."
   },
-  "Login":{
-    "Your email or password not valid, please try again":"Your email or password not valid, please try again",
-    "Welcome to ExpenseBeqala":"Welcome to ExpenseBeqala",
-    "Login now and enjoy!":"Login now and enjoy!",
-    "Forgot your Password?":"Forgot your Password?",
-    "Login":"Login",
-    "OR":"OR",
-    "continue with Google":"continue with Google",
-    "continue with Facebook":"continue with Facebook",
-    "Don't have an account?":"Don't have an account?",
-    "Sign Up":"Sign Up"
+  "Login": {
+    "Your email or password not valid, please try again": "Your email or password not valid, please try again",
+    "Welcome to ExpenseBeqala": "Welcome to ExpenseBeqala",
+    "Login now and enjoy!": "Login now and enjoy!",
+    "Forgot your Password?": "Forgot your Password?",
+    "Login": "Login",
+    "OR": "OR",
+    "continue with Google": "continue with Google",
+    "continue with Facebook": "continue with Facebook",
+    "Don't have an account?": "Don't have an account?",
+    "Sign Up": "Sign Up"
   },
-  "Partner":{
-    "Reach new customers, get more sales":"Reach new customers, get more sales",
-    "Let's grow together with us":"Let's grow together with us",
-    "*all fields are required!":"*all fields are required!",
-    "join now!":"join now!",
-    "Store Name":"Store Name",
-    "Branches No.":"Branches No.",
-    "Address":"Address",
-    "Area":"Area",
-    "Cairo":"Cairo",
-    "Alexandria":"Alexandria",
-    "Name":"Name",
-    "Email":"Email",
-    "Phone":"Phone",
-    "Leave a comment here":"Leave a comment here",
-    "Submit":"Submit",
-    "Thank You":"Thank You",
-    "Thanks for your interest in joining ExpenseBeqala! Our team will come back to you within 3 working days.":"Thanks for your interest in joining ExpenseBeqala! Our team will come back to you within 3 working days.",
-    "Benefits of being a ExpenseBeqala partner":"Benefits of being a ExpenseBeqala partner",
-    "Join tech era and keep up with the flow":"Join tech era and keep up with the flow",
-    "Raise your sales":"Raise your sales",
-    "Organize your products and keep it simple to the customer":"Organize your products and keep it simple to the customer"
+  "Partner": {
+    "Reach new customers, get more sales": "Reach new customers, get more sales",
+    "Let's grow together with us": "Let's grow together with us",
+    "*all fields are required!": "*all fields are required!",
+    "join now!": "join now!",
+    "Store Name": "Store Name",
+    "Branches No.": "Branches No.",
+    "Address": "Address",
+    "Area": "Area",
+    "Cairo": "Cairo",
+    "Alexandria": "Alexandria",
+    "Name": "Name",
+    "Email": "Email",
+    "Phone": "Phone",
+    "Leave a comment here": "Leave a comment here",
+    "Submit": "Submit",
+    "Thank You": "Thank You",
+    "Thanks for your interest in joining ExpenseBeqala! Our team will come back to you within 3 working days.": "Thanks for your interest in joining ExpenseBeqala! Our team will come back to you within 3 working days.",
+    "Benefits of being a ExpenseBeqala partner": "Benefits of being a ExpenseBeqala partner",
+    "Join tech era and keep up with the flow": "Join tech era and keep up with the flow",
+    "Raise your sales": "Raise your sales",
+    "Organize your products and keep it simple to the customer": "Organize your products and keep it simple to the customer"
   },
-  "OrderCheckout":{
-    "You have no items yet":"You have no items yet",
-    "Store Order":"Store Order",
-    "Name":"Name",
-    "Category":"Category",
-    "Price":"Price",
-    "Qty.":"Qty",
-    "Total":"Total",
-    "LE":"LE",
-    "Item":"Item",
-    "Cost":"Cost",
-    "Your Items":"Your Items",
-    "Shipping":"Shipping",
-    "30 LE":"30 LE",
-    "Cash":"Cash"
+  "OrderCheckout": {
+    "You have no items yet": "You have no items yet",
+    "Store Order": "Store Order",
+    "Name": "Name",
+    "Category": "Category",
+    "Price": "Price",
+    "Qty.": "Qty",
+    "Total": "Total",
+    "LE": "LE",
+    "Item": "Item",
+    "Cost": "Cost",
+    "Your Items": "Your Items",
+    "Shipping": "Shipping",
+    "30 LE": "30 LE",
+    "Cash": "Cash"
   },
-  "CheckMail":{
-    "Please Check Your Email to verify your Account:":"Please Check Your Email to verify your Account:"
+  "CheckMail": {
+    "Please Check Your Email to verify your Account:": "Please Check Your Email to verify your Account:"
   },
-  "NotFoundPage":{
-    "404 Not Found":"404 Not Found",
-    "Sorry, there is no matching page":"Sorry, there is no matching page",
-    "redirect to Home page in":"redirect to Home page in",
-    "seconds":"seconds"
+  "NotFoundPage": {
+    "404 Not Found": "404 Not Found",
+    "Sorry, there is no matching page": "Sorry, there is no matching page",
+    "redirect to Home page in": "redirect to Home page in",
+    "seconds": "seconds"
   },
-  "SignInReq":{
-    "Account Needed":"Account Needed",
-    "To Procced to the checkout process, You need to be logged in":"To Procced to the checkout process, You need to be logged in",
-    "Register":"Register",
-    "Continue shopping":"Continue shopping"
+  "SignInReq": {
+    "Account Needed": "Account Needed",
+    "To Procced to the checkout process, You need to be logged in": "To Procced to the checkout process, You need to be logged in",
+    "Register": "Register",
+    "Continue shopping": "Continue shopping"
   },
-  "Thanks":{
-    "Payment Done":"Payment Done",
-    "Thank you!":"Thank you!",
-    "redirect to Home page in":"redirect to Home page in",
-    "seconds":"seconds"
+  "Thanks": {
+    "Payment Done": "Payment Done",
+    "Thank you!": "Thank you!",
+    "redirect to Home page in": "redirect to Home page in",
+    "seconds": "seconds"
   },
-  "WidgetLg":{
-    "Latest Checkouts":"Latest Checkouts",
-    "Order ID":"Order ID",
-    "Customer":"Customer",
-    "Address":"Address",
-    "Phone":"Phone",
-    "Date":"Date",
-    "Amount":"Amount",
-    "Payment Method":"Payment Method",
-    "Status":"Status",
-    "Action":"Action",
-    "View":"View",
-    "EGP":"EGP",
-    "Done":"Done",
-    "Cart Items":"Cart Items",
-    "Product":"Product",
-    "Price":"Price",
-    "Quantity":"Quantity",
-    "Offer":"Offer"
+  "WidgetLg": {
+    "Latest Checkouts": "Latest Checkouts",
+    "Order ID": "Order ID",
+    "Customer": "Customer",
+    "Address": "Address",
+    "Phone": "Phone",
+    "Date": "Date",
+    "Amount": "Amount",
+    "Payment Method": "Payment Method",
+    "Status": "Status",
+    "Action": "Action",
+    "View": "View",
+    "EGP": "EGP",
+    "Done": "Done",
+    "Cart Items": "Cart Items",
+    "Product": "Product",
+    "Price": "Price",
+    "Quantity": "Quantity",
+    "Offer": "Offer"
   },
-  "Activate":{
-    "Verify your Account:":"Verify your Account:",
-    "Verify":"Verify"
+  "Activate": {
+    "Verify your Account:": "Verify your Account:",
+    "Verify": "Verify"
   },
-  "Register":{
-    "Your email or password not valid, please try again.":"Your email or password not valid, please try again.",
-    "Welcome to ExpenseBeqala":"Welcome to ExpenseBeqala",
-    "SignUp now and Enjoy!":"SignUp now and Enjoy!",
-    "Passwords must be 8 characters and not similar to name or email.":"Passwords must be 8 characters and not similar to name or email.",
-    "Register":"Register",
-    "Already have an account?":"Already have an account?",
-    "continue with Google":"continue with Google",
-    "OR":"OR",
-    "continue with Facebook":"continue with Facebook"
+  "Register": {
+    "Your email or password not valid, please try again.": "Your email or password not valid, please try again.",
+    "Welcome to ExpenseBeqala": "Welcome to ExpenseBeqala",
+    "SignUp now and Enjoy!": "SignUp now and Enjoy!",
+    "Passwords must be 8 characters and not similar to name or email.": "Passwords must be 8 characters and not similar to name or email.",
+    "Register": "Register",
+    "Already have an account?": "Already have an account?",
+    "continue with Google": "continue with Google",
+    "OR": "OR",
+    "continue with Facebook": "continue with Facebook"
   },
-  "Register1":{
-    "Registration":"Registration",
-    "Name":"Name",
-    "Username":"Username",
-    "Password":"Password",
-    "Confirm Password":"Confirm Password",
-    "Submit":"Submit"
+  "Register1": {
+    "Registration": "Registration",
+    "Name": "Name",
+    "Username": "Username",
+    "Password": "Password",
+    "Confirm Password": "Confirm Password",
+    "Submit": "Submit"
   },
-  "ResetPassword":{
-    "Request Password Reset:":"Request Password Reset:",
-    "Reset Password":"Reset Password"
+  "ResetPassword": {
+    "Request Password Reset:": "Request Password Reset:",
+    "Reset Password": "Reset Password"
   },
-  "ContactUs":{
-    "Please describe your problem in the message box":"Please describe your problem in the message box",
-    "We need your email to reach you back":"We need your email to reach you back",
-    "expensebeqala@gmail.com":"expensebeqala@gmail.com",
-    "We'd love to hear from you!":"We'd love to hear from you!",
-    "Message":"Message",
-    "Your Name":"Your Name",
-    "Your Email":"Your Email",
-    "Submit":"Submit",
-    "Thank You":"Thank You",
-    "Thank You for sharing your views with us. We will get back to you as soon as possible.":"Thank You for sharing your views with us. We will get back to you as soon as possible."
+  "ContactUs": {
+    "Please describe your problem in the message box": "Please describe your problem in the message box",
+    "We need your email to reach you back": "We need your email to reach you back",
+    "expensebeqala@gmail.com": "expensebeqala@gmail.com",
+    "We'd love to hear from you!": "We'd love to hear from you!",
+    "Message": "Message",
+    "Your Name": "Your Name",
+    "Your Email": "Your Email",
+    "Submit": "Submit",
+    "Thank You": "Thank You",
+    "Thank You for sharing your views with us. We will get back to you as soon as possible.": "Thank You for sharing your views with us. We will get back to you as soon as possible."
   },
   "Navbar":{
     "ExpenseBeqala":"ExpenseBeqala",

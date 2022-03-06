@@ -9,6 +9,8 @@ import {
   SplitButton,
   FormControl,
   Modal,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Cart from "./Cart";
@@ -58,20 +60,36 @@ const BasketButton = () => {
           // onClick={showCart}
           className="p-0"
           title={
-            <div className="position-relative">
-              <i className="fas fa-shopping-basket fs-4 text-success"></i>
-              <Badge
-                pill
-                bg="transparent"
-                className="border position-absolute translate-middle top-0 start-100"
-                style={{ color: "#EE9B00" }}
-              >
-                {(user &&
-                  openCheckouts.length > 0 &&
-                  openCheckouts.length | null) ||
-                  (localCartList.length > 0 && localCartList.length | null)}
-              </Badge>
-            </div>
+            <OverlayTrigger
+              placement="bottom"
+              overlay={
+                <Tooltip id="location-tooltip">
+                  You have{" "}
+                  <strong>
+                    {(user &&
+                      openCheckouts.length > 0 &&
+                      openCheckouts.length | null) ||
+                      (localCartList.length > 0 && localCartList.length | null)}
+                  </strong>{" "}
+                  stores in your cart
+                </Tooltip>
+              }
+            >
+              <div className="position-relative">
+                <i className="fas fa-shopping-basket fs-4 text-success"></i>
+                <Badge
+                  pill
+                  bg="transparent"
+                  className="border position-absolute translate-middle top-0 start-100"
+                  style={{ color: "#EE9B00" }}
+                >
+                  {(user &&
+                    openCheckouts.length > 0 &&
+                    openCheckouts.length | null) ||
+                    (localCartList.length > 0 && localCartList.length | null)}
+                </Badge>
+              </div>
+            </OverlayTrigger>
           }
           alignLeft
         >

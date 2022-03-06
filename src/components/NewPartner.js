@@ -141,7 +141,7 @@ export default function NewPartner() {
         <div className="col-12">
           <button
             type="submit"
-            className="btn btn-lg btn-outline-secondary my-4"
+            className="btn btn-lg subs my-4"
             data-bs-toggle="modal"
             data-bs-target="#myModal"
           >

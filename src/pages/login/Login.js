@@ -118,6 +118,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
               />
               <div className="field-icon col-lg-2 col-md-2 col-sm-2  text-end ">
                 <button
+                  type="button"
                   className="togglePasswd"
                   style={Regdisplayi.show}
                   onClick={showRegPassword}
@@ -125,6 +126,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
                   <i className="far fa-eye"></i>
                 </button>
                 <button
+                  type="button"
                   className="togglePasswd"
                   style={Regdisplayi.hide}
                   onClick={hideRegPassword}

@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { Button, Container, Row, Stack } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 const CardRowInfo = (props) => {
+  const ref = useRef();
   const [showInput, setShowInput] = useState(false);
   // const []
+  const { t } = useTranslation();
 
   const clickHandler = (showInput) => {
     setShowInput((prevState) => !prevState);
     //! if input edit is enabled
     if (showInput) {
-      props.onSubmit();
+      console.log("Your input is", props);
+      // props.onSubmit();
     }
   };
 
@@ -18,26 +22,26 @@ const CardRowInfo = (props) => {
         {props.title.charAt(0).toUpperCase() + props.title.slice(1)}
       </h4>
 
-      <form>
-        <Stack
-          direction="horizontal"
-          className="justify-content-between pb-3 text-muted ps-3 flex-xl-nowrap flex-wrap"
-        >
-          <Container fluid className="ps-0">
-            {showInput ? props.input : props.children}
-          </Container>
-          {/* Here we get the action to change something */}
-          {props.notChangable ? null : (
-            <Button
-              variant="outline-success"
-              className="py-0"
-              onClick={clickHandler.bind(this, showInput)}
-            >
-              {showInput ? "OK" : "Change"}
-            </Button>
-          )}
-        </Stack>
-      </form>
+      {/* <form> */}
+      <Stack
+        direction="horizontal"
+        className="justify-content-between pb-3 text-muted ps-3 flex-xl-nowrap flex-wrap"
+      >
+        <Container fluid className="ps-0">
+          {showInput ? props.input : props.children}
+        </Container>
+        {/* Here we get the action to change something */}
+        {props.notChangable ? null : (
+          <Button
+            variant="outline-success"
+            className="py-0"
+            onClick={clickHandler.bind(this, showInput)}
+          >
+            {showInput ? `${t("profile.ok")}` : `${t("profile.change")}`}
+          </Button>
+        )}
+      </Stack>
+      {/* </form> */}
       <hr
         style={{
           background:

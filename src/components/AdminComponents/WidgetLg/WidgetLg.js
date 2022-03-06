@@ -74,8 +74,8 @@ export default function WidgetLg() {
                         return (
 
                             <tr className="WidgetLgTr" key={index} >
-                                <td className="WidgetLgUser">
-                                    <span className="WidgetLgNamre">{order.order_detail[0].id}</span>
+                                <td className="">
+                                   {order.order_detail[0].id}
                                 </td>
                                 <td className="">
                                     {order.customer[0].first_name} {order.customer[0].last_name}
@@ -106,9 +106,7 @@ export default function WidgetLg() {
                                                     {t("WidgetLg.Cart Items")}
                                                 </button>
                                             </h2>
-                                            <table>
-
-                                            </table>
+                                            <table> </table>
                                             {order.cart?.map((item, ind) => {
                                               
                                                 const id = "container" + item.cart_details[0].order;
