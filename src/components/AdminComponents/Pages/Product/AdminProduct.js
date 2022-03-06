@@ -6,8 +6,11 @@ import SideBar from "../../SideBar/SideBar";
 import { backendAPI } from "../../../../store/index";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
+
 
 export default function ProductList() {
+  const { t, i18n } = useTranslation();
   const user = useSelector((state) => state.auth.user);
   const [productData, setProductData] = useState([]);
 
@@ -89,7 +92,7 @@ export default function ProductList() {
         return (
           <div className="userListUser">
             <img src={params.row.product.image} alt="" height={50} width={50} />
-            {params.row.product.name}
+            {t(`category.${params.row.product.name}`,params.row.product.name)}
           </div>
         );
       },
@@ -104,7 +107,7 @@ export default function ProductList() {
           <>
             <div className="productListItem">
               {/* <img className="productListImg" src={params.row.img} alt="" /> */}
-              {params.row.product.description}
+              {t(`category.${params.row.product.description}`,params.row.product.description)}
             </div>
           </>
         );
@@ -178,7 +181,8 @@ export default function ProductList() {
   return (
     <>
       {/* <Navbar /> */}
-      <div className="ProductListContainer">
+      <div className="ProductListContainer" lang={i18n.language}
+            dir={i18n.language === "ar" ? "rtl" : null}>
         <SideBar />
         <div className="ProductList">
           <DataGrid
@@ -188,7 +192,7 @@ export default function ProductList() {
             pageSize={10}
             rowsPerPageOptions={[5]}
             checkboxSelection
-          />
+            />
         </div>
       </div>
     </>

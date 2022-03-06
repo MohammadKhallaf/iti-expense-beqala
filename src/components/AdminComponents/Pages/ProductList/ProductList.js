@@ -5,6 +5,7 @@ import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import SideBar from "../../SideBar/SideBar";
+import { useTranslation } from "react-i18next";
 import { backendAPI } from "../../../../store/index";
 // import Navbar from "../../Navbar/Navbar";
 // import axios from "axios";
@@ -12,6 +13,7 @@ import { useNavigate } from "react-router";
 import { useSelector } from "react-redux";
 
 export default function ProductList() {
+  const { t, i18n } = useTranslation();
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
   const [productData, setProductData] = useState([]);
@@ -75,7 +77,7 @@ export default function ProductList() {
         return (
           <div className="userListUser">
             <img src={params.row.image} alt="" height={50} width={50} />
-            {params.row.name}
+            {t(`category.${params.row.name}`,params.row.name)}
           </div>
         );
       },
@@ -87,7 +89,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <div className="productListItem">{params.row.brand}</div>
+            <div className="productListItem">{t(`category.${params.row.brand}`,params.row.brand)}</div>
           </>
         );
       },
@@ -101,7 +103,7 @@ export default function ProductList() {
           <>
             <div className="productListItem">
               {/* <img className="productListImg" src={params.row.img} alt="" /> */}
-              {params.row.description}
+              {t(`category.${params.row.description}`,params.row.description)}
             </div>
           </>
         );
@@ -115,7 +117,7 @@ export default function ProductList() {
       renderCell: (params) => {
         return (
           <>
-            <div className="productListItem">{params.row.category.name}</div>
+            <div className="productListItem">{t(`category.${params.row.category.name}`,params.row.category.name)}</div>
           </>
         );
       },
@@ -132,7 +134,7 @@ export default function ProductList() {
               onClick={handleEdit.bind(this, params.row.id)}
               className="productListEdit"
             >
-              Add item
+              {t("SideBar.Add product")}
             </button>
             {/* </Link> */}
           </>
@@ -143,7 +145,8 @@ export default function ProductList() {
   return (
     <>
       {/* <Navbar /> */}
-      <div className="ProductListContainer">
+      <div className="ProductListContainer"lang={i18n.language}
+            dir={i18n.language === "ar" ? "rtl" : null}>
         <SideBar />
         <div className="ProductList">
           <DataGrid
@@ -153,7 +156,8 @@ export default function ProductList() {
             pageSize={10}
             rowsPerPageOptions={[5]}
             checkboxSelection
-          />
+            lang={i18n.language}
+            dir={i18n.language === "ar" ? "rtl" : null}/>
         </div>
       </div>
     </>

@@ -15,7 +15,7 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
     <div>
       <Navbar />
       {children}
-      {/* <input type="checkbox" id="check" />{" "}
+      <input type="checkbox" id="check" />{" "}
       <label className="chat-btn" htmlFor="check">
         {" "}
         <i className="fab fa-rocketchat"></i>{" "}
@@ -24,14 +24,14 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
       <div className="wrapper chatbox">
         <div className="header">
           <h6 className='text-center'>ExpenseBeqala <i className="text-danger fas fa-heart"></i> </h6>
-        </div> */}
+        </div> 
 
-        {/* <ChatBox /> */}
+        <ChatBox />
        
-      {/* </div> */}
-      {/* <Footer /> */}
+      </div>
+   
     </div>
   );
 };
 
-export default connect(null, { checkAuthenticated, load_user })(Layout);
+export default connect(null, { checkAuthenticated, load_user })(Layout)

@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { logout } from "../redux/actions/auth";
 import BasketButton from "./cart/BasketButton";
 import {

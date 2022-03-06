@@ -1,6 +1,8 @@
 import React from "react";
 import "./SideBar.css";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 import {
   LineStyle,
@@ -17,22 +19,24 @@ import {
   Error,
 } from "@material-ui/icons";
 export default function SideBar() {
+  const { t, i18n } = useTranslation();
   return (
-    <div className="sideBar">
+    <div className="sideBar" lang={i18n.language}
+    dir={i18n.language === "ar" ? "rtl" : null}>
       <div className="sidebarWapper">
         <div className="sidebarMenu">
-          <h3 className="sidebarTittle">Dashboard</h3>
+          <h3 className="sidebarTittle">{t("SideBar.Dashboard")}</h3>
           <ul className="sidebarList">
             <li className="sidebarListItem active ">
               <Link className="link" to={"/owner"}>
                 <LineStyle className="sidebarIcon" />
-                Home
+                {t("SideBar.Home")}
               </Link>
             </li>
             <li className="sidebarListItem ">
               <Link className="link" to={"/owner/newproduct"}>
                 <Timeline className="sidebarIcon" />
-                Add product
+                {t("SideBar.Add product")}
               </Link>
             </li>
             {/* <li className="sidebarListItem ">
@@ -44,13 +48,13 @@ export default function SideBar() {
             <li className="sidebarListItem ">
               <Link className="link" to={"/owner/ProductList"}>
                 <AddShoppingCart className="sidebarIcon" />
-                products
+                {t("SideBar.products")}
               </Link>
             </li>
             <li className="sidebarListItem ">
               <Link className="link" to={"/owner/product/1"}>
                 <TrendingUp className="sidebarIcon" />
-                My Products
+               {t("SideBar.My Products")}
               </Link>
             </li>
           </ul>

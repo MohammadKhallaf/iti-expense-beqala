@@ -10,9 +10,9 @@
     right: 20px;
     bottom: 40px;
     width: 290px;
-    background-color: rgb(255, 254, 254);
+    background-color: #ebf3f0;
     border-radius: 10px;
-    opacity: 0;
+    display: none;
     transition: all 0.4s;
 }
 .chat-btn .close {
@@ -28,14 +28,21 @@
     pointer-events: auto;
     transform: rotate(180deg)
 }
-
+#check:checked~.chat-btn .chatbox
+{
+    display: block !important;
+}
+#check:checked~.chatbox
+{
+    display: block !important;
+}
 #check:checked~.chat-btn .comment {
     display: none
 }
 
 .chat-btn i {
     font-size: 22px;
-    color: #fff !important
+    color: #ebf3f0 !important
 }
 
 .chat-btn {
@@ -45,8 +52,8 @@
     justify-content: center;
     align-items: center;
     border-radius: 50px;
-    background-color: blue;
-    color: #fff;
+    background-color: #002029;
+    color: #ebf3f0;
     font-size: 22px;
     border: none
 }
@@ -59,10 +66,10 @@
 
 .header {
     padding: 13px;
-    background-color: rgb(0, 0, 0);
+    background-color: #002029;
     border-radius: 5px 5px 0px 0px;
     margin-bottom: 10px;
-    color: #fff
+    color: #ebf3f0
 }
 
 .chat-form {
