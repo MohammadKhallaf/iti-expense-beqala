@@ -1,5 +1,26 @@
-.wrapper{
-    margin-top: 5rem;
-    border-radius: 0 2rem 0 2rem;
-    
+.wrapper {
+  margin-top: 5rem;
+  border-radius: 0 2rem 0 2rem;
+}
+
+.styled__button {
+  color: #090909;
+  padding: 0.7em 1.7em;
+  font-size: 18px;
+  border-radius: 0.5em;
+  background: #e8e8e8 !important;
+  border: 1px solid #e8e8e8 !important;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff !important;
+  box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff !important;
+}
+
+.styled__button:hover {
+  border: 1px solid white !important;
+}
+
+.styled__button:active {
+  -webkit-box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff !important;
+  box-shadow: 4px 4px 12px #c5c5c5, -4px -4px 12px #ffffff !important;
 }
