@@ -15,6 +15,7 @@ import Cart from "./Cart";
 import { LOC_CART_LIST, SHOW_CART } from "../../redux/actions/types";
 import { backendAPI } from "../../store";
 import { getOpenCheckouts } from "../../redux/actions/cart";
+import { useTranslation } from "react-i18next";
 
 const BasketButton = () => {
   // <-- component states -->
@@ -28,12 +29,6 @@ const BasketButton = () => {
   const user = useSelector((state) => state.auth.user);
   const localCartList = useSelector((state) => state.local.cartList);
   const dispatch = useDispatch();
-
-  // TODO: delete this function
-  // const showCart = () => {
-  //   setShow(true);
-  //   dispatch({ type: SHOW_CART });
-  // };
 
   useEffect(() => {
     if (user) dispatch(getOpenCheckouts(user.id));
@@ -62,14 +57,14 @@ const BasketButton = () => {
           variant="outline-transparent"
           // onClick={showCart}
           className="p-0"
-         
           title={
             <div className="position-relative">
               <i className="fas fa-shopping-basket fs-4 text-success"></i>
               <Badge
                 pill
                 bg="transparent"
-                className="border text-black position-absolute translate-middle top-0 start-100"
+                className="border position-absolute translate-middle top-0 start-100"
+                style={{ color: "#EE9B00" }}
               >
                 {(user &&
                   openCheckouts.length > 0 &&
@@ -92,7 +87,8 @@ const BasketButton = () => {
 };
 // <-- cart list to list data from database  -->
 const cartList = (openCheckouts, dispatch) => {
-  if (!(openCheckouts.length > 0)) return;
+  // const {t,i18n} = useTranslation()
+  if (!(openCheckouts.length > 0)) return <></>;
   return openCheckouts.map((item, index) => (
     <Dropdown.Item
       onClick={() => dispatch({ type: SHOW_CART, payload: item.store.id })}
@@ -162,12 +158,12 @@ const MergeModal = () => {
     window.location.reload();
   };
   useEffect(() => {
-    if (items.length > 0) {
+    if (items.length > 0 && user) {
       setTimeout(() => {
         setShow(true);
       }, 5000);
     }
-  }, []);
+  }, [user]);
 
   return (
     <>
