@@ -21,7 +21,13 @@
     "overview": "نظرة عامة",
     "orders": "المشتريات",
     "settings": "الإعدادات",
-    "help": "مساعدة"
+    "help": "مساعدة",
+    "account":"الحساب",
+    "login":"تسجيل الدخول",
+    "logout":"تسجيل الخروج",
+    "register":"التسجيل",
+    "contactus":"تواصل معنا",
+    "my-account":"حسابي"
   },
   "category": {
     "category": " تصنيف",

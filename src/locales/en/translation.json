@@ -12,16 +12,22 @@
     "phone-help-field": "Please provide a valid phone",
     "address-help-field": "Please provide a valid address",
     "location-tip": "Auto-detect your location",
-    "reachout-tip":"Important to reach you out for your orders",
-    "look-good":"Looks good!",
-    "ok":"OK",
-    "change":"Change"
+    "reachout-tip": "Important to reach you out for your orders",
+    "look-good": "Looks good!",
+    "ok": "OK",
+    "change": "Change"
   },
   "sidebar": {
     "overview": "Overview",
     "orders": "Orders",
     "settings": "Settings",
-    "help": "help"
+    "help": "help",
+    "account": "Account",
+    "login": "Log in",
+    "logout": "Log out",
+    "register": "Register",
+    "contactus": "Contact us",
+    "my-account": "My Account"
   },
   "category": {
     "category": " category",
