@@ -50,7 +50,8 @@ export default function WidgetLg() {
     const temp = checkout.Checkout
 
     return (
-        <div className="WidgetLg">
+        <div className="WidgetLg" lang={i18n.language}
+        dir={i18n.language === "ar" ? "rtl" : null}>
             <h3 className="WidgetLgTittle">{t("WidgetLg.Latest Checkouts")}</h3>
             <table className="WidgetLgTable">
                 <thead>

@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { useTranslation } from "react-i18next";
 import { logout } from "../redux/actions/auth";
 import BasketButton from "./cart/BasketButton";
 import {
@@ -12,9 +13,8 @@ import {
   NavDropdown,
   Row,
 } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
 const Navbar = ({ logout, isAuthenticated, user, manager }) => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar");
   };
@@ -48,7 +48,7 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
               width="30px"
             />
           </span>
-          <span className="fw-bold ps-3">ExpenseBeqala</span>
+          <span className="fw-bold ps-3">{t("Navbar.ExpenseBeqala")}</span>
         </BootstrapNavbar.Brand>
 
         <BasketButton />
@@ -71,18 +71,18 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
             </Button>
 
             <NavDropdown
-              title={<span className="text-light m-1">Account</span>}
+              title={<span className="text-light m-1">{t("Navbar.Account")}</span>}
               id="nav-dropdown"
             >
               {/* guest */}
               {!isAuthenticated ? (
                 <>
                   <NavDropdown.Item as={Link} to="/login">
-                    Login
+                    {t("Navbar.Login")}
                   </NavDropdown.Item>
 
                   <NavDropdown.Item as={Link} to="/register">
-                    Register
+                    {t("Navbar.Register")}
                   </NavDropdown.Item>
                 </>
               ) : (
@@ -91,11 +91,11 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
                     as={Link}
                     to={manager ? "/owner/" : "/dashboard/overview"}
                   >
-                    Your Account
+                    {t("Navbar.Your Account")}
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item as={Button} onClick={logout_user}>
-                    Logout
+                    {t("Navbar.Logout")}
                   </NavDropdown.Item>
                 </>
               )}

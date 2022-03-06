@@ -89,7 +89,7 @@ const Showstore = ({ manager }) => {
             </li>
           </ol>
         </nav>
-        <h3 className="text-start">{t("product.Available Products")}</h3>
+        <h3 className="text-start" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>{t("product.Available Products")}</h3>
         <div className="row">
           <Category storeData={store}/>
           <hr></hr>

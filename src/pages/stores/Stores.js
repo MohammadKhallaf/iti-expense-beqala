@@ -27,6 +27,7 @@ const Showstore = () => {
   return (
 
     <>
+    <div lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
      <hr></hr>
        <div className="container text-center mt-5" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
          <nav aria-label="breadcrumb">
@@ -39,13 +40,16 @@ const Showstore = () => {
              </li>
            </ol>
          </nav>
-         <h3 className="text-start">{t("product.Available Stores")}</h3>
+         <div lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
+
+         <h3 className="text-start" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>{t("product.Available Stores")}</h3>
+         </div>
          <div className="row">
            <StoreCard storeData={store}/>
            <hr></hr>
          </div>
        </div>
-
+</div>
       
     </>
   )

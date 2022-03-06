@@ -110,9 +110,17 @@
     "Nescafe Gold Instant Coffee": "Nescafe Gold Instant Coffee",
     "For Kids": "For Kids"
   },
+  "product": {
+    "category": "category",
+    "Stores":"Stores",
+    "Products":"Products",
+    "Available Products":"Available Products",
+    "Available Stores":"Available Stores"
+  },
   "location": {
     "location": "location",
     "Alexandria": "Alexandria",
+    "Select your location":"Select your location",
     "Cairo": "Cairo",
     "location-detected": "Location detected",
     "location-appears-in":"Your location appears in",
@@ -303,6 +311,20 @@
     "Thank You":"Thank You",
     "Thank You for sharing your views with us. We will get back to you as soon as possible.":"Thank You for sharing your views with us. We will get back to you as soon as possible."
   },
+  "Navbar":{
+    "ExpenseBeqala":"ExpenseBeqala",
+    "Account":"Account",
+    "Login":"Login",
+    "Register":"Register",
+    "Your Account":"Your Account",
+    "Logout":"Logout"},
+    "SideBar":{
+      "Dashboard":"Dashboard",
+      "Home":"Home",
+      "Add product":"Add product",
+      "products":"products",
+      "My Products":"My Products"
+    },
   "ui": {
     "dismiss": "Dismiss",
     "dont-show": "Don't show again",

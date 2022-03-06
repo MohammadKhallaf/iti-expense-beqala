@@ -144,6 +144,7 @@
   },
   "location": {
     "location": "الموقع",
+    "Select your location":"اختار موقعك",
     "Alexandria": "الإسكندرية",
     "Cairo": "القاهرة",
     "location-detected": "الموقع الحالي",
@@ -334,18 +335,22 @@
     "Thank You":"شكرا لك",
     "Thank You for sharing your views with us. We will get back to you as soon as possible.":"شكرا لمشاركة وجهات نظركم معنا. سنقوم بالرد عليك في أقرب وقت ممكن."
   },
+  "Navbar":{
+    "ExpenseBeqala":"اكسبنس بقالة",
+    "Account":"الحساب",
+    "Login":"تسجيل الدخول",
+    "Register":"التسجيل",
+    "Your Account":"حسابك",
+    "Logout":"تسجيل الخروج"
+  },
+  "SideBar":{
+    "Dashboard":"التحكم فى المتجر",
+    "Home":"الصفحة الرئيسية",
+    "Add product":"اضافة منتج",
+    "products":"المنتجات",
+    "My Products":"منتجات المتجر"
+  },
   "":{
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
-    "":"",
     "":"",
     "":"",
     "":"",
