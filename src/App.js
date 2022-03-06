@@ -40,7 +40,7 @@ import Facebook from "./pages/Facebook";
 import CheckMail from "./pages/checkmail/CheckMail";
 
 // user
-import UserDashboard from "./pages/user-dashboard/UserDashboard";
+// import UserDashboard from "./pages/user-dashboard/UserDashboard";
 import UserOverview from "./pages/user-dashboard/UserOverview";
 import UserAccount from "./pages/user-dashboard/UserAccount";
 import UserOrders from "./pages/user-dashboard/UserOrders";
@@ -60,7 +60,9 @@ import GeoMap from "./components/map/GeoMap";
 import { useSelector } from "react-redux";
 
 import "./App.css";
-
+const UserDashboard = React.lazy(()=>
+  import("./pages/user-dashboard/UserDashboard")
+);
 function App() {
   return (
     <Provider store={store}>
