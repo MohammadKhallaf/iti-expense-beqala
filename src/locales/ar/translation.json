@@ -5,7 +5,17 @@
     "my-account": "حسابي",
     "my-orders": "مشترياتي",
     "name": "الاسم",
-    "email": "الإيميل"
+    "email": "الإيميل",
+    "phone":"رقم التليفون",
+    "password":"كلمة المرور",
+    "address":"العنوان",
+    "phone-help-field":"يرجى إدخال رقم تليفون صحيح",
+    "address-help-field":"يرجى إدخال عنوان صحيح",
+    "location-tip": "التعرف التلقائي على موقعك",
+    "reachout-tip":"ضروري لوصول الطلبات إليك",
+    "look-good":"جيد!",
+    "ok":"ارسل",
+    "change":"تغيير"
   },
   "sidebar": {
     "overview": "نظرة عامة",
