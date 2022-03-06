@@ -9,6 +9,8 @@ import {
   Form,
   FormControl,
   FormSelect,
+  OverlayTrigger,
+  Tooltip,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SectionCard from "../../components/user-dashboard/SectionCard";
@@ -137,7 +139,7 @@ const UserAccount = () => {
             Alexandria
           </CardRowInfo> */}
           {/* location */}
-          <CardRowInfo title="Phone" notChangable>
+          <CardRowInfo title={t("profile.phone")} notChangable>
             <Form
               noValidate
               validated={phoneValidated}
@@ -156,24 +158,26 @@ const UserAccount = () => {
                     ref={phoneRef}
                     defaultValue={user.phone}
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback>
+                    {t("profile.look-good")}
+                  </Form.Control.Feedback>
                   <Form.Control.Feedback type="invalid">
-                    Please provide a valid phone number.
+                    {t("profile.phone-help-field")}
                   </Form.Control.Feedback>
                   <Form.Text id="phoneHelpBlock" muted>
-                    Important to reach you out for your orders
+                    {t("profile.reachout-tip")}{" "}
                   </Form.Text>
                 </Form.Group>
 
                 <Col xs="12" md="auto">
                   <Button variant="outline-success" type="submit">
-                    OK
+                    {t("profile.ok")}
                   </Button>
                 </Col>
               </Row>
             </Form>
           </CardRowInfo>
-          <CardRowInfo title="Address" notChangable>
+          <CardRowInfo title={t("profile.address")} notChangable>
             <Form
               noValidate
               validated={addressValidated}
@@ -191,28 +195,39 @@ const UserAccount = () => {
                     ref={addressRef}
                     defaultValue={user.address}
                   />
-                  <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                  <Form.Control.Feedback>
+                    {t("profile.look-good")}
+                  </Form.Control.Feedback>
                   <Form.Control.Feedback type="invalid">
-                    Please provide a valid address.
+                    {t("profile.address-help-field")}
                   </Form.Control.Feedback>
                   <Form.Text id="addressHelpBlock" muted>
-                    Important to reach you out for your orders
+                    {t("profile.reachout-tip")}
                   </Form.Text>
                 </Form.Group>
 
                 <Col xs="12" md="auto">
                   <Button variant="outline-success" type="submit">
-                    OK
+                    {t("profile.ok")}
                   </Button>
                 </Col>
                 <Col xs="12" md="auto">
-                  <Button
-                    variant="outline-success"
-                    type="button"
-                    onClick={getLocationHandler}
+                  <OverlayTrigger
+                    placement="bottom"
+                    overlay={
+                      <Tooltip id="location-tooltip">
+                        {t("profile.location-tip")}
+                      </Tooltip>
+                    }
                   >
-                    <i className="fas fa-map-marker-alt"></i>
-                  </Button>
+                    <Button
+                      variant="outline-success"
+                      type="button"
+                      onClick={getLocationHandler}
+                    >
+                      <i className="fas fa-map-marker-alt"></i>
+                    </Button>
+                  </OverlayTrigger>
                 </Col>
               </Row>
             </Form>
@@ -236,8 +251,14 @@ const UserAccount = () => {
             English
           </CardRowInfo> */}
           <CardRowInfo
-            title="Password"
-            input={<Link to="/reset-password">Reset Password Page</Link>}
+            title={t("profile.password")}
+            input={
+              <Link to="/reset-password">
+                {i18n.language == "ar"
+                  ? "صفحة إعادة ضبط كلمة المرور"
+                  : "Reset Password Page"}
+              </Link>
+            }
           >
             **********
           </CardRowInfo>
