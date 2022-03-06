@@ -14,7 +14,7 @@ import {
 } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 const Navbar = ({ logout, isAuthenticated, user, manager }) => {
-  const { i18n } = useTranslation();
+  const {t, i18n } = useTranslation();
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === "ar" ? "en" : "ar");
   };
@@ -50,8 +50,8 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
           </span>
           <span className="fw-bold ps-3">ExpenseBeqala</span>
         </BootstrapNavbar.Brand>
+        {manager ? null : <BasketButton />}
 
-        <BasketButton />
         <BootstrapNavbar.Toggle
           data-toggle="collapse"
           data-target="#navbarCollapse"
@@ -71,18 +71,18 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
             </Button>
 
             <NavDropdown
-              title={<span className="text-light m-1">Account</span>}
+              title={<span className="text-light m-1">{t("sidebar.account")}</span>}
               id="nav-dropdown"
             >
               {/* guest */}
               {!isAuthenticated ? (
                 <>
                   <NavDropdown.Item as={Link} to="/login">
-                    Login
+                  {t("sidebar.login")}
                   </NavDropdown.Item>
 
                   <NavDropdown.Item as={Link} to="/register">
-                    Register
+                  {t("sidebar.register")}
                   </NavDropdown.Item>
                 </>
               ) : (
@@ -91,14 +91,17 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
                     as={Link}
                     to={manager ? "/owner/" : "/dashboard/overview"}
                   >
-                    Your Account
+                    {t("sidebar.my-account")}
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
                   <NavDropdown.Item as={Button} onClick={logout_user}>
-                    Logout
+                  {t("sidebar.logout")}
                   </NavDropdown.Item>
                 </>
               )}
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/contactus">
+              {t("sidebar.contactus")}
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </BootstrapNavbar.Collapse>

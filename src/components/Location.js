@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import LocationCard from "./LocationCard";
+import { useTranslation } from "react-i18next";
 import { backendAPI } from "../store";
 import GeoMap from "./map/GeoMap";
 
 export default function Location() {
   const [cities, setcities] = useState([]);
-
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     backendAPI
       .get("location/cities/")
@@ -21,7 +22,7 @@ export default function Location() {
   return (
     <>
       <section id="home-location" className="location " >
-        <div className="container ">
+        <div className="container "  lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
 
           <div className="row text-center justify-content-center py-5 " >
 
@@ -43,17 +44,7 @@ export default function Location() {
            
 
           </div>
-          <button
-              type="submit"
-              className="btn btn-lg  bg-light subs  my-4"
-              data-bs-toggle="modal"
-              data-bs-target="#myModal"
-              onClick={()=>{localStorage.setItem("location__show", true)
-            return <GeoMap />
-            }}
-            >
-              sum
-            </button>
+         
         </div>
         
       </section>

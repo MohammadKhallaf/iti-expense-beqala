@@ -1,13 +1,14 @@
 import React from "react";
-
+import { useTranslation } from "react-i18next";
 import left from "./../files/Header/leftp.jpg"
 import right from "./../files/Header/rightp.jpg"
 import middle from "./../files/Header/middlep.jpg"
 
 
 export default function Header() {
+  const { t, i18n } = useTranslation();
   return (
-    <div id="myCarousel" className="carousel slide  " data-bs-ride="carousel">
+    <div id="myCarousel" className="carousel slide "  data-bs-ride="carousel" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
       <div className="carousel-indicators ">
         <button
           type="button"

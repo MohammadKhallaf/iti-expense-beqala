@@ -1,8 +1,10 @@
 import React, { useRef } from "react";
 import emailjs from "@emailjs/browser";
 import "./conus.css";
+import { useTranslation } from "react-i18next";
 
 export const ContactUs = () => {
+  const { t, i18n } = useTranslation();
   const form = useRef();
 
   const sendEmail = (e) => {
@@ -27,8 +29,8 @@ export const ContactUs = () => {
   };
 
   return (
-    <div className="regist">
-      <div className="contianer p-5">
+    <div className="regist" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
+      <div className="contianer  p-5">
         <div className="wrapper rounded d-flex align-items-stretch ">
           <div className="bg-yellow">
             <div className="text-white">
@@ -37,23 +39,23 @@ export const ContactUs = () => {
             </div>
             <div className="pt-4 cursive">
               {" "}
-              Please describe your problem in the message box{" "}
+              {t("ContactUs.Please describe your problem in the message box")}{" "}
             </div>
             <div className="pt-sm-5 pt-5 cursive mt-sm-5">
               {" "}
-              We need your email to reach you back{" "}
+              {t("ContactUs.We need your email to reach you back")}{" "}
             </div>
             <div className="pt-sm-5 nomarge pt-5 mt-sm-5">
               {" "}
-              ExpenseBeqala<br/> <i className="fas fa-phone-alt"></i> 190906<br/><small><i className="fas fa-envelope"></i> expensebeqala@gmail.com</small>{" "}
+              {t("ContactUs.ExpenseBeqala")}<br/> <i className="fas fa-phone-alt"></i> 190906<br/><small><i className="fas fa-envelope"></i> expensebeqala@gmail.com</small>{" "}
             </div>
           </div>
           <div className="contact-form">
-            <div className="h3">We'd love to hear from you!</div>
+            <div className="h3">{t("ContactUs.We'd love to hear from you!")}</div>
             <form ref={form} onSubmit={sendEmail}>
               <div className="form-group pt-3">
                 {" "}
-                <label htmlFor="message">Message</label>{" "}
+                <label htmlFor="message">{t("ContactUs.Message")}</label>{" "}
                 <textarea
                   name="message"
                   className="form-control"
@@ -63,7 +65,7 @@ export const ContactUs = () => {
               <div className="d-flex align-items-center flex-wrap justify-content-between pt-4">
                 <div className="form-group pt-lg-2 pt-3">
                   {" "}
-                  <label htmlFor="name">Your Name</label>{" "}
+                  <label htmlFor="name">{t("ContactUs.Your Name")}</label>{" "}
                   <input
                     type="text"
                     name="name"
@@ -73,7 +75,7 @@ export const ContactUs = () => {
                 </div>
                 <div className="form-group pt-lg-2 pt-3">
                   {" "}
-                  <label htmlFor="name">Your Email</label>{" "}
+                  <label htmlFor="name">{t("ContactUs.Your Email")}</label>{" "}
                   <input
                     type="email"
                     name="email"
@@ -90,7 +92,7 @@ export const ContactUs = () => {
                   data-bs-toggle="modal"
                   data-bs-target="#myModal"
                 >
-                  Submit
+                  {t("ContactUs.Submit")}
                 </button>
               </div>
             </form>
@@ -107,7 +109,7 @@ export const ContactUs = () => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="myModalLabel">
-                  Thank You <span className="fas fa-heart"></span>{" "}
+                  {t("ContactUs.Thank You")} <span className="fas fa-heart"></span>{" "}
                 </h5>{" "}
                 <button
                   type="button"
@@ -118,8 +120,7 @@ export const ContactUs = () => {
               </div>
               <div className="modal-body">
                 <div className="ps-2">
-                  Thank You for sharing your views with us. We will get back to
-                  you as soon as possible.
+                  {t("ContactUs.Thank You for sharing your views with us. We will get back to you as soon as possible.")}
                 </div>
               </div>
             </div>

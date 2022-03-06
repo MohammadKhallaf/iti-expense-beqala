@@ -3,10 +3,13 @@ import { Link, Navigate } from "react-router-dom";
 import { connect } from "react-redux";
 import { signup } from "../../redux/actions/auth";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+
 
 import "./Register.css";
 
 const Register = ({ signup, isAuthenticated, error }) => {
+  const { t, i18n } = useTranslation();
   const [passwordShown, setPasswordShown] = useState(false);
   const [passwordShown2, setPasswordShown2] = useState(false);
 
@@ -113,22 +116,23 @@ const Register = ({ signup, isAuthenticated, error }) => {
 
   // errors
   const error_m = () => (
+  
     <p className="text-danger">
-      Your email or password not valid, please try again.
+      {t("Register.Your email or password not valid, please try again.")}
     </p>
   );
   const empty = () => <p></p>;
 
   return (
-    <div className="container-fluid text-center regist mt-5 pt-5">
+    <div className="container-fluid text-center regist mt-5 pt-5" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
       <div className="row justify-content-center">
         <div className="border box border-secondary col-xl-4 col-lg-6 col-md-9 col-sm-12 p-5 m-5">
           <h2>
             {" "}
-            Welcome to ExpenseBeqala{" "}
+            {t("Register.Welcome to ExpenseBeqala")}{" "}
             <i className="text-danger fas fa-heart"></i>
           </h2>
-          <h4 classNow="text-secondary p-5 m-2">SignUp now and Enjoy!</h4>
+          <h4 classNow="text-secondary p-5 m-2">{t("Register.SignUp now and Enjoy!")}</h4>
           {error ? error_m() : empty()}
           <small className="text-danger  "> {errorcon.conPasswordErr}</small>
           <form onSubmit={(e) => onSubmit(e)}>
@@ -195,8 +199,7 @@ const Register = ({ signup, isAuthenticated, error }) => {
                   </button>
                 </div>
                 <small className="text-danger">
-                  Passwords must be 8 characters and not similar to name or
-                  email.
+                  {t("Register.Passwords must be 8 characters and not similar to name or email.")}
                 </small>
               </div>
             </div>
@@ -236,26 +239,26 @@ const Register = ({ signup, isAuthenticated, error }) => {
                 className="btn btn-lg btn-dark my-4 btn-r col-lg-7 col-md-7 col-sm-12"
                 type="submit"
               >
-                Register
+                {t("Register.Register")}
               </button>
               <p className="mt-3">
-                Already have an account? <Link to="/login">Login</Link>
+                {t("Register.Already have an account?")} <Link to="/login">{t("Register.Login")}</Link>
               </p>
             </div>
           </form>
-          <p> OR</p>
+          <p> {t("Register.OR")}</p>
           <button
             className="btn m-2 btn-light border border-secondary  btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithGoogle}
           >
-            <i className="fab fa-google m-2 "></i> continue with Google
+            <i className="fab fa-google m-2 "></i> {t("Register.continue with Google")}
           </button>
           <br className="p-4 m-4" />
           <button
             className="btn p-2 m-2 btn-primary btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithFacebook}
           >
-            <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
+            <i className="fab fa-facebook-f m-2"> </i>{t("Register.continue with Facebook")}
           </button>
         </div>
       </div>

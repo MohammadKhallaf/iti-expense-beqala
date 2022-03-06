@@ -55,6 +55,7 @@ const OrderDetailModal = (props) => {
           </tbody>
          
         </Table>
+        
         <Table
           responsive
           className="align-middle text-center"

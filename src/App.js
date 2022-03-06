@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // =======
-import React from "react";
+import React, { useEffect } from "react";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import Google from "./pages/Google";
+import { Navigate, Outlet } from "react-router";
 
 // Other Libraries
 
@@ -39,7 +40,7 @@ import Facebook from "./pages/Facebook";
 import CheckMail from "./pages/checkmail/CheckMail";
 
 // user
-import UserDashboard from "./pages/user-dashboard/UserDashboard";
+// import UserDashboard from "./pages/user-dashboard/UserDashboard";
 import UserOverview from "./pages/user-dashboard/UserOverview";
 import UserAccount from "./pages/user-dashboard/UserAccount";
 import UserOrders from "./pages/user-dashboard/UserOrders";
@@ -55,10 +56,13 @@ import OrderCheckout from "./pages/cart/OrderCheckout";
 
 // styling
 import { ContactUs } from "./pages/ContactUs";
-import "./App.css";
 import GeoMap from "./components/map/GeoMap";
+import { useSelector } from "react-redux";
 
-
+import "./App.css";
+const UserDashboard = React.lazy(()=>
+  import("./pages/user-dashboard/UserDashboard")
+);
 function App() {
   return (
     <Provider store={store}>
@@ -84,6 +88,7 @@ function App() {
             <Route path="/checkmail" element={<CheckMail />} />
 
             {/* User */}
+
             <Route path="/dashboard" element={<UserDashboard />}>
               <Route path="overview" element={<UserOverview />} />
               <Route path="account" element={<UserAccount />} />

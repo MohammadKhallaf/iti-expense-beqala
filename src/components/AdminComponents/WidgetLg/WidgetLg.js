@@ -4,10 +4,12 @@ import React, { useEffect, useState } from "react";
 import { backendAPI } from "../../../store";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+
 
 
 export default function WidgetLg() {
-
+    const { t, i18n } = useTranslation();
     const [checkout, setCheckout] = useState([]);
     const [items, setItems] = useState([]);
     const [orderID, setorderID] = useState(null);
@@ -49,20 +51,20 @@ export default function WidgetLg() {
 
     return (
         <div className="WidgetLg">
-            <h3 className="WidgetLgTittle">Latest Checkouts</h3>
+            <h3 className="WidgetLgTittle">{t("WidgetLg.Latest Checkouts")}</h3>
             <table className="WidgetLgTable">
                 <thead>
                     <tr className="WidgetLgTr">
-                        <th className="WidgetLgTh">Order ID</th>
-                        <th className="WidgetLgTh">Customer</th>
-                        <th className="WidgetLgTh">Address</th>
-                        <th className="WidgetLgTh">Phone</th>
-                        <th className="WidgetLgTh">Date</th>
-                        <th className="WidgetLgTh">Amount</th>
-                        <th className="WidgetLgTh">Payment Method</th>
-                        <th className="WidgetLgTh">Status</th>
-                        <th className="WidgetLgTh">Action</th>
-                        <th className="WidgetLgTh">View</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Order ID")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Customer")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Address")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Phone")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Date")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Amount")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Payment Method")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Status")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.Action")}</th>
+                        <th className="WidgetLgTh">{t("WidgetLg.View")}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,7 +86,7 @@ export default function WidgetLg() {
                                     {order.customer[0].phone}
                                 </td>
                                 <td className="WidgetLgDate">{order.order_detail[0].orderDate}</td>
-                                <td className="WidgetLgAmount">{order.total[0]} EGP</td>
+                                <td className="WidgetLgAmount">{order.total[0]} {t("WidgetLg.EGP")}</td>
                                 <td className="">{order.order_detail[0].payment}</td>
 
                                 <td className="WidgetLgStatus">{order.order_detail[0].state}</td>
@@ -92,7 +94,7 @@ export default function WidgetLg() {
                                 <td className="WidgetLgStatus WidgetLgBtn">
                                     <button className=" WidgetLgBtn Approved"
                                         onClick={() => { setRerender(false); setorderID(order.order_detail[0].id); }}>
-                                        Done
+                                        {t("WidgetLg.Done")}
                                     </button>
                                 </td>
                                 <td className="WidgetLgStatus WidgetLgBtn">
@@ -100,12 +102,10 @@ export default function WidgetLg() {
                                         <div className="accordion-item">
                                             <h2 className="accordion-header" id="headingOne">
                                                 <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={toID} aria-expanded="true" aria-controls="collapseOne">
-                                                    Cart Items
+                                                    {t("WidgetLg.Cart Items")}
                                                 </button>
                                             </h2>
-                                            <table>
-
-                                            </table>
+                                            <table> </table>
                                             {order.cart?.map((item, ind) => {
                                               
                                                 const id = "container" + item.cart_details[0].order;
@@ -115,10 +115,10 @@ export default function WidgetLg() {
                                                             <table className="WidgetLgTable">
                                                                 <thead>
                                                                     <tr className="WidgetLgTr">
-                                                                        <th className="WidgetLgTh">Product</th>
-                                                                        <th className="WidgetLgTh">Price</th>
-                                                                        <th className="WidgetLgTh">Quantity</th>
-                                                                        <th className="WidgetLgTh">Offer</th>
+                                                                        <th className="WidgetLgTh">{t("WidgetLg.Product")}</th>
+                                                                        <th className="WidgetLgTh">{t("WidgetLg.Price")}</th>
+                                                                        <th className="WidgetLgTh">{t("WidgetLg.Quantity")}</th>
+                                                                        <th className="WidgetLgTh">{t("WidgetLg.Offer")}</th>
                                                                       
                                                                     </tr>
                                                                 </thead>
@@ -131,7 +131,7 @@ export default function WidgetLg() {
                                                                         </td>
                                                                         <td className="WidgetLgAmount">
 
-                                                                            {item.price} EGP
+                                                                            {item.price} {t("WidgetLg.EGP")}
                                                                         </td>
                                                                         <td className="WidgetLgDate">{item.cart_details[0].quantity} </td>
                                                                         <td className="WidgetLgAmount"> - {item.offer}% </td>

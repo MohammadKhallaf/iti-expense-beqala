@@ -39,6 +39,8 @@ import { backendAPI } from '../../store';
 import {Navigate } from 'react-router-dom';
 import { login } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
+import { useTranslation } from "react-i18next";
+
 
 // const fetchstore = async () => {
 //   const productcategory = await backendAPI.get(`product/category/`);
@@ -51,6 +53,7 @@ import { connect } from 'react-redux';
 //   fetchstore();
 // }, [])
 const Showstore = ({ manager }) => {
+  const { t, i18n } = useTranslation();
   let params = useParams();
 
   const store_id = params.storeId
@@ -72,21 +75,21 @@ const Showstore = ({ manager }) => {
 
     <>
       <hr></hr>
-      <div className="container text-center mt-5">
+      <div className="container text-center mt-5" lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
         <nav aria-label="breadcrumb">
           <ol className="breadcrumb">
             <li className="breadcrumb-item mx-1 bcItem">
               <a className="text-light" href="#"> <i className="fas fa-home"></i> </a>
             </li>
             <li className="text-light mx-1 breadcrumb-item active bcItem px-3" style={{ filter: "brightness(0.95)" }} >
-              Stores
+              {t("product.Stores")}
             </li>
             <li className="text-light mx-1 breadcrumb-item active bcItem px-3" style={{ filter: "brightness(0.95)" }} >
-              Products
+              {t("product.Products")}
             </li>
           </ol>
         </nav>
-        <h3 className="text-start">Available Products</h3>
+        <h3 className="text-start">{t("product.Available Products")}</h3>
         <div className="row">
           <Category storeData={store}/>
           <hr></hr>

@@ -24,13 +24,14 @@ const Layout = ({ checkAuthenticated, load_user, children }) => {
       <div className="wrapper chatbox">
         <div className="header">
           <h6 className='text-center'>ExpenseBeqala <i className="text-danger fas fa-heart"></i> </h6>
-        </div>
+        </div> 
 
         <ChatBox />
+       
       </div>
-      {/* <Footer /> */}
+   
     </div>
   );
 };
 
-export default connect(null, { checkAuthenticated, load_user })(Layout);
+export default connect(null, { checkAuthenticated, load_user })(Layout)

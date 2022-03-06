@@ -7,6 +7,7 @@ import Services from '../../components/Services';
 import {Navigate } from 'react-router-dom';
 import { login } from '../../redux/actions/auth';
 import { connect } from 'react-redux';
+import { useTranslation } from "react-i18next";
 import './Hero.css'
 
 const Hero = ({ manager }) => {

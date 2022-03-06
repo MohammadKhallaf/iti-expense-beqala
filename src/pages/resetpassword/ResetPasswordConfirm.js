@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { Navigate, useParams } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reset_password_confirm } from '../../redux/actions/auth';
+import { useTranslation } from "react-i18next";
+
 
 const ResetPasswordConfirm = ({ reset_password_confirm }) => {
+    const { t, i18n } = useTranslation();
     const [requestSent, setRequestSent] = useState(false);
     const [formData, setFormData] = useState({
         new_password: '',
@@ -31,7 +34,7 @@ const ResetPasswordConfirm = ({ reset_password_confirm }) => {
     }
 
     return (
-        <div className='container mt-5 pt-5'>
+        <div className='container mt-5 pt-5' lang={i18n.language} dir={i18n.language === "ar" ? "rtl" : null}>
             <form onSubmit={e => onSubmit(e)}>
             <div className='form-group'>
                     <input
@@ -57,7 +60,7 @@ const ResetPasswordConfirm = ({ reset_password_confirm }) => {
                         required
                     />
                 </div>
-                <button className='btn btn-primary' type='submit'>Reset Password</button>
+                <button className='btn btn-primary' type='submit'>{t("ResetPassword.Reset Password")}</button>
             </form>
         </div>
     );
