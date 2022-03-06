@@ -14,7 +14,6 @@ const GeoMap = () => {
   const [cities, setCities] = useState([]);
   const success = (position) => {
     const cords = position.coords;
-    console.log("MAPS");
     axios
       .get(
         `https://api.geoapify.com/v1/geocode/reverse?lat=${cords.latitude}&lon=${cords.longitude}&lang=en&format=json&type=city&limit=1&apiKey=${GOAPI_API_KEY}`

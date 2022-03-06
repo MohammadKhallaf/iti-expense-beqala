@@ -103,9 +103,7 @@ export default function WidgetLg() {
                                                     Cart Items
                                                 </button>
                                             </h2>
-                                            <table>
-
-                                            </table>
+                                            <table> </table>
                                             {order.cart?.map((item, ind) => {
                                               
                                                 const id = "container" + item.cart_details[0].order;

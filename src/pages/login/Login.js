@@ -115,6 +115,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
               />
               <div className="field-icon col-lg-2 col-md-2 col-sm-2  text-end ">
                 <button
+                  type="button"
                   className="togglePasswd"
                   style={Regdisplayi.show}
                   onClick={showRegPassword}
@@ -122,6 +123,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
                   <i className="far fa-eye"></i>
                 </button>
                 <button
+                  type="button"
                   className="togglePasswd"
                   style={Regdisplayi.hide}
                   onClick={hideRegPassword}
@@ -154,7 +156,7 @@ const Login = ({ login, isAuthenticated, error, manager }) => {
             className="btn p-2 m-2 btn-primary btn-r col-lg-7 col-md-7 col-sm-12"
             onClick={continueWithFacebook}
           >
-          <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
+            <i className="fab fa-facebook-f m-2"> </i>continue with Facebook
           </button>
           <p className="mt-3">
             Don't have an account? <Link to="/register">Sign Up</Link>

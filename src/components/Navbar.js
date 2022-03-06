@@ -50,8 +50,8 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
           </span>
           <span className="fw-bold ps-3">ExpenseBeqala</span>
         </BootstrapNavbar.Brand>
+        {manager ? null : <BasketButton />}
 
-        <BasketButton />
         <BootstrapNavbar.Toggle
           data-toggle="collapse"
           data-target="#navbarCollapse"
