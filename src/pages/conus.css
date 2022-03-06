@@ -5,10 +5,12 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif
+    
 }
 
-body {
-    background-color: #F50057
+.regist
+{
+    color: #00303d;
 }
 
 .wrapper {
@@ -21,7 +23,8 @@ body {
 }
 
 .wrapper .bg-yellow {
-    background-color: #e7c0bb;
+    color: #e7e7e7;
+    background-color: #00303d;
     height: 100%;
     width: 50%;
     padding-top: 40px;
@@ -55,11 +58,21 @@ body {
 
 .wrapper .contact-form label {
     font-size: 0.9rem;
-    color: #555;
+    color: #00303d;
     font-weight: 500;
     margin-bottom: 10px
 }
-
+.regist .subs
+{
+    color: #00303d;
+    border: 2px solid #00303d;
+}
+.regist .subs:hover
+{
+    color: #e7e7e7;
+    background-color: #00303d;
+    box-shadow: 1px 1px 4px #00303d ;
+}
 .wrapper .contact-form textarea {
     height: 120px
 }

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function PartnerFeatures() {
   return (
     <>
-      <section className="partner ">
+      <section id="home-partner" className="partner ">
         <div className="container  ">
           <div className="row text-center justify-content-center py-4">
             <h1>Are you a shop owner?</h1>
@@ -15,7 +15,7 @@ export default function PartnerFeatures() {
 
           </div>
           <div className="row justify-content-center">
-            <div className="col-lg-4 col-md-6 col-sm-12 ">
+            <div className="col-lg-4 col-md-12 col-sm-12 ">
               <div className="row justify-content-center">
                 <div className="col-lg-2 col-md-2 col-sm-2 my-2 mx-2">
                   <i className="fas fa-users icon"></i>
@@ -26,7 +26,7 @@ export default function PartnerFeatures() {
               </div>
 
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12 pt-2 ">
+            <div className="col-lg-4 col-md-12 col-sm-12 pt-2 ">
               <div className="row justify-content-center ">
                 <div className="col-lg-2 col-md-2 col-sm-2 mb-2 mx-2 ">
                   <i className="fas fa-chart-line icon"></i>
@@ -36,7 +36,7 @@ export default function PartnerFeatures() {
                 </div>
               </div>
             </div>
-            <div className="col-lg-4 col-md-6 col-sm-12">
+            <div className="col-lg-4 col-md-12 col-sm-12">
               <div className="row justify-content-center">
                 <div className="col-lg-2 col-md-2 col-sm-2 my-3 mx-2">
                   <i className="fas fa-sitemap icon"></i>

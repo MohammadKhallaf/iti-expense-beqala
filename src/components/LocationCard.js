@@ -30,10 +30,11 @@ export default function LocationCard(props) {
       height:'100%',
       margin:0,
       paddingTop:'70px',  
-      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: 'rgba(0, 0, 0, 0.45)',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
       backgroundRepeat: 'no-repeat',
+    
     }
   }
   console.log(img)
@@ -43,7 +44,7 @@ export default function LocationCard(props) {
 
 
       
-        <div className="card text-center rounded border-0 locCard" style={{ width: "18rem" }}>
+        <div className="card text-center justify-content-center  rounded border-0 locCard" style={{ width: "18rem" }}>
         
           <Link to={`/${city}/stores`} style={{ textDecoration:'none'}}>
             <div className="locCardb"

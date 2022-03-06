@@ -28,14 +28,14 @@ export const ContactUs = () => {
 
   return (
     <div className="regist">
-      <div className="contianer m-5 p-5">
+      <div className="contianer p-5">
         <div className="wrapper rounded d-flex align-items-stretch ">
           <div className="bg-yellow">
             <div className="text-white">
               {" "}
               <span className="far fa-envelope"></span>{" "}
             </div>
-            <div className="pt-5 cursive">
+            <div className="pt-4 cursive">
               {" "}
               Please describe your problem in the message box{" "}
             </div>
@@ -86,7 +86,7 @@ export const ContactUs = () => {
               <div className="d-flex align-items-center flex-wrap justify-content-between pt-lg-5 mt-lg-4 mt-5">
                 <button
                   type="submit"
-                  className="btn btn-lg btn-outline-secondary my-4"
+                  className="btn btn-lg subs  my-4"
                   data-bs-toggle="modal"
                   data-bs-target="#myModal"
                 >

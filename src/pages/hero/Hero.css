@@ -1,21 +1,35 @@
 /* Header component */
-.intro
+
+.intro 
 {
-    color: #222 !important;
+    color: #002029 !important;
+
 }
+.intro h2 
+{
+    
+}
+
 .intro .btn
 {
-    color: #222 !important;
-    border: 2px solid #222;
+    color: #002029 !important;
+    border: 2px solid #002029;
 }
 .intro .btn:hover
 {
     color: #fff !important;
-    background-color: #222;
-    border: 2px solid #222;
-    box-shadow: 0px 5px 5px #222;
+    background-color: #002029;
+    border: 2px solid #002029;
+    box-shadow: 0px 5px 25px #ffc324;
 }
+
 /* Services Component */
+.service img
+{
+   border: 4px solid #ffc324;
+   box-shadow: 	5px 5px 3px #654B03,
+   5px 5px  3px #654B03;
+}
 .service img:hover
 {
     animation-name: flipImg;
@@ -27,81 +41,98 @@
     50%  {transform: scaleX(-1);}
     100% {transform: scaleX(1);}
 }
-.service .btn
+.service 
 {
-    color: #222 !important;
-    border: 2px solid #222;
-}
-.service .btn:hover
-{
-    color: #fff !important;
-    background-color: #222;
-    border: 2px solid #222;
-    box-shadow: 0px 5px 5px #222;
+    color: #00303d !important;
+    /* text-shadow: 5px  5px 15px #ff7f00; */
+
+    letter-spacing:0.3em;
+
 }
 /* Location */
 
-
 .location
 {
-    color: #222;
-   
-    background: linear-gradient(to top left, #d9dfd9 0%, #9fc9b9 100%);
+ 
 
+    background-color: #fff;
+    background-position: center; /* Center the image */
+    background-repeat: repeat-x; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+    background-attachment: fixed;
+    background-image: url("./../../files/Partner/opacity.png");
+}
+.location .container
+{
+  
 }
 .locCard
 {
     border-radius: 20px;
     /* opacity: 0.7; */
     transition: 0.3s;
-   
 
+}
+
+.loc-card-h1
+{
+    color: #00303d !important;
+  
+    letter-spacing:0.3em;
+
+    font-size: 35px;
+    -webkit-text-stroke: #00303d;
+    -webkit-text-stroke-width: 1px;
 }
 .locCard:hover
 {
     /* opacity: 1;  */
-    box-shadow: 5px  10px 12px #49685e;
+    
+    text-shadow: 5px  5px 35px #ebf3f0;
+    box-shadow: 5px  5px 32px #001920;
+
+    
+}
+.locCard
+{
+    /* opacity: 1;  */
+   /* border: 2px solid #d9dfd9 !important; */
+    
 }
 
-.locCardb
-{
-    /* background-color: #83bba8;
-    color: #49685e !important;
-   */
-   
-}
+
 .locTitle
 {
     /* opacity: 1 !important; */
-    color: #fff;
+    color: #00303d;
+   
     font-size: 25px;
+    -webkit-text-stroke: #ebf3f0;
+    -webkit-text-stroke-width: 2px;
 }
 /* Partners */
 .partner
 {
-    background-color: #fff;
-    background-position: center; /* Center the image */
-    background-repeat: repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-    background-attachment: fixed;
-    background-image: url("./../../files/Partner/opacity.png");
+    color: #d9dfd9;
+   
+    background: linear-gradient( to top left, #005066  0%, #002029 100%);
 }
 .partner .btn
 {
-    color: #f27519 !important;
-    border: 2px solid #f27519;
+    color: #ffc324 !important;
+    border: 2px solid #ffc324;
 }
 .partner .btn:hover
 {
     color: #fff !important;
-    background-color: #f27519;
-    border: 2px solid #f27519;
-    box-shadow: 0px 5px 5px #f27519;
+    background-color: #ffc324;
+    border: 2px solid #ffc324;
+    box-shadow: 0px 5px 5px #ffc324;
 }
 .icon
 {
     font-size: 50px;
-    color: #f27519;
+    color: #ffc324;
    
 }
 /* Features */
@@ -112,15 +143,15 @@
 }
 .FeatureBtns
 {
-    color: #222 !important;
-    border: 2px solid #222;
+    color: #001920 !important;
+    border: 2px solid #001920;
 }
 .FeatureBtns:hover
 {
     color: #fff !important;
-    background-color: #222;
-    border: 2px solid #222;
-    box-shadow: 0px 5px 5px #222;
+    background-color: #001920;
+    border: 2px solid #001920;
+    box-shadow: 0px 5px 5px #001920;
 }
 .feature2
 {

@@ -25,7 +25,7 @@ export default function NewPartner() {
   };
   return (
     <>
-      <form className="row m-2 p-2 g-3" ref={form} onSubmit={sendEmail}>
+      <form className="row m-2 p-2 g-3 " ref={form} onSubmit={sendEmail}>
         <h3>Let's grow together with us</h3>
         <small className="text-danger ">*all fields are required!</small>
         <h3>join now!</h3>
@@ -139,7 +139,7 @@ export default function NewPartner() {
         <div className="col-12">
           <button
             type="submit"
-            className="btn btn-lg btn-outline-secondary my-4"
+            className="btn btn-lg subs my-4"
             data-bs-toggle="modal"
             data-bs-target="#myModal"
           >
