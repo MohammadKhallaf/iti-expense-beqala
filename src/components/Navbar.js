@@ -93,12 +93,15 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
                   >
                     Your Account
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
                   <NavDropdown.Item as={Button} onClick={logout_user}>
                     Logout
                   </NavDropdown.Item>
                 </>
               )}
+              <NavDropdown.Divider />
+              <NavDropdown.Item as={Link} to="/contactus">
+                Contact Us
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </BootstrapNavbar.Collapse>
