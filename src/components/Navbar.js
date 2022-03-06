@@ -48,7 +48,7 @@ const Navbar = ({ logout, isAuthenticated, user, manager }) => {
               width="30px"
             />
           </span>
-          <span className="fw-bold ps-3">{t("Navbar.ExpenseBeqala")}</span>
+          <span className="fw-bold ps-3">ExpenseBeqala</span>
         </BootstrapNavbar.Brand>
         {manager ? null : <BasketButton />}
 

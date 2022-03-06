@@ -33,7 +33,7 @@ export default function Location() {
               return (
 
                 <div className="col-lg-3 col-md-6 col-sm-6 mx-5 my-5  text-center justify-content-center  loc-card" key={index}>
-                  <LocationCard name={t(`location.${city}`,city)} />
+                  <LocationCard name={city} />
 
 
                 </div>
